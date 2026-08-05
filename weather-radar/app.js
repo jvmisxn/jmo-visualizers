@@ -247,7 +247,13 @@ async function loadStopData(index) {
   // A slow response for a previous stop can land after the rotation has moved
   // on; only the most recent request is allowed to touch the panel.
   try {
-    const [weather, alerts] = await Promise.all([fetchWeather(stop), fetchAlerts(stop)]);
+    // Alerts are a decoration on top of the forecast; a flaky NWS response
+    // (timeout/network error throws past the !ok guard) must not blank the
+    // whole panel when the forecast itself succeeded.
+    const [weather, alerts] = await Promise.all([
+      fetchWeather(stop),
+      fetchAlerts(stop).catch(() => []),
+    ]);
     if (seq !== requestSeq) return;
     renderWeather(stop, weather, alerts);
   } catch (error) {
