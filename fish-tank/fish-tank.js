@@ -43,9 +43,15 @@ resize();
 resetScene();
 requestAnimationFrame(frame);
 
+let resizeTimer = 0;
 window.addEventListener("resize", () => {
-  resize();
-  resetScene();
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => {
+    const previousWidth = width;
+    const previousHeight = height;
+    resize();
+    if (width !== previousWidth || height !== previousHeight) resetScene();
+  }, 150);
 });
 
 function stringParam(name, fallback) {
