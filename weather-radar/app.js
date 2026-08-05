@@ -85,8 +85,11 @@ function refreshRadar() {
   radarLayer.setParams({ ts: Math.floor(Date.now() / RADAR_REFRESH_MS) });
 }
 
+const FETCH_TIMEOUT_MS = 15000;
+
 let stopIndex = 0;
 let lastAlertCount = 0;
+let requestSeq = 0;
 
 function updateClock() {
   const now = new Date();
@@ -130,7 +133,7 @@ async function fetchWeather(stop) {
     forecast_days: "4",
   });
 
-  const response = await fetch(url);
+  const response = await fetch(url, { signal: AbortSignal.timeout(FETCH_TIMEOUT_MS) });
   if (!response.ok) throw new Error(`weather ${response.status}`);
   return response.json();
 }
@@ -160,7 +163,10 @@ function applyDayPart(isNight) {
 async function fetchAlerts(stop) {
   const point = `${stop.lat.toFixed(4)},${stop.lon.toFixed(4)}`;
   const url = `https://api.weather.gov/alerts/active?point=${point}`;
-  const response = await fetch(url, { headers: { Accept: "application/geo+json" } });
+  const response = await fetch(url, {
+    headers: { Accept: "application/geo+json" },
+    signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
+  });
   if (!response.ok) return [];
   const data = await response.json();
   return Array.isArray(data.features) ? data.features.slice(0, 4) : [];
@@ -229,16 +235,21 @@ function renderFallback(stop, error) {
 
 async function setStop(index, instant = false) {
   const stop = STOPS[index % STOPS.length];
+  const seq = ++requestSeq;
   if (instant) {
     map.setView([stop.lat, stop.lon], stop.zoom);
   } else {
     map.flyTo([stop.lat, stop.lon], stop.zoom, { duration: 8, easeLinearity: 0.12 });
   }
 
+  // A slow response for a previous stop can land after the rotation has moved
+  // on; only the most recent request is allowed to touch the panel.
   try {
     const [weather, alerts] = await Promise.all([fetchWeather(stop), fetchAlerts(stop)]);
+    if (seq !== requestSeq) return;
     renderWeather(stop, weather, alerts);
   } catch (error) {
+    if (seq !== requestSeq) return;
     renderFallback(stop, error);
   }
 }
