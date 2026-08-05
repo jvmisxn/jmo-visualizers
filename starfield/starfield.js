@@ -299,8 +299,15 @@ function drawNebula() {
   if (!nebulaLayer) return;
   ctx.save();
   ctx.globalCompositeOperation = "screen";
-  ctx.globalAlpha = 1 + smoothLevel * config.tint * 0.25;
   ctx.drawImage(nebulaLayer, 0, 0);
+  // globalAlpha assignments outside [0, 1] are ignored by the canvas spec, so
+  // a >1 alpha can't brighten the layer; screen-blend it a second time at the
+  // boost amount instead so the nebula visibly swells with the audio level.
+  const boost = clamp(smoothLevel * config.tint * 0.25, 0, 1);
+  if (boost > 0.01) {
+    ctx.globalAlpha = boost;
+    ctx.drawImage(nebulaLayer, 0, 0);
+  }
   ctx.restore();
 }
 
