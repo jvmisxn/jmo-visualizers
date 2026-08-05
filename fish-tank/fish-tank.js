@@ -111,6 +111,7 @@ function makeFish(index) {
     fin: palette[1],
     belly: palette[2],
     depth: 0.55 + rand() * 0.45,
+    tilt: 0,
     turnCooldown: 4 + rand() * 16,
   };
 }
@@ -175,6 +176,13 @@ function update(dt, time) {
     swimmer.y = swimmer.baseY
       + Math.sin(time * swimmer.wave + swimmer.phase) * height * 0.035
       + Math.sin(time * swimmer.wave * 0.21 + swimmer.phase) * height * 0.045;
+
+    // Analytic dy/dt of the bob keeps the pitch smooth even across lane jumps.
+    const vy = Math.cos(time * swimmer.wave + swimmer.phase) * swimmer.wave * height * 0.035
+      + Math.cos(time * swimmer.wave * 0.21 + swimmer.phase) * swimmer.wave * 0.21 * height * 0.045;
+    const horizontal = Math.max(swimmer.speed * Math.abs(swimmer.facing), 40 * dpr);
+    const targetTilt = clamp(Math.atan2(vy, horizontal), -0.3, 0.3) * 0.8;
+    swimmer.tilt += (targetTilt - swimmer.tilt) * Math.min(1, dt * 4);
 
     const margin = 120 * swimmer.scale;
     if (swimmer.direction > 0 && swimmer.x > width + margin) {
@@ -292,6 +300,7 @@ function drawFish(swimmer, time, layerAlpha) {
   ctx.save();
   ctx.translate(swimmer.x, swimmer.y);
   ctx.scale(dir, 1);
+  ctx.rotate(swimmer.tilt);
   ctx.globalAlpha = layerAlpha;
 
   ctx.fillStyle = "rgba(0, 0, 0, 0.16)";
