@@ -360,3 +360,185 @@ body,
     transform: translateX(-100%);
   }
 }
+
+@media (max-width: 760px) {
+  .topbar {
+    height: 64px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "brand clock"
+      "mode mode";
+    gap: 4px 8px;
+    padding: 6px 10px 7px;
+    border-bottom-width: 2px;
+  }
+
+  .brand {
+    grid-area: brand;
+    gap: 8px;
+  }
+
+  .brand-mark {
+    width: 42px;
+    height: 28px;
+    font-size: 17px;
+    border-width: 1px;
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.35);
+  }
+
+  .brand-title {
+    font-size: 18px;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .mode {
+    grid-area: mode;
+    justify-self: start;
+    min-width: 0;
+    max-width: 100%;
+    padding: 4px 9px;
+    font-size: 13px;
+    border-width: 1px;
+  }
+
+  .clock {
+    grid-area: clock;
+    font-size: 16px;
+    white-space: nowrap;
+  }
+
+  .forecast-panel {
+    top: 76px;
+    left: 10px;
+    right: 10px;
+    width: auto;
+    max-width: calc(100vw - 20px);
+    overflow: hidden;
+    padding: 11px;
+    border-width: 2px;
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.34);
+  }
+
+  .region {
+    font-size: 18px;
+    line-height: 1.02;
+  }
+
+  .conditions-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: 9px;
+    padding-top: 9px;
+  }
+
+  .temperature {
+    font-size: 54px;
+  }
+
+  .condition {
+    margin-top: 5px;
+    font-size: 13px;
+  }
+
+  .metric-stack {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    min-width: 0;
+    gap: 5px;
+    font-size: 12px;
+  }
+
+  .metric-stack span,
+  .daily div {
+    padding: 5px 7px;
+    border-left-width: 4px;
+  }
+
+  .metric-stack span {
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .metric-stack span:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .daily {
+    display: none;
+  }
+
+  .lower-third {
+    left: 10px;
+    right: 10px;
+    bottom: 40px;
+    width: auto;
+    min-height: 78px;
+    grid-template-columns: minmax(0, 1fr) 82px;
+    gap: 8px;
+    padding: 10px;
+    border-width: 2px;
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.34);
+  }
+
+  .kicker {
+    font-size: 13px;
+  }
+
+  .summary {
+    font-size: clamp(17px, 5.3vw, 22px);
+    line-height: 1.05;
+    overflow-wrap: anywhere;
+  }
+
+  .radar-stamp {
+    padding: 8px 6px;
+    font-size: 13px;
+  }
+
+  .ticker {
+    height: 31px;
+    border-top-width: 2px;
+  }
+
+  .ticker-text {
+    font-size: 14px;
+    animation-duration: 26s;
+  }
+
+  .scanlines {
+    opacity: 0.08;
+  }
+
+  .vignette {
+    background:
+      linear-gradient(90deg, rgba(3, 10, 24, 0.54), transparent 22%, transparent 72%, rgba(3, 10, 24, 0.54)),
+      radial-gradient(circle at center, transparent 46%, rgba(0, 0, 0, 0.38));
+  }
+}
+
+@media (max-width: 420px) {
+  .brand-title {
+    font-size: 16px;
+  }
+
+  .clock {
+    font-size: 15px;
+  }
+
+  .forecast-panel {
+    top: 74px;
+  }
+
+  .temperature {
+    font-size: 49px;
+  }
+
+  .metric-stack {
+    min-width: 104px;
+  }
+
+  .lower-third {
+    grid-template-columns: minmax(0, 1fr) 76px;
+  }
+}
