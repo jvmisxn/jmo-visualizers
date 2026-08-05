@@ -210,6 +210,11 @@ function render(dt, time) {
   const driftTargetX = pointer.active ? pointer.x * 54 : Math.sin(time * 0.23) * 14;
   const driftTargetY = pointer.active ? pointer.y * 38 : Math.cos(time * 0.19) * 10;
   const driftEase = 1 - Math.exp(-dt * 3.2);
+  // Project each star's previous position with last frame's drift: using the
+  // current drift for both endpoints cancels the sideways slide out of dx/dy,
+  // so streaks would ignore the very drift motion they are meant to follow.
+  const prevDriftX = drift.x;
+  const prevDriftY = drift.y;
   drift.x += (driftTargetX - drift.x) * driftEase;
   drift.y += (driftTargetY - drift.y) * driftEase;
   const driftX = drift.x;
@@ -228,7 +233,7 @@ function render(dt, time) {
       continue;
     }
 
-    const prev = project(star, previousZ, driftX, driftY);
+    const prev = project(star, previousZ, prevDriftX, prevDriftY);
     const next = project(star, star.z, driftX, driftY);
 
     if (!inBounds(next.x, next.y)) {
