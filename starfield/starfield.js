@@ -45,7 +45,7 @@ let analyser = null;
 let frequencyData = null;
 let lastTime = performance.now();
 let lastRenderTime = 0;
-const rand = config.seed ? mulberry32(hashString(config.seed)) : Math.random;
+let rand = Math.random;
 
 resize();
 resetStars();
@@ -124,6 +124,10 @@ function resize() {
 }
 
 function resetStars() {
+  // Restart the seeded generator on every reset: star respawns and earlier
+  // resets consume the sequence, so a resize (which rebuilds the field) would
+  // otherwise produce a layout no fresh load at that size can reproduce.
+  if (config.seed) rand = mulberry32(hashString(config.seed));
   const cssArea = Math.max(1, window.innerWidth * window.innerHeight);
   const count = Math.max(120, Math.round(config.density * Math.sqrt(cssArea / (1920 * 1080))));
   stars = Array.from({ length: count }, () => makeStar(rand() * 1.9 + 0.1));
