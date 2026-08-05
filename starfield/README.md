@@ -4,11 +4,21 @@ Static canvas starfield for OBS/browser sources. It runs without a build step an
 
 ## Open
 
+Hosted URL:
+
+```text
+https://jvmisxn.github.io/jmo-visualizers/starfield/
+```
+
+Use that URL directly in OBS Browser Source for the cleanest setup.
+
+Local fallback:
+
 ```sh
 open /Users/jamison/.openclaw/workspace/visualizers/starfield/index.html
 ```
 
-For OBS Browser Source, use a local server URL if microphone access is needed:
+Or serve the workspace locally:
 
 ```sh
 python3 -m http.server 8766
@@ -33,5 +43,5 @@ http://localhost:8766/visualizers/starfield/
 Example:
 
 ```text
-http://localhost:8766/visualizers/starfield/?density=1300&speed=1.25&hue=210&trails=0.18
+https://jvmisxn.github.io/jmo-visualizers/starfield/?density=1300&speed=1.25&hue=210&trails=0.18
 ```

@@ -2,6 +2,8 @@
 
 Static browser visualizers for OBS and stream experiments.
 
+Hosted page: <https://jvmisxn.github.io/jmo-visualizers/>
+
 ## Visualizers
 
-- [Starfield](./starfield/)
+- [Starfield](https://jvmisxn.github.io/jmo-visualizers/starfield/)
