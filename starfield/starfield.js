@@ -70,8 +70,19 @@ window.addEventListener("pointermove", (event) => {
   pointer.y = event.clientY / Math.max(window.innerHeight, 1) - 0.5;
 });
 
-window.addEventListener("pointerleave", () => {
+// pointerleave does not bubble and its leave sequence tops out at document,
+// so a window listener never fires and drift would freeze at the last pointer
+// offset. Listen on document, and also release on blur/tab-hide.
+document.addEventListener("pointerleave", () => {
   pointer.active = false;
+});
+
+window.addEventListener("blur", () => {
+  pointer.active = false;
+});
+
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) pointer.active = false;
 });
 
 window.addEventListener("pointerdown", () => {
