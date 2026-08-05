@@ -116,10 +116,9 @@ function frame(now) {
 
 function updateAudio(now) {
   if (!analyser || !frequencyData) {
-    const synthetic = 0.32 + Math.sin(now * 0.0016) * 0.12 + Math.sin(now * 0.00049) * 0.18;
-    audioLevel = clamp01(synthetic);
-    bassLevel = clamp01(0.36 + Math.sin(now * 0.0022) * 0.22);
-    smoothLevel += (audioLevel - smoothLevel) * 0.04;
+    audioLevel = 0;
+    bassLevel = 0;
+    smoothLevel *= 0.94;
     return;
   }
 
@@ -145,7 +144,7 @@ function render(dt, time) {
   drawNebula(time);
 
   const pulse = 1 + bassLevel * 2.1 * config.pulse;
-  const travel = (0.62 + smoothLevel * 3.8 + bassLevel * 3.2) * config.speed;
+  const travel = 0.62 * config.speed;
   const driftX = pointer.active ? pointer.x * 54 : Math.sin(time * 0.23) * 14;
   const driftY = pointer.active ? pointer.y * 38 : Math.cos(time * 0.19) * 10;
 
@@ -174,7 +173,7 @@ function render(dt, time) {
     const twinkle = 0.72 + Math.sin(star.twinkle) * 0.28;
     const alpha = clamp(0.12 + depth * 0.76 + smoothLevel * 0.18, 0.08, 1) * twinkle;
     const radius = Math.max(0.6, star.size * (0.35 + depth * 2.6) * pulse);
-    const tail = Math.max(1, Math.hypot(next.x - prev.x, next.y - prev.y) * (1.4 + bassLevel * 2.2));
+    const tail = Math.max(1, Math.hypot(next.x - prev.x, next.y - prev.y) * 1.4);
 
     ctx.strokeStyle = `hsla(${star.hue}, 100%, ${68 + depth * 22}%, ${alpha})`;
     ctx.lineWidth = radius;

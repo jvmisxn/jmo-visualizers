@@ -1,6 +1,6 @@
 # Starfield Visualizer
 
-Static canvas starfield for OBS/browser sources. It runs without a build step and uses synthetic movement until the page is clicked or `M` is pressed, then it tries to use microphone input for bass/mid reactivity.
+Static canvas starfield for OBS/browser sources. It runs without a build step. Star travel stays locked to a steady slow pace; clicking the page or pressing `M` enables optional microphone glow/pulse reactivity without changing movement speed.
 
 ## Open
 
