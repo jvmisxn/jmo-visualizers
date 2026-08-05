@@ -240,14 +240,25 @@ function render(dt, time) {
     const twinkle = 0.8 + Math.sin(star.twinkle) * star.twinkleAmount;
     const alpha = clamp(0.12 + depth * 0.76 + smoothLevel * 0.18, 0.08, 1) * twinkle;
     const radius = Math.max(0.6, star.size * (0.35 + depth * 2.6) * pulse);
-    const tail = Math.max(1, Math.hypot(next.x - prev.x, next.y - prev.y) * (0.5 + depth * 1.4));
+    const dx = next.x - prev.x;
+    const dy = next.y - prev.y;
+    const step = Math.hypot(dx, dy);
+    const tail = Math.max(1, step * (0.5 + depth * 1.4));
 
     ctx.strokeStyle = `hsla(${star.hue}, 100%, ${68 + depth * 22}%, ${alpha})`;
     ctx.lineWidth = radius;
     ctx.beginPath();
     ctx.moveTo(next.x, next.y);
-    const angle = Math.atan2(next.y - centerY, next.x - centerX);
-    ctx.lineTo(next.x - Math.cos(angle) * tail, next.y - Math.sin(angle) * tail);
+    // Streak along the star's actual per-frame motion (which includes drift),
+    // not the radial direction from center — during pointer/idle drift the
+    // field slides sideways and radial tails point the wrong way. Fall back to
+    // radial only when the star barely moved this frame.
+    if (step > 0.001) {
+      ctx.lineTo(next.x - (dx / step) * tail, next.y - (dy / step) * tail);
+    } else {
+      const angle = Math.atan2(next.y - centerY, next.x - centerX);
+      ctx.lineTo(next.x - Math.cos(angle) * tail, next.y - Math.sin(angle) * tail);
+    }
     ctx.stroke();
 
     if (depth > 0.76) {
