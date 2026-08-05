@@ -68,12 +68,22 @@ L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
   opacity: 0.92,
 }).addTo(map);
 
-L.tileLayer.wms("https://opengeo.ncep.noaa.gov/geoserver/conus/conus_bref_qcd/ows", {
+const RADAR_REFRESH_MS = 300000;
+
+const radarLayer = L.tileLayer.wms("https://opengeo.ncep.noaa.gov/geoserver/conus/conus_bref_qcd/ows", {
   layers: "conus_bref_qcd",
   format: "image/png",
   transparent: true,
   opacity: 0.52,
+  ts: Math.floor(Date.now() / RADAR_REFRESH_MS),
 }).addTo(map);
+
+// The WMS layer only fetches tiles when the view changes, so a long-running
+// OBS source would keep showing cached radar. Rolling the ts param forces a
+// re-fetch of current imagery.
+function refreshRadar() {
+  radarLayer.setParams({ ts: Math.floor(Date.now() / RADAR_REFRESH_MS) });
+}
 
 let stopIndex = 0;
 let lastAlertCount = 0;
@@ -243,6 +253,10 @@ setInterval(updateClock, 1000);
 setStop(stopIndex, true);
 setInterval(nextStop, 90000);
 setInterval(() => setStop(stopIndex, true), 300000);
+setInterval(refreshRadar, RADAR_REFRESH_MS);
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden) refreshRadar();
+});
 
 setInterval(() => {
   const stamp = new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
