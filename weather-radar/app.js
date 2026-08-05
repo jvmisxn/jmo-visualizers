@@ -86,10 +86,10 @@ const radarLayer = L.tileLayer.wms("https://opengeo.ncep.noaa.gov/geoserver/conu
 }).addTo(map);
 
 let radarFrames = [];
+let radarFrameLayers = [];
 let radarFrameIndex = 0;
 let radarAnimationTimer = 0;
 let radarAnimationLoadedAt = 0;
-let radarAnimationLayer = null;
 
 // The WMS layer only fetches tiles when the view changes, so a long-running
 // OBS source would keep showing cached radar. Rolling the ts param forces a
@@ -132,19 +132,18 @@ function setAnimatedRadarFrames(host, frames) {
     url: `${host}${frame.path}/512/{z}/{x}/{y}/2/1_1.png`,
   }));
 
-  if (!radarAnimationLayer) {
-    radarAnimationLayer = L.tileLayer(radarFrames[0].url, {
-      opacity: 0.62,
-      pane: "radarPane",
-      tileSize: 512,
-      zoomOffset: -1,
-      maxZoom: 10,
-      minZoom: 4,
-    }).addTo(map);
-  } else {
-    radarAnimationLayer.setUrl(radarFrames[0].url);
-    radarAnimationLayer.setOpacity(0.62);
-  }
+  // One preloaded layer per frame, toggled via opacity. Swapping a single
+  // layer's URL discards its tiles and refetches every 1.4s frame advance,
+  // which blanks the radar while tiles stream back in.
+  radarFrameLayers.forEach((layer) => map.removeLayer(layer));
+  radarFrameLayers = radarFrames.map((frame, index) => L.tileLayer(frame.url, {
+    opacity: index === 0 ? 0.62 : 0,
+    pane: "radarPane",
+    tileSize: 512,
+    zoomOffset: -1,
+    maxZoom: 10,
+    minZoom: 4,
+  }).addTo(map));
 
   radarAnimationLoadedAt = Date.now();
   radarLayer.setOpacity(0.18);
@@ -153,9 +152,10 @@ function setAnimatedRadarFrames(host, frames) {
 }
 
 function showNextRadarFrame() {
-  if (radarFrames.length < 2 || !radarAnimationLayer) return;
-  radarFrameIndex = (radarFrameIndex + 1) % radarFrames.length;
-  radarAnimationLayer.setUrl(radarFrames[radarFrameIndex].url);
+  if (radarFrames.length < 2 || radarFrameLayers.length < 2) return;
+  radarFrameLayers[radarFrameIndex].setOpacity(0);
+  radarFrameIndex = (radarFrameIndex + 1) % radarFrameLayers.length;
+  radarFrameLayers[radarFrameIndex].setOpacity(0.62);
   updateRadarStamp();
 }
 
