@@ -61,7 +61,7 @@ body,
 }
 
 .night-mode #map {
-  filter: hue-rotate(178deg) saturate(0.74) contrast(1.22) brightness(0.46);
+  filter: hue-rotate(178deg) saturate(0.82) contrast(1.12) brightness(0.72);
 }
 
 .leaflet-control-container {
@@ -99,9 +99,9 @@ body,
 
 .night-mode .vignette {
   background:
-    linear-gradient(90deg, rgba(1, 4, 14, 0.78), transparent 16%, transparent 72%, rgba(1, 4, 14, 0.78)),
-    radial-gradient(circle at center, rgba(0, 18, 40, 0.18) 0%, rgba(0, 0, 0, 0.62) 72%),
-    linear-gradient(180deg, rgba(1, 5, 17, 0.22), rgba(1, 5, 17, 0.58));
+    linear-gradient(90deg, rgba(1, 4, 14, 0.52), transparent 16%, transparent 72%, rgba(1, 4, 14, 0.52)),
+    radial-gradient(circle at center, rgba(0, 18, 40, 0.1) 0%, rgba(0, 0, 0, 0.38) 72%),
+    linear-gradient(180deg, rgba(1, 5, 17, 0.1), rgba(1, 5, 17, 0.26));
 }
 
 .topbar,
