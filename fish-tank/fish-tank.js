@@ -142,14 +142,21 @@ function makePlant(index) {
 }
 
 function frame(now) {
-  if (config.fps > 0 && now - lastRenderTime < 1000 / config.fps) {
-    requestAnimationFrame(frame);
-    return;
+  if (config.fps > 0) {
+    const interval = 1000 / config.fps;
+    if (now - lastRenderTime < interval) {
+      requestAnimationFrame(frame);
+      return;
+    }
+    // Carry the overshoot so the cap averages the requested rate instead of
+    // snapping down to the next-lowest rAF-aligned rate (e.g. 30 -> ~20fps).
+    lastRenderTime = now - ((now - lastRenderTime) % interval);
+  } else {
+    lastRenderTime = now;
   }
 
   const dt = Math.min((now - lastTime) / 1000, 0.05);
   lastTime = now;
-  lastRenderTime = now;
   update(dt, now / 1000);
   render(now / 1000);
   requestAnimationFrame(frame);
