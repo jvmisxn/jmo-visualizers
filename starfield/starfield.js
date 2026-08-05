@@ -49,9 +49,15 @@ resetStars();
 if (config.audio) void startAudio();
 requestAnimationFrame(frame);
 
+let resizeTimer = 0;
 window.addEventListener("resize", () => {
-  resize();
-  resetStars();
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => {
+    const previousWidth = width;
+    const previousHeight = height;
+    resize();
+    if (width !== previousWidth || height !== previousHeight) resetStars();
+  }, 150);
 });
 
 window.addEventListener("pointermove", (event) => {
