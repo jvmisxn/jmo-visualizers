@@ -36,6 +36,8 @@ let bottomLayer = null;
 let glassLayer = null;
 let bubbleSprite = null;
 let waveSprite = null;
+let raySprite = null;
+let rayOriginX = 0;
 let lastTime = performance.now();
 let lastRenderTime = 0;
 const rand = config.seed ? mulberry32(hashString(config.seed)) : Math.random;
@@ -93,6 +95,7 @@ function resetScene() {
   glassLayer = buildGlassLayer();
   bubbleSprite = buildBubbleSprite();
   waveSprite = buildWaveSprite();
+  raySprite = buildRaySprite();
 }
 
 function makeFish(index) {
@@ -242,24 +245,16 @@ function drawWater(time) {
 }
 
 function drawLightRays(time) {
+  if (!raySprite) return;
   ctx.save();
   ctx.globalCompositeOperation = "screen";
   for (let i = 0; i < 7; i += 1) {
     const topX = width * (0.1 + i * 0.14) + Math.sin(time * 0.12 + i) * 38 * dpr;
     const bottomX = topX + Math.sin(time * 0.18 + i * 1.7) * 170 * dpr;
-    const ray = ctx.createLinearGradient(topX, 0, bottomX, height);
-    ray.addColorStop(0, "rgba(171, 244, 255, 0.12)");
-    ray.addColorStop(0.58, "rgba(171, 244, 255, 0.025)");
-    ray.addColorStop(1, "rgba(171, 244, 255, 0)");
-
-    ctx.fillStyle = ray;
-    ctx.beginPath();
-    ctx.moveTo(topX - 34 * dpr, 0);
-    ctx.lineTo(topX + 52 * dpr, 0);
-    ctx.lineTo(bottomX + 130 * dpr, height);
-    ctx.lineTo(bottomX - 110 * dpr, height);
-    ctx.closePath();
-    ctx.fill();
+    // Shear the cached ray so its top edge sits at topX and its bottom edge
+    // at bottomX; the shear only sways the sprite, never rebuilds gradients.
+    ctx.setTransform(1, 0, (bottomX - topX) / height, 1, topX - rayOriginX, 0);
+    ctx.drawImage(raySprite, 0, 0);
   }
   ctx.restore();
 }
@@ -520,6 +515,28 @@ function buildWaveSprite() {
   wave.addColorStop(1, "rgba(255, 255, 255, 0)");
   spriteCtx.fillStyle = wave;
   spriteCtx.fillRect(0, 0, sprite.width, bandHeight);
+  return sprite;
+}
+
+function buildRaySprite() {
+  rayOriginX = Math.ceil(120 * dpr);
+  const sprite = document.createElement("canvas");
+  sprite.width = rayOriginX + Math.ceil(140 * dpr);
+  sprite.height = height;
+  const spriteCtx = sprite.getContext("2d");
+  if (!spriteCtx) return null;
+  const ray = spriteCtx.createLinearGradient(0, 0, 0, height);
+  ray.addColorStop(0, "rgba(171, 244, 255, 0.12)");
+  ray.addColorStop(0.58, "rgba(171, 244, 255, 0.025)");
+  ray.addColorStop(1, "rgba(171, 244, 255, 0)");
+  spriteCtx.fillStyle = ray;
+  spriteCtx.beginPath();
+  spriteCtx.moveTo(rayOriginX - 34 * dpr, 0);
+  spriteCtx.lineTo(rayOriginX + 52 * dpr, 0);
+  spriteCtx.lineTo(rayOriginX + 130 * dpr, height);
+  spriteCtx.lineTo(rayOriginX - 110 * dpr, height);
+  spriteCtx.closePath();
+  spriteCtx.fill();
   return sprite;
 }
 
