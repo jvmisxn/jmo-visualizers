@@ -3,11 +3,15 @@ const ctx = canvas.getContext("2d", { alpha: false });
 const params = new URLSearchParams(window.location.search);
 
 const config = {
-  fish: numberParam("fish", 16),
-  bubbles: numberParam("bubbles", 72),
-  speed: numberParam("speed", 1),
-  hue: numberParam("hue", 190),
-  plants: numberParam("plants", 18),
+  fish: numberParam("fish", 16, 1, 60),
+  bubbles: numberParam("bubbles", 72, 0, 220),
+  speed: numberParam("speed", 1, 0.1, 4),
+  hue: numberParam("hue", 190, 0, 360),
+  plants: numberParam("plants", 18, 0, 44),
+  fps: numberParam("fps", 0, 0, 120),
+  dpr: numberParam("dpr", 0, 0, 2),
+  seed: stringParam("seed", ""),
+  quality: stringParam("quality", "high"),
 };
 
 const palettes = [
@@ -22,10 +26,18 @@ let width = 1;
 let height = 1;
 let dpr = 1;
 let fish = [];
+let backFish = [];
+let frontFish = [];
 let bubbles = [];
 let plants = [];
 let motes = [];
+let waterLayer = null;
+let bottomLayer = null;
+let glassLayer = null;
+let bubbleSprite = null;
 let lastTime = performance.now();
+let lastRenderTime = 0;
+const rand = config.seed ? mulberry32(hashString(config.seed)) : Math.random;
 
 resize();
 resetScene();
@@ -36,15 +48,19 @@ window.addEventListener("resize", () => {
   resetScene();
 });
 
-function numberParam(name, fallback) {
+function stringParam(name, fallback) {
+  return params.get(name) || fallback;
+}
+
+function numberParam(name, fallback, min = -Infinity, max = Infinity) {
   const raw = params.get(name);
   if (!raw) return fallback;
   const value = Number(raw);
-  return Number.isFinite(value) ? value : fallback;
+  return Number.isFinite(value) ? clamp(value, min, max) : fallback;
 }
 
 function resize() {
-  dpr = Math.min(window.devicePixelRatio || 1, 2);
+  dpr = config.dpr || Math.min(window.devicePixelRatio || 1, 2);
   width = Math.max(1, Math.floor(window.innerWidth * dpr));
   height = Math.max(1, Math.floor(window.innerHeight * dpr));
   canvas.width = width;
@@ -52,68 +68,81 @@ function resize() {
 }
 
 function resetScene() {
-  fish = Array.from({ length: Math.max(4, config.fish) }, (_, index) => makeFish(index));
-  bubbles = Array.from({ length: Math.max(12, config.bubbles) }, () => makeBubble(Math.random() * height));
-  plants = Array.from({ length: Math.max(6, config.plants) }, (_, index) => makePlant(index));
-  motes = Array.from({ length: 160 }, () => ({
-    x: Math.random() * width,
-    y: Math.random() * height,
-    r: 0.45 + Math.random() * 1.7,
-    drift: 0.2 + Math.random() * 0.9,
-    alpha: 0.05 + Math.random() * 0.13,
+  fish = Array.from({ length: Math.max(1, config.fish) }, (_, index) => makeFish(index));
+  backFish = fish.filter((item) => item.depth < 0.78);
+  frontFish = fish.filter((item) => item.depth >= 0.78);
+  bubbles = Array.from({ length: config.bubbles }, () => makeBubble(rand() * height));
+  plants = Array.from({ length: config.plants }, (_, index) => makePlant(index));
+  motes = Array.from({ length: config.quality === "low" ? 0 : 160 }, () => ({
+    x: rand() * width,
+    y: rand() * height,
+    r: 0.45 + rand() * 1.7,
+    drift: (12 + rand() * 54) * dpr,
+    alpha: 0.05 + rand() * 0.13,
   }));
+  waterLayer = buildWaterLayer();
+  bottomLayer = buildBottomLayer();
+  glassLayer = buildGlassLayer();
+  bubbleSprite = buildBubbleSprite();
 }
 
 function makeFish(index) {
   const palette = palettes[index % palettes.length];
-  const scale = 0.72 + Math.random() * 1.16;
-  const lane = 0.18 + Math.random() * 0.58;
-  const direction = Math.random() > 0.5 ? 1 : -1;
+  const scale = 0.72 + rand() * 1.16;
+  const lane = 0.18 + rand() * 0.58;
+  const direction = rand() > 0.5 ? 1 : -1;
   return {
-    x: Math.random() * width,
+    x: rand() * width,
     y: height * lane,
     baseY: height * lane,
     direction,
-    speed: (16 + Math.random() * 28) * dpr * config.speed,
+    speed: (16 + rand() * 28) * dpr * config.speed,
     scale: scale * dpr,
-    phase: Math.random() * Math.PI * 2,
-    wave: 0.28 + Math.random() * 0.48,
+    phase: rand() * Math.PI * 2,
+    wave: 0.28 + rand() * 0.48,
     body: palette[0],
     fin: palette[1],
     belly: palette[2],
-    depth: 0.55 + Math.random() * 0.45,
+    depth: 0.55 + rand() * 0.45,
+    turnCooldown: 4 + rand() * 16,
   };
 }
 
-function makeBubble(y = height + Math.random() * height) {
-  const radius = (1.6 + Math.random() * 6.2) * dpr;
+function makeBubble(y = height + rand() * height) {
+  const radius = (1.6 + rand() * 6.2) * dpr;
   return {
-    x: Math.random() * width,
+    x: bubbleSourceX(),
     y,
     r: radius,
-    speed: (12 + Math.random() * 34) * dpr,
-    sway: 8 * dpr + Math.random() * 28 * dpr,
-    phase: Math.random() * Math.PI * 2,
-    alpha: 0.18 + Math.random() * 0.32,
+    speed: (12 + rand() * 34) * dpr,
+    sway: 8 * dpr + rand() * 28 * dpr,
+    phase: rand() * Math.PI * 2,
+    alpha: 0.18 + rand() * 0.32,
   };
 }
 
 function makePlant(index) {
-  const x = (index / Math.max(config.plants - 1, 1)) * width + (Math.random() - 0.5) * width * 0.08;
-  const fronds = 3 + Math.floor(Math.random() * 5);
+  const x = (index / Math.max(config.plants - 1, 1)) * width + (rand() - 0.5) * width * 0.08;
+  const fronds = 3 + Math.floor(rand() * 5);
   return {
     x: clamp(x, 24 * dpr, width - 24 * dpr),
-    h: height * (0.11 + Math.random() * 0.22),
-    sway: 0.5 + Math.random() * 0.9,
-    hue: 138 + Math.random() * 42,
+    h: height * (0.11 + rand() * 0.22),
+    sway: 0.5 + rand() * 0.9,
+    hue: 138 + rand() * 42,
     fronds,
-    phase: Math.random() * Math.PI * 2,
+    phase: rand() * Math.PI * 2,
   };
 }
 
 function frame(now) {
+  if (config.fps > 0 && now - lastRenderTime < 1000 / config.fps) {
+    requestAnimationFrame(frame);
+    return;
+  }
+
   const dt = Math.min((now - lastTime) / 1000, 0.05);
   lastTime = now;
+  lastRenderTime = now;
   update(dt, now / 1000);
   render(now / 1000);
   requestAnimationFrame(frame);
@@ -122,18 +151,25 @@ function frame(now) {
 function update(dt, time) {
   for (const swimmer of fish) {
     swimmer.phase += dt * (1.8 + swimmer.wave);
+    swimmer.turnCooldown -= dt;
+    if (swimmer.turnCooldown <= 0 && rand() < 0.22) {
+      swimmer.direction *= -1;
+      swimmer.turnCooldown = 7 + rand() * 18;
+    }
     swimmer.x += swimmer.speed * swimmer.direction * dt;
-    swimmer.y = swimmer.baseY + Math.sin(time * swimmer.wave + swimmer.phase) * height * 0.035;
+    swimmer.y = swimmer.baseY
+      + Math.sin(time * swimmer.wave + swimmer.phase) * height * 0.035
+      + Math.sin(time * swimmer.wave * 0.21 + swimmer.phase) * height * 0.045;
 
     const margin = 120 * swimmer.scale;
     if (swimmer.direction > 0 && swimmer.x > width + margin) {
       swimmer.direction = -1;
       swimmer.x = width + margin;
-      swimmer.baseY = height * (0.16 + Math.random() * 0.62);
+      swimmer.baseY = height * (0.16 + rand() * 0.62);
     } else if (swimmer.direction < 0 && swimmer.x < -margin) {
       swimmer.direction = 1;
       swimmer.x = -margin;
-      swimmer.baseY = height * (0.16 + Math.random() * 0.62);
+      swimmer.baseY = height * (0.16 + rand() * 0.62);
     }
   }
 
@@ -145,11 +181,11 @@ function update(dt, time) {
   }
 
   for (const mote of motes) {
-    mote.y -= mote.drift * dpr;
-    mote.x += Math.sin(time * 0.2 + mote.y * 0.01) * 0.09 * dpr;
+    mote.y -= mote.drift * dt;
+    mote.x += Math.sin(time * 0.2 + mote.y * 0.01) * 5.4 * dpr * dt;
     if (mote.y < -4 * dpr) {
       mote.y = height + 4 * dpr;
-      mote.x = Math.random() * width;
+      mote.x = rand() * width;
     }
   }
 }
@@ -167,12 +203,7 @@ function render(time) {
 }
 
 function drawWater(time) {
-  const gradient = ctx.createLinearGradient(0, 0, 0, height);
-  gradient.addColorStop(0, "#0a4d68");
-  gradient.addColorStop(0.45, "#06334b");
-  gradient.addColorStop(1, "#031321");
-  ctx.fillStyle = gradient;
-  ctx.fillRect(0, 0, width, height);
+  if (waterLayer) ctx.drawImage(waterLayer, 0, 0);
 
   ctx.save();
   ctx.globalCompositeOperation = "screen";
@@ -224,13 +255,13 @@ function drawMotes() {
 }
 
 function drawBackFish(time) {
-  for (const swimmer of fish.filter((item) => item.depth < 0.78)) {
+  for (const swimmer of backFish) {
     drawFish(swimmer, time, 0.58);
   }
 }
 
 function drawFrontFish(time) {
-  for (const swimmer of fish.filter((item) => item.depth >= 0.78)) {
+  for (const swimmer of frontFish) {
     drawFish(swimmer, time, 1);
   }
 }
@@ -246,8 +277,11 @@ function drawFish(swimmer, time, layerAlpha) {
   ctx.translate(swimmer.x, swimmer.y);
   ctx.scale(dir, 1);
   ctx.globalAlpha = layerAlpha;
-  ctx.shadowColor = "rgba(0, 0, 0, 0.28)";
-  ctx.shadowBlur = 10 * dpr;
+
+  ctx.fillStyle = "rgba(0, 0, 0, 0.16)";
+  ctx.beginPath();
+  ctx.ellipse(0, bodyHeight * 0.24, bodyLength * 0.54, bodyHeight * 0.34, 0, 0, Math.PI * 2);
+  ctx.fill();
 
   ctx.fillStyle = swimmer.fin;
   ctx.beginPath();
@@ -325,22 +359,74 @@ function drawPlants(time) {
 }
 
 function drawRocks() {
-  const sand = ctx.createLinearGradient(0, height * 0.82, 0, height);
+  if (bottomLayer) ctx.drawImage(bottomLayer, 0, 0);
+}
+
+function drawBubbles() {
+  ctx.save();
+  ctx.globalCompositeOperation = "screen";
+  for (const bubble of bubbles) {
+    if (!bubbleSprite) continue;
+    ctx.globalAlpha = bubble.alpha;
+    const size = bubble.r * 2.6;
+    ctx.drawImage(bubbleSprite, bubble.x - size * 0.5, bubble.y - size * 0.5, size, size);
+  }
+  ctx.restore();
+}
+
+function drawGlass() {
+  if (glassLayer) ctx.drawImage(glassLayer, 0, 0);
+}
+
+function clamp(value, min, max) {
+  return Math.min(max, Math.max(min, value));
+}
+
+function bubbleSourceX() {
+  const sources = [0.08, 0.38, 0.57, 0.86];
+  if (rand() < 0.72) {
+    return width * sources[Math.floor(rand() * sources.length)] + (rand() - 0.5) * 36 * dpr;
+  }
+  return rand() * width;
+}
+
+function buildWaterLayer() {
+  const layer = document.createElement("canvas");
+  layer.width = width;
+  layer.height = height;
+  const layerCtx = layer.getContext("2d");
+  if (!layerCtx) return null;
+  const gradient = layerCtx.createLinearGradient(0, 0, 0, height);
+  gradient.addColorStop(0, `hsl(${config.hue}, 76%, 24%)`);
+  gradient.addColorStop(0.45, `hsl(${config.hue + 4}, 76%, 15%)`);
+  gradient.addColorStop(1, `hsl(${config.hue + 12}, 70%, 7%)`);
+  layerCtx.fillStyle = gradient;
+  layerCtx.fillRect(0, 0, width, height);
+  return layer;
+}
+
+function buildBottomLayer() {
+  const layer = document.createElement("canvas");
+  layer.width = width;
+  layer.height = height;
+  const layerCtx = layer.getContext("2d");
+  if (!layerCtx) return null;
+
+  const sand = layerCtx.createLinearGradient(0, height * 0.82, 0, height);
   sand.addColorStop(0, "rgba(18, 43, 48, 0)");
   sand.addColorStop(0.42, "#12373c");
   sand.addColorStop(1, "#081b21");
-  ctx.fillStyle = sand;
-  ctx.fillRect(0, height * 0.82, width, height * 0.18);
+  layerCtx.fillStyle = sand;
+  layerCtx.fillRect(0, height * 0.82, width, height * 0.18);
 
-  ctx.save();
-  ctx.fillStyle = "rgba(221, 244, 224, 0.1)";
+  layerCtx.fillStyle = "rgba(221, 244, 224, 0.1)";
   for (let i = 0; i < 180; i += 1) {
     const x = ((i * 97) % Math.max(width, 1)) + Math.sin(i) * 9 * dpr;
     const y = height * (0.84 + ((i * 53) % 160) / 1000);
     const r = (0.8 + ((i * 29) % 7) * 0.3) * dpr;
-    ctx.beginPath();
-    ctx.arc(x, y, r, 0, Math.PI * 2);
-    ctx.fill();
+    layerCtx.beginPath();
+    layerCtx.arc(x, y, r, 0, Math.PI * 2);
+    layerCtx.fill();
   }
 
   const rocks = [
@@ -351,63 +437,82 @@ function drawRocks() {
     [0.9, 0.91, 58, 22],
   ];
   for (const [x, y, rx, ry] of rocks) {
-    const gradient = ctx.createLinearGradient(width * x, height * y - ry * dpr, width * x, height * y + ry * dpr);
+    const gradient = layerCtx.createLinearGradient(width * x, height * y - ry * dpr, width * x, height * y + ry * dpr);
     gradient.addColorStop(0, "#33515a");
     gradient.addColorStop(1, "#10262c");
-    ctx.fillStyle = gradient;
-    ctx.beginPath();
-    ctx.ellipse(width * x, height * y, rx * dpr, ry * dpr, 0, Math.PI, 0);
-    ctx.fill();
+    layerCtx.fillStyle = gradient;
+    layerCtx.beginPath();
+    layerCtx.ellipse(width * x, height * y, rx * dpr, ry * dpr, 0, Math.PI, 0);
+    layerCtx.fill();
   }
-  ctx.restore();
+
+  return layer;
 }
 
-function drawBubbles() {
-  ctx.save();
-  ctx.globalCompositeOperation = "screen";
-  for (const bubble of bubbles) {
-    const gradient = ctx.createRadialGradient(
-      bubble.x - bubble.r * 0.25,
-      bubble.y - bubble.r * 0.25,
-      bubble.r * 0.1,
-      bubble.x,
-      bubble.y,
-      bubble.r,
-    );
-    gradient.addColorStop(0, `rgba(255, 255, 255, ${bubble.alpha + 0.2})`);
-    gradient.addColorStop(0.34, `rgba(144, 238, 255, ${bubble.alpha * 0.42})`);
-    gradient.addColorStop(1, "rgba(144, 238, 255, 0)");
-    ctx.strokeStyle = `rgba(210, 250, 255, ${bubble.alpha})`;
-    ctx.fillStyle = gradient;
-    ctx.lineWidth = Math.max(1 * dpr, bubble.r * 0.08);
-    ctx.beginPath();
-    ctx.arc(bubble.x, bubble.y, bubble.r, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.stroke();
-  }
-  ctx.restore();
-}
+function buildGlassLayer() {
+  const layer = document.createElement("canvas");
+  layer.width = width;
+  layer.height = height;
+  const layerCtx = layer.getContext("2d");
+  if (!layerCtx) return null;
 
-function drawGlass(time) {
-  ctx.save();
-  const vignette = ctx.createRadialGradient(width * 0.5, height * 0.45, 0, width * 0.5, height * 0.45, Math.max(width, height) * 0.72);
+  const vignette = layerCtx.createRadialGradient(width * 0.5, height * 0.45, 0, width * 0.5, height * 0.45, Math.max(width, height) * 0.72);
   vignette.addColorStop(0, "rgba(255, 255, 255, 0)");
   vignette.addColorStop(0.68, "rgba(0, 0, 0, 0.12)");
   vignette.addColorStop(1, "rgba(0, 0, 0, 0.54)");
-  ctx.fillStyle = vignette;
-  ctx.fillRect(0, 0, width, height);
+  layerCtx.fillStyle = vignette;
+  layerCtx.fillRect(0, 0, width, height);
 
-  ctx.globalCompositeOperation = "screen";
-  ctx.fillStyle = "rgba(255, 255, 255, 0.035)";
+  layerCtx.globalCompositeOperation = "screen";
+  layerCtx.fillStyle = "rgba(255, 255, 255, 0.035)";
   for (let i = 0; i < 5; i += 1) {
-    const x = width * (0.16 + i * 0.18) + Math.sin(time * 0.08 + i) * 20 * dpr;
-    ctx.beginPath();
-    ctx.ellipse(x, height * 0.48, 14 * dpr, height * 0.56, -0.08, 0, Math.PI * 2);
-    ctx.fill();
+    const x = width * (0.16 + i * 0.18);
+    layerCtx.beginPath();
+    layerCtx.ellipse(x, height * 0.48, 14 * dpr, height * 0.56, -0.08, 0, Math.PI * 2);
+    layerCtx.fill();
   }
-  ctx.restore();
+
+  return layer;
 }
 
-function clamp(value, min, max) {
-  return Math.min(max, Math.max(min, value));
+function buildBubbleSprite() {
+  const size = Math.ceil(24 * dpr);
+  const sprite = document.createElement("canvas");
+  sprite.width = size;
+  sprite.height = size;
+  const spriteCtx = sprite.getContext("2d");
+  if (!spriteCtx) return null;
+  const center = size * 0.5;
+  const radius = size * 0.42;
+  const gradient = spriteCtx.createRadialGradient(center - radius * 0.25, center - radius * 0.25, radius * 0.1, center, center, radius);
+  gradient.addColorStop(0, "rgba(255, 255, 255, 0.85)");
+  gradient.addColorStop(0.34, "rgba(144, 238, 255, 0.34)");
+  gradient.addColorStop(1, "rgba(144, 238, 255, 0)");
+  spriteCtx.fillStyle = gradient;
+  spriteCtx.strokeStyle = "rgba(210, 250, 255, 0.72)";
+  spriteCtx.lineWidth = Math.max(1, dpr);
+  spriteCtx.beginPath();
+  spriteCtx.arc(center, center, radius, 0, Math.PI * 2);
+  spriteCtx.fill();
+  spriteCtx.stroke();
+  return sprite;
+}
+
+function hashString(value) {
+  let hash = 1779033703 ^ value.length;
+  for (let i = 0; i < value.length; i += 1) {
+    hash = Math.imul(hash ^ value.charCodeAt(i), 3432918353);
+    hash = (hash << 13) | (hash >>> 19);
+  }
+  return hash >>> 0;
+}
+
+function mulberry32(seed) {
+  return () => {
+    seed |= 0;
+    seed = (seed + 0x6d2b79f5) | 0;
+    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
 }

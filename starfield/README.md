@@ -39,9 +39,17 @@ http://localhost:8766/visualizers/starfield/
 - `tint=0.58` color intensity
 - `trails=0.23` trail persistence
 - `pulse=1` audio pulse strength
+- `dpr=1` backing-store scale override for OBS parity
+- `fps=30` frame cap for lower CPU
+- `pointer=0` disables pointer drift
+- `audio=1` attempts microphone reactivity on load
+- `nebula=0` disables nebula layer
+- `glow=0` disables center glow
+- `debug=1` shows basic fps/star count
+- `seed=name` keeps layout deterministic across reloads
 
 Example:
 
 ```text
-https://jvmisxn.github.io/jmo-visualizers/starfield/?density=1300&speed=1.25&hue=210&trails=0.18
+https://jvmisxn.github.io/jmo-visualizers/starfield/?density=1300&speed=1&hue=210&trails=0.18&dpr=1&fps=30
 ```
