@@ -38,6 +38,7 @@ let audioLevel = 0;
 let bassLevel = 0;
 let smoothLevel = 0;
 let audioStarted = false;
+let audioContext = null;
 let analyser = null;
 let frequencyData = null;
 let lastTime = performance.now();
@@ -296,7 +297,13 @@ function drawCoreGlow(pulse, time) {
 }
 
 async function startAudio() {
-  if (audioStarted || !navigator.mediaDevices?.getUserMedia) return;
+  if (audioStarted) {
+    // Autoplay policy can leave the context suspended when audio autostarts
+    // without a gesture (?audio=1); a later click/keypress resumes it here.
+    if (audioContext?.state === "suspended") void audioContext.resume();
+    return;
+  }
+  if (!navigator.mediaDevices?.getUserMedia) return;
   audioStarted = true;
 
   try {
@@ -308,14 +315,17 @@ async function startAudio() {
       },
     });
     const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-    const audioContext = new AudioContextClass();
+    audioContext = new AudioContextClass();
     const source = audioContext.createMediaStreamSource(stream);
     analyser = audioContext.createAnalyser();
     analyser.fftSize = 512;
     analyser.smoothingTimeConstant = 0.78;
     frequencyData = new Uint8Array(analyser.frequencyBinCount);
     source.connect(analyser);
+    if (audioContext.state === "suspended") void audioContext.resume();
   } catch {
+    audioStarted = false;
+    audioContext = null;
     analyser = null;
     frequencyData = null;
   }
