@@ -237,14 +237,12 @@ function renderFallback(stop, error) {
   els.ticker.textContent = `DATA REFRESH PENDING: ${error.message}     •     NOAA/NWS, Open-Meteo, CARTO/OpenStreetMap`;
 }
 
-async function setStop(index, instant = false) {
+// Fetches and renders data only; never moves the map. The periodic refresh
+// and error retries reuse this so they can't cancel an in-flight flyTo glide
+// (setView during flyTo snaps the camera).
+async function loadStopData(index) {
   const stop = STOPS[index % STOPS.length];
   const seq = ++requestSeq;
-  if (instant) {
-    map.setView([stop.lat, stop.lon], stop.zoom);
-  } else {
-    map.flyTo([stop.lat, stop.lon], stop.zoom, { duration: 8, easeLinearity: 0.12 });
-  }
 
   // A slow response for a previous stop can land after the rotation has moved
   // on; only the most recent request is allowed to touch the panel.
@@ -259,9 +257,19 @@ async function setStop(index, instant = false) {
     // 90s rotation; the seq guard drops the retry if rotation moved on.
     clearTimeout(retryTimer);
     retryTimer = setTimeout(() => {
-      if (seq === requestSeq) setStop(index, true);
+      if (seq === requestSeq) loadStopData(index);
     }, RETRY_DELAY_MS);
   }
+}
+
+function setStop(index, instant = false) {
+  const stop = STOPS[index % STOPS.length];
+  if (instant) {
+    map.setView([stop.lat, stop.lon], stop.zoom);
+  } else {
+    map.flyTo([stop.lat, stop.lon], stop.zoom, { duration: 8, easeLinearity: 0.12 });
+  }
+  return loadStopData(index);
 }
 
 function nextStop() {
@@ -273,7 +281,7 @@ updateClock();
 setInterval(updateClock, 1000);
 setStop(stopIndex, true);
 setInterval(nextStop, 90000);
-setInterval(() => setStop(stopIndex, true), 300000);
+setInterval(() => loadStopData(stopIndex), 300000);
 setInterval(refreshRadar, RADAR_REFRESH_MS);
 document.addEventListener("visibilitychange", () => {
   if (!document.hidden) refreshRadar();
