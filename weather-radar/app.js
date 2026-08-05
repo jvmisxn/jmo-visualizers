@@ -90,6 +90,8 @@ const FETCH_TIMEOUT_MS = 15000;
 let stopIndex = 0;
 let lastAlertCount = 0;
 let requestSeq = 0;
+let retryTimer = 0;
+const RETRY_DELAY_MS = 20000;
 
 function updateClock() {
   const now = new Date();
@@ -219,7 +221,9 @@ function renderWeather(stop, weather, alerts) {
 
 function renderFallback(stop, error) {
   document.body.classList.remove("alert-mode");
-  applyDayPart(false);
+  // Keep the current day/night theme on transient failures instead of
+  // flashing back to the day palette at night.
+  applyDayPart(isNightInPacificTime());
   els.mode.textContent = stop.mode;
   els.region.textContent = stop.name;
   els.temp.textContent = "--";
@@ -251,6 +255,12 @@ async function setStop(index, instant = false) {
   } catch (error) {
     if (seq !== requestSeq) return;
     renderFallback(stop, error);
+    // The panel says "Retrying", so actually retry well before the next
+    // 90s rotation; the seq guard drops the retry if rotation moved on.
+    clearTimeout(retryTimer);
+    retryTimer = setTimeout(() => {
+      if (seq === requestSeq) setStop(index, true);
+    }, RETRY_DELAY_MS);
   }
 }
 
