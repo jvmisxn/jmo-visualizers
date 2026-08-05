@@ -113,8 +113,12 @@ async function loadAnimatedRadar() {
     if (!data.host || frames.length < 2) throw new Error("radar animation unavailable");
     setAnimatedRadarFrames(data.host, frames);
   } catch (error) {
-    radarLayer.setOpacity(0.52);
-    if (radarFrames.length === 0) els.radar.textContent = "RADAR: LIVE";
+    // A transient RainViewer failure must not stack the static layer on top
+    // of an animation loop that is still cycling its last good frames.
+    if (radarFrames.length < 2) {
+      radarLayer.setOpacity(0.52);
+      els.radar.textContent = "RADAR: LIVE";
+    }
   }
 }
 
