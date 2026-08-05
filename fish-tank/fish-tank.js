@@ -35,6 +35,7 @@ let waterLayer = null;
 let bottomLayer = null;
 let glassLayer = null;
 let bubbleSprite = null;
+let waveSprite = null;
 let lastTime = performance.now();
 let lastRenderTime = 0;
 const rand = config.seed ? mulberry32(hashString(config.seed)) : Math.random;
@@ -91,6 +92,7 @@ function resetScene() {
   bottomLayer = buildBottomLayer();
   glassLayer = buildGlassLayer();
   bubbleSprite = buildBubbleSprite();
+  waveSprite = buildWaveSprite();
 }
 
 function makeFish(index) {
@@ -229,16 +231,12 @@ function render(time) {
 function drawWater(time) {
   if (waterLayer) ctx.drawImage(waterLayer, 0, 0);
 
+  if (!waveSprite) return;
   ctx.save();
   ctx.globalCompositeOperation = "screen";
   for (let i = 0; i < 12; i += 1) {
     const y = height * (0.06 + i * 0.055) + Math.sin(time * 0.28 + i) * 10 * dpr;
-    const wave = ctx.createLinearGradient(0, y - 20 * dpr, 0, y + 20 * dpr);
-    wave.addColorStop(0, "rgba(255, 255, 255, 0)");
-    wave.addColorStop(0.5, "rgba(128, 234, 255, 0.045)");
-    wave.addColorStop(1, "rgba(255, 255, 255, 0)");
-    ctx.fillStyle = wave;
-    ctx.fillRect(0, y - 22 * dpr, width, 44 * dpr);
+    ctx.drawImage(waveSprite, 0, y - 22 * dpr);
   }
   ctx.restore();
 }
@@ -502,6 +500,22 @@ function buildGlassLayer() {
   }
 
   return layer;
+}
+
+function buildWaveSprite() {
+  const bandHeight = Math.max(1, Math.ceil(44 * dpr));
+  const sprite = document.createElement("canvas");
+  sprite.width = Math.max(1, width);
+  sprite.height = bandHeight;
+  const spriteCtx = sprite.getContext("2d");
+  if (!spriteCtx) return null;
+  const wave = spriteCtx.createLinearGradient(0, 2 * dpr, 0, 42 * dpr);
+  wave.addColorStop(0, "rgba(255, 255, 255, 0)");
+  wave.addColorStop(0.5, "rgba(128, 234, 255, 0.045)");
+  wave.addColorStop(1, "rgba(255, 255, 255, 0)");
+  spriteCtx.fillStyle = wave;
+  spriteCtx.fillRect(0, 0, sprite.width, bandHeight);
+  return sprite;
 }
 
 function buildBubbleSprite() {
