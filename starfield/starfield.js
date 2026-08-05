@@ -26,6 +26,8 @@ const pointer = {
   active: false,
 };
 
+const drift = { x: 0, y: 0 };
+
 let width = 1;
 let height = 1;
 let centerX = 0;
@@ -192,8 +194,15 @@ function render(dt, time) {
 
   const pulse = 1 + bassLevel * 2.1 * config.pulse;
   const travel = 0.62 * config.speed;
-  const driftX = pointer.active ? pointer.x * 54 : Math.sin(time * 0.23) * 14;
-  const driftY = pointer.active ? pointer.y * 38 : Math.cos(time * 0.19) * 10;
+  // Ease toward the drift target so toggling between pointer-driven and idle
+  // drift glides instead of snapping the whole field sideways.
+  const driftTargetX = pointer.active ? pointer.x * 54 : Math.sin(time * 0.23) * 14;
+  const driftTargetY = pointer.active ? pointer.y * 38 : Math.cos(time * 0.19) * 10;
+  const driftEase = 1 - Math.exp(-dt * 3.2);
+  drift.x += (driftTargetX - drift.x) * driftEase;
+  drift.y += (driftTargetY - drift.y) * driftEase;
+  const driftX = drift.x;
+  const driftY = drift.y;
 
   ctx.save();
   ctx.globalCompositeOperation = "lighter";
