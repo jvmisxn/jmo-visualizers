@@ -118,7 +118,7 @@ func _on_viewport_size_changed() -> void:
 	for swimmer in fish:
 		swimmer.x *= rx
 		swimmer.y *= ry
-		swimmer.base_y *= ry
+		swimmer.target_y *= ry
 	for bubble in bubbles:
 		bubble.x *= rx
 		bubble.y *= ry
@@ -141,10 +141,12 @@ func _make_fish(index: int) -> Dictionary:
 	return {
 		"x": rng.randf_range(0.0, viewport_size.x),
 		"y": viewport_size.y * lane,
-		"base_y": viewport_size.y * lane,
+		"target_y": viewport_size.y * lane,
+		"vy": 0.0,
 		"direction": direction,
 		"facing": direction,
 		"speed": rng.randf_range(20.0, 52.0),
+		"target_speed": rng.randf_range(20.0, 52.0),
 		"scale": rng.randf_range(0.72, 1.22),
 		"phase": rng.randf_range(0.0, TAU),
 		"wave": rng.randf_range(0.34, 0.82),
@@ -154,6 +156,8 @@ func _make_fish(index: int) -> Dictionary:
 		"depth": rng.randf_range(0.48, 1.0),
 		"tilt": 0.0,
 		"turn_cooldown": rng.randf_range(5.0, 18.0),
+		"lane_cooldown": rng.randf_range(2.0, 7.0),
+		"dart": 0.0,
 		"stripe_count": rng.randi_range(2, 5),
 		"spot_count": rng.randi_range(0, 4),
 	}
@@ -197,27 +201,39 @@ func _update_fish(delta: float) -> void:
 	for swimmer in fish:
 		swimmer.phase += delta * (1.8 + swimmer.wave)
 		swimmer.turn_cooldown -= delta
-		if swimmer.turn_cooldown <= 0.0 and rng.randf() < 0.18:
-			swimmer.direction *= -1.0
-			swimmer.turn_cooldown = rng.randf_range(6.0, 20.0)
+		swimmer.lane_cooldown -= delta
+		if swimmer.turn_cooldown <= 0.0:
+			if rng.randf() < 0.32:
+				swimmer.direction *= -1.0
+			swimmer.target_speed = rng.randf_range(16.0, 56.0)
+			swimmer.dart = rng.randf_range(0.0, 18.0) if rng.randf() < 0.22 else 0.0
+			swimmer.turn_cooldown = rng.randf_range(4.5, 13.0)
+		if swimmer.lane_cooldown <= 0.0:
+			var drift := sin(elapsed * 0.17 + swimmer.phase) * size.y * 0.08
+			swimmer.target_y = clampf(size.y * rng.randf_range(0.16, 0.74) + drift, size.y * 0.1, size.y * 0.8)
+			swimmer.lane_cooldown = rng.randf_range(3.0, 8.5)
 		swimmer.facing = lerpf(swimmer.facing, swimmer.direction, min(1.0, delta * 3.0))
+		swimmer.speed = lerpf(swimmer.speed, swimmer.target_speed + swimmer.dart, min(1.0, delta * 0.7))
+		swimmer.dart = max(0.0, swimmer.dart - delta * 10.0)
+		var idle_wave := sin(elapsed * swimmer.wave + swimmer.phase) * size.y * 0.016
+		var vertical_goal: float = swimmer.target_y + idle_wave
+		var desired_vy: float = clampf((vertical_goal - swimmer.y) * 0.42, -42.0, 42.0)
+		swimmer.vy = lerpf(swimmer.vy, desired_vy, min(1.0, delta * 1.8))
 		swimmer.x += swimmer.speed * swimmer.facing * delta * config.speed
-		swimmer.y = swimmer.base_y \
-			+ sin(elapsed * swimmer.wave + swimmer.phase) * size.y * 0.034 \
-			+ sin(elapsed * swimmer.wave * 0.24 + swimmer.phase) * size.y * 0.038
-		var vy: float = cos(elapsed * swimmer.wave + swimmer.phase) * swimmer.wave * size.y * 0.034
-		var horizontal = max(swimmer.speed * abs(swimmer.facing), 36.0)
-		var target_tilt := clampf(atan2(vy, horizontal), -0.28, 0.28) * 0.78
+		swimmer.y += swimmer.vy * delta * config.speed
+		swimmer.y = clampf(swimmer.y, size.y * 0.08, size.y * 0.82)
+		var horizontal = max(swimmer.speed * abs(swimmer.facing), 28.0)
+		var target_tilt := clampf(atan2(swimmer.vy, horizontal), -0.28, 0.28) * 0.78
 		swimmer.tilt = lerpf(swimmer.tilt, target_tilt, min(1.0, delta * 4.0))
 		var margin: float = 110.0 * swimmer.scale
 		if swimmer.direction > 0.0 and swimmer.x > size.x + margin:
 			swimmer.direction = -1.0
 			swimmer.x = size.x + margin
-			swimmer.base_y = size.y * rng.randf_range(0.17, 0.74)
+			swimmer.target_y = size.y * rng.randf_range(0.17, 0.74)
 		elif swimmer.direction < 0.0 and swimmer.x < -margin:
 			swimmer.direction = 1.0
 			swimmer.x = -margin
-			swimmer.base_y = size.y * rng.randf_range(0.17, 0.74)
+			swimmer.target_y = size.y * rng.randf_range(0.17, 0.74)
 
 func _update_bubbles(delta: float) -> void:
 	for bubble in bubbles:
