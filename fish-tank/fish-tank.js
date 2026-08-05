@@ -96,6 +96,7 @@ function makeFish(index) {
     y: height * lane,
     baseY: height * lane,
     direction,
+    facing: direction,
     speed: (16 + rand() * 28) * dpr * config.speed,
     scale: scale * dpr,
     phase: rand() * Math.PI * 2,
@@ -156,7 +157,8 @@ function update(dt, time) {
       swimmer.direction *= -1;
       swimmer.turnCooldown = 7 + rand() * 18;
     }
-    swimmer.x += swimmer.speed * swimmer.direction * dt;
+    swimmer.facing += (swimmer.direction - swimmer.facing) * Math.min(1, dt * 3.2);
+    swimmer.x += swimmer.speed * swimmer.facing * dt;
     swimmer.y = swimmer.baseY
       + Math.sin(time * swimmer.wave + swimmer.phase) * height * 0.035
       + Math.sin(time * swimmer.wave * 0.21 + swimmer.phase) * height * 0.045;
@@ -267,7 +269,8 @@ function drawFrontFish(time) {
 }
 
 function drawFish(swimmer, time, layerAlpha) {
-  const dir = swimmer.direction;
+  const facing = swimmer.facing;
+  const dir = Math.abs(facing) < 0.06 ? (facing < 0 ? -0.06 : 0.06) : facing;
   const s = swimmer.scale * swimmer.depth;
   const tail = Math.sin(swimmer.phase * 2.4) * 0.38;
   const bodyLength = 52 * s;
