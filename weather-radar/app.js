@@ -69,20 +69,102 @@ L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
 }).addTo(map);
 
 const RADAR_REFRESH_MS = 300000;
+const RADAR_ANIMATION_REFRESH_MS = 600000;
+const RADAR_FRAME_MS = 1400;
+const RADAR_MAX_FRAMES = 6;
+
+map.createPane("radarPane");
+map.getPane("radarPane").style.zIndex = 360;
 
 const radarLayer = L.tileLayer.wms("https://opengeo.ncep.noaa.gov/geoserver/conus/conus_bref_qcd/ows", {
   layers: "conus_bref_qcd",
   format: "image/png",
   transparent: true,
-  opacity: 0.52,
+  opacity: 0.3,
+  pane: "radarPane",
   ts: Math.floor(Date.now() / RADAR_REFRESH_MS),
 }).addTo(map);
+
+let radarFrames = [];
+let radarFrameIndex = 0;
+let radarAnimationTimer = 0;
+let radarAnimationLoadedAt = 0;
+let radarAnimationLayer = null;
 
 // The WMS layer only fetches tiles when the view changes, so a long-running
 // OBS source would keep showing cached radar. Rolling the ts param forces a
 // re-fetch of current imagery.
 function refreshRadar() {
   radarLayer.setParams({ ts: Math.floor(Date.now() / RADAR_REFRESH_MS) });
+  loadAnimatedRadar();
+}
+
+async function loadAnimatedRadar() {
+  try {
+    const response = await fetch("https://api.rainviewer.com/public/weather-maps.json", {
+      signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
+    });
+    if (!response.ok) throw new Error(`radar animation ${response.status}`);
+    const data = await response.json();
+    const frames = [
+      ...(data.radar?.past || []),
+      ...(data.radar?.nowcast || []),
+    ].slice(-RADAR_MAX_FRAMES);
+    if (!data.host || frames.length < 2) throw new Error("radar animation unavailable");
+    setAnimatedRadarFrames(data.host, frames);
+  } catch (error) {
+    radarLayer.setOpacity(0.52);
+    if (radarFrames.length === 0) els.radar.textContent = "RADAR: LIVE";
+  }
+}
+
+function setAnimatedRadarFrames(host, frames) {
+  clearInterval(radarAnimationTimer);
+  radarAnimationTimer = 0;
+
+  radarFrameIndex = 0;
+  radarFrames = frames.map((frame, index) => ({
+    time: frame.time,
+    url: `${host}${frame.path}/512/{z}/{x}/{y}/2/1_1.png`,
+  }));
+
+  if (!radarAnimationLayer) {
+    radarAnimationLayer = L.tileLayer(radarFrames[0].url, {
+      opacity: 0.62,
+      pane: "radarPane",
+      tileSize: 512,
+      zoomOffset: -1,
+      maxZoom: 10,
+      minZoom: 4,
+    }).addTo(map);
+  } else {
+    radarAnimationLayer.setUrl(radarFrames[0].url);
+    radarAnimationLayer.setOpacity(0.62);
+  }
+
+  radarAnimationLoadedAt = Date.now();
+  radarLayer.setOpacity(0.18);
+  radarAnimationTimer = setInterval(showNextRadarFrame, RADAR_FRAME_MS);
+  updateRadarStamp();
+}
+
+function showNextRadarFrame() {
+  if (radarFrames.length < 2 || !radarAnimationLayer) return;
+  radarFrameIndex = (radarFrameIndex + 1) % radarFrames.length;
+  radarAnimationLayer.setUrl(radarFrames[radarFrameIndex].url);
+  updateRadarStamp();
+}
+
+function updateRadarStamp() {
+  if (lastAlertCount > 0) return;
+  if (radarFrames.length >= 2) {
+    const frame = radarFrames[radarFrameIndex];
+    const stamp = new Date(frame.time * 1000).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+    els.radar.textContent = `RADAR LOOP: ${stamp}`;
+    return;
+  }
+  const stamp = new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+  els.radar.textContent = `RADAR: ${stamp}`;
 }
 
 const FETCH_TIMEOUT_MS = 15000;
@@ -286,14 +368,18 @@ function nextStop() {
 updateClock();
 setInterval(updateClock, 1000);
 setStop(stopIndex, true);
+loadAnimatedRadar();
 setInterval(nextStop, 90000);
 setInterval(() => loadStopData(stopIndex), 300000);
 setInterval(refreshRadar, RADAR_REFRESH_MS);
+setInterval(loadAnimatedRadar, RADAR_ANIMATION_REFRESH_MS);
 document.addEventListener("visibilitychange", () => {
-  if (!document.hidden) refreshRadar();
+  if (!document.hidden) {
+    refreshRadar();
+    if (Date.now() - radarAnimationLoadedAt > RADAR_ANIMATION_REFRESH_MS) loadAnimatedRadar();
+  }
 });
 
 setInterval(() => {
-  const stamp = new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
-  if (lastAlertCount === 0) els.radar.textContent = `RADAR: ${stamp}`;
+  updateRadarStamp();
 }, 30000);
