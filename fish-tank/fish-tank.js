@@ -325,11 +325,16 @@ function drawFish(swimmer, time) {
   ctx.closePath();
   ctx.fill();
 
-  const bodyGradient = ctx.createLinearGradient(-bodyLength * 0.4, -bodyHeight, bodyLength * 0.52, bodyHeight);
-  bodyGradient.addColorStop(0, swimmer.belly);
-  bodyGradient.addColorStop(0.42, swimmer.body);
-  bodyGradient.addColorStop(1, swimmer.fin);
-  ctx.fillStyle = bodyGradient;
+  // Gradient is in local (translated) space and depends only on per-fish
+  // constants, so build it once instead of reallocating every frame.
+  if (!swimmer.bodyGradient) {
+    const bodyGradient = ctx.createLinearGradient(-bodyLength * 0.4, -bodyHeight, bodyLength * 0.52, bodyHeight);
+    bodyGradient.addColorStop(0, swimmer.belly);
+    bodyGradient.addColorStop(0.42, swimmer.body);
+    bodyGradient.addColorStop(1, swimmer.fin);
+    swimmer.bodyGradient = bodyGradient;
+  }
+  ctx.fillStyle = swimmer.bodyGradient;
   ctx.beginPath();
   ctx.ellipse(0, 0, bodyLength * 0.56, bodyHeight * 0.56, 0, 0, Math.PI * 2);
   ctx.fill();
