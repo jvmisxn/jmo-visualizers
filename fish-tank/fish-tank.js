@@ -40,7 +40,7 @@ let raySprite = null;
 let rayOriginX = 0;
 let lastTime = performance.now();
 let lastRenderTime = 0;
-const rand = config.seed ? mulberry32(hashString(config.seed)) : Math.random;
+let rand = Math.random;
 
 resize();
 resetScene();
@@ -77,6 +77,9 @@ function resize() {
 }
 
 function resetScene() {
+  // Re-seed on every reset so ?seed= layouts reproduce after resizes too,
+  // not just on the first build (update() keeps consuming the stream).
+  if (config.seed) rand = mulberry32(hashString(config.seed));
   fish = Array.from({ length: Math.max(1, config.fish) }, (_, index) => makeFish(index))
     .sort((a, b) => a.depth - b.depth);
   backFish = fish.filter((item) => item.depth < 0.78);
