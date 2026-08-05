@@ -74,7 +74,8 @@ function resize() {
 }
 
 function resetScene() {
-  fish = Array.from({ length: Math.max(1, config.fish) }, (_, index) => makeFish(index));
+  fish = Array.from({ length: Math.max(1, config.fish) }, (_, index) => makeFish(index))
+    .sort((a, b) => a.depth - b.depth);
   backFish = fish.filter((item) => item.depth < 0.78);
   frontFish = fish.filter((item) => item.depth >= 0.78);
   bubbles = Array.from({ length: config.bubbles }, () => makeBubble(rand() * height));
@@ -279,17 +280,20 @@ function drawMotes() {
 
 function drawBackFish(time) {
   for (const swimmer of backFish) {
-    drawFish(swimmer, time, 0.58);
+    drawFish(swimmer, time);
   }
 }
 
 function drawFrontFish(time) {
   for (const swimmer of frontFish) {
-    drawFish(swimmer, time, 1);
+    drawFish(swimmer, time);
   }
 }
 
-function drawFish(swimmer, time, layerAlpha) {
+function drawFish(swimmer, time) {
+  // Continuous depth cueing: depth spans 0.55-1, so this fades smoothly from
+  // 0.5 to 1 instead of snapping between two flat per-layer alpha bands.
+  const layerAlpha = 0.5 + clamp((swimmer.depth - 0.55) / 0.45, 0, 1) * 0.5;
   const facing = swimmer.facing;
   const dir = Math.abs(facing) < 0.06 ? (facing < 0 ? -0.06 : 0.06) : facing;
   const s = swimmer.scale * swimmer.depth;
