@@ -22,6 +22,7 @@ var fish := []
 var bubbles := []
 var plants := []
 var motes := []
+var pebbles := []
 var viewport_size := Vector2.ZERO
 var elapsed := 0.0
 
@@ -43,7 +44,9 @@ func _process(delta: float) -> void:
 func _draw() -> void:
 	var size := get_viewport_rect().size
 	_draw_water(size)
+	_draw_backdrop(size)
 	_draw_light_rays(size)
+	_draw_caustics(size)
 	_draw_motes()
 	_draw_fish(false)
 	_draw_plants(size)
@@ -85,6 +88,7 @@ func _reset_scene() -> void:
 	bubbles.clear()
 	plants.clear()
 	motes.clear()
+	pebbles.clear()
 	for i in config.fish:
 		fish.append(_make_fish(i))
 	fish.sort_custom(func(a, b): return a.depth < b.depth)
@@ -100,6 +104,8 @@ func _reset_scene() -> void:
 			"drift": rng.randf_range(12.0, 44.0),
 			"alpha": rng.randf_range(0.04, 0.14),
 		})
+	for i in 260:
+		pebbles.append(_make_pebble(i))
 
 func _on_viewport_size_changed() -> void:
 	var old_size := viewport_size
@@ -122,6 +128,10 @@ func _on_viewport_size_changed() -> void:
 	for mote in motes:
 		mote.x *= rx
 		mote.y *= ry
+	for pebble in pebbles:
+		pebble.x *= rx
+		pebble.y *= ry
+		pebble.radius *= min(rx, ry)
 	viewport_size = new_size
 
 func _make_fish(index: int) -> Dictionary:
@@ -144,6 +154,8 @@ func _make_fish(index: int) -> Dictionary:
 		"depth": rng.randf_range(0.48, 1.0),
 		"tilt": 0.0,
 		"turn_cooldown": rng.randf_range(5.0, 18.0),
+		"stripe_count": rng.randi_range(2, 5),
+		"spot_count": rng.randi_range(0, 4),
 	}
 
 func _make_bubble(y: float) -> Dictionary:
@@ -167,6 +179,17 @@ func _make_plant(index: int) -> Dictionary:
 		"hue": rng.randf_range(132.0, 174.0),
 		"fronds": rng.randi_range(3, 7),
 		"phase": rng.randf_range(0.0, TAU),
+	}
+
+func _make_pebble(index: int) -> Dictionary:
+	var band := rng.randf_range(0.86, 0.985)
+	var shade := rng.randf_range(0.18, 0.42)
+	return {
+		"x": rng.randf_range(-20.0, viewport_size.x + 20.0),
+		"y": viewport_size.y * band,
+		"radius": rng.randf_range(1.2, 5.8) * lerpf(0.65, 1.25, band),
+		"flatness": rng.randf_range(0.38, 0.72),
+		"color": Color(shade * 0.72, shade * 0.88, shade, rng.randf_range(0.16, 0.34)),
 	}
 
 func _update_fish(delta: float) -> void:
@@ -218,12 +241,32 @@ func _draw_water(size: Vector2) -> void:
 	var top := Color.from_hsv(config.hue / 360.0, 0.76, 0.24)
 	var mid := Color.from_hsv(fmod(config.hue + 4.0, 360.0) / 360.0, 0.76, 0.14)
 	var bottom := Color.from_hsv(fmod(config.hue + 12.0, 360.0) / 360.0, 0.7, 0.06)
-	draw_rect(Rect2(Vector2.ZERO, size), bottom)
-	draw_rect(Rect2(Vector2.ZERO, Vector2(size.x, size.y * 0.54)), mid)
-	draw_rect(Rect2(Vector2.ZERO, Vector2(size.x, size.y * 0.18)), top)
+	var bands := 96
+	for i in bands:
+		var t := float(i) / float(bands - 1)
+		var color := top.lerp(mid, smoothstep(0.0, 0.5, t)) if t < 0.5 else mid.lerp(bottom, smoothstep(0.5, 1.0, t))
+		color = color.darkened(t * 0.18)
+		draw_rect(Rect2(0.0, size.y * t, size.x, ceil(size.y / bands) + 1.0), color)
 	for i in 10:
 		var y := size.y * (0.08 + i * 0.06) + sin(elapsed * 0.28 + i) * 9.0
-		draw_rect(Rect2(0.0, y - 2.0, size.x, 4.0), Color(0.55, 0.92, 1.0, 0.035))
+		draw_rect(Rect2(0.0, y - 1.0, size.x, 2.0), Color(0.55, 0.92, 1.0, 0.018))
+
+func _draw_backdrop(size: Vector2) -> void:
+	for i in 8:
+		var x := size.x * (0.08 + i * 0.13) + sin(float(i) * 1.7) * size.x * 0.025
+		var h := size.y * (0.28 + fmod(float(i) * 0.17, 0.22))
+		var w := size.x * (0.055 + fmod(float(i) * 0.013, 0.035))
+		var points := PackedVector2Array([
+			Vector2(x - w, size.y * 0.86),
+			Vector2(x - w * 0.35, size.y * 0.54),
+			Vector2(x, size.y * 0.86 - h),
+			Vector2(x + w * 0.32, size.y * 0.55),
+			Vector2(x + w, size.y * 0.86),
+		])
+		draw_colored_polygon(points, Color(0.01, 0.06, 0.07, 0.26))
+	for i in 6:
+		var center := Vector2(size.x * (0.04 + i * 0.18), size.y * (0.9 + fmod(i * 0.07, 0.05)))
+		draw_filled_ellipse(center, Vector2(size.x * 0.055, size.y * 0.025), Color(0.03, 0.08, 0.09, 0.28))
 
 func _draw_light_rays(size: Vector2) -> void:
 	for i in 7:
@@ -236,6 +279,16 @@ func _draw_light_rays(size: Vector2) -> void:
 			Vector2(bottom_x - 112.0, size.y),
 		])
 		draw_colored_polygon(points, Color(0.62, 0.95, 1.0, 0.035))
+
+func _draw_caustics(size: Vector2) -> void:
+	for band in 5:
+		var y := size.y * (0.16 + band * 0.08)
+		var points := PackedVector2Array()
+		for step in 50:
+			var x := size.x * float(step) / 49.0
+			var wave := sin(elapsed * 0.34 + step * 0.45 + band) * 5.0 + sin(elapsed * 0.21 + step * 0.18) * 3.0
+			points.append(Vector2(x, y + wave))
+		draw_polyline(points, Color(0.72, 0.98, 1.0, 0.035), 1.2, true)
 
 func _draw_motes() -> void:
 	for mote in motes:
@@ -268,9 +321,24 @@ func _draw_single_fish(swimmer: Dictionary) -> void:
 		Vector2(-0.42 * s, -0.72 * s),
 		Vector2(-0.28 * s, -0.05 * s),
 	]), _with_alpha(swimmer.fin, alpha * 0.8))
+	draw_colored_polygon(PackedVector2Array([
+		Vector2(-0.04 * s, 0.22 * s),
+		Vector2(-0.26 * s, 0.58 * s),
+		Vector2(0.16 * s, 0.26 * s),
+	]), _with_alpha(swimmer.fin.darkened(0.1), alpha * 0.5))
 	draw_filled_ellipse(Vector2.ZERO, Vector2(0.66 * s, 0.34 * s), _with_alpha(swimmer.body, alpha))
 	draw_filled_ellipse(Vector2(0.1 * s, -0.1 * s), Vector2(0.3 * s, 0.11 * s), Color(1.0, 1.0, 1.0, alpha * 0.16))
+	var pattern_color := _with_alpha(swimmer.fin.darkened(0.28), alpha * 0.34)
+	for i in swimmer.stripe_count:
+		var x := lerpf(-0.34 * s, 0.22 * s, float(i) / max(float(swimmer.stripe_count - 1), 1.0))
+		draw_line(Vector2(x, -0.23 * s), Vector2(x + 0.06 * s, 0.22 * s), pattern_color, max(1.0, 0.025 * s), true)
+	for i in swimmer.spot_count:
+		var angle: float = float(i) * 2.4 + swimmer.phase
+		var spot := Vector2(cos(angle) * 0.26 * s - 0.04 * s, sin(angle * 1.3) * 0.14 * s)
+		draw_circle(spot, max(1.3, 0.032 * s), Color(0.02, 0.04, 0.04, alpha * 0.22))
+	draw_line(Vector2(0.28 * s, -0.22 * s), Vector2(0.26 * s, 0.18 * s), Color(0.02, 0.05, 0.05, alpha * 0.26), max(1.0, 0.018 * s), true)
 	draw_circle(Vector2(0.42 * s, -0.09 * s), max(1.8, 0.045 * s), Color(0.02, 0.06, 0.08, alpha))
+	draw_circle(Vector2(0.435 * s, -0.105 * s), max(0.5, 0.012 * s), Color(1.0, 1.0, 1.0, alpha * 0.8))
 	draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
 
 func _draw_plants(size: Vector2) -> void:
@@ -291,12 +359,12 @@ func _draw_plants(size: Vector2) -> void:
 			draw_polyline(points, color, 4.2 + i * 0.45, true)
 
 func _draw_bottom(size: Vector2) -> void:
-	draw_rect(Rect2(0.0, size.y * 0.84, size.x, size.y * 0.16), Color("#12373c"))
-	draw_rect(Rect2(0.0, size.y * 0.91, size.x, size.y * 0.09), Color("#081b21"))
-	for i in 180:
-		var x := fmod(i * 97.0, max(size.x, 1.0)) + sin(i) * 9.0
-		var y := size.y * (0.845 + fmod(i * 53.0, 150.0) / 1000.0)
-		draw_circle(Vector2(x, y), 0.8 + fmod(i * 29.0, 7.0) * 0.3, Color(0.8, 0.94, 0.86, 0.09))
+	for i in 24:
+		var t := float(i) / 23.0
+		var color := Color("#143e42").lerp(Color("#07181d"), t)
+		draw_rect(Rect2(0.0, size.y * (0.84 + t * 0.16), size.x, size.y * 0.16 / 23.0 + 1.0), color)
+	for pebble in pebbles:
+		draw_filled_ellipse(Vector2(pebble.x, pebble.y), Vector2(pebble.radius, pebble.radius * pebble.flatness), pebble.color)
 	var rocks := [
 		[0.1, 0.91, 52.0, 24.0],
 		[0.17, 0.94, 82.0, 34.0],
