@@ -8,3 +8,4 @@ Hosted page: <https://jvmisxn.github.io/jmo-visualizers/>
 
 - [Starfield](https://jvmisxn.github.io/jmo-visualizers/starfield/)
 - [Fish Tank](https://jvmisxn.github.io/jmo-visualizers/fish-tank/)
+- [Weather Radar](https://jvmisxn.github.io/jmo-visualizers/weather-radar/)

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JMO Weather</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="frame">
+      <section id="map" aria-label="Weather map"></section>
+
+      <div class="scanlines"></div>
+      <div class="vignette"></div>
+
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark">JMO</span>
+          <span class="brand-title">Weather Scan</span>
+        </div>
+        <div id="mode" class="mode">LOCAL FORECAST</div>
+        <div id="clock" class="clock">--:-- PT</div>
+      </header>
+
+      <aside class="forecast-panel">
+        <div id="region" class="region">Loading map...</div>
+        <div class="conditions-row">
+          <div>
+            <div id="temperature" class="temperature">--</div>
+            <div id="condition" class="condition">Gathering conditions</div>
+          </div>
+          <div class="metric-stack">
+            <span id="wind">Wind --</span>
+            <span id="precip">Rain --</span>
+            <span id="updated">Updated --</span>
+          </div>
+        </div>
+        <div id="daily" class="daily"></div>
+      </aside>
+
+      <section class="lower-third">
+        <div>
+          <div id="now-viewing" class="kicker">NOW VIEWING</div>
+          <div id="summary" class="summary">Weather map initializing</div>
+        </div>
+        <div id="radar-stamp" class="radar-stamp">RADAR: LIVE</div>
+      </section>
+
+      <footer class="ticker">
+        <div id="ticker-text" class="ticker-text">
+          DATA: NOAA/NWS, Open-Meteo, CARTO/OpenStreetMap
+        </div>
+      </footer>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
