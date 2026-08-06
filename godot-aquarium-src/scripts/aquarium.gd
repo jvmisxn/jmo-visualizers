@@ -35,10 +35,14 @@ func _ready() -> void:
 	get_viewport().size_changed.connect(_on_viewport_size_changed)
 
 func _process(delta: float) -> void:
-	elapsed += min(delta, 0.05) * config.speed
-	_update_fish(delta)
-	_update_bubbles(delta)
-	_update_motes(delta)
+	# Clamp the frame delta before any movement update: after a rAF stall (tab
+	# throttle, OBS scene switch, GC pause) a multi-second delta would teleport
+	# fish and snap every min(1.0, delta * x) smoothing lerp.
+	var dt := minf(delta, 0.05)
+	elapsed += dt * config.speed
+	_update_fish(dt)
+	_update_bubbles(dt)
+	_update_motes(dt)
 	queue_redraw()
 
 func _draw() -> void:
