@@ -23,15 +23,22 @@ const WEATHER_CODES = {
   51: "Light drizzle",
   53: "Drizzle",
   55: "Heavy drizzle",
+  56: "Freezing drizzle",
+  57: "Heavy freezing drizzle",
   61: "Light rain",
   63: "Rain",
   65: "Heavy rain",
+  66: "Freezing rain",
+  67: "Heavy freezing rain",
   71: "Light snow",
   73: "Snow",
   75: "Heavy snow",
+  77: "Snow grains",
   80: "Rain showers",
   81: "Showers",
   82: "Heavy showers",
+  85: "Snow showers",
+  86: "Heavy snow showers",
   95: "Thunderstorms",
   96: "Thunderstorms",
   99: "Severe storms",
@@ -411,11 +418,24 @@ function buildDetailSlides(stop, weather, alerts, condition, isNight) {
     tickerLead: `NEXT: ${tomorrowForecastLine(daily)}`,
   });
 
-  slides.push({
-    kicker: "RADAR SCAN",
-    summary: `${radarFrames.length >= 2 ? "Animated radar loop" : "Radar fallback"} over ${stop.name}. Labels stay above storm cells.`,
-    tickerLead: `RADAR: ${radarFrames.length >= 2 ? "animated loop active" : "fallback scan active"} over ${stop.name}`,
-  });
+  // Only pitch a radar slide when a radar layer is actually on screen: the
+  // animated loop covers every stop, but the static NOAA layer only covers
+  // CONUS stops.
+  if (radarFrames.length >= 2) {
+    const latestScan = new Date(radarFrames[radarFrames.length - 1].time * 1000)
+      .toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+    slides.push({
+      kicker: "RADAR SCAN",
+      summary: `Live radar loop over ${stop.name}. Most recent scan ${latestScan}.`,
+      tickerLead: `RADAR: live loop over ${stop.name}, latest scan ${latestScan}`,
+    });
+  } else if (stop.noaa) {
+    slides.push({
+      kicker: "RADAR SCAN",
+      summary: `Current radar snapshot over ${stop.name}. Live loop resumes shortly.`,
+      tickerLead: `RADAR: current snapshot over ${stop.name}`,
+    });
+  }
 
   return slides;
 }
