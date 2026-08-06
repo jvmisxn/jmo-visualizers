@@ -11,3 +11,5 @@ The visualizer works without credentials by using a realistic local tick simulat
 `#finnhub=YOUR_TOKEN`
 
 The token is stored in browser localStorage for that OBS/browser profile. Use `#token=YOUR_TOKEN` as a shorter alias. Query params still work for compatibility, but the hash form is preferred because it is not sent to GitHub Pages as part of the HTTP request.
+
+Without a browser token, the hosted page loads `market-data/quotes.json`, a public Finnhub snapshot refreshed by GitHub Actions using the private `FINNHUB_TOKEN` repository secret. That gives normal page visitors real values without exposing the API key.

@@ -22,6 +22,9 @@ const FINNHUB_SYMBOLS = new Map([
   ["BTC", "BINANCE:BTCUSDT"],
 ]);
 
+const PUBLIC_QUOTES_URL = "https://raw.githubusercontent.com/jvmisxn/jmo-visualizers/main/market-data/quotes.json";
+const PUBLIC_QUOTES_REFRESH_MS = 60000;
+
 const HEADLINES = [
   "Tech leads the tape while small caps try to hold the morning bid.",
   "Rates, crude, mega-cap momentum, and crypto are driving the current scan.",
@@ -54,6 +57,7 @@ let height = 0;
 let finnhubSocket = null;
 let liveMode = false;
 let lastLiveTradeAt = 0;
+let lastSnapshotAt = 0;
 
 for (const quote of QUOTES) {
   quote.open = quote.price;
@@ -126,6 +130,49 @@ function tick() {
   }
   renderQuotes();
   draw();
+}
+
+async function loadPublicQuoteSnapshot() {
+  if (liveMode) return;
+
+  try {
+    const response = await fetch(`${PUBLIC_QUOTES_URL}?refresh=${Math.floor(Date.now() / PUBLIC_QUOTES_REFRESH_MS)}`, {
+      cache: "no-store",
+    });
+    if (!response.ok) throw new Error(`snapshot ${response.status}`);
+    const snapshot = await response.json();
+    if (!Array.isArray(snapshot.quotes)) throw new Error("snapshot missing quotes");
+
+    let applied = 0;
+    for (const quoteData of snapshot.quotes) {
+      const quote = QUOTES.find((item) => item.symbol === quoteData.symbol);
+      if (!quote || !Number.isFinite(quoteData.price)) continue;
+      applyQuoteSnapshot(quote, quoteData);
+      applied += 1;
+    }
+
+    if (!applied) throw new Error("snapshot empty");
+    lastSnapshotAt = Date.now();
+    const ageMinutes = Number.isFinite(snapshot.generatedAt)
+      ? Math.max(0, Math.round((Date.now() - snapshot.generatedAt) / 60000))
+      : 0;
+    els.headlineSource.textContent = ageMinutes > 30 ? "DELAYED SNAPSHOT" : "REAL SNAPSHOT";
+    renderQuotes();
+    draw();
+  } catch (error) {
+    if (!lastSnapshotAt) els.headlineSource.textContent = "SIMULATED TAPE";
+  }
+}
+
+function applyQuoteSnapshot(quote, quoteData) {
+  quote.price = quoteData.price;
+  quote.change = Number.isFinite(quoteData.changePercent) ? quoteData.changePercent : 0;
+  quote.open = quote.change === -100 ? quote.price : quote.price / (1 + quote.change / 100);
+  quote.lastSnapshotAt = Date.now();
+
+  const values = seedSeries(quote.price);
+  values[values.length - 1] = quote.price;
+  series.set(quote.symbol, values);
 }
 
 function renderQuotes() {
@@ -343,9 +390,11 @@ resize();
 formatClock();
 renderQuotes();
 rotateHeadline();
+loadPublicQuoteSnapshot();
 connectFinnhub();
 
 setInterval(formatClock, 1000);
 setInterval(tick, 1200);
 setInterval(rotateActive, 9000);
 setInterval(rotateHeadline, 11000);
+setInterval(loadPublicQuoteSnapshot, PUBLIC_QUOTES_REFRESH_MS);
