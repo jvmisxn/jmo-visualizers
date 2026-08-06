@@ -509,9 +509,27 @@ function alertTiming(alerts) {
     .filter(Boolean)
     .sort();
   if (!ends.length) return "";
-  const clock = fmtClock(ends[ends.length - 1]);
+  const clock = alertClockWithDay(ends[ends.length - 1]);
   if (clock === "--") return "";
   return alerts.length > 1 ? ` through ${clock}` : ` until ${clock}`;
+}
+
+// "until 5:00 PM" reads as today, but watches and advisories routinely run a
+// day or more out; NWS copy appends the weekday when the expiry isn't today.
+// The ISO string's date and offset are both local to the alerted zone, so the
+// comparison uses that zone's calendar, not the viewer's.
+function alertClockWithDay(value) {
+  const clock = fmtClock(value);
+  if (clock === "--") return "--";
+  const match = /^(\d{4}-\d{2}-\d{2})T.*(?:Z|([+-])(\d{2}):?(\d{2}))$/.exec(value);
+  if (!match) return clock;
+  const [, endDate, sign, offH, offM] = match;
+  const offsetMs = sign ? (sign === "-" ? -1 : 1) * (Number(offH) * 60 + Number(offM)) * 60000 : 0;
+  const zoneToday = new Date(Date.now() + offsetMs).toISOString().slice(0, 10);
+  if (endDate === zoneToday) return clock;
+  const weekday = new Intl.DateTimeFormat("en-US", { weekday: "long", timeZone: "UTC" })
+    .format(new Date(`${endDate}T12:00:00Z`));
+  return `${clock} ${weekday}`;
 }
 
 function todayForecastLine(daily, current, isNight) {
