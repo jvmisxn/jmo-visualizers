@@ -65,6 +65,7 @@ const CAMERA_SETS = {
 
 const els = {
   clock: document.querySelector("#clock"),
+  clockDate: document.querySelector("#clock-date"),
   mode: document.querySelector("#mode"),
   region: document.querySelector("#region"),
   temp: document.querySelector("#temperature"),
@@ -312,6 +313,12 @@ function updateClock() {
     minute: "2-digit",
     hour12: true,
   }).format(now).replace(" ", "") + " PT";
+  els.clockDate.textContent = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/Los_Angeles",
+    weekday: "short",
+    month: "short",
+    day: "numeric",
+  }).format(now).replace(",", "").toUpperCase();
   renderLocalTime();
 }
 

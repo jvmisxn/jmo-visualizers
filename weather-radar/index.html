@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>JMO Weather</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-    <link rel="stylesheet" href="./styles.css?v=live-camera-panel-1">
+    <link rel="stylesheet" href="./styles.css?v=topbar-date-1">
   </head>
   <body>
     <main class="frame">
@@ -20,7 +20,10 @@
           <span class="brand-title">Weather Scan</span>
         </div>
         <div id="mode" class="mode">LOCAL FORECAST</div>
-        <div id="clock" class="clock">--:-- PT</div>
+        <div class="clock-block">
+          <div id="clock" class="clock">--:-- PT</div>
+          <div id="clock-date" class="clock-date">--</div>
+        </div>
       </header>
 
       <aside class="forecast-panel">
@@ -68,6 +71,6 @@
     </main>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="./app.js?v=camera-failover-1"></script>
+    <script src="./app.js?v=topbar-date-1"></script>
   </body>
 </html>
