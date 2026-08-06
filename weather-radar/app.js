@@ -575,6 +575,10 @@ function renderWeather(stop, weather, alerts) {
 }
 
 function renderFallback(stop, error) {
+  // The 11s slide rotator replays lastRendered, so leaving the previous
+  // stop's data in place would overwrite this fallback with another
+  // region's conditions shown under this stop's name.
+  lastRendered = null;
   // A stale alert count from the previous stop would keep suppressing the
   // radar loop stamp even though alert-mode is being cleared here.
   lastAlertCount = 0;
@@ -590,6 +594,7 @@ function renderFallback(stop, error) {
   els.precip.textContent = "Rain --";
   els.updated.textContent = "Retrying";
   els.daily.innerHTML = "";
+  els.viewing.textContent = "STANDBY";
   els.summary.textContent = `Scanning ${stop.name}`;
   updateRadarStamp();
   setTickerText(`DATA REFRESH PENDING: ${error.message}     •     NOAA/NWS, Open-Meteo, CARTO/OpenStreetMap`);
