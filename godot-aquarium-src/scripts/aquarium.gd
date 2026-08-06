@@ -327,7 +327,11 @@ func _draw_single_fish(swimmer: Dictionary) -> void:
 	var facing = swimmer.facing
 	if abs(facing) < 0.06:
 		facing = 0.06 if facing >= 0.0 else -0.06
-	var transform := Transform2D(swimmer.tilt, Vector2(swimmer.x, swimmer.y)).scaled(Vector2(facing, 1.0))
+	# scaled() multiplies from the left (global frame), which scales the origin
+	# too — a left-facing fish would render at x * facing, mirrored off-screen.
+	# Mirror locally instead, and flip tilt with facing so a diving fish still
+	# points nose-down after the local mirror.
+	var transform := Transform2D(swimmer.tilt * signf(facing), Vector2(swimmer.x, swimmer.y)).scaled_local(Vector2(facing, 1.0))
 	draw_set_transform_matrix(transform)
 	var s: float = 42.0 * swimmer.scale * swimmer.depth
 	var tail := sin(swimmer.phase * 2.4) * 0.38
