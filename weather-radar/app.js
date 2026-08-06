@@ -792,7 +792,11 @@ function renderWeather(stop, weather, alerts) {
   renderLocalTime();
   applyDayPart(isNight);
   document.body.classList.toggle("alert-mode", severeAlerts.length > 0);
-  els.mode.textContent = severeAlerts.length ? "STORM WATCH" : isNight ? "NIGHT SCAN" : stop.mode;
+  // The rotation circles the globe, so somewhere is always in darkness; a
+  // generic NIGHT SCAN chip would replace the regional mode ("GULF WATCH",
+  // "PACIFIC SCAN") on several stops every loop. Night already reads from the
+  // dark chrome and the NIGHT CONDITIONS slide — keep the segment identity.
+  els.mode.textContent = severeAlerts.length ? "STORM WATCH" : stop.mode;
   els.region.textContent = stop.name;
   els.temp.textContent = fmtTemp(current.temperature_2m);
   els.condition.textContent = condition;
