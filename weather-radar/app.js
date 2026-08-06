@@ -416,14 +416,25 @@ function fmtTemp(value) {
   return `${Math.round(value)}°`;
 }
 
-function fmtWind(value) {
-  if (!Number.isFinite(value)) return "Wind --";
-  return `Wind ${Math.round(value)} mph`;
+// Broadcast wind copy always leads with a compass direction — "Wind WSW 12 mph"
+// tells a viewer which way the weather is coming from, a bare speed doesn't.
+const COMPASS_POINTS = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
+
+function windCompass(degrees) {
+  if (!Number.isFinite(degrees)) return "";
+  return COMPASS_POINTS[Math.round(((degrees % 360) + 360) % 360 / 22.5) % 16];
 }
 
-function fmtShortWind(value) {
+function fmtWind(value, direction) {
+  if (!Number.isFinite(value)) return "Wind --";
+  const compass = windCompass(direction);
+  return compass ? `Wind ${compass} ${Math.round(value)} mph` : `Wind ${Math.round(value)} mph`;
+}
+
+function fmtShortWind(value, direction) {
   if (!Number.isFinite(value)) return "wind --";
-  return `wind ${Math.round(value)} mph`;
+  const compass = windCompass(direction);
+  return compass ? `wind ${compass} ${Math.round(value)} mph` : `wind ${Math.round(value)} mph`;
 }
 
 function fmtPercent(value) {
@@ -552,8 +563,8 @@ function buildDetailSlides(stop, weather, alerts, condition, isNight) {
 
   slides.push({
     kicker: isNight ? "NIGHT CONDITIONS" : "CURRENT CONDITIONS",
-    summary: `${condition} near ${stop.name}. ${fmtTemp(current.temperature_2m)}, ${fmtShortWind(current.wind_speed_10m)}${gust}.`,
-    tickerLead: `${stop.name}: ${condition}, ${fmtTemp(current.temperature_2m)}, ${fmtWind(current.wind_speed_10m)}`,
+    summary: `${condition} near ${stop.name}. ${fmtTemp(current.temperature_2m)}, ${fmtShortWind(current.wind_speed_10m, current.wind_direction_10m)}${gust}.`,
+    tickerLead: `${stop.name}: ${condition}, ${fmtTemp(current.temperature_2m)}, ${fmtWind(current.wind_speed_10m, current.wind_direction_10m)}`,
   });
 
   slides.push({
@@ -682,7 +693,7 @@ async function fetchWeather(stop) {
   url.search = new URLSearchParams({
     latitude: stop.lat,
     longitude: stop.lon,
-    current: "temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m,wind_gusts_10m,cloud_cover,pressure_msl,visibility,is_day",
+    current: "temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m,wind_direction_10m,wind_gusts_10m,cloud_cover,pressure_msl,visibility,is_day",
     daily: "temperature_2m_max,temperature_2m_min,precipitation_probability_max,weather_code,sunrise,sunset",
     temperature_unit: "fahrenheit",
     wind_speed_unit: "mph",
@@ -768,7 +779,7 @@ function renderWeather(stop, weather, alerts) {
   els.region.textContent = stop.name;
   els.temp.textContent = fmtTemp(current.temperature_2m);
   els.condition.textContent = condition;
-  els.wind.textContent = fmtWind(current.wind_speed_10m);
+  els.wind.textContent = fmtWind(current.wind_speed_10m, current.wind_direction_10m);
   els.precip.textContent = `Rain ${rain}`;
   els.updated.textContent = `Updated ${new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}`;
 
