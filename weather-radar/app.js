@@ -633,7 +633,10 @@ function renderFallback(stop, error) {
   els.viewing.textContent = "STANDBY";
   els.summary.textContent = `Scanning ${stop.name}`;
   updateRadarStamp();
-  setTickerText(`DATA REFRESH PENDING: ${error.message}     •     NOAA/NWS, Open-Meteo, CARTO/OpenStreetMap`);
+  // Raw error text ("weather 500", timeout messages) is debug detail, not
+  // broadcast copy; keep it in the console and put clean standby copy on air.
+  console.warn(`weather fetch failed for ${stop.name}:`, error);
+  setTickerText(`STAND BY: updating conditions for ${stop.name}     •     DATA: NOAA/NWS alerts, RainViewer radar, Open-Meteo forecast, CARTO/OpenStreetMap     •     JMO WEATHER SCAN`);
 }
 
 // Fetches and renders data only; never moves the map. The periodic refresh
