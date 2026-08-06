@@ -71,12 +71,21 @@ const BASEMAPS = {
   nightLabels: "https://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}{r}.png",
 };
 
-const baseLayer = L.tileLayer(BASEMAPS.dayBase, {
+const baseLayerOptions = {
   attribution: "&copy; OpenStreetMap contributors &copy; CARTO",
   subdomains: "abcd",
   maxZoom: 10,
   minZoom: 2,
+};
+
+const baseDayLayer = L.tileLayer(BASEMAPS.dayBase, {
+  ...baseLayerOptions,
   opacity: 0.98,
+}).addTo(map);
+
+const baseNightLayer = L.tileLayer(BASEMAPS.nightBase, {
+  ...baseLayerOptions,
+  opacity: 0,
 }).addTo(map);
 
 const RADAR_REFRESH_MS = 300000;
@@ -94,12 +103,21 @@ map.createPane("labelPane");
 map.getPane("labelPane").style.zIndex = 430;
 map.getPane("labelPane").style.pointerEvents = "none";
 
-const labelLayer = L.tileLayer(BASEMAPS.dayLabels, {
+const labelLayerOptions = {
   subdomains: "abcd",
   maxZoom: 10,
   minZoom: 2,
-  opacity: 0.95,
   pane: "labelPane",
+};
+
+const labelDayLayer = L.tileLayer(BASEMAPS.dayLabels, {
+  ...labelLayerOptions,
+  opacity: 0.98,
+}).addTo(map);
+
+const labelNightLayer = L.tileLayer(BASEMAPS.nightLabels, {
+  ...labelLayerOptions,
+  opacity: 0,
 }).addTo(map);
 
 const radarLayer = L.tileLayer.wms("https://opengeo.ncep.noaa.gov/geoserver/conus/conus_bref_qcd/ows", {
@@ -282,10 +300,10 @@ function isNightInPacificTime() {
 
 function applyDayPart(isNight) {
   document.body.classList.toggle("night-mode", isNight);
-  baseLayer.setUrl(isNight ? BASEMAPS.nightBase : BASEMAPS.dayBase);
-  labelLayer.setUrl(isNight ? BASEMAPS.nightLabels : BASEMAPS.dayLabels);
-  baseLayer.setOpacity(isNight ? 0.95 : 0.98);
-  labelLayer.setOpacity(isNight ? 0.92 : 0.98);
+  baseDayLayer.setOpacity(isNight ? 0.18 : 0.98);
+  baseNightLayer.setOpacity(isNight ? 0.92 : 0);
+  labelDayLayer.setOpacity(isNight ? 0.08 : 0.98);
+  labelNightLayer.setOpacity(isNight ? 0.98 : 0);
 }
 
 function currentStopSupportsNoaa() {

@@ -67,16 +67,22 @@ body,
 }
 
 #map .leaflet-tile-pane {
-  filter: saturate(1.08) contrast(1.04) brightness(1);
+  filter: saturate(1.06) contrast(1.04) brightness(1);
 }
 
 .night-mode #map .leaflet-tile-pane {
-  filter: saturate(0.92) contrast(1.12) brightness(0.86);
+  filter: saturate(1.04) contrast(1.08) brightness(1.18);
 }
 
-#map .leaflet-radarPane-pane,
-#map .leaflet-labelPane-pane {
+#map .leaflet-radar-pane,
+#map .leaflet-label-pane {
   filter: none;
+}
+
+#map .leaflet-layer {
+  transition:
+    opacity 1800ms ease,
+    filter 1800ms ease;
 }
 
 .leaflet-control-container {
@@ -110,14 +116,14 @@ body,
 }
 
 .night-mode .scanlines {
-  opacity: 0.18;
+  opacity: 0.13;
 }
 
 .night-mode .vignette {
   background:
-    linear-gradient(90deg, rgba(1, 4, 14, 0.52), transparent 16%, transparent 72%, rgba(1, 4, 14, 0.52)),
-    radial-gradient(circle at center, rgba(0, 18, 40, 0.1) 0%, rgba(0, 0, 0, 0.38) 72%),
-    linear-gradient(180deg, rgba(1, 5, 17, 0.1), rgba(1, 5, 17, 0.26));
+    linear-gradient(90deg, rgba(1, 4, 14, 0.24), transparent 18%, transparent 72%, rgba(1, 4, 14, 0.24)),
+    radial-gradient(circle at center, rgba(0, 18, 40, 0.03) 0%, rgba(0, 0, 0, 0.16) 74%),
+    linear-gradient(180deg, rgba(1, 5, 17, 0.02), rgba(1, 5, 17, 0.1));
 }
 
 .topbar,
