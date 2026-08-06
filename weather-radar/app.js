@@ -85,6 +85,7 @@ const els = {
   cameraLocation: document.querySelector("#camera-location"),
   cameraUpdated: document.querySelector("#camera-updated"),
   lowerThird: document.querySelector(".lower-third"),
+  radarLegend: document.querySelector("#radar-legend"),
 };
 
 const map = L.map("map", {
@@ -725,11 +726,16 @@ function currentStopSupportsNoaa() {
 }
 
 function updateRadarLayerForStop() {
+  // The intensity key only airs while a radar layer is actually on screen;
+  // a legend over a radar-free world stop would label colors that aren't there.
   if (radarFrames.length >= 2) {
     radarLayer.setOpacity(0);
+    els.radarLegend.hidden = false;
     return;
   }
-  radarLayer.setOpacity(currentStopSupportsNoaa() ? 0.64 : 0);
+  const showStatic = currentStopSupportsNoaa();
+  radarLayer.setOpacity(showStatic ? 0.64 : 0);
+  els.radarLegend.hidden = !showStatic;
 }
 
 async function fetchAlerts(stop) {
