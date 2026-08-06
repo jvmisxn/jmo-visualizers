@@ -449,9 +449,18 @@ function fmtPressure(value) {
 
 // Open-Meteo returns visibility in feet (not meters) when the request asks
 // for fahrenheit/mph imperial units — current_units confirms "ft".
+// Below a mile, whole-mile rounding airs "Visibility 0 mi" in exactly the
+// fog that makes visibility the headline; NWS reports quarter-mile fractions
+// down there, so use them.
 function fmtVisibility(value) {
   if (!Number.isFinite(value)) return "Visibility --";
-  return `Visibility ${Math.round(value / 5280)} mi`;
+  const miles = value / 5280;
+  if (miles < 0.97) {
+    const quarters = Math.round(miles * 4);
+    if (quarters <= 0) return "Visibility under 1/4 mi";
+    return `Visibility ${["", "1/4", "1/2", "3/4", "1"][quarters]} mi`;
+  }
+  return `Visibility ${Math.round(miles)} mi`;
 }
 
 function fmtClock(value) {
