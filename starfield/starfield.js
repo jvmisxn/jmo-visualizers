@@ -46,6 +46,11 @@ let analyser = null;
 let frequencyData = null;
 let lastTime = performance.now();
 let lastRenderTime = 0;
+// Cap dt to absorb rAF stalls without teleporting the field, but when a
+// deliberate fps cap is set the expected interval is 1/fps — leave headroom
+// above it or low caps (fps=10 -> 100ms frames vs 50ms clamp) run the whole
+// animation at a fraction of real speed.
+const maxDelta = config.fps > 0 ? Math.max(0.05, 1.5 / config.fps) : 0.05;
 let rand = Math.random;
 
 resize();
@@ -173,7 +178,7 @@ function frame(now) {
     lastRenderTime = now;
   }
 
-  const dt = Math.min((now - lastTime) / 1000, 0.05);
+  const dt = Math.min((now - lastTime) / 1000, maxDelta);
   lastTime = now;
   updateAudio(now);
   render(dt, now / 1000);
