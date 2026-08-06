@@ -999,3 +999,19 @@ document.addEventListener("visibilitychange", () => {
 setInterval(() => {
   updateRadarStamp();
 }, 30000);
+
+// The crawl duration is derived from the rendered width at render time, so a
+// resized OBS source or rotated phone keeps the old duration — the constant
+// read speed drifts until the next copy change swaps the text. Recompute once
+// the resize settles; clearing textContent first defeats setTickerText's
+// identical-text skip so the crawl restarts cleanly at the new width.
+let tickerResizeTimer = 0;
+window.addEventListener("resize", () => {
+  clearTimeout(tickerResizeTimer);
+  tickerResizeTimer = setTimeout(() => {
+    const text = els.ticker.textContent;
+    if (!text.trim()) return;
+    els.ticker.textContent = "";
+    setTickerText(text);
+  }, 400);
+});
