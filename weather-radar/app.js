@@ -44,6 +44,25 @@ const WEATHER_CODES = {
   99: "Severe storms",
 };
 
+const CAMERA_SETS = {
+  "Seattle and Puget Sound": [
+    { location: "SR-99 at S Walker St", source: "WSDOT", url: "https://images.wsdot.wa.gov/nw/099vc02969.jpg" },
+    { location: "SR-99 at S Lander St", source: "WSDOT", url: "https://images.wsdot.wa.gov/nw/099vc02946.jpg" },
+    { location: "SR-99 at S Atlantic St", source: "WSDOT", url: "https://images.wsdot.wa.gov/nw/099vc03022.jpg" },
+    { location: "SR-99 at Royal Brougham", source: "WSDOT", url: "https://images.wsdot.wa.gov/nw/099vc03037.jpg" },
+    { location: "I-90 at Rainier Ave S", source: "WSDOT", url: "https://images.wsdot.wa.gov/nw/090vc00329.jpg" },
+    { location: "I-90 at East Portal MBT", source: "WSDOT", url: "https://images.wsdot.wa.gov/nw/090vc00422.jpg" },
+  ],
+  "Pacific Northwest": [
+    { location: "I-90 at W Mercer Way", source: "WSDOT", url: "https://images.wsdot.wa.gov/nw/090vc00604.jpg" },
+    { location: "I-90 at 76th Ave SE", source: "WSDOT", url: "https://images.wsdot.wa.gov/nw/090vc00670.jpg" },
+    { location: "I-90 at Bellevue Way", source: "WSDOT", url: "https://images.wsdot.wa.gov/nw/090vc00921.jpg" },
+    { location: "I-90 at SR-900", source: "WSDOT", url: "https://images.wsdot.wa.gov/nw/090vc01581.jpg" },
+    { location: "SR-167 at S 212th St", source: "WSDOT", url: "https://images.wsdot.wa.gov/nw/167vc02241.jpg" },
+    { location: "SR-167 at S 194th St", source: "WSDOT", url: "https://images.wsdot.wa.gov/nw/167vc02352.jpg" },
+  ],
+};
+
 const els = {
   clock: document.querySelector("#clock"),
   mode: document.querySelector("#mode"),
@@ -59,6 +78,11 @@ const els = {
   summary: document.querySelector("#summary"),
   radar: document.querySelector("#radar-stamp"),
   ticker: document.querySelector("#ticker-text"),
+  cameraPanel: document.querySelector("#camera-panel"),
+  cameraImage: document.querySelector("#camera-image"),
+  cameraSource: document.querySelector("#camera-source"),
+  cameraLocation: document.querySelector("#camera-location"),
+  cameraUpdated: document.querySelector("#camera-updated"),
 };
 
 const map = L.map("map", {
@@ -276,7 +300,9 @@ let detailIndex = 0;
 let lastRendered = null;
 let requestSeq = 0;
 let retryTimer = 0;
+let cameraIndex = 0;
 const RETRY_DELAY_MS = 20000;
+const CAMERA_ROTATE_MS = 18000;
 
 function updateClock() {
   const now = new Date();
@@ -310,6 +336,39 @@ function renderLocalTime() {
   } catch (error) {
     els.localTime.textContent = "Local --";
   }
+}
+
+function cameraUrl(url) {
+  const next = new URL(url);
+  next.searchParams.set("refresh", Math.floor(Date.now() / 60000));
+  return next.toString();
+}
+
+function currentCameras() {
+  const stop = STOPS[stopIndex % STOPS.length];
+  return CAMERA_SETS[stop.name] || [];
+}
+
+function renderCamera() {
+  const cameras = currentCameras();
+  if (!cameras.length) {
+    els.cameraPanel.hidden = true;
+    return;
+  }
+
+  const camera = cameras[cameraIndex % cameras.length];
+  els.cameraPanel.hidden = false;
+  els.cameraImage.src = cameraUrl(camera.url);
+  els.cameraImage.alt = camera.location;
+  els.cameraSource.textContent = camera.source;
+  els.cameraLocation.textContent = camera.location;
+  els.cameraUpdated.textContent = new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+}
+
+function rotateCamera() {
+  const cameras = currentCameras();
+  if (cameras.length) cameraIndex = (cameraIndex + 1) % cameras.length;
+  renderCamera();
 }
 
 function fmtTemp(value) {
@@ -759,6 +818,8 @@ async function loadStopData(index) {
 
 function setStop(index, instant = false) {
   const stop = STOPS[index % STOPS.length];
+  cameraIndex = 0;
+  renderCamera();
   updateRadarLayerForStop();
   if (instant) {
     map.setView([stop.lat, stop.lon], stop.zoom);
@@ -784,6 +845,7 @@ loadAnimatedRadar();
 setTimeout(nextStop, INITIAL_GLIDE_DELAY_MS);
 setInterval(nextStop, STOP_DWELL_MS);
 setInterval(() => loadStopData(stopIndex), 300000);
+setInterval(rotateCamera, CAMERA_ROTATE_MS);
 setInterval(refreshRadar, RADAR_REFRESH_MS);
 setInterval(loadAnimatedRadar, RADAR_ANIMATION_REFRESH_MS);
 scheduleDetailRotation();

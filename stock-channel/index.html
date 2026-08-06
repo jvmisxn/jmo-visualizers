@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JMO Market Scan</title>
+    <link rel="stylesheet" href="./styles.css?v=market-scan-1">
+  </head>
+  <body>
+    <main class="frame">
+      <canvas id="chart" aria-label="Market chart"></canvas>
+
+      <div class="grid-glow"></div>
+      <div class="scanlines"></div>
+      <div class="vignette"></div>
+
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark">JMO</span>
+          <span class="brand-title">Market Scan</span>
+        </div>
+        <div id="market-state" class="market-state">PRE-MARKET</div>
+        <div id="clock" class="clock">--:-- PT</div>
+      </header>
+
+      <section class="hero-quote">
+        <div class="quote-label">NOW TRACKING</div>
+        <div id="active-symbol" class="active-symbol">SPY</div>
+        <div id="active-name" class="active-name">S&P 500 ETF</div>
+        <div class="price-row">
+          <span id="active-price" class="active-price">$---.--</span>
+          <span id="active-change" class="active-change flat">+0.00%</span>
+        </div>
+      </section>
+
+      <aside class="market-board">
+        <div class="board-title">MAJOR INDICES</div>
+        <div id="indices" class="quote-list"></div>
+      </aside>
+
+      <aside class="watchlist-board">
+        <div class="board-title">WATCHLIST</div>
+        <div id="watchlist" class="quote-list compact"></div>
+      </aside>
+
+      <section class="headline-panel">
+        <div id="headline-source" class="headline-source">MARKET DESK</div>
+        <div id="headline" class="headline">Scanning futures, rates, tech, energy, crypto, and market breadth.</div>
+      </section>
+
+      <footer class="ticker">
+        <div id="ticker-text" class="ticker-text">LOADING MARKET TAPE...</div>
+      </footer>
+    </main>
+
+    <script src="./app.js?v=market-scan-1"></script>
+  </body>
+</html>
