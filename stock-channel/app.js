@@ -180,7 +180,11 @@ function rotateHeadline() {
 
 function getFinnhubToken() {
   const params = new URLSearchParams(window.location.search);
-  const urlToken = params.get("finnhub") || params.get("token");
+  const hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ""));
+  const urlToken = hashParams.get("finnhub")
+    || hashParams.get("token")
+    || params.get("finnhub")
+    || params.get("token");
   if (urlToken) {
     localStorage.setItem("jmoFinnhubToken", urlToken);
     return urlToken;
