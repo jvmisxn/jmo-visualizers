@@ -449,10 +449,17 @@ function windCompass(degrees) {
   return COMPASS_POINTS[Math.round(((degrees % 360) + 360) % 360 / 22.5) % 16];
 }
 
-function fmtWind(value, direction) {
+function fmtWind(value, direction, gusts) {
   if (!Number.isFinite(value)) return "Wind --";
   const compass = windCompass(direction);
-  return compass ? `Wind ${compass} ${Math.round(value)} mph` : `Wind ${Math.round(value)} mph`;
+  // On a windy day the gust is the story, and the observation panel is on air
+  // full-time while the gusty lower-third slide is 1-of-8; METAR-style
+  // "WSW 12 G 25" puts it where the viewer is already looking. Same
+  // significance threshold as the slide so the two never disagree.
+  const gust = Number.isFinite(gusts) && gusts > value + 2 ? ` G ${Math.round(gusts)}` : "";
+  return compass
+    ? `Wind ${compass} ${Math.round(value)}${gust} mph`
+    : `Wind ${Math.round(value)}${gust} mph`;
 }
 
 function fmtShortWind(value, direction) {
@@ -876,7 +883,7 @@ function renderWeather(stop, weather, alerts) {
   els.region.textContent = stop.name;
   els.temp.textContent = fmtTemp(current.temperature_2m);
   els.condition.textContent = condition;
-  els.wind.textContent = fmtWind(current.wind_speed_10m, current.wind_direction_10m);
+  els.wind.textContent = fmtWind(current.wind_speed_10m, current.wind_direction_10m, current.wind_gusts_10m);
   // "Rain 0.00 in" is dead air on a dry day; broadcast current-conditions
   // panels fill that slot with humidity, and the rain amount takes it back
   // only when there's measurable precipitation to report.
