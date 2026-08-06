@@ -360,22 +360,7 @@ function currentCameras() {
 // as a crashed graphic on stream. Dead cameras are skipped, and if the whole
 // set is down the panel leaves air until the rotate cycle retries it.
 let cameraFailures = 0;
-
-els.cameraImage.addEventListener("load", () => {
-  cameraFailures = 0;
-});
-
-els.cameraImage.addEventListener("error", () => {
-  const cameras = currentCameras();
-  if (!cameras.length) return;
-  cameraFailures += 1;
-  if (cameraFailures >= cameras.length) {
-    els.cameraPanel.hidden = true;
-    return;
-  }
-  cameraIndex = (cameraIndex + 1) % cameras.length;
-  renderCamera();
-});
+let cameraLoadSeq = 0;
 
 function renderCamera() {
   const cameras = currentCameras();
@@ -384,13 +369,34 @@ function renderCamera() {
     return;
   }
 
+  // Swapping the visible img's src labels the new location under the old
+  // photo while a slow WSDOT frame streams in — a mislabeled live shot on
+  // air. Preload off-screen and cut image + caption together, and only
+  // count a camera as failed once its probe actually errors.
   const camera = cameras[cameraIndex % cameras.length];
-  els.cameraPanel.hidden = false;
-  els.cameraImage.src = cameraUrl(camera.url);
-  els.cameraImage.alt = camera.location;
-  els.cameraSource.textContent = camera.source;
-  els.cameraLocation.textContent = camera.location;
-  els.cameraUpdated.textContent = new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+  const seq = ++cameraLoadSeq;
+  const probe = new Image();
+  probe.onload = () => {
+    if (seq !== cameraLoadSeq) return;
+    cameraFailures = 0;
+    els.cameraImage.src = probe.src;
+    els.cameraImage.alt = camera.location;
+    els.cameraSource.textContent = camera.source;
+    els.cameraLocation.textContent = camera.location;
+    els.cameraUpdated.textContent = new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+    els.cameraPanel.hidden = false;
+  };
+  probe.onerror = () => {
+    if (seq !== cameraLoadSeq) return;
+    cameraFailures += 1;
+    if (cameraFailures >= cameras.length) {
+      els.cameraPanel.hidden = true;
+      return;
+    }
+    cameraIndex = (cameraIndex + 1) % cameras.length;
+    renderCamera();
+  };
+  probe.src = cameraUrl(camera.url);
 }
 
 function rotateCamera() {
