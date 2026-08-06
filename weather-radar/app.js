@@ -362,6 +362,18 @@ function shortDate(value, index) {
     .toUpperCase();
 }
 
+// The red STORM WATCH takeover is reserved for genuinely severe alerts.
+// August air-quality alerts and special weather statements are routine; a
+// broadcast that goes full red for those has no headroom left for a tornado
+// warning. NWS severity is authoritative when present, but many warnings
+// (e.g. Flood Warning) come through as "Moderate", so a *Warning event name
+// also qualifies.
+function isSevereAlert(alert) {
+  const severity = alert.properties?.severity;
+  if (severity === "Extreme" || severity === "Severe") return true;
+  return /Warning$/.test(alert.properties?.event || "");
+}
+
 function summarizeAlerts(alerts) {
   const counts = new Map();
   for (const alert of alerts) {
@@ -623,12 +635,13 @@ function renderWeather(stop, weather, alerts) {
   const rain = Number.isFinite(current.precipitation) ? `${current.precipitation.toFixed(2)} in` : "--";
   const isNight = isNightFromWeather(weather);
 
-  lastAlertCount = alerts.length;
+  const severeAlerts = alerts.filter(isSevereAlert);
+  lastAlertCount = severeAlerts.length;
   regionTimeZone = weather.timezone || "";
   renderLocalTime();
   applyDayPart(isNight);
-  document.body.classList.toggle("alert-mode", alerts.length > 0);
-  els.mode.textContent = alerts.length ? "STORM WATCH" : isNight ? "NIGHT SCAN" : stop.mode;
+  document.body.classList.toggle("alert-mode", severeAlerts.length > 0);
+  els.mode.textContent = severeAlerts.length ? "STORM WATCH" : isNight ? "NIGHT SCAN" : stop.mode;
   els.region.textContent = stop.name;
   els.temp.textContent = fmtTemp(current.temperature_2m);
   els.condition.textContent = condition;
@@ -655,9 +668,11 @@ function renderWeather(stop, weather, alerts) {
   renderDetailSlide();
 
   // Don't stomp the animated loop's frame stamp on every weather render;
-  // updateRadarStamp knows whether a loop is running.
-  if (alerts.length) {
-    els.radar.textContent = `${alerts.length} ALERT${alerts.length > 1 ? "S" : ""}`;
+  // updateRadarStamp knows whether a loop is running. Only severe alerts
+  // commandeer the stamp — minor advisories still crawl the ticker and get
+  // an ALERTS ACTIVE slide, but the radar clock stays on air.
+  if (severeAlerts.length) {
+    els.radar.textContent = `${severeAlerts.length} ALERT${severeAlerts.length > 1 ? "S" : ""}`;
   } else {
     updateRadarStamp();
   }
