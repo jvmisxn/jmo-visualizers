@@ -4,7 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>JMO Weather</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <!-- Vendored Leaflet 1.9.4 (sha256 verified against unpkg): a CDN outage
+         must not take the whole broadcast down with it. -->
+    <link rel="stylesheet" href="./vendor/leaflet/leaflet.css?v=vendor-leaflet-1">
     <link rel="stylesheet" href="./styles.css?v=radar-legend-1">
   </head>
   <body>
@@ -79,7 +81,7 @@
       </footer>
     </main>
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="./vendor/leaflet/leaflet.js?v=vendor-leaflet-1"></script>
     <script src="./app.js?v=slide-hold-1"></script>
   </body>
 </html>
