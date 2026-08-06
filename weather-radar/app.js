@@ -555,10 +555,22 @@ function renderDetailSlide() {
   if (detailIndex === 0) renderTicker(slides);
 }
 
+// The rotation timer restarts whenever a new deck renders: a free-running
+// interval could fire right after a stop lands, yanking the lead slide
+// (alerts / current conditions) off screen in under a second.
+let detailRotateTimer = 0;
+
+function scheduleDetailRotation() {
+  clearTimeout(detailRotateTimer);
+  detailRotateTimer = setTimeout(advanceDetailSlide, REGION_DETAIL_ROTATE_MS);
+}
+
 function advanceDetailSlide() {
-  if (!lastRendered) return;
-  detailIndex += 1;
-  renderDetailSlide();
+  if (lastRendered) {
+    detailIndex += 1;
+    renderDetailSlide();
+  }
+  scheduleDetailRotation();
 }
 
 async function fetchWeather(stop) {
@@ -668,6 +680,7 @@ function renderWeather(stop, weather, alerts) {
   detailIndex = 0;
   lastRendered = { stop, weather, alerts, condition, isNight };
   renderDetailSlide();
+  scheduleDetailRotation();
 
   // Don't stomp the animated loop's frame stamp on every weather render;
   // updateRadarStamp knows whether a loop is running. Only severe alerts
@@ -773,7 +786,7 @@ setInterval(nextStop, STOP_DWELL_MS);
 setInterval(() => loadStopData(stopIndex), 300000);
 setInterval(refreshRadar, RADAR_REFRESH_MS);
 setInterval(loadAnimatedRadar, RADAR_ANIMATION_REFRESH_MS);
-setInterval(advanceDetailSlide, REGION_DETAIL_ROTATE_MS);
+scheduleDetailRotation();
 document.addEventListener("visibilitychange", () => {
   if (!document.hidden) {
     refreshRadar();
