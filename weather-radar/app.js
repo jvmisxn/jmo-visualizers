@@ -554,6 +554,15 @@ function alertClockWithDay(value) {
   return `${clock} ${weekday}`;
 }
 
+// WHO UV index scale, the same buckets broadcast almanac panels use.
+function uvCategory(uv) {
+  if (uv < 3) return "low";
+  if (uv < 6) return "moderate";
+  if (uv < 8) return "high";
+  if (uv < 11) return "very high";
+  return "extreme";
+}
+
 function todayForecastLine(daily, current, isNight) {
   const hi = fmtTemp(daily.temperature_2m_max?.[0]);
   const lo = fmtTemp(daily.temperature_2m_min?.[0]);
@@ -624,6 +633,18 @@ function buildDetailSlides(stop, weather, alerts, condition, isNight) {
     summary: `${fmtPressure(current.pressure_msl)}. ${fmtVisibility(current.visibility)}. ${obsTail}.`,
     tickerLead: `OBSERVATION: ${fmtPressure(current.pressure_msl)}, ${fmtVisibility(current.visibility)}, ${obsTail.toLowerCase()}`,
   });
+
+  // UV index is a daytime almanac staple; after dark it's a non-story, so the
+  // slide leaves the rundown rather than airing "UV 0" all night.
+  const uv = daily.uv_index_max?.[0];
+  if (!isNight && Number.isFinite(uv)) {
+    const uvRounded = Math.round(uv);
+    slides.push({
+      kicker: "UV INDEX",
+      summary: `Peak UV index ${uvRounded} today — ${uvCategory(uvRounded)} sun exposure.`,
+      tickerLead: `UV: peak index ${uvRounded} today (${uvCategory(uvRounded)})`,
+    });
+  }
 
   slides.push({
     kicker: "FORECAST SNAPSHOT",
@@ -740,7 +761,7 @@ async function fetchWeather(stop) {
     latitude: stop.lat,
     longitude: stop.lon,
     current: "temperature_2m,relative_humidity_2m,apparent_temperature,dew_point_2m,precipitation,weather_code,wind_speed_10m,wind_direction_10m,wind_gusts_10m,cloud_cover,pressure_msl,visibility,is_day",
-    daily: "temperature_2m_max,temperature_2m_min,precipitation_probability_max,weather_code,sunrise,sunset",
+    daily: "temperature_2m_max,temperature_2m_min,precipitation_probability_max,weather_code,sunrise,sunset,uv_index_max",
     temperature_unit: "fahrenheit",
     wind_speed_unit: "mph",
     precipitation_unit: "inch",
