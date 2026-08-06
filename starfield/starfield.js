@@ -61,13 +61,32 @@ requestAnimationFrame(frame);
 let resizeTimer = 0;
 window.addEventListener("resize", () => {
   clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(() => {
-    const previousWidth = width;
-    const previousHeight = height;
-    resize();
-    if (width !== previousWidth || height !== previousHeight) resetStars();
-  }, 150);
+  resizeTimer = setTimeout(rebuildIfViewportChanged, 150);
 });
+
+function rebuildIfViewportChanged() {
+  const previousWidth = width;
+  const previousHeight = height;
+  resize();
+  if (width !== previousWidth || height !== previousHeight) resetStars();
+}
+
+// Dragging the window between monitors with different scale factors changes
+// devicePixelRatio without firing a resize event (the CSS viewport size is
+// unchanged), leaving the canvas at the old backing resolution. A resolution
+// media query fires on that change; it matches one specific dpr value, so
+// re-arm against the new value after each change.
+(function watchDpr() {
+  if (typeof matchMedia !== "function") return;
+  matchMedia(`(resolution: ${window.devicePixelRatio}dppx)`).addEventListener(
+    "change",
+    () => {
+      rebuildIfViewportChanged();
+      watchDpr();
+    },
+    { once: true },
+  );
+})();
 
 window.addEventListener("pointermove", (event) => {
   if (!config.pointer) return;
