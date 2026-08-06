@@ -463,12 +463,34 @@ const TICKER_PX_PER_SECOND = 85;
 const TICKER_MIN_SECONDS = 24;
 
 function setTickerText(text) {
+  // Swapping text or duration mid-crawl visibly jumps the ticker; restart the
+  // animation so new copy enters cleanly from off-screen right. Skip identical
+  // text so the periodic refresh doesn't reset a crawl that's mid-read.
+  if (text === els.ticker.textContent) return;
   els.ticker.textContent = text;
+  els.ticker.style.animation = "none";
   requestAnimationFrame(() => {
     const speed = window.innerWidth <= 760 ? 60 : TICKER_PX_PER_SECOND;
     const seconds = Math.max(TICKER_MIN_SECONDS, els.ticker.scrollWidth / speed);
+    els.ticker.style.animation = "";
     els.ticker.style.animationDuration = `${Math.round(seconds)}s`;
   });
+}
+
+// The lower-third rotates slides every 11s, but a full crawl takes 24s+, so a
+// per-slide ticker never finishes a pass before its copy is yanked. Broadcast
+// crawls run the whole rundown independent of the on-screen panel: feed the
+// ticker every slide's lead at once and let it read out over the stop dwell.
+function renderTicker(slides) {
+  setTickerText(
+    slides
+      .map((slide) => slide.tickerLead)
+      .concat([
+        "DATA: NOAA/NWS alerts, RainViewer radar, Open-Meteo forecast, CARTO/OpenStreetMap",
+        "JMO WEATHER SCAN",
+      ])
+      .join("     •     "),
+  );
 }
 
 function renderDetailSlide() {
@@ -484,11 +506,7 @@ function renderDetailSlide() {
   const slide = slides[detailIndex % slides.length];
   els.viewing.textContent = slide.kicker;
   els.summary.textContent = slide.summary;
-  setTickerText([
-    slide.tickerLead,
-    "DATA: NOAA/NWS alerts, RainViewer radar, Open-Meteo forecast, CARTO/OpenStreetMap",
-    "JMO WEATHER SCAN",
-  ].join("     •     "));
+  if (detailIndex === 0) renderTicker(slides);
 }
 
 function advanceDetailSlide() {
