@@ -30,6 +30,7 @@ const drift = { x: 0, y: 0 };
 
 let width = 1;
 let height = 1;
+let dprScale = 1;
 let centerX = 0;
 let centerY = 0;
 let focalLength = 1;
@@ -114,6 +115,7 @@ function numberParam(name, fallback, min = -Infinity, max = Infinity) {
 
 function resize() {
   const dpr = config.dpr || Math.min(window.devicePixelRatio || 1, 2);
+  dprScale = dpr;
   width = Math.max(1, Math.floor(window.innerWidth * dpr));
   height = Math.max(1, Math.floor(window.innerHeight * dpr));
   canvas.width = width;
@@ -211,8 +213,11 @@ function render(dt, time) {
   const travel = 0.62 * config.speed;
   // Ease toward the drift target so toggling between pointer-driven and idle
   // drift glides instead of snapping the whole field sideways.
-  const driftTargetX = pointer.active ? pointer.x * 54 : Math.sin(time * 0.23) * 14;
-  const driftTargetY = pointer.active ? pointer.y * 38 : Math.cos(time * 0.19) * 10;
+  // Drift amplitudes and star stroke widths are tuned in CSS pixels; scale
+  // them by the render dpr, otherwise hi-dpr / 4K output gets thinner streaks
+  // and weaker drift than the same scene at 1080p.
+  const driftTargetX = (pointer.active ? pointer.x * 54 : Math.sin(time * 0.23) * 14) * dprScale;
+  const driftTargetY = (pointer.active ? pointer.y * 38 : Math.cos(time * 0.19) * 10) * dprScale;
   const driftEase = 1 - Math.exp(-dt * 3.2);
   // Project each star's previous position with last frame's drift: using the
   // current drift for both endpoints cancels the sideways slide out of dx/dy,
@@ -248,11 +253,11 @@ function render(dt, time) {
     const depth = 1 - star.z / 2;
     const twinkle = 0.8 + Math.sin(star.twinkle) * star.twinkleAmount;
     const alpha = clamp(0.12 + depth * 0.76 + smoothLevel * 0.18, 0.08, 1) * twinkle;
-    const radius = Math.max(0.6, star.size * (0.35 + depth * 2.6) * pulse);
+    const radius = Math.max(0.6, star.size * (0.35 + depth * 2.6) * pulse) * dprScale;
     const dx = next.x - prev.x;
     const dy = next.y - prev.y;
     const step = Math.hypot(dx, dy);
-    const tail = Math.max(1, step * (0.5 + depth * 1.4));
+    const tail = Math.max(dprScale, step * (0.5 + depth * 1.4));
 
     ctx.strokeStyle = `hsla(${star.hue}, 100%, ${68 + depth * 22}%, ${alpha})`;
     ctx.lineWidth = radius;
@@ -292,7 +297,8 @@ function project(star, z, driftX, driftY) {
 }
 
 function inBounds(x, y) {
-  return x > -120 && x < width + 120 && y > -120 && y < height + 120;
+  const margin = 120 * dprScale;
+  return x > -margin && x < width + margin && y > -margin && y < height + margin;
 }
 
 function buildNebulaLayer() {
@@ -390,11 +396,11 @@ function drawDebug(dt) {
   ctx.save();
   ctx.globalCompositeOperation = "source-over";
   ctx.fillStyle = "rgba(0, 0, 0, 0.55)";
-  ctx.fillRect(14, 14, 170, 58);
+  ctx.fillRect(14 * dprScale, 14 * dprScale, 170 * dprScale, 58 * dprScale);
   ctx.fillStyle = "#dffcff";
-  ctx.font = `${14 * (config.dpr || Math.min(window.devicePixelRatio || 1, 2))}px ui-monospace, SFMono-Regular, Menlo, monospace`;
-  ctx.fillText(`stars ${stars.length}`, 24, 38);
-  ctx.fillText(`fps ${Math.round(1 / Math.max(dt, 0.001))}`, 24, 60);
+  ctx.font = `${14 * dprScale}px ui-monospace, SFMono-Regular, Menlo, monospace`;
+  ctx.fillText(`stars ${stars.length}`, 24 * dprScale, 38 * dprScale);
+  ctx.fillText(`fps ${Math.round(1 / Math.max(dt, 0.001))}`, 24 * dprScale, 60 * dprScale);
   ctx.restore();
 }
 
