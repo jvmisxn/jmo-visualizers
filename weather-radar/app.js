@@ -420,6 +420,21 @@ function buildDetailSlides(stop, weather, alerts, condition, isNight) {
   return slides;
 }
 
+// The CSS crawl always takes one fixed cycle, so a long alert-day ticker
+// scrolls much faster than a quiet-day one. Broadcast crawls hold a constant
+// read speed; derive the cycle time from the rendered width instead.
+const TICKER_PX_PER_SECOND = 85;
+const TICKER_MIN_SECONDS = 24;
+
+function setTickerText(text) {
+  els.ticker.textContent = text;
+  requestAnimationFrame(() => {
+    const speed = window.innerWidth <= 760 ? 60 : TICKER_PX_PER_SECOND;
+    const seconds = Math.max(TICKER_MIN_SECONDS, els.ticker.scrollWidth / speed);
+    els.ticker.style.animationDuration = `${Math.round(seconds)}s`;
+  });
+}
+
 function renderDetailSlide() {
   if (!lastRendered) return;
   const slides = buildDetailSlides(
@@ -433,11 +448,11 @@ function renderDetailSlide() {
   const slide = slides[detailIndex % slides.length];
   els.viewing.textContent = slide.kicker;
   els.summary.textContent = slide.summary;
-  els.ticker.textContent = [
+  setTickerText([
     slide.tickerLead,
     "DATA: NOAA/NWS alerts, RainViewer radar, Open-Meteo forecast, CARTO/OpenStreetMap",
     "JMO WEATHER SCAN",
-  ].join("     •     ");
+  ].join("     •     "));
 }
 
 function advanceDetailSlide() {
@@ -577,7 +592,7 @@ function renderFallback(stop, error) {
   els.daily.innerHTML = "";
   els.summary.textContent = `Scanning ${stop.name}`;
   updateRadarStamp();
-  els.ticker.textContent = `DATA REFRESH PENDING: ${error.message}     •     NOAA/NWS, Open-Meteo, CARTO/OpenStreetMap`;
+  setTickerText(`DATA REFRESH PENDING: ${error.message}     •     NOAA/NWS, Open-Meteo, CARTO/OpenStreetMap`);
 }
 
 // Fetches and renders data only; never moves the map. The periodic refresh
