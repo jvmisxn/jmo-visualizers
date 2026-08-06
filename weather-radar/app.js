@@ -91,6 +91,7 @@ const baseNightLayer = L.tileLayer(BASEMAPS.nightBase, {
 const RADAR_REFRESH_MS = 300000;
 const RADAR_ANIMATION_REFRESH_MS = 600000;
 const RADAR_FRAME_MS = 1400;
+const RADAR_LATEST_HOLD_MS = 4200;
 const RADAR_MAX_FRAMES = 6;
 const RAINVIEWER_COLOR_SCHEME = 4;
 const STOP_DWELL_MS = 65000;
@@ -159,10 +160,9 @@ async function loadAnimatedRadar() {
     });
     if (!response.ok) throw new Error(`radar animation ${response.status}`);
     const data = await response.json();
-    const frames = [
-      ...(data.radar?.past || []),
-      ...(data.radar?.nowcast || []),
-    ].slice(-RADAR_MAX_FRAMES);
+    // Observed frames only: nowcast entries are model predictions, and the
+    // lower-third labels this loop with real radar timestamps.
+    const frames = (data.radar?.past || []).slice(-RADAR_MAX_FRAMES);
     if (!data.host || frames.length < 2) throw new Error("radar animation unavailable");
     setAnimatedRadarFrames(data.host, frames);
   } catch (error) {
@@ -188,7 +188,7 @@ function setAnimatedRadarFrames(host, frames) {
   if (signature === radarFrameSignature && radarFrameLayers.length === frames.length) return;
   radarFrameSignature = signature;
 
-  clearInterval(radarAnimationTimer);
+  clearTimeout(radarAnimationTimer);
   radarAnimationTimer = 0;
 
   radarFrameIndex = 0;
@@ -211,8 +211,15 @@ function setAnimatedRadarFrames(host, frames) {
   }).addTo(map));
 
   updateRadarLayerForStop();
-  radarAnimationTimer = setInterval(showNextRadarFrame, RADAR_FRAME_MS);
+  scheduleNextRadarFrame();
   updateRadarStamp();
+}
+
+// Broadcast loops hold on the most recent scan before restarting, so the
+// viewer's eye gets a beat on "now" instead of an even metronome cycle.
+function scheduleNextRadarFrame() {
+  const onLatestFrame = radarFrameIndex === radarFrameLayers.length - 1;
+  radarAnimationTimer = setTimeout(showNextRadarFrame, onLatestFrame ? RADAR_LATEST_HOLD_MS : RADAR_FRAME_MS);
 }
 
 function showNextRadarFrame() {
@@ -221,6 +228,7 @@ function showNextRadarFrame() {
   radarFrameIndex = (radarFrameIndex + 1) % radarFrameLayers.length;
   radarFrameLayers[radarFrameIndex].setOpacity(0.74);
   updateRadarStamp();
+  scheduleNextRadarFrame();
 }
 
 function updateRadarStamp() {
