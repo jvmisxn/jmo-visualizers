@@ -87,6 +87,7 @@ func _seed_rng() -> void:
 	rng.seed = hash(str(config.seed))
 
 func _reset_scene() -> void:
+	_seed_rng()
 	viewport_size = get_viewport_rect().size
 	fish.clear()
 	bubbles.clear()
@@ -142,6 +143,11 @@ func _make_fish(index: int) -> Dictionary:
 	var palette = PALETTES[index % PALETTES.size()]
 	var lane := rng.randf_range(0.18, 0.72)
 	var direction := 1.0 if rng.randf() > 0.5 else -1.0
+	var spot_count := rng.randi_range(0, 4)
+	var spots := []
+	for i in spot_count:
+		var angle := rng.randf_range(0.0, TAU)
+		spots.append(Vector2(cos(angle) * 0.26 - 0.04, sin(angle * 1.3) * 0.14))
 	return {
 		"x": rng.randf_range(0.0, viewport_size.x),
 		"y": viewport_size.y * lane,
@@ -163,7 +169,7 @@ func _make_fish(index: int) -> Dictionary:
 		"lane_cooldown": rng.randf_range(2.0, 7.0),
 		"dart": 0.0,
 		"stripe_count": rng.randi_range(2, 5),
-		"spot_count": rng.randi_range(0, 4),
+		"spots": spots,
 	}
 
 func _make_bubble(y: float) -> Dictionary:
@@ -203,27 +209,29 @@ func _make_pebble(index: int) -> Dictionary:
 func _update_fish(delta: float) -> void:
 	var size := viewport_size
 	for swimmer in fish:
-		swimmer.phase += delta * (1.8 + swimmer.wave)
+		var tail_rate: float = (1.0 + swimmer.wave + swimmer.speed * 0.055) * config.speed
+		swimmer.phase += delta * tail_rate
 		swimmer.turn_cooldown -= delta
 		swimmer.lane_cooldown -= delta
 		if swimmer.turn_cooldown <= 0.0:
-			if rng.randf() < 0.32:
+			if rng.randf() < 0.1:
 				swimmer.direction *= -1.0
 			swimmer.target_speed = rng.randf_range(16.0, 56.0)
-			swimmer.dart = rng.randf_range(0.0, 18.0) if rng.randf() < 0.22 else 0.0
+			swimmer.dart = rng.randf_range(60.0, 140.0) if rng.randf() < 0.22 else 0.0
 			swimmer.turn_cooldown = rng.randf_range(4.5, 13.0)
 		if swimmer.lane_cooldown <= 0.0:
 			var drift := sin(elapsed * 0.17 + swimmer.phase) * size.y * 0.08
 			swimmer.target_y = clampf(size.y * rng.randf_range(0.16, 0.74) + drift, size.y * 0.1, size.y * 0.8)
 			swimmer.lane_cooldown = rng.randf_range(3.0, 8.5)
 		swimmer.facing = lerpf(swimmer.facing, swimmer.direction, min(1.0, delta * 3.0))
-		swimmer.speed = lerpf(swimmer.speed, swimmer.target_speed + swimmer.dart, min(1.0, delta * 0.7))
-		swimmer.dart = max(0.0, swimmer.dart - delta * 10.0)
+		var speed_response := 4.0 if swimmer.dart > 0.0 else 0.7
+		swimmer.speed = lerpf(swimmer.speed, swimmer.target_speed + swimmer.dart, min(1.0, delta * speed_response))
+		swimmer.dart = max(0.0, swimmer.dart - delta * 60.0)
 		var idle_wave := sin(elapsed * swimmer.wave + swimmer.phase) * size.y * 0.016
 		var vertical_goal: float = swimmer.target_y + idle_wave
 		var desired_vy: float = clampf((vertical_goal - swimmer.y) * 0.42, -42.0, 42.0)
 		swimmer.vy = lerpf(swimmer.vy, desired_vy, min(1.0, delta * 1.8))
-		swimmer.x += swimmer.speed * swimmer.facing * delta * config.speed
+		swimmer.x += swimmer.speed * swimmer.depth * swimmer.facing * delta * config.speed
 		swimmer.y += swimmer.vy * delta * config.speed
 		swimmer.y = clampf(swimmer.y, size.y * 0.08, size.y * 0.82)
 		var horizontal = max(swimmer.speed * abs(swimmer.facing), 28.0)
@@ -241,7 +249,7 @@ func _update_fish(delta: float) -> void:
 
 func _update_bubbles(delta: float) -> void:
 	for bubble in bubbles:
-		bubble.phase += delta * 1.4
+		bubble.phase += delta * 1.4 * config.speed
 		bubble.y -= bubble.speed * delta * config.speed
 		bubble.x += sin(bubble.phase) * bubble.sway * delta
 		if bubble.y < -bubble.radius * 4.0:
@@ -356,9 +364,8 @@ func _draw_single_fish(swimmer: Dictionary) -> void:
 	for i in swimmer.stripe_count:
 		var x := lerpf(-0.34 * s, 0.22 * s, float(i) / max(float(swimmer.stripe_count - 1), 1.0))
 		draw_line(Vector2(x, -0.23 * s), Vector2(x + 0.06 * s, 0.22 * s), pattern_color, max(1.0, 0.025 * s), true)
-	for i in swimmer.spot_count:
-		var angle: float = float(i) * 2.4 + swimmer.phase
-		var spot := Vector2(cos(angle) * 0.26 * s - 0.04 * s, sin(angle * 1.3) * 0.14 * s)
+	for spot_unit in swimmer.spots:
+		var spot: Vector2 = spot_unit * s
 		draw_circle(spot, max(1.3, 0.032 * s), Color(0.02, 0.04, 0.04, alpha * 0.22))
 	draw_line(Vector2(0.28 * s, -0.22 * s), Vector2(0.26 * s, 0.18 * s), Color(0.02, 0.05, 0.05, alpha * 0.26), max(1.0, 0.018 * s), true)
 	draw_circle(Vector2(0.42 * s, -0.09 * s), max(1.8, 0.045 * s), Color(0.02, 0.06, 0.08, alpha))
