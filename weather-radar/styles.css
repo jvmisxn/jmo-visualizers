@@ -74,8 +74,8 @@ body,
   filter: saturate(1.04) contrast(1.08) brightness(1.18);
 }
 
-#map .leaflet-radar-pane,
-#map .leaflet-label-pane {
+#map .leaflet-radarPane-pane,
+#map .leaflet-labelPane-pane {
   filter: none;
 }
 
@@ -83,6 +83,13 @@ body,
   transition:
     opacity 1800ms ease,
     filter 1800ms ease;
+}
+
+/* The radar loop steps frames every 1.4s; the 1800ms basemap crossfade never
+   finishes between steps, so adjacent scans ghost on top of each other and
+   smear storm cells. A short fade keeps the step crisp with a slight blend. */
+#map .leaflet-radarPane-pane .leaflet-layer {
+  transition: opacity 400ms linear;
 }
 
 .leaflet-control-container {
