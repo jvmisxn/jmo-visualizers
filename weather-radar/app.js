@@ -411,6 +411,19 @@ function rotateCamera() {
   renderCamera();
 }
 
+// Like the slide rotator, the camera timer restarts when a stop lands: a
+// free-running interval could cut away from the first camera a second after
+// it airs, which reads as a glitch rather than a rotation.
+let cameraRotateTimer = 0;
+
+function scheduleCameraRotation() {
+  clearTimeout(cameraRotateTimer);
+  cameraRotateTimer = setTimeout(() => {
+    rotateCamera();
+    scheduleCameraRotation();
+  }, CAMERA_ROTATE_MS);
+}
+
 function fmtTemp(value) {
   if (!Number.isFinite(value)) return "--";
   return `${Math.round(value)}°`;
@@ -935,6 +948,7 @@ function setStop(index, instant = false) {
   cameraIndex = 0;
   cameraFailures = 0;
   renderCamera();
+  scheduleCameraRotation();
   updateRadarLayerForStop();
   if (instant) {
     map.setView([stop.lat, stop.lon], stop.zoom);
@@ -960,7 +974,6 @@ loadAnimatedRadar();
 setTimeout(nextStop, INITIAL_GLIDE_DELAY_MS);
 setInterval(nextStop, STOP_DWELL_MS);
 setInterval(() => loadStopData(stopIndex), 300000);
-setInterval(rotateCamera, CAMERA_ROTATE_MS);
 setInterval(refreshRadar, RADAR_REFRESH_MS);
 setInterval(loadAnimatedRadar, RADAR_ANIMATION_REFRESH_MS);
 scheduleDetailRotation();
