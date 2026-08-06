@@ -90,6 +90,7 @@ const baseNightLayer = L.tileLayer(BASEMAPS.nightBase, {
 
 const RADAR_REFRESH_MS = 300000;
 const RADAR_ANIMATION_REFRESH_MS = 600000;
+const RADAR_ANIMATION_STALE_MS = 1800000;
 const RADAR_FRAME_MS = 1400;
 const RADAR_LATEST_HOLD_MS = 4200;
 const RADAR_MAX_FRAMES = 6;
@@ -166,6 +167,12 @@ async function loadAnimatedRadar() {
     if (!data.host || frames.length < 2) throw new Error("radar animation unavailable");
     setAnimatedRadarFrames(data.host, frames);
   } catch (error) {
+    // A loop that hasn't refreshed in 30 minutes is showing weather that no
+    // longer exists; the static NOAA layer refetches on a fresh stamp, so a
+    // stale loop is worse than the fallback it was protecting.
+    if (radarFrames.length >= 2 && Date.now() - radarAnimationLoadedAt > RADAR_ANIMATION_STALE_MS) {
+      teardownAnimatedRadar();
+    }
     // A transient RainViewer failure must not stack the static layer on top
     // of an animation loop that is still cycling its last good frames.
     if (radarFrames.length < 2) {
@@ -176,6 +183,16 @@ async function loadAnimatedRadar() {
       updateRadarStamp();
     }
   }
+}
+
+function teardownAnimatedRadar() {
+  clearTimeout(radarAnimationTimer);
+  radarAnimationTimer = 0;
+  radarFrameLayers.forEach((layer) => map.removeLayer(layer));
+  radarFrameLayers = [];
+  radarFrames = [];
+  radarFrameIndex = 0;
+  radarFrameSignature = "";
 }
 
 function setAnimatedRadarFrames(host, frames) {
