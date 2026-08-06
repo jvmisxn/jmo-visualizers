@@ -35,6 +35,7 @@ let waterLayer = null;
 let bottomLayer = null;
 let glassLayer = null;
 let bubbleSprite = null;
+let moteSprite = null;
 let waveSprite = null;
 let raySprite = null;
 let rayOriginX = 0;
@@ -89,7 +90,7 @@ function resetScene() {
   motes = Array.from({ length: config.quality === "low" ? 0 : 160 }, () => ({
     x: rand() * width,
     y: rand() * height,
-    r: 0.45 + rand() * 1.7,
+    r: (0.45 + rand() * 1.7) * dpr,
     drift: (12 + rand() * 54) * dpr,
     alpha: 0.05 + rand() * 0.13,
   }));
@@ -97,6 +98,7 @@ function resetScene() {
   bottomLayer = buildBottomLayer();
   glassLayer = buildGlassLayer();
   bubbleSprite = buildBubbleSprite();
+  moteSprite = buildMoteSprite();
   waveSprite = buildWaveSprite();
   raySprite = buildRaySprite();
 }
@@ -263,13 +265,13 @@ function drawLightRays(time) {
 }
 
 function drawMotes() {
+  if (!moteSprite) return;
   ctx.save();
   ctx.globalCompositeOperation = "screen";
   for (const mote of motes) {
-    ctx.fillStyle = `rgba(205, 250, 255, ${mote.alpha})`;
-    ctx.beginPath();
-    ctx.arc(mote.x, mote.y, mote.r, 0, Math.PI * 2);
-    ctx.fill();
+    ctx.globalAlpha = mote.alpha;
+    const size = mote.r * 2;
+    ctx.drawImage(moteSprite, mote.x - mote.r, mote.y - mote.r, size, size);
   }
   ctx.restore();
 }
@@ -539,6 +541,22 @@ function buildRaySprite() {
   spriteCtx.lineTo(rayOriginX + 130 * dpr, height);
   spriteCtx.lineTo(rayOriginX - 110 * dpr, height);
   spriteCtx.closePath();
+  spriteCtx.fill();
+  return sprite;
+}
+
+function buildMoteSprite() {
+  // Motes are 1-4px dots; drawing a high-res circle once and downscaling it
+  // keeps the antialiased edge without a path fill + fillStyle string per mote.
+  const size = Math.max(2, Math.ceil(8 * dpr));
+  const sprite = document.createElement("canvas");
+  sprite.width = size;
+  sprite.height = size;
+  const spriteCtx = sprite.getContext("2d");
+  if (!spriteCtx) return null;
+  spriteCtx.fillStyle = "rgb(205, 250, 255)";
+  spriteCtx.beginPath();
+  spriteCtx.arc(size * 0.5, size * 0.5, size * 0.46, 0, Math.PI * 2);
   spriteCtx.fill();
   return sprite;
 }
