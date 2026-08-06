@@ -53,6 +53,7 @@ const els = {
   wind: document.querySelector("#wind"),
   precip: document.querySelector("#precip"),
   updated: document.querySelector("#updated"),
+  localTime: document.querySelector("#local-time"),
   daily: document.querySelector("#daily"),
   viewing: document.querySelector("#now-viewing"),
   summary: document.querySelector("#summary"),
@@ -285,6 +286,30 @@ function updateClock() {
     minute: "2-digit",
     hour12: true,
   }).format(now).replace(" ", "") + " PT";
+  renderLocalTime();
+}
+
+// The topbar clock stays on PT (the broadcast's home time), but a world-scan
+// panel should show the region's own wall clock — Open-Meteo's timezone:auto
+// response tells us which one that is.
+let regionTimeZone = "";
+
+function renderLocalTime() {
+  if (!regionTimeZone) {
+    els.localTime.textContent = "Local --";
+    return;
+  }
+  try {
+    const stamp = new Intl.DateTimeFormat("en-US", {
+      timeZone: regionTimeZone,
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true,
+    }).format(new Date());
+    els.localTime.textContent = `Local ${stamp}`;
+  } catch (error) {
+    els.localTime.textContent = "Local --";
+  }
 }
 
 function fmtTemp(value) {
@@ -599,6 +624,8 @@ function renderWeather(stop, weather, alerts) {
   const isNight = isNightFromWeather(weather);
 
   lastAlertCount = alerts.length;
+  regionTimeZone = weather.timezone || "";
+  renderLocalTime();
   applyDayPart(isNight);
   document.body.classList.toggle("alert-mode", alerts.length > 0);
   els.mode.textContent = alerts.length ? "STORM WATCH" : isNight ? "NIGHT SCAN" : stop.mode;
@@ -644,6 +671,10 @@ function renderFallback(stop, error) {
   // A stale alert count from the previous stop would keep suppressing the
   // radar loop stamp even though alert-mode is being cleared here.
   lastAlertCount = 0;
+  // Timezone came from the failed fetch's stop, so the previous region's
+  // clock would be wrong under this stop's name.
+  regionTimeZone = "";
+  renderLocalTime();
   document.body.classList.remove("alert-mode");
   // Keep the current day/night theme on transient failures instead of
   // flashing back to the day palette at night.
