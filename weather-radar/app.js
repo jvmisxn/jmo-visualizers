@@ -309,7 +309,13 @@ function renderWeather(stop, weather, alerts) {
     ? alertText
     : `${isNight ? "Night conditions" : condition} near ${stop.name}. ${fmtWind(current.wind_speed_10m)}.`;
 
-  els.radar.textContent = alerts.length ? `${alerts.length} ALERT${alerts.length > 1 ? "S" : ""}` : "RADAR: LIVE";
+  // Don't stomp the animated loop's frame stamp on every weather render;
+  // updateRadarStamp knows whether a loop is running.
+  if (alerts.length) {
+    els.radar.textContent = `${alerts.length} ALERT${alerts.length > 1 ? "S" : ""}`;
+  } else {
+    updateRadarStamp();
+  }
   els.ticker.textContent = [
     alerts.length ? `ALERTS: ${alertText}` : `${stop.name}: ${condition}, ${fmtTemp(current.temperature_2m)}, ${fmtWind(current.wind_speed_10m)}`,
     "DATA: NOAA/NWS alerts, NOAA radar, Open-Meteo forecast, CARTO/OpenStreetMap",
@@ -318,6 +324,9 @@ function renderWeather(stop, weather, alerts) {
 }
 
 function renderFallback(stop, error) {
+  // A stale alert count from the previous stop would keep suppressing the
+  // radar loop stamp even though alert-mode is being cleared here.
+  lastAlertCount = 0;
   document.body.classList.remove("alert-mode");
   // Keep the current day/night theme on transient failures instead of
   // flashing back to the day palette at night.
@@ -331,7 +340,7 @@ function renderFallback(stop, error) {
   els.updated.textContent = "Retrying";
   els.daily.innerHTML = "";
   els.summary.textContent = `Scanning ${stop.name}`;
-  els.radar.textContent = "RADAR: LIVE";
+  updateRadarStamp();
   els.ticker.textContent = `DATA REFRESH PENDING: ${error.message}     •     NOAA/NWS, Open-Meteo, CARTO/OpenStreetMap`;
 }
 
