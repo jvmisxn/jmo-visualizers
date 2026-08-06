@@ -180,16 +180,20 @@ function frame(now) {
 
   const dt = Math.min((now - lastTime) / 1000, maxDelta);
   lastTime = now;
-  updateAudio(now);
+  updateAudio(dt);
   render(dt, now / 1000);
   requestAnimationFrame(frame);
 }
 
-function updateAudio(now) {
+function updateAudio(dt) {
+  // Attack/decay run per rendered frame, so fixed per-frame factors (0.18 rise,
+  // 0.94 fall) make the envelope fps-dependent — an ?fps=10 cap would smear the
+  // response ~6x slower in real time. Use dt-based exponentials tuned to match
+  // the old feel at 60fps.
   if (!analyser || !frequencyData) {
     audioLevel = 0;
     bassLevel = 0;
-    smoothLevel *= 0.94;
+    smoothLevel *= Math.exp(-dt * 3.7);
     return;
   }
 
@@ -204,7 +208,7 @@ function updateAudio(now) {
 
   bassLevel = clamp01(bass / bassBins / 255);
   audioLevel = clamp01(mids / (midBins - bassBins) / 255);
-  smoothLevel += (Math.max(audioLevel, bassLevel) - smoothLevel) * 0.18;
+  smoothLevel += (Math.max(audioLevel, bassLevel) - smoothLevel) * (1 - Math.exp(-dt * 11.9));
 }
 
 function render(dt, time) {
