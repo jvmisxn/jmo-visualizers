@@ -350,6 +350,21 @@ function summarizeAlerts(alerts) {
   return parts.join(" / ");
 }
 
+// Broadcast alert copy leads with the expiration — "Flood Watch until 5:00 PM"
+// tells the viewer more than a bare event name. NWS ends/expires strings carry
+// the alerted zone's local offset, so fmtClock reads the wall time local to
+// the affected area, not the viewer's.
+function alertTiming(alerts) {
+  const ends = alerts
+    .map((alert) => alert.properties?.ends || alert.properties?.expires)
+    .filter(Boolean)
+    .sort();
+  if (!ends.length) return "";
+  const clock = fmtClock(ends[ends.length - 1]);
+  if (clock === "--") return "";
+  return alerts.length > 1 ? ` through ${clock}` : ` until ${clock}`;
+}
+
 function todayForecastLine(daily, timezone) {
   const hi = fmtTemp(daily.temperature_2m_max?.[0]);
   const lo = fmtTemp(daily.temperature_2m_min?.[0]);
@@ -381,10 +396,11 @@ function buildDetailSlides(stop, weather, alerts, condition, isNight) {
   const slides = [];
 
   if (alerts.length) {
+    const timing = alertTiming(alerts);
     slides.push({
       kicker: "ALERTS ACTIVE",
-      summary: alertSummary || `${alerts.length} weather alerts active`,
-      tickerLead: `ALERTS: ${alertSummary || `${alerts.length} active alerts`}`,
+      summary: `${alertSummary || `${alerts.length} weather alerts active`}${timing}`,
+      tickerLead: `ALERTS: ${alertSummary || `${alerts.length} active alerts`}${timing}`,
     });
   }
 
