@@ -24,6 +24,7 @@ const FINNHUB_SYMBOLS = new Map([
 
 const PUBLIC_QUOTES_URL = "https://raw.githubusercontent.com/jvmisxn/jmo-visualizers/main/market-data/quotes.json";
 const PUBLIC_QUOTES_REFRESH_MS = 60000;
+const MARKET_PROXY_URL = window.JMO_MARKET_PROXY_URL || "";
 
 const HEADLINES = [
   "Tech leads the tape while small caps try to hold the morning bid.",
@@ -136,7 +137,8 @@ async function loadPublicQuoteSnapshot() {
   if (liveMode) return;
 
   try {
-    const response = await fetch(`${PUBLIC_QUOTES_URL}?refresh=${Math.floor(Date.now() / PUBLIC_QUOTES_REFRESH_MS)}`, {
+    const sourceUrl = MARKET_PROXY_URL || PUBLIC_QUOTES_URL;
+    const response = await fetch(`${sourceUrl}?refresh=${Math.floor(Date.now() / PUBLIC_QUOTES_REFRESH_MS)}`, {
       cache: "no-store",
     });
     if (!response.ok) throw new Error(`snapshot ${response.status}`);
@@ -156,7 +158,9 @@ async function loadPublicQuoteSnapshot() {
     const ageMinutes = Number.isFinite(snapshot.generatedAt)
       ? Math.max(0, Math.round((Date.now() - snapshot.generatedAt) / 60000))
       : 0;
-    els.headlineSource.textContent = ageMinutes > 30 ? "DELAYED SNAPSHOT" : "REAL SNAPSHOT";
+    els.headlineSource.textContent = MARKET_PROXY_URL
+      ? "FINNHUB PROXY"
+      : ageMinutes > 30 ? "DELAYED SNAPSHOT" : "REAL SNAPSHOT";
     renderQuotes();
     draw();
   } catch (error) {
