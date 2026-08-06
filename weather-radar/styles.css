@@ -315,10 +315,30 @@ body,
 }
 
 .daily div {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 50px minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 9px;
   font-size: 15px;
   font-weight: 900;
+}
+
+.day-cond {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #bfe2ff;
+}
+
+.night-mode .day-cond {
+  color: #c3d0ff;
+}
+
+.day-temps {
+  text-align: right;
 }
 
 .lower-third {

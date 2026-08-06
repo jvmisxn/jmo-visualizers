@@ -611,7 +611,8 @@ function renderWeather(stop, weather, alerts) {
     const pop = Number.isFinite(daily.precipitation_probability_max?.[i])
       ? `${Math.round(daily.precipitation_probability_max[i])}%`
       : "--";
-    row.innerHTML = `<span>${label}</span><span>${hi} / ${lo} &nbsp; ${pop}</span>`;
+    const dayCondition = WEATHER_CODES[daily.weather_code?.[i]] || "";
+    row.innerHTML = `<span class="day-name">${label}</span><span class="day-cond">${dayCondition}</span><span class="day-temps">${hi} / ${lo} &nbsp; ${pop}</span>`;
     els.daily.appendChild(row);
   }
 
