@@ -70,6 +70,7 @@ const els = {
   region: document.querySelector("#region"),
   temp: document.querySelector("#temperature"),
   condition: document.querySelector("#condition"),
+  feelsLike: document.querySelector("#feels-like"),
   wind: document.querySelector("#wind"),
   precip: document.querySelector("#precip"),
   updated: document.querySelector("#updated"),
@@ -466,6 +467,20 @@ function fmtShortWind(value, direction) {
   if (!Number.isFinite(value)) return "wind --";
   const compass = windCompass(direction);
   return compass ? `wind ${compass} ${Math.round(value)} mph` : `wind ${Math.round(value)} mph`;
+}
+
+// Broadcast conditions decks pitch "Feels like" only when it's a story —
+// heat index or wind chill pulling meaningfully away from the thermometer.
+// Airing "91° / Feels like 91°" full-time is dead weight, so the line only
+// takes the panel when the rounded readings are 3°+ apart.
+function renderFeelsLike(actual, apparent) {
+  if (!Number.isFinite(actual) || !Number.isFinite(apparent)
+    || Math.abs(Math.round(apparent) - Math.round(actual)) < 3) {
+    els.feelsLike.hidden = true;
+    return;
+  }
+  els.feelsLike.textContent = `Feels like ${Math.round(apparent)}°`;
+  els.feelsLike.hidden = false;
 }
 
 function fmtPercent(value) {
@@ -883,6 +898,7 @@ function renderWeather(stop, weather, alerts) {
   els.region.textContent = stop.name;
   els.temp.textContent = fmtTemp(current.temperature_2m);
   els.condition.textContent = condition;
+  renderFeelsLike(current.temperature_2m, current.apparent_temperature);
   els.wind.textContent = fmtWind(current.wind_speed_10m, current.wind_direction_10m, current.wind_gusts_10m);
   // "Rain 0.00 in" is dead air on a dry day; broadcast current-conditions
   // panels fill that slot with humidity, and the rain amount takes it back
@@ -948,6 +964,7 @@ function renderFallback(stop, error) {
   els.region.textContent = stop.name;
   els.temp.textContent = "--";
   els.condition.textContent = "Data update pending";
+  els.feelsLike.hidden = true;
   els.wind.textContent = "Wind --";
   els.precip.textContent = "Humidity --";
   els.updated.textContent = "Retrying";

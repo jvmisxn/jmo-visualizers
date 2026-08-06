@@ -371,6 +371,18 @@ body,
   color: #c8eaff;
 }
 
+.feels-like {
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #ffd77e;
+}
+
+.night-mode .feels-like {
+  color: #ffcf8f;
+}
+
 .metric-stack {
   display: grid;
   gap: 8px;
