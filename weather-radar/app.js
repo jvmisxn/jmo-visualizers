@@ -365,14 +365,21 @@ function alertTiming(alerts) {
   return alerts.length > 1 ? ` through ${clock}` : ` until ${clock}`;
 }
 
-function todayForecastLine(daily, timezone) {
+function todayForecastLine(daily, current, isNight) {
   const hi = fmtTemp(daily.temperature_2m_max?.[0]);
   const lo = fmtTemp(daily.temperature_2m_min?.[0]);
   const pop = Number.isFinite(daily.precipitation_probability_max?.[0])
     ? `${Math.round(daily.precipitation_probability_max[0])}% rain`
     : "rain chance --";
-  const sunset = fmtClock(daily.sunset?.[0], timezone);
-  return `Today ${hi} / ${lo}. ${pop}. Sunset ${sunset}.`;
+  // After dark, "Sunset 8:04 PM" is old news; pitch the next sunrise instead.
+  // Open-Meteo returns location-local ISO strings, so comparing against
+  // current.time picks today's sunrise pre-dawn and tomorrow's after sunset.
+  if (isNight) {
+    const now = current?.time || "";
+    const sunrise = daily.sunrise?.[0] > now ? daily.sunrise?.[0] : daily.sunrise?.[1];
+    return `Today ${hi} / ${lo}. ${pop}. Sunrise ${fmtClock(sunrise)}.`;
+  }
+  return `Today ${hi} / ${lo}. ${pop}. Sunset ${fmtClock(daily.sunset?.[0])}.`;
 }
 
 function tomorrowForecastLine(daily) {
@@ -424,8 +431,8 @@ function buildDetailSlides(stop, weather, alerts, condition, isNight) {
 
   slides.push({
     kicker: "FORECAST SNAPSHOT",
-    summary: todayForecastLine(daily, weather.timezone),
-    tickerLead: `FORECAST: ${todayForecastLine(daily, weather.timezone)}`,
+    summary: todayForecastLine(daily, current, isNight),
+    tickerLead: `FORECAST: ${todayForecastLine(daily, current, isNight)}`,
   });
 
   slides.push({
