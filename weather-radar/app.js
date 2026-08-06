@@ -84,6 +84,7 @@ const els = {
   cameraSource: document.querySelector("#camera-source"),
   cameraLocation: document.querySelector("#camera-location"),
   cameraUpdated: document.querySelector("#camera-updated"),
+  lowerThird: document.querySelector(".lower-third"),
 };
 
 const map = L.map("map", {
@@ -541,6 +542,7 @@ function buildDetailSlides(stop, weather, alerts, condition, isNight) {
   if (alerts.length) {
     const timing = alertTiming(alerts);
     slides.push({
+      alert: true,
       kicker: "ALERTS ACTIVE",
       summary: `${alertSummary || `${alerts.length} weather alerts active`}${timing}`,
       tickerLead: `ALERTS: ${alertSummary || `${alerts.length} active alerts`}${timing}`,
@@ -647,6 +649,10 @@ function renderDetailSlide() {
   );
   if (!slides.length) return;
   const slide = slides[detailIndex % slides.length];
+  // Minor advisories don't trip the full red alert-mode chrome, so the alert
+  // slide itself carries a red kicker chip to read differently from the
+  // routine conditions slides.
+  els.lowerThird.classList.toggle("alert-slide", Boolean(slide.alert));
   els.viewing.textContent = slide.kicker;
   els.summary.textContent = slide.summary;
   if (detailIndex === 0) renderTicker(slides);
@@ -814,6 +820,7 @@ function renderFallback(stop, error) {
   els.precip.textContent = "Rain --";
   els.updated.textContent = "Retrying";
   els.daily.innerHTML = "";
+  els.lowerThird.classList.remove("alert-slide");
   els.viewing.textContent = "STANDBY";
   els.summary.textContent = `Scanning ${stop.name}`;
   updateRadarStamp();
