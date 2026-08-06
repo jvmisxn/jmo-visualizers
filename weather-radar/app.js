@@ -349,9 +349,30 @@ function currentCameras() {
   return CAMERA_SETS[stop.name] || [];
 }
 
+// WSDOT feeds drop out individually; a broken-image box in the corner reads
+// as a crashed graphic on stream. Dead cameras are skipped, and if the whole
+// set is down the panel leaves air until the rotate cycle retries it.
+let cameraFailures = 0;
+
+els.cameraImage.addEventListener("load", () => {
+  cameraFailures = 0;
+});
+
+els.cameraImage.addEventListener("error", () => {
+  const cameras = currentCameras();
+  if (!cameras.length) return;
+  cameraFailures += 1;
+  if (cameraFailures >= cameras.length) {
+    els.cameraPanel.hidden = true;
+    return;
+  }
+  cameraIndex = (cameraIndex + 1) % cameras.length;
+  renderCamera();
+});
+
 function renderCamera() {
   const cameras = currentCameras();
-  if (!cameras.length) {
+  if (!cameras.length || cameraFailures >= cameras.length) {
     els.cameraPanel.hidden = true;
     return;
   }
@@ -367,7 +388,11 @@ function renderCamera() {
 
 function rotateCamera() {
   const cameras = currentCameras();
-  if (cameras.length) cameraIndex = (cameraIndex + 1) % cameras.length;
+  if (!cameras.length) return;
+  // The cache-buster URL changes each minute, so a set that went fully dark
+  // gets another chance on rotation instead of staying hidden for the stop.
+  if (cameraFailures >= cameras.length) cameraFailures = 0;
+  cameraIndex = (cameraIndex + 1) % cameras.length;
   renderCamera();
 }
 
@@ -819,6 +844,7 @@ async function loadStopData(index) {
 function setStop(index, instant = false) {
   const stop = STOPS[index % STOPS.length];
   cameraIndex = 0;
+  cameraFailures = 0;
   renderCamera();
   updateRadarLayerForStop();
   if (instant) {
