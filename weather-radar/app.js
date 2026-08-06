@@ -1,12 +1,16 @@
 const STOPS = [
-  { name: "Seattle and Puget Sound", lat: 47.6062, lon: -122.3321, zoom: 8, mode: "LOCAL FORECAST" },
-  { name: "Pacific Northwest", lat: 45.9, lon: -121.5, zoom: 7, mode: "REGIONAL SCAN" },
-  { name: "Northern California", lat: 38.6, lon: -121.5, zoom: 7, mode: "WEST COAST" },
-  { name: "Central Plains", lat: 39.2, lon: -97.2, zoom: 6, mode: "NATIONAL RADAR" },
-  { name: "Great Lakes", lat: 42.6, lon: -84.8, zoom: 6, mode: "REGIONAL SCAN" },
-  { name: "Gulf Coast", lat: 29.7, lon: -90.4, zoom: 7, mode: "GULF WATCH" },
-  { name: "Florida Peninsula", lat: 27.6, lon: -81.7, zoom: 7, mode: "TROPICS WATCH" },
-  { name: "Western Atlantic", lat: 25.7, lon: -72.5, zoom: 6, mode: "TROPICS WATCH" },
+  { name: "Seattle and Puget Sound", lat: 47.6062, lon: -122.3321, zoom: 8, mode: "LOCAL FORECAST", noaa: true },
+  { name: "Pacific Northwest", lat: 45.9, lon: -121.5, zoom: 7, mode: "REGIONAL SCAN", noaa: true },
+  { name: "Northern California", lat: 38.6, lon: -121.5, zoom: 7, mode: "WEST COAST", noaa: true },
+  { name: "Central Plains", lat: 39.2, lon: -97.2, zoom: 6, mode: "NATIONAL RADAR", noaa: true },
+  { name: "Great Lakes", lat: 42.6, lon: -84.8, zoom: 6, mode: "REGIONAL SCAN", noaa: true },
+  { name: "Gulf Coast", lat: 29.7, lon: -90.4, zoom: 7, mode: "GULF WATCH", noaa: true },
+  { name: "Florida Peninsula", lat: 27.6, lon: -81.7, zoom: 7, mode: "TROPICS WATCH", noaa: true },
+  { name: "Western Europe", lat: 50.1, lon: 4.4, zoom: 6, mode: "WORLD SCAN" },
+  { name: "Mediterranean", lat: 41.9, lon: 12.5, zoom: 6, mode: "WORLD SCAN" },
+  { name: "Japan and Korea", lat: 35.7, lon: 139.7, zoom: 6, mode: "PACIFIC SCAN" },
+  { name: "Eastern Australia", lat: -33.9, lon: 151.2, zoom: 6, mode: "WORLD SCAN" },
+  { name: "Western Atlantic", lat: 25.7, lon: -72.5, zoom: 5, mode: "TROPICS WATCH" },
 ];
 
 const WEATHER_CODES = {
@@ -60,24 +64,43 @@ const map = L.map("map", {
   tap: false,
 }).setView([STOPS[0].lat, STOPS[0].lon], STOPS[0].zoom);
 
-L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
+const BASEMAPS = {
+  dayBase: "https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png",
+  dayLabels: "https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png",
+  nightBase: "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png",
+  nightLabels: "https://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}{r}.png",
+};
+
+const baseLayer = L.tileLayer(BASEMAPS.dayBase, {
   attribution: "&copy; OpenStreetMap contributors &copy; CARTO",
   subdomains: "abcd",
   maxZoom: 10,
-  minZoom: 4,
-  opacity: 0.92,
+  minZoom: 2,
+  opacity: 0.98,
 }).addTo(map);
 
 const RADAR_REFRESH_MS = 300000;
 const RADAR_ANIMATION_REFRESH_MS = 600000;
 const RADAR_FRAME_MS = 1400;
 const RADAR_MAX_FRAMES = 6;
+const RAINVIEWER_COLOR_SCHEME = 4;
 const STOP_DWELL_MS = 65000;
 const CAMERA_GLIDE_SECONDS = 52;
 const INITIAL_GLIDE_DELAY_MS = 6000;
 
 map.createPane("radarPane");
 map.getPane("radarPane").style.zIndex = 360;
+map.createPane("labelPane");
+map.getPane("labelPane").style.zIndex = 430;
+map.getPane("labelPane").style.pointerEvents = "none";
+
+const labelLayer = L.tileLayer(BASEMAPS.dayLabels, {
+  subdomains: "abcd",
+  maxZoom: 10,
+  minZoom: 2,
+  opacity: 0.95,
+  pane: "labelPane",
+}).addTo(map);
 
 const radarLayer = L.tileLayer.wms("https://opengeo.ncep.noaa.gov/geoserver/conus/conus_bref_qcd/ows", {
   layers: "conus_bref_qcd",
@@ -85,6 +108,7 @@ const radarLayer = L.tileLayer.wms("https://opengeo.ncep.noaa.gov/geoserver/conu
   transparent: true,
   opacity: 0.3,
   pane: "radarPane",
+  bounds: L.latLngBounds([24.5, -127], [50.5, -66]),
   ts: Math.floor(Date.now() / RADAR_REFRESH_MS),
 }).addTo(map);
 
@@ -100,6 +124,7 @@ let radarFrameSignature = "";
 // re-fetch of current imagery.
 function refreshRadar() {
   radarLayer.setParams({ ts: Math.floor(Date.now() / RADAR_REFRESH_MS) });
+  updateRadarLayerForStop();
   loadAnimatedRadar();
 }
 
@@ -120,7 +145,7 @@ async function loadAnimatedRadar() {
     // A transient RainViewer failure must not stack the static layer on top
     // of an animation loop that is still cycling its last good frames.
     if (radarFrames.length < 2) {
-      radarLayer.setOpacity(0.52);
+      updateRadarLayerForStop();
       els.radar.textContent = "RADAR: LIVE";
     }
   }
@@ -142,7 +167,7 @@ function setAnimatedRadarFrames(host, frames) {
   radarFrameIndex = 0;
   radarFrames = frames.map((frame, index) => ({
     time: frame.time,
-    url: `${host}${frame.path}/512/{z}/{x}/{y}/2/1_1.png`,
+    url: `${host}${frame.path}/512/{z}/{x}/{y}/${RAINVIEWER_COLOR_SCHEME}/1_1.png`,
   }));
 
   // One preloaded layer per frame, toggled via opacity. Swapping a single
@@ -150,7 +175,7 @@ function setAnimatedRadarFrames(host, frames) {
   // which blanks the radar while tiles stream back in.
   radarFrameLayers.forEach((layer) => map.removeLayer(layer));
   radarFrameLayers = radarFrames.map((frame, index) => L.tileLayer(frame.url, {
-    opacity: index === 0 ? 0.62 : 0,
+    opacity: index === 0 ? 0.74 : 0,
     pane: "radarPane",
     tileSize: 512,
     zoomOffset: -1,
@@ -158,7 +183,7 @@ function setAnimatedRadarFrames(host, frames) {
     minZoom: 4,
   }).addTo(map));
 
-  radarLayer.setOpacity(0.18);
+  updateRadarLayerForStop();
   radarAnimationTimer = setInterval(showNextRadarFrame, RADAR_FRAME_MS);
   updateRadarStamp();
 }
@@ -167,7 +192,7 @@ function showNextRadarFrame() {
   if (radarFrames.length < 2 || radarFrameLayers.length < 2) return;
   radarFrameLayers[radarFrameIndex].setOpacity(0);
   radarFrameIndex = (radarFrameIndex + 1) % radarFrameLayers.length;
-  radarFrameLayers[radarFrameIndex].setOpacity(0.62);
+  radarFrameLayers[radarFrameIndex].setOpacity(0.74);
   updateRadarStamp();
 }
 
@@ -239,11 +264,10 @@ async function fetchWeather(stop) {
 }
 
 function isNightFromWeather(weather) {
-  if (isNightInPacificTime()) return true;
   const isDay = weather.current?.is_day;
   if (isDay === 0) return true;
   if (isDay === 1) return false;
-  return false;
+  return isNightInPacificTime();
 }
 
 function isNightInPacificTime() {
@@ -258,9 +282,26 @@ function isNightInPacificTime() {
 
 function applyDayPart(isNight) {
   document.body.classList.toggle("night-mode", isNight);
+  baseLayer.setUrl(isNight ? BASEMAPS.nightBase : BASEMAPS.dayBase);
+  labelLayer.setUrl(isNight ? BASEMAPS.nightLabels : BASEMAPS.dayLabels);
+  baseLayer.setOpacity(isNight ? 0.95 : 0.98);
+  labelLayer.setOpacity(isNight ? 0.92 : 0.98);
+}
+
+function currentStopSupportsNoaa() {
+  return Boolean(STOPS[stopIndex % STOPS.length]?.noaa);
+}
+
+function updateRadarLayerForStop() {
+  if (radarFrames.length >= 2) {
+    radarLayer.setOpacity(0);
+    return;
+  }
+  radarLayer.setOpacity(currentStopSupportsNoaa() ? 0.64 : 0);
 }
 
 async function fetchAlerts(stop) {
+  if (!stop.noaa) return [];
   const point = `${stop.lat.toFixed(4)},${stop.lon.toFixed(4)}`;
   const url = `https://api.weather.gov/alerts/active?point=${point}`;
   const response = await fetch(url, {
@@ -377,6 +418,7 @@ async function loadStopData(index) {
 
 function setStop(index, instant = false) {
   const stop = STOPS[index % STOPS.length];
+  updateRadarLayerForStop();
   if (instant) {
     map.setView([stop.lat, stop.lon], stop.zoom);
   } else {

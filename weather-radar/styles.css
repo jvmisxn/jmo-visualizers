@@ -64,11 +64,19 @@ body,
 #map {
   position: absolute;
   inset: 0;
-  filter: saturate(0.82) contrast(1.08) brightness(0.82);
 }
 
-.night-mode #map {
-  filter: hue-rotate(178deg) saturate(0.82) contrast(1.12) brightness(0.72);
+#map .leaflet-tile-pane {
+  filter: saturate(1.08) contrast(1.04) brightness(1);
+}
+
+.night-mode #map .leaflet-tile-pane {
+  filter: saturate(0.92) contrast(1.12) brightness(0.86);
+}
+
+#map .leaflet-radarPane-pane,
+#map .leaflet-labelPane-pane {
+  filter: none;
 }
 
 .leaflet-control-container {
@@ -96,9 +104,9 @@ body,
 
 .vignette {
   background:
-    linear-gradient(90deg, rgba(3, 9, 25, 0.72), transparent 20%, transparent 70%, rgba(3, 9, 25, 0.68)),
-    linear-gradient(180deg, rgba(22, 68, 143, 0.1), transparent 42%, rgba(1, 4, 12, 0.28)),
-    radial-gradient(circle at center, transparent 56%, rgba(0, 0, 0, 0.46));
+    linear-gradient(90deg, rgba(3, 9, 25, 0.34), transparent 20%, transparent 70%, rgba(3, 9, 25, 0.36)),
+    linear-gradient(180deg, rgba(22, 68, 143, 0.04), transparent 42%, rgba(1, 4, 12, 0.18)),
+    radial-gradient(circle at center, transparent 58%, rgba(0, 0, 0, 0.3));
 }
 
 .night-mode .scanlines {
