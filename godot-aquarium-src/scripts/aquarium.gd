@@ -106,8 +106,8 @@ func _reset_scene() -> void:
 			"x": rng.randf_range(0.0, viewport_size.x),
 			"y": rng.randf_range(0.0, viewport_size.y),
 			"radius": rng.randf_range(0.6, 1.8),
-			"drift": rng.randf_range(12.0, 44.0),
-			"alpha": rng.randf_range(0.04, 0.14),
+			"drift": rng.randf_range(2.0, 10.0),
+			"alpha": rng.randf_range(0.035, 0.11),
 		})
 	for i in 260:
 		pebbles.append(_make_pebble(i))
@@ -203,7 +203,8 @@ func _make_pebble(index: int) -> Dictionary:
 		"y": viewport_size.y * band,
 		"radius": rng.randf_range(1.2, 5.8) * lerpf(0.65, 1.25, band),
 		"flatness": rng.randf_range(0.38, 0.72),
-		"color": Color(shade * 0.72, shade * 0.88, shade, rng.randf_range(0.16, 0.34)),
+		"color": Color(shade * 0.7, shade * 0.84, shade * 0.9, rng.randf_range(0.56, 0.82)),
+		"highlight": rng.randf() < 0.22,
 	}
 
 func _update_fish(delta: float) -> void:
@@ -259,10 +260,10 @@ func _update_bubbles(delta: float) -> void:
 
 func _update_motes(delta: float) -> void:
 	for mote in motes:
-		mote.y -= mote.drift * delta * config.speed
-		mote.x += sin(elapsed * 0.24 + mote.y * 0.014) * 5.4 * delta
-		if mote.y < -4.0:
-			mote.y = viewport_size.y + 4.0
+		mote.y += mote.drift * delta * config.speed
+		mote.x += sin(elapsed * 0.18 + mote.y * 0.01) * 2.2 * delta
+		if mote.y > viewport_size.y + 4.0:
+			mote.y = -4.0
 			mote.x = rng.randf_range(0.0, viewport_size.x)
 
 func _draw_water(size: Vector2) -> void:
@@ -278,6 +279,9 @@ func _draw_water(size: Vector2) -> void:
 	for i in 10:
 		var y := size.y * (0.08 + i * 0.06) + sin(elapsed * 0.28 + i) * 9.0
 		draw_rect(Rect2(0.0, y - 1.0, size.x, 2.0), Color(0.55, 0.92, 1.0, 0.018))
+	var surface_y := size.y * 0.035 + sin(elapsed * 0.38) * 2.0
+	draw_rect(Rect2(0.0, 0.0, size.x, surface_y + 3.0), Color(0.72, 0.96, 1.0, 0.04))
+	draw_polyline(_surface_wave_points(size, surface_y), Color(0.82, 0.98, 1.0, 0.16), 1.4, true)
 
 func _draw_backdrop(size: Vector2) -> void:
 	for i in 8:
@@ -309,14 +313,14 @@ func _draw_light_rays(size: Vector2) -> void:
 		draw_colored_polygon(points, Color(0.62, 0.95, 1.0, 0.035))
 
 func _draw_caustics(size: Vector2) -> void:
-	for band in 5:
-		var y := size.y * (0.16 + band * 0.08)
+	for band in 6:
+		var y := size.y * (0.855 + band * 0.018)
 		var points := PackedVector2Array()
 		for step in 50:
 			var x := size.x * float(step) / 49.0
-			var wave := sin(elapsed * 0.34 + step * 0.45 + band) * 5.0 + sin(elapsed * 0.21 + step * 0.18) * 3.0
+			var wave := sin(elapsed * 0.42 + step * 0.45 + band) * 5.0 + sin(elapsed * 0.24 + step * 0.18) * 3.0
 			points.append(Vector2(x, y + wave))
-		draw_polyline(points, Color(0.72, 0.98, 1.0, 0.035), 1.2, true)
+		draw_polyline(points, Color(0.74, 0.98, 1.0, 0.07), 1.4, true)
 
 func _draw_motes() -> void:
 	for mote in motes:
@@ -331,7 +335,13 @@ func _draw_fish(front: bool) -> void:
 		_draw_single_fish(swimmer)
 
 func _draw_single_fish(swimmer: Dictionary) -> void:
-	var alpha = 0.42 + clampf((swimmer.depth - 0.48) / 0.52, 0.0, 1.0) * 0.58
+	var depth_factor = clampf((swimmer.depth - 0.48) / 0.52, 0.0, 1.0)
+	var fog_amount = (1.0 - depth_factor) * 0.46
+	var water_fog := Color.from_hsv(config.hue / 360.0, 0.46, 0.2)
+	var alpha = 0.92 + depth_factor * 0.08
+	var body_color: Color = swimmer.body.lerp(water_fog, fog_amount)
+	var fin_color: Color = swimmer.fin.lerp(water_fog, fog_amount)
+	var belly_color: Color = swimmer.belly.lerp(water_fog, fog_amount * 0.75)
 	var facing = swimmer.facing
 	if abs(facing) < 0.06:
 		facing = 0.06 if facing >= 0.0 else -0.06
@@ -347,20 +357,20 @@ func _draw_single_fish(swimmer: Dictionary) -> void:
 		Vector2(-0.52 * s, 0.0),
 		Vector2(-0.9 * s, (-0.48 - tail) * s),
 		Vector2(-0.82 * s, (0.48 - tail) * s),
-	]), _with_alpha(swimmer.fin, alpha))
+	]), _with_alpha(fin_color, alpha))
 	draw_colored_polygon(PackedVector2Array([
 		Vector2(-0.08 * s, -0.28 * s),
 		Vector2(-0.42 * s, -0.72 * s),
 		Vector2(-0.28 * s, -0.05 * s),
-	]), _with_alpha(swimmer.fin, alpha * 0.8))
+	]), _with_alpha(fin_color, alpha * 0.8))
 	draw_colored_polygon(PackedVector2Array([
 		Vector2(-0.04 * s, 0.22 * s),
 		Vector2(-0.26 * s, 0.58 * s),
 		Vector2(0.16 * s, 0.26 * s),
-	]), _with_alpha(swimmer.fin.darkened(0.1), alpha * 0.5))
-	draw_filled_ellipse(Vector2.ZERO, Vector2(0.66 * s, 0.34 * s), _with_alpha(swimmer.body, alpha))
-	draw_filled_ellipse(Vector2(0.1 * s, -0.1 * s), Vector2(0.3 * s, 0.11 * s), Color(1.0, 1.0, 1.0, alpha * 0.16))
-	var pattern_color := _with_alpha(swimmer.fin.darkened(0.28), alpha * 0.34)
+	]), _with_alpha(fin_color.darkened(0.1), alpha * 0.5))
+	draw_filled_ellipse(Vector2.ZERO, Vector2(0.66 * s, 0.34 * s), _with_alpha(body_color, alpha))
+	draw_filled_ellipse(Vector2(0.1 * s, -0.1 * s), Vector2(0.3 * s, 0.11 * s), _with_alpha(belly_color.lightened(0.18), alpha * 0.22))
+	var pattern_color := _with_alpha(fin_color.darkened(0.28), alpha * 0.36)
 	for i in swimmer.stripe_count:
 		var x := lerpf(-0.34 * s, 0.22 * s, float(i) / max(float(swimmer.stripe_count - 1), 1.0))
 		draw_line(Vector2(x, -0.23 * s), Vector2(x + 0.06 * s, 0.22 * s), pattern_color, max(1.0, 0.025 * s), true)
@@ -396,6 +406,12 @@ func _draw_bottom(size: Vector2) -> void:
 		draw_rect(Rect2(0.0, size.y * (0.84 + t * 0.16), size.x, size.y * 0.16 / 23.0 + 1.0), color)
 	for pebble in pebbles:
 		draw_filled_ellipse(Vector2(pebble.x, pebble.y), Vector2(pebble.radius, pebble.radius * pebble.flatness), pebble.color)
+		if pebble.highlight:
+			draw_filled_ellipse(
+				Vector2(pebble.x - pebble.radius * 0.18, pebble.y - pebble.radius * pebble.flatness * 0.18),
+				Vector2(pebble.radius * 0.34, max(0.5, pebble.radius * pebble.flatness * 0.12)),
+				Color(0.72, 0.88, 0.9, 0.18),
+			)
 	var rocks := [
 		[0.1, 0.91, 52.0, 24.0],
 		[0.17, 0.94, 82.0, 34.0],
@@ -432,6 +448,14 @@ func draw_filled_ellipse(center: Vector2, radius: Vector2, color: Color) -> void
 		var angle := TAU * float(i) / 32.0
 		points.append(center + Vector2(cos(angle) * radius.x, sin(angle) * radius.y))
 	draw_colored_polygon(points, color)
+
+func _surface_wave_points(size: Vector2, y: float) -> PackedVector2Array:
+	var points := PackedVector2Array()
+	for step in 64:
+		var x := size.x * float(step) / 63.0
+		var wave := sin(elapsed * 0.48 + step * 0.36) * 2.4 + sin(elapsed * 0.29 + step * 0.11) * 1.2
+		points.append(Vector2(x, y + wave))
+	return points
 
 func _with_alpha(color: Color, alpha: float) -> Color:
 	return Color(color.r, color.g, color.b, alpha)
