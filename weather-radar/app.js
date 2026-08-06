@@ -1,12 +1,12 @@
 const STOPS = [
-  { name: "Seattle and Puget Sound", lat: 47.6062, lon: -122.3321, zoom: 7, mode: "LOCAL FORECAST" },
-  { name: "Pacific Northwest", lat: 45.9, lon: -121.5, zoom: 6, mode: "REGIONAL SCAN" },
-  { name: "Northern California", lat: 38.6, lon: -121.5, zoom: 6, mode: "WEST COAST" },
-  { name: "Central Plains", lat: 39.2, lon: -97.2, zoom: 5, mode: "NATIONAL RADAR" },
-  { name: "Great Lakes", lat: 42.6, lon: -84.8, zoom: 5, mode: "REGIONAL SCAN" },
-  { name: "Gulf Coast", lat: 29.7, lon: -90.4, zoom: 6, mode: "GULF WATCH" },
-  { name: "Florida Peninsula", lat: 27.6, lon: -81.7, zoom: 6, mode: "TROPICS WATCH" },
-  { name: "Western Atlantic", lat: 25.7, lon: -72.5, zoom: 5, mode: "TROPICS WATCH" },
+  { name: "Seattle and Puget Sound", lat: 47.6062, lon: -122.3321, zoom: 8, mode: "LOCAL FORECAST" },
+  { name: "Pacific Northwest", lat: 45.9, lon: -121.5, zoom: 7, mode: "REGIONAL SCAN" },
+  { name: "Northern California", lat: 38.6, lon: -121.5, zoom: 7, mode: "WEST COAST" },
+  { name: "Central Plains", lat: 39.2, lon: -97.2, zoom: 6, mode: "NATIONAL RADAR" },
+  { name: "Great Lakes", lat: 42.6, lon: -84.8, zoom: 6, mode: "REGIONAL SCAN" },
+  { name: "Gulf Coast", lat: 29.7, lon: -90.4, zoom: 7, mode: "GULF WATCH" },
+  { name: "Florida Peninsula", lat: 27.6, lon: -81.7, zoom: 7, mode: "TROPICS WATCH" },
+  { name: "Western Atlantic", lat: 25.7, lon: -72.5, zoom: 6, mode: "TROPICS WATCH" },
 ];
 
 const WEATHER_CODES = {
@@ -72,6 +72,9 @@ const RADAR_REFRESH_MS = 300000;
 const RADAR_ANIMATION_REFRESH_MS = 600000;
 const RADAR_FRAME_MS = 1400;
 const RADAR_MAX_FRAMES = 6;
+const STOP_DWELL_MS = 65000;
+const CAMERA_GLIDE_SECONDS = 52;
+const INITIAL_GLIDE_DELAY_MS = 6000;
 
 map.createPane("radarPane");
 map.getPane("radarPane").style.zIndex = 360;
@@ -90,6 +93,7 @@ let radarFrameLayers = [];
 let radarFrameIndex = 0;
 let radarAnimationTimer = 0;
 let radarAnimationLoadedAt = 0;
+let radarFrameSignature = "";
 
 // The WMS layer only fetches tiles when the view changes, so a long-running
 // OBS source would keep showing cached radar. Rolling the ts param forces a
@@ -123,6 +127,15 @@ async function loadAnimatedRadar() {
 }
 
 function setAnimatedRadarFrames(host, frames) {
+  radarAnimationLoadedAt = Date.now();
+
+  // RainViewer publishes new frames roughly every 10 minutes but this reloads
+  // every 5; rebuilding the layers with an identical frame list blanks the
+  // radar while every tile refetches, so keep the running loop instead.
+  const signature = frames.map((frame) => `${host}${frame.path}`).join("|");
+  if (signature === radarFrameSignature && radarFrameLayers.length === frames.length) return;
+  radarFrameSignature = signature;
+
   clearInterval(radarAnimationTimer);
   radarAnimationTimer = 0;
 
@@ -145,7 +158,6 @@ function setAnimatedRadarFrames(host, frames) {
     minZoom: 4,
   }).addTo(map));
 
-  radarAnimationLoadedAt = Date.now();
   radarLayer.setOpacity(0.18);
   radarAnimationTimer = setInterval(showNextRadarFrame, RADAR_FRAME_MS);
   updateRadarStamp();
@@ -359,7 +371,11 @@ function setStop(index, instant = false) {
   if (instant) {
     map.setView([stop.lat, stop.lon], stop.zoom);
   } else {
-    map.flyTo([stop.lat, stop.lon], stop.zoom, { duration: 8, easeLinearity: 0.12 });
+    map.flyTo([stop.lat, stop.lon], stop.zoom, {
+      duration: CAMERA_GLIDE_SECONDS,
+      easeLinearity: 0.04,
+      noMoveStart: true,
+    });
   }
   return loadStopData(index);
 }
@@ -373,7 +389,8 @@ updateClock();
 setInterval(updateClock, 1000);
 setStop(stopIndex, true);
 loadAnimatedRadar();
-setInterval(nextStop, 90000);
+setTimeout(nextStop, INITIAL_GLIDE_DELAY_MS);
+setInterval(nextStop, STOP_DWELL_MS);
 setInterval(() => loadStopData(stopIndex), 300000);
 setInterval(refreshRadar, RADAR_REFRESH_MS);
 setInterval(loadAnimatedRadar, RADAR_ANIMATION_REFRESH_MS);
