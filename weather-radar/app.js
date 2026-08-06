@@ -96,6 +96,7 @@ const RAINVIEWER_COLOR_SCHEME = 4;
 const STOP_DWELL_MS = 65000;
 const CAMERA_GLIDE_SECONDS = 52;
 const INITIAL_GLIDE_DELAY_MS = 6000;
+const REGION_DETAIL_ROTATE_MS = 11000;
 
 map.createPane("radarPane");
 map.getPane("radarPane").style.zIndex = 360;
@@ -230,6 +231,8 @@ const FETCH_TIMEOUT_MS = 15000;
 
 let stopIndex = 0;
 let lastAlertCount = 0;
+let detailIndex = 0;
+let lastRendered = null;
 let requestSeq = 0;
 let retryTimer = 0;
 const RETRY_DELAY_MS = 20000;
@@ -254,6 +257,38 @@ function fmtWind(value) {
   return `Wind ${Math.round(value)} mph`;
 }
 
+function fmtShortWind(value) {
+  if (!Number.isFinite(value)) return "wind --";
+  return `wind ${Math.round(value)} mph`;
+}
+
+function fmtPercent(value) {
+  if (!Number.isFinite(value)) return "--";
+  return `${Math.round(value)}%`;
+}
+
+function fmtPressure(value) {
+  if (!Number.isFinite(value)) return "Pressure --";
+  return `Pressure ${Math.round(value)} mb`;
+}
+
+function fmtVisibility(value) {
+  if (!Number.isFinite(value)) return "Visibility --";
+  return `Visibility ${Math.round(value / 1609.344)} mi`;
+}
+
+function fmtClock(value) {
+  if (!value) return "--";
+  const match = /T(\d{2}):(\d{2})/.exec(value);
+  if (!match) return "--";
+  let hour = Number(match[1]);
+  const minute = match[2];
+  const suffix = hour >= 12 ? "PM" : "AM";
+  hour %= 12;
+  if (hour === 0) hour = 12;
+  return `${hour}:${minute} ${suffix}`;
+}
+
 function shortDate(value, index) {
   const date = new Date(`${value}T12:00:00Z`);
   if (index === 0) return "TODAY";
@@ -262,13 +297,129 @@ function shortDate(value, index) {
     .toUpperCase();
 }
 
+function summarizeAlerts(alerts) {
+  const counts = new Map();
+  for (const alert of alerts) {
+    const event = alert.properties?.event;
+    if (!event) continue;
+    counts.set(event, (counts.get(event) || 0) + 1);
+  }
+  const parts = Array.from(counts.entries()).map(([event, count]) => (
+    count > 1 ? `${event} (${count})` : event
+  ));
+  return parts.join(" / ");
+}
+
+function todayForecastLine(daily, timezone) {
+  const hi = fmtTemp(daily.temperature_2m_max?.[0]);
+  const lo = fmtTemp(daily.temperature_2m_min?.[0]);
+  const pop = Number.isFinite(daily.precipitation_probability_max?.[0])
+    ? `${Math.round(daily.precipitation_probability_max[0])}% rain`
+    : "rain chance --";
+  const sunset = fmtClock(daily.sunset?.[0], timezone);
+  return `Today ${hi} / ${lo}. ${pop}. Sunset ${sunset}.`;
+}
+
+function tomorrowForecastLine(daily) {
+  const hi = fmtTemp(daily.temperature_2m_max?.[1]);
+  const lo = fmtTemp(daily.temperature_2m_min?.[1]);
+  const pop = Number.isFinite(daily.precipitation_probability_max?.[1])
+    ? `${Math.round(daily.precipitation_probability_max[1])}% rain`
+    : "rain chance --";
+  const code = daily.weather_code?.[1];
+  const condition = WEATHER_CODES[code] || "Forecast update";
+  return `Tomorrow ${condition}. ${hi} / ${lo}. ${pop}.`;
+}
+
+function buildDetailSlides(stop, weather, alerts, condition, isNight) {
+  const current = weather.current || {};
+  const daily = weather.daily || {};
+  const alertSummary = summarizeAlerts(alerts);
+  const gust = Number.isFinite(current.wind_gusts_10m) && current.wind_gusts_10m > (current.wind_speed_10m || 0) + 2
+    ? `, gusts ${Math.round(current.wind_gusts_10m)} mph`
+    : "";
+  const slides = [];
+
+  if (alerts.length) {
+    slides.push({
+      kicker: "ALERTS ACTIVE",
+      summary: alertSummary || `${alerts.length} weather alerts active`,
+      tickerLead: `ALERTS: ${alertSummary || `${alerts.length} active alerts`}`,
+    });
+  }
+
+  slides.push({
+    kicker: isNight ? "NIGHT CONDITIONS" : "CURRENT CONDITIONS",
+    summary: `${condition} near ${stop.name}. ${fmtTemp(current.temperature_2m)}, ${fmtShortWind(current.wind_speed_10m)}${gust}.`,
+    tickerLead: `${stop.name}: ${condition}, ${fmtTemp(current.temperature_2m)}, ${fmtWind(current.wind_speed_10m)}`,
+  });
+
+  slides.push({
+    kicker: "LOCAL DETAILS",
+    summary: `Feels like ${fmtTemp(current.apparent_temperature)}. Humidity ${fmtPercent(current.relative_humidity_2m)}. Clouds ${fmtPercent(current.cloud_cover)}.`,
+    tickerLead: `DETAILS: feels ${fmtTemp(current.apparent_temperature)}, humidity ${fmtPercent(current.relative_humidity_2m)}, clouds ${fmtPercent(current.cloud_cover)}`,
+  });
+
+  slides.push({
+    kicker: "PRESSURE / VISIBILITY",
+    summary: `${fmtPressure(current.pressure_msl)}. ${fmtVisibility(current.visibility)}. Rain ${Number.isFinite(current.precipitation) ? current.precipitation.toFixed(2) : "--"} in.`,
+    tickerLead: `OBSERVATION: ${fmtPressure(current.pressure_msl)}, ${fmtVisibility(current.visibility)}`,
+  });
+
+  slides.push({
+    kicker: "FORECAST SNAPSHOT",
+    summary: todayForecastLine(daily, weather.timezone),
+    tickerLead: `FORECAST: ${todayForecastLine(daily, weather.timezone)}`,
+  });
+
+  slides.push({
+    kicker: "NEXT OUTLOOK",
+    summary: tomorrowForecastLine(daily),
+    tickerLead: `NEXT: ${tomorrowForecastLine(daily)}`,
+  });
+
+  slides.push({
+    kicker: "RADAR SCAN",
+    summary: `${radarFrames.length >= 2 ? "Animated radar loop" : "Radar fallback"} over ${stop.name}. Labels stay above storm cells.`,
+    tickerLead: `RADAR: ${radarFrames.length >= 2 ? "animated loop active" : "fallback scan active"} over ${stop.name}`,
+  });
+
+  return slides;
+}
+
+function renderDetailSlide() {
+  if (!lastRendered) return;
+  const slides = buildDetailSlides(
+    lastRendered.stop,
+    lastRendered.weather,
+    lastRendered.alerts,
+    lastRendered.condition,
+    lastRendered.isNight,
+  );
+  if (!slides.length) return;
+  const slide = slides[detailIndex % slides.length];
+  els.viewing.textContent = slide.kicker;
+  els.summary.textContent = slide.summary;
+  els.ticker.textContent = [
+    slide.tickerLead,
+    "DATA: NOAA/NWS alerts, RainViewer radar, Open-Meteo forecast, CARTO/OpenStreetMap",
+    "JMO WEATHER SCAN",
+  ].join("     •     ");
+}
+
+function advanceDetailSlide() {
+  if (!lastRendered) return;
+  detailIndex += 1;
+  renderDetailSlide();
+}
+
 async function fetchWeather(stop) {
   const url = new URL("https://api.open-meteo.com/v1/forecast");
   url.search = new URLSearchParams({
     latitude: stop.lat,
     longitude: stop.lon,
-    current: "temperature_2m,precipitation,weather_code,wind_speed_10m,is_day",
-    daily: "temperature_2m_max,temperature_2m_min,precipitation_probability_max,weather_code",
+    current: "temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m,wind_gusts_10m,cloud_cover,pressure_msl,visibility,is_day",
+    daily: "temperature_2m_max,temperature_2m_min,precipitation_probability_max,weather_code,sunrise,sunset",
     temperature_unit: "fahrenheit",
     wind_speed_unit: "mph",
     precipitation_unit: "inch",
@@ -362,11 +513,9 @@ function renderWeather(stop, weather, alerts) {
     els.daily.appendChild(row);
   }
 
-  els.viewing.textContent = alerts.length ? "ALERTS ACTIVE" : "NOW VIEWING";
-  const alertText = alerts.map((alert) => alert.properties?.event).filter(Boolean).join(" / ");
-  els.summary.textContent = alerts.length
-    ? alertText
-    : `${isNight ? "Night conditions" : condition} near ${stop.name}. ${fmtWind(current.wind_speed_10m)}.`;
+  detailIndex = 0;
+  lastRendered = { stop, weather, alerts, condition, isNight };
+  renderDetailSlide();
 
   // Don't stomp the animated loop's frame stamp on every weather render;
   // updateRadarStamp knows whether a loop is running.
@@ -375,11 +524,6 @@ function renderWeather(stop, weather, alerts) {
   } else {
     updateRadarStamp();
   }
-  els.ticker.textContent = [
-    alerts.length ? `ALERTS: ${alertText}` : `${stop.name}: ${condition}, ${fmtTemp(current.temperature_2m)}, ${fmtWind(current.wind_speed_10m)}`,
-    "DATA: NOAA/NWS alerts, NOAA radar, Open-Meteo forecast, CARTO/OpenStreetMap",
-    "JMO WEATHER SCAN",
-  ].join("     •     ");
 }
 
 function renderFallback(stop, error) {
@@ -463,6 +607,7 @@ setInterval(nextStop, STOP_DWELL_MS);
 setInterval(() => loadStopData(stopIndex), 300000);
 setInterval(refreshRadar, RADAR_REFRESH_MS);
 setInterval(loadAnimatedRadar, RADAR_ANIMATION_REFRESH_MS);
+setInterval(advanceDetailSlide, REGION_DETAIL_ROTATE_MS);
 document.addEventListener("visibilitychange", () => {
   if (!document.hidden) {
     refreshRadar();
