@@ -287,15 +287,26 @@ function updateRadarStamp() {
   if (lastAlertCount > 0) return;
   if (radarFrames.length >= 2) {
     const frame = radarFrames[radarFrameIndex];
-    const stamp = new Date(frame.time * 1000).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
-    els.radar.textContent = `RADAR LOOP: ${stamp}`;
+    els.radar.textContent = `RADAR LOOP: ${broadcastTime(new Date(frame.time * 1000))}`;
     return;
   }
-  const stamp = new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
-  els.radar.textContent = `RADAR: ${stamp}`;
+  els.radar.textContent = `RADAR: ${broadcastTime()}`;
 }
 
 const FETCH_TIMEOUT_MS = 15000;
+
+// Every on-air stamp reads in the broadcast's home time to agree with the
+// topbar PT clock — toLocaleTimeString would use the viewer's zone, so the
+// hosted page in another timezone shows stamps that contradict the clock.
+// Alert expiries are the deliberate exception: they read in the alerted
+// zone's local time, and the "Local" line carries the region's wall clock.
+function broadcastTime(date = new Date()) {
+  return new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/Los_Angeles",
+    hour: "numeric",
+    minute: "2-digit",
+  }).format(date);
+}
 
 let stopIndex = 0;
 let lastAlertCount = 0;
@@ -385,7 +396,7 @@ function renderCamera() {
     els.cameraImage.alt = camera.location;
     els.cameraSource.textContent = camera.source;
     els.cameraLocation.textContent = camera.location;
-    els.cameraUpdated.textContent = new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+    els.cameraUpdated.textContent = broadcastTime();
     els.cameraPanel.hidden = false;
   };
   probe.onerror = () => {
@@ -662,8 +673,7 @@ function buildDetailSlides(stop, weather, alerts, condition, isNight) {
   // animated loop covers every stop, but the static NOAA layer only covers
   // CONUS stops.
   if (radarFrames.length >= 2) {
-    const latestScan = new Date(radarFrames[radarFrames.length - 1].time * 1000)
-      .toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+    const latestScan = broadcastTime(new Date(radarFrames[radarFrames.length - 1].time * 1000));
     slides.push({
       kicker: "RADAR SCAN",
       summary: `Live radar loop over ${stop.name}. Most recent scan ${latestScan}.`,
@@ -873,7 +883,7 @@ function renderWeather(stop, weather, alerts) {
   els.precip.textContent = Number.isFinite(current.precipitation) && current.precipitation >= 0.01
     ? `Rain ${current.precipitation.toFixed(2)} in`
     : `Humidity ${fmtPercent(current.relative_humidity_2m)}`;
-  els.updated.textContent = `Updated ${new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}`;
+  els.updated.textContent = `Updated ${broadcastTime()}`;
 
   els.daily.innerHTML = "";
   for (let i = 0; i < Math.min(4, daily.time?.length || 0); i += 1) {
