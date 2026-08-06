@@ -767,6 +767,19 @@ function updateRadarLayerForStop() {
   els.radarLegend.hidden = !showStatic;
 }
 
+// NWS returns active alerts in issuance order, not severity order, so on a
+// busy day slicing the first 4 can drop a Tornado Warning in favor of four
+// routine statements. Rank by severity (warnings outrank same-tier watches)
+// before truncating, which also makes the alert slide and ticker lead with
+// the worst headline.
+const ALERT_SEVERITY_RANK = { Extreme: 0, Severe: 1, Moderate: 2, Minor: 3, Unknown: 4 };
+
+function alertRank(alert) {
+  const severity = ALERT_SEVERITY_RANK[alert.properties?.severity] ?? 4;
+  const warning = /Warning$/.test(alert.properties?.event || "") ? 0 : 1;
+  return severity * 2 + warning;
+}
+
 async function fetchAlerts(stop) {
   if (!stop.noaa) return [];
   const point = `${stop.lat.toFixed(4)},${stop.lon.toFixed(4)}`;
@@ -777,7 +790,11 @@ async function fetchAlerts(stop) {
   });
   if (!response.ok) return [];
   const data = await response.json();
-  return Array.isArray(data.features) ? data.features.slice(0, 4) : [];
+  if (!Array.isArray(data.features)) return [];
+  return data.features
+    .slice()
+    .sort((a, b) => alertRank(a) - alertRank(b))
+    .slice(0, 4);
 }
 
 function renderWeather(stop, weather, alerts) {
