@@ -337,9 +337,11 @@ function fmtPressure(value) {
   return `Pressure ${Math.round(value)} mb`;
 }
 
+// Open-Meteo returns visibility in feet (not meters) when the request asks
+// for fahrenheit/mph imperial units — current_units confirms "ft".
 function fmtVisibility(value) {
   if (!Number.isFinite(value)) return "Visibility --";
-  return `Visibility ${Math.round(value / 1609.344)} mi`;
+  return `Visibility ${Math.round(value / 5280)} mi`;
 }
 
 function fmtClock(value) {
