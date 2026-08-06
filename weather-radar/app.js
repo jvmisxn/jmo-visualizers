@@ -766,7 +766,6 @@ function renderWeather(stop, weather, alerts) {
   const current = weather.current || {};
   const daily = weather.daily || {};
   const condition = WEATHER_CODES[current.weather_code] || "Weather update";
-  const rain = Number.isFinite(current.precipitation) ? `${current.precipitation.toFixed(2)} in` : "--";
   const isNight = isNightFromWeather(weather);
 
   const severeAlerts = alerts.filter(isSevereAlert);
@@ -780,7 +779,12 @@ function renderWeather(stop, weather, alerts) {
   els.temp.textContent = fmtTemp(current.temperature_2m);
   els.condition.textContent = condition;
   els.wind.textContent = fmtWind(current.wind_speed_10m, current.wind_direction_10m);
-  els.precip.textContent = `Rain ${rain}`;
+  // "Rain 0.00 in" is dead air on a dry day; broadcast current-conditions
+  // panels fill that slot with humidity, and the rain amount takes it back
+  // only when there's measurable precipitation to report.
+  els.precip.textContent = Number.isFinite(current.precipitation) && current.precipitation >= 0.01
+    ? `Rain ${current.precipitation.toFixed(2)} in`
+    : `Humidity ${fmtPercent(current.relative_humidity_2m)}`;
   els.updated.textContent = `Updated ${new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}`;
 
   els.daily.innerHTML = "";
@@ -834,7 +838,7 @@ function renderFallback(stop, error) {
   els.temp.textContent = "--";
   els.condition.textContent = "Data update pending";
   els.wind.textContent = "Wind --";
-  els.precip.textContent = "Rain --";
+  els.precip.textContent = "Humidity --";
   els.updated.textContent = "Retrying";
   els.daily.innerHTML = "";
   els.lowerThird.classList.remove("alert-slide");
