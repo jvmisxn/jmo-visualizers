@@ -613,10 +613,16 @@ function buildDetailSlides(stop, weather, alerts, condition, isNight) {
     tickerLead: `DETAILS: feels ${fmtTemp(current.apparent_temperature)}, humidity ${fmtPercent(current.relative_humidity_2m)}, clouds ${fmtPercent(current.cloud_cover)}`,
   });
 
+  // "Rain 0.00 in" is dead air on a dry day; broadcast observation decks fill
+  // that slot with the dew point, and rain takes it back only when there's
+  // measurable precipitation to report.
+  const obsTail = Number.isFinite(current.precipitation) && current.precipitation >= 0.01
+    ? `Rain ${current.precipitation.toFixed(2)} in`
+    : `Dew point ${fmtTemp(current.dew_point_2m)}`;
   slides.push({
     kicker: "PRESSURE / VISIBILITY",
-    summary: `${fmtPressure(current.pressure_msl)}. ${fmtVisibility(current.visibility)}. Rain ${Number.isFinite(current.precipitation) ? current.precipitation.toFixed(2) : "--"} in.`,
-    tickerLead: `OBSERVATION: ${fmtPressure(current.pressure_msl)}, ${fmtVisibility(current.visibility)}`,
+    summary: `${fmtPressure(current.pressure_msl)}. ${fmtVisibility(current.visibility)}. ${obsTail}.`,
+    tickerLead: `OBSERVATION: ${fmtPressure(current.pressure_msl)}, ${fmtVisibility(current.visibility)}, ${obsTail.toLowerCase()}`,
   });
 
   slides.push({
@@ -733,7 +739,7 @@ async function fetchWeather(stop) {
   url.search = new URLSearchParams({
     latitude: stop.lat,
     longitude: stop.lon,
-    current: "temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m,wind_direction_10m,wind_gusts_10m,cloud_cover,pressure_msl,visibility,is_day",
+    current: "temperature_2m,relative_humidity_2m,apparent_temperature,dew_point_2m,precipitation,weather_code,wind_speed_10m,wind_direction_10m,wind_gusts_10m,cloud_cover,pressure_msl,visibility,is_day",
     daily: "temperature_2m_max,temperature_2m_min,precipitation_probability_max,weather_code,sunrise,sunset",
     temperature_unit: "fahrenheit",
     wind_speed_unit: "mph",
