@@ -868,10 +868,16 @@ function renderWeather(stop, weather, alerts) {
     els.daily.appendChild(row);
   }
 
-  detailIndex = 0;
+  // The 5-minute data refresh re-renders mid-dwell; resetting the deck then
+  // yanks whatever slide is mid-read back to slide one, a visible jump every
+  // refresh. Keep the slide position when it's the same stop and the alert
+  // count hasn't changed — a new alert still restarts the deck so it airs
+  // immediately instead of waiting for the wrap.
+  const sameDeck = lastRendered?.stop === stop && lastRendered.alerts.length === alerts.length;
+  if (!sameDeck) detailIndex = 0;
   lastRendered = { stop, weather, alerts, condition, isNight };
   renderDetailSlide();
-  scheduleDetailRotation();
+  if (!sameDeck) scheduleDetailRotation();
 
   // Don't stomp the animated loop's frame stamp on every weather render;
   // updateRadarStamp knows whether a loop is running. Only severe alerts
