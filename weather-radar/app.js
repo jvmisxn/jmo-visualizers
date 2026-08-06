@@ -142,7 +142,12 @@ let radarFrameSignature = "";
 // OBS source would keep showing cached radar. Rolling the ts param forces a
 // re-fetch of current imagery.
 function refreshRadar() {
-  radarLayer.setParams({ ts: Math.floor(Date.now() / RADAR_REFRESH_MS) });
+  // Opacity is CSS-only in Leaflet, so setParams would refetch every CONUS
+  // tile even while the animated loop has this layer hidden; only roll the
+  // stamp when the static layer is actually the one on screen.
+  if (radarFrames.length < 2) {
+    radarLayer.setParams({ ts: Math.floor(Date.now() / RADAR_REFRESH_MS) });
+  }
   updateRadarLayerForStop();
   loadAnimatedRadar();
 }
@@ -164,8 +169,11 @@ async function loadAnimatedRadar() {
     // A transient RainViewer failure must not stack the static layer on top
     // of an animation loop that is still cycling its last good frames.
     if (radarFrames.length < 2) {
+      // Falling back to the static layer after the animation has been
+      // covering it: its cached tiles may be old, so force a fresh stamp.
+      radarLayer.setParams({ ts: Math.floor(Date.now() / RADAR_REFRESH_MS) });
       updateRadarLayerForStop();
-      els.radar.textContent = "RADAR: LIVE";
+      updateRadarStamp();
     }
   }
 }
