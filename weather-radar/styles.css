@@ -395,11 +395,30 @@ body,
   border-left-color: rgba(145, 166, 255, 0.9);
 }
 
+.daily-header {
+  padding: 7px 15px;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #04122e;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.5), transparent 42%),
+    linear-gradient(180deg, #9beaff, #40acd9 64%, #1479a7);
+  border-top: 2px solid rgba(255, 255, 255, 0.42);
+  text-shadow: none;
+}
+
+.night-mode .daily-header {
+  color: #eaf1ff;
+  background: #3142d4;
+}
+
 .daily {
   display: grid;
   gap: 7px;
   margin: 0;
-  padding: 0 16px 16px;
+  padding: 10px 16px 16px;
 }
 
 .daily div {
@@ -662,6 +681,7 @@ body,
     grid-column: 1 / -1;
   }
 
+  .daily-header,
   .daily {
     display: none;
   }
