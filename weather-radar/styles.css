@@ -688,6 +688,13 @@ body,
   border-bottom-color: var(--red);
 }
 
+/* The takeover frames the whole screen: the topbar rule line goes red, so the
+   ticker's rule line matches instead of staying routine amber. Declared after
+   the night-mode ticker rule so alert red wins the tie at night. */
+.alert-mode .ticker {
+  border-top-color: var(--red);
+}
+
 @keyframes ticker {
   from {
     transform: translateX(0);
