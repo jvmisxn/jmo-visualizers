@@ -501,9 +501,13 @@ function fmtPercent(value) {
   return `${Math.round(value)}%`;
 }
 
+// US broadcast weather reads the barometer in inches of mercury — "30.06 in",
+// never "1018 mb" — and this broadcast is already imperial everywhere (°F,
+// mph, miles), so the pressure line matches. Open-Meteo has no inHg unit
+// option; convert from the hPa it returns.
 function fmtPressure(value) {
   if (!Number.isFinite(value)) return "Pressure --";
-  return `Pressure ${Math.round(value)} mb`;
+  return `Pressure ${(value / 33.8639).toFixed(2)} in`;
 }
 
 // Open-Meteo returns visibility in feet (not meters) when the request asks
