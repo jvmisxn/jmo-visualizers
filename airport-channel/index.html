@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JMO Airport Channel</title>
+    <link rel="stylesheet" href="./styles.css?v=airport-1">
+  </head>
+  <body>
+    <main class="frame">
+      <canvas id="airfield" aria-label="Airfield ground view"></canvas>
+
+      <div class="grid-glow"></div>
+      <div class="scanlines"></div>
+      <div class="vignette"></div>
+
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark">JMO</span>
+          <span class="brand-title">Airport Channel</span>
+        </div>
+        <div class="airport-id">
+          <span id="airport-code" class="airport-code">SEA</span>
+          <span id="airport-name" class="airport-name">Seattle–Tacoma Intl</span>
+        </div>
+        <div class="clocks">
+          <div id="clock-local" class="clock">--:-- PT</div>
+          <div id="clock-zulu" class="clock zulu">--:--Z</div>
+        </div>
+      </header>
+
+      <section class="board departures">
+        <div class="board-head">
+          <span class="board-title">DEPARTURES</span>
+          <span id="dep-page" class="board-page">1/2</span>
+        </div>
+        <div class="board-cols">
+          <span>TIME</span><span>FLIGHT</span><span>DESTINATION</span><span>GATE</span><span>STATUS</span>
+        </div>
+        <div id="dep-rows" class="board-rows"></div>
+      </section>
+
+      <aside class="board arrivals">
+        <div class="board-head">
+          <span class="board-title">ARRIVALS</span>
+          <span id="arr-page" class="board-page">1/2</span>
+        </div>
+        <div class="board-cols compact">
+          <span>TIME</span><span>FLIGHT</span><span>ORIGIN</span><span>STATUS</span>
+        </div>
+        <div id="arr-rows" class="board-rows compact"></div>
+      </aside>
+
+      <aside class="wx-panel">
+        <div class="panel-title">FIELD CONDITIONS</div>
+        <div class="wx-grid">
+          <div class="wx-cell"><span class="wx-label">WIND</span><span id="wx-wind" class="wx-value">---</span></div>
+          <div class="wx-cell"><span class="wx-label">VIS</span><span id="wx-vis" class="wx-value">---</span></div>
+          <div class="wx-cell"><span class="wx-label">TEMP/DEW</span><span id="wx-temp" class="wx-value">---</span></div>
+          <div class="wx-cell"><span class="wx-label">ALTIMETER</span><span id="wx-altim" class="wx-value">---</span></div>
+          <div class="wx-cell"><span class="wx-label">CEILING</span><span id="wx-ceiling" class="wx-value">---</span></div>
+          <div class="wx-cell"><span class="wx-label">FLT CAT</span><span id="wx-cat" class="wx-value cat-vfr">VFR</span></div>
+        </div>
+        <div id="metar-raw" class="metar-raw">METAR LOADING...</div>
+        <div id="wx-source" class="wx-source">DEMO DATA</div>
+      </aside>
+
+      <section class="status-panel">
+        <div id="status-label" class="status-label">RAMP OPERATIONS</div>
+        <div id="status-text" class="status-text">Monitoring airfield movement, gate turns, and terminal flow.</div>
+      </section>
+
+      <footer class="ticker">
+        <div id="ticker-text" class="ticker-text">AIRPORT ADVISORY TAPE LOADING...</div>
+      </footer>
+    </main>
+
+    <script src="./app.js?v=airport-1"></script>
+  </body>
+</html>

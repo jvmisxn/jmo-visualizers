@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JMO Shop-O-Rama</title>
+    <link rel="stylesheet" href="./styles.css?v=retro-shopping-1">
+  </head>
+  <body>
+    <main class="stage" aria-label="Retro shopping channel visualizer">
+      <div class="set">
+
+        <!-- Top bar -->
+        <header class="topbar">
+          <div class="logo">
+            <span class="logo-shop">SHOP</span><span class="logo-o">-O-</span><span class="logo-rama">RAMA</span>
+          </div>
+          <div class="topbar-right">
+            <div class="live-bug"><span class="live-dot"></span>LIVE</div>
+            <div class="clock" id="clock">12:00 AM</div>
+          </div>
+        </header>
+
+        <!-- Showcase -->
+        <section class="showcase">
+          <div class="product-panel" id="product-panel">
+            <div class="pedestal-wrap">
+              <div class="sparkle s1"></div>
+              <div class="sparkle s2"></div>
+              <div class="sparkle s3"></div>
+              <div class="hero" id="hero">🍳</div>
+              <div class="pedestal"></div>
+              <div class="badge" id="badge">AS SEEN ON TV</div>
+            </div>
+            <div class="product-copy">
+              <h1 class="product-name" id="product-name">MiracleChef 3000</h1>
+              <p class="product-tag" id="product-tag">It slices! It dices! It never quits!</p>
+              <ul class="features" id="features"></ul>
+            </div>
+          </div>
+
+          <aside class="price-panel">
+            <div class="item-no" id="item-no">ITEM #A-1000</div>
+            <div class="retail">RETAIL <s id="retail-price">$99.99</s></div>
+            <div class="price-label">SHOP-O-RAMA PRICE</div>
+            <div class="price" id="price">$19.99</div>
+            <div class="payments" id="payments">or 3 EZ payments of $6.66</div>
+            <div class="stock">
+              <div class="stock-label"><span id="stock-count">137</span> LEFT IN STOCK</div>
+              <div class="stock-bar"><div class="stock-fill" id="stock-fill"></div></div>
+            </div>
+            <div class="sold">SOLD TODAY: <span id="sold-count">1,204</span></div>
+            <div class="countdown-box">
+              <div class="countdown-label">OFFER ENDS IN</div>
+              <div class="countdown" id="countdown">05:00</div>
+            </div>
+          </aside>
+        </section>
+
+        <!-- Lower third -->
+        <footer class="lower-third">
+          <div class="call-now">
+            <span class="call-flash">CALL NOW</span>
+            <span class="phone">1-800-555-0199</span>
+          </div>
+          <div class="host-strap" id="host-strap">RANDY VELVETEEN &nbsp;•&nbsp; YOUR LATE-NIGHT DEALS HOST</div>
+        </footer>
+
+        <!-- Ticker -->
+        <div class="ticker">
+          <div class="ticker-track" id="ticker-track"></div>
+        </div>
+
+        <!-- VHS overlays -->
+        <canvas id="static-canvas" class="static-burst"></canvas>
+        <div class="tracking-bar" id="tracking-bar"></div>
+        <div class="scanlines"></div>
+        <div class="vignette"></div>
+        <div class="vhs-osd" id="vhs-osd">PLAY &#9654;</div>
+      </div>
+    </main>
+
+    <script src="./app.js?v=retro-shopping-1"></script>
+  </body>
+</html>

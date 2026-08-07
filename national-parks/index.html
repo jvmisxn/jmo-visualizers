@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JMO Parks Channel</title>
+    <link rel="stylesheet" href="./styles.css?v=parks-1">
+  </head>
+  <body>
+    <main class="frame">
+      <canvas id="scene" aria-label="Scenic park panorama"></canvas>
+
+      <div class="film-grain"></div>
+      <div class="scanlines"></div>
+      <div class="vignette"></div>
+
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark">JMO</span>
+          <span class="brand-title">Parks Channel</span>
+        </div>
+        <div id="segment" class="segment-chip">SCENIC TOUR</div>
+        <div class="clock-stack">
+          <div id="clock" class="clock">--:-- PT</div>
+          <div id="clock-date" class="clock-date">--</div>
+        </div>
+      </header>
+
+      <section class="lower-third">
+        <div class="lt-label">NOW VISITING</div>
+        <div id="park-name" class="lt-park">National Parks</div>
+        <div id="park-sub" class="lt-sub">United States</div>
+        <div class="lt-local">
+          <span id="park-local-time" class="lt-local-time">--:--</span>
+          <span class="lt-local-label">PARK TIME</span>
+        </div>
+      </section>
+
+      <aside class="cards">
+        <div class="card" id="wx-card">
+          <div class="card-title">CONDITIONS</div>
+          <div class="wx-main">
+            <span id="wx-temp" class="wx-temp">--°</span>
+            <span id="wx-cond" class="wx-cond">STANDING BY</span>
+          </div>
+          <div class="card-rows">
+            <div class="row"><span>WIND</span><span id="wx-wind">--</span></div>
+            <div class="row"><span>PRECIP CHANCE</span><span id="wx-precip">--</span></div>
+            <div class="row"><span>HUMIDITY</span><span id="wx-humidity">--</span></div>
+          </div>
+        </div>
+
+        <div class="card" id="aqi-card">
+          <div class="card-title">AIR QUALITY</div>
+          <div class="aqi-main">
+            <span id="aqi-value" class="aqi-value">--</span>
+            <span id="aqi-label" class="aqi-label">NO DATA</span>
+          </div>
+          <div class="aqi-bar"><div id="aqi-fill" class="aqi-fill"></div></div>
+        </div>
+
+        <div class="card" id="sun-card">
+          <div class="card-title">SUNRISE / SUNSET</div>
+          <div class="card-rows">
+            <div class="row"><span>SUNRISE</span><span id="sun-rise">--:--</span></div>
+            <div class="row"><span>SUNSET</span><span id="sun-set">--:--</span></div>
+            <div class="row"><span>DAYLIGHT</span><span id="sun-length">--</span></div>
+          </div>
+        </div>
+
+        <div class="card" id="park-card">
+          <div class="card-title">PARK FILE</div>
+          <div class="card-rows">
+            <div class="row"><span>ESTABLISHED</span><span id="pf-est">--</span></div>
+            <div class="row"><span>AREA</span><span id="pf-area">--</span></div>
+            <div class="row"><span>VISITORS / YR</span><span id="pf-visitors">--</span></div>
+          </div>
+          <div id="pf-fact" class="pf-fact">--</div>
+        </div>
+      </aside>
+
+      <figure class="cam-panel" id="cam-panel" hidden>
+        <img id="cam-image" alt="Park webcam">
+        <figcaption class="cam-caption">
+          <span class="cam-badge">PARK CAM</span>
+          <span id="cam-location" class="cam-location">--</span>
+        </figcaption>
+      </figure>
+
+      <footer class="ticker">
+        <div id="ticker-text" class="ticker-text">WELCOME TO THE JMO PARKS CHANNEL — SCENIC TOUR STARTING SOON...</div>
+      </footer>
+    </main>
+
+    <script src="./app.js?v=parks-1"></script>
+  </body>
+</html>
