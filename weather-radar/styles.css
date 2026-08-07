@@ -96,6 +96,38 @@ body,
   display: none;
 }
 
+/* Classic regional-observations plot: city temps sit on the map as bare text
+   with a hard shadow — boxed chips over radar read as clutter. Leaflet
+   anchors a null-size divIcon at its top-left, so the inner span centers
+   itself on the coordinate. */
+.city-temp .city-temp-inner {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.city-temp-name {
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  color: #f5f8ff;
+  text-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.92),
+    0 0 7px rgba(0, 0, 0, 0.6);
+}
+
+.city-temp-val {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--amber);
+  text-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.92),
+    0 0 7px rgba(0, 0, 0, 0.65);
+}
+
 .scanlines,
 .vignette {
   position: absolute;
@@ -775,6 +807,12 @@ body,
 
   .camera-panel,
   .radar-legend {
+    display: none;
+  }
+
+  /* Phone layouts cover most of the map with panels; city temps peeking out
+     from under them read as noise, not observations. */
+  .city-temp {
     display: none;
   }
 

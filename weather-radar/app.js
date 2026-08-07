@@ -70,6 +70,88 @@ const CAMERA_SETS = {
   ],
 };
 
+// Classic TWC regional-observations look: a handful of city temps plotted on
+// the map itself. Curated per stop so chips stay spread out at that stop's
+// zoom — two cities closer than ~a chip width would overlap and smear.
+const CITY_TEMP_SETS = {
+  "Seattle and Puget Sound": [
+    { name: "SEATTLE", lat: 47.6062, lon: -122.3321 },
+    { name: "TACOMA", lat: 47.2529, lon: -122.4443 },
+    { name: "EVERETT", lat: 47.979, lon: -122.2021 },
+    { name: "OLYMPIA", lat: 47.0379, lon: -122.9007 },
+  ],
+  "Pacific Northwest": [
+    { name: "SEATTLE", lat: 47.6062, lon: -122.3321 },
+    { name: "PORTLAND", lat: 45.5152, lon: -122.6784 },
+    { name: "SPOKANE", lat: 47.6588, lon: -117.426 },
+    { name: "EUGENE", lat: 44.0521, lon: -123.0868 },
+    { name: "BOISE", lat: 43.615, lon: -116.2023 },
+  ],
+  "Northern California": [
+    { name: "SAN FRANCISCO", lat: 37.7749, lon: -122.4194 },
+    { name: "SACRAMENTO", lat: 38.5816, lon: -121.4944 },
+    { name: "REDDING", lat: 40.5865, lon: -122.3917 },
+    { name: "RENO", lat: 39.5296, lon: -119.8138 },
+    { name: "FRESNO", lat: 36.7378, lon: -119.7871 },
+  ],
+  "Central Plains": [
+    { name: "KANSAS CITY", lat: 39.0997, lon: -94.5786 },
+    { name: "OKLAHOMA CITY", lat: 35.4676, lon: -97.5164 },
+    { name: "OMAHA", lat: 41.2565, lon: -95.9345 },
+    { name: "WICHITA", lat: 37.6872, lon: -97.3301 },
+    { name: "DENVER", lat: 39.7392, lon: -104.9903 },
+  ],
+  "Great Lakes": [
+    { name: "CHICAGO", lat: 41.8781, lon: -87.6298 },
+    { name: "DETROIT", lat: 42.3314, lon: -83.0458 },
+    { name: "CLEVELAND", lat: 41.4993, lon: -81.6944 },
+    { name: "MILWAUKEE", lat: 43.0389, lon: -87.9065 },
+    { name: "TORONTO", lat: 43.6532, lon: -79.3832 },
+  ],
+  "Gulf Coast": [
+    { name: "HOUSTON", lat: 29.7604, lon: -95.3698 },
+    { name: "NEW ORLEANS", lat: 29.9511, lon: -90.0715 },
+    { name: "BATON ROUGE", lat: 30.4515, lon: -91.1871 },
+    { name: "PENSACOLA", lat: 30.4213, lon: -87.2169 },
+  ],
+  "Florida Peninsula": [
+    { name: "TAMPA", lat: 27.9506, lon: -82.4572 },
+    { name: "ORLANDO", lat: 28.5383, lon: -81.3792 },
+    { name: "MIAMI", lat: 25.7617, lon: -80.1918 },
+    { name: "JACKSONVILLE", lat: 30.3322, lon: -81.6557 },
+  ],
+  "Western Europe": [
+    { name: "LONDON", lat: 51.5074, lon: -0.1278 },
+    { name: "PARIS", lat: 48.8566, lon: 2.3522 },
+    { name: "AMSTERDAM", lat: 52.3676, lon: 4.9041 },
+    { name: "FRANKFURT", lat: 50.1109, lon: 8.6821 },
+  ],
+  "Mediterranean": [
+    { name: "ROME", lat: 41.9028, lon: 12.4964 },
+    { name: "BARCELONA", lat: 41.3874, lon: 2.1686 },
+    { name: "ATHENS", lat: 37.9838, lon: 23.7275 },
+    { name: "TUNIS", lat: 36.8065, lon: 10.1815 },
+  ],
+  "Japan and Korea": [
+    { name: "TOKYO", lat: 35.6762, lon: 139.6503 },
+    { name: "OSAKA", lat: 34.6937, lon: 135.5023 },
+    { name: "SEOUL", lat: 37.5665, lon: 126.978 },
+    { name: "SAPPORO", lat: 43.0618, lon: 141.3545 },
+  ],
+  "Eastern Australia": [
+    { name: "SYDNEY", lat: -33.8688, lon: 151.2093 },
+    { name: "BRISBANE", lat: -27.4698, lon: 153.0251 },
+    { name: "MELBOURNE", lat: -37.8136, lon: 144.9631 },
+    { name: "CANBERRA", lat: -35.2809, lon: 149.13 },
+  ],
+  "Western Atlantic": [
+    { name: "NASSAU", lat: 25.0443, lon: -77.3504 },
+    { name: "SAN JUAN", lat: 18.4655, lon: -66.1057 },
+    { name: "BERMUDA", lat: 32.2949, lon: -64.7814 },
+    { name: "HAVANA", lat: 23.1136, lon: -82.3666 },
+  ],
+};
+
 const els = {
   clock: document.querySelector("#clock"),
   clockDate: document.querySelector("#clock-date"),
@@ -149,6 +231,11 @@ map.getPane("radarPane").style.zIndex = 360;
 map.createPane("labelPane");
 map.getPane("labelPane").style.zIndex = 430;
 map.getPane("labelPane").style.pointerEvents = "none";
+// City temps sit above the basemap labels so a place-name tile can't strike
+// through a temperature reading.
+map.createPane("cityPane");
+map.getPane("cityPane").style.zIndex = 440;
+map.getPane("cityPane").style.pointerEvents = "none";
 
 const labelLayerOptions = {
   subdomains: "abcd",
@@ -895,6 +982,60 @@ function advanceDetailSlide() {
   scheduleDetailRotation();
 }
 
+// One multi-location Open-Meteo call per stop: comma-separated coordinates
+// come back as an array in the same order as the request.
+async function fetchCityTemps(stop) {
+  const cities = CITY_TEMP_SETS[stop.name] || [];
+  if (!cities.length) return [];
+  const url = new URL("https://api.open-meteo.com/v1/forecast");
+  url.search = new URLSearchParams({
+    latitude: cities.map((city) => city.lat).join(","),
+    longitude: cities.map((city) => city.lon).join(","),
+    current: "temperature_2m",
+    temperature_unit: "fahrenheit",
+  });
+  const response = await fetch(url, { signal: AbortSignal.timeout(FETCH_TIMEOUT_MS) });
+  if (!response.ok) throw new Error(`city temps ${response.status}`);
+  const data = await response.json();
+  const results = Array.isArray(data) ? data : [data];
+  return cities.map((city, index) => ({ ...city, temp: results[index]?.current?.temperature_2m }));
+}
+
+let cityMarkers = [];
+let cityMarkersStop = null;
+
+function clearCityMarkers() {
+  cityMarkers.forEach((marker) => map.removeLayer(marker));
+  cityMarkers = [];
+  cityMarkersStop = null;
+}
+
+// `temps: null` means the poll failed, not "no cities": hold this stop's
+// last plot through an outage, but never leave another region's readings
+// on the map under this stop's name.
+function renderCityTemps(stop, temps) {
+  if (!temps) {
+    if (cityMarkersStop !== stop) clearCityMarkers();
+    return;
+  }
+  clearCityMarkers();
+  cityMarkersStop = stop;
+  for (const city of temps) {
+    if (!Number.isFinite(city.temp)) continue;
+    const icon = L.divIcon({
+      className: "city-temp",
+      iconSize: null,
+      html: `<span class="city-temp-inner"><span class="city-temp-name">${city.name}</span><span class="city-temp-val">${Math.round(city.temp)}°</span></span>`,
+    });
+    cityMarkers.push(L.marker([city.lat, city.lon], {
+      icon,
+      pane: "cityPane",
+      interactive: false,
+      keyboard: false,
+    }).addTo(map));
+  }
+}
+
 async function fetchWeather(stop) {
   const url = new URL("https://api.open-meteo.com/v1/forecast");
   url.search = new URLSearchParams({
@@ -1076,6 +1217,8 @@ function renderFallback(stop, error) {
   // clock would be wrong under this stop's name.
   regionTimeZone = "";
   renderLocalTime();
+  // The previous region's city temps would read as this stop's observations.
+  if (cityMarkersStop !== stop) clearCityMarkers();
   document.body.classList.remove("alert-mode");
   // Keep the current day/night theme on transient failures instead of
   // flashing back to the day palette at night.
@@ -1129,12 +1272,14 @@ async function loadStopData(index) {
     // must not blank the whole panel when the forecast itself succeeded.
     // The null sentinel marks "poll failed" apart from "genuinely no alerts"
     // so held alerts only cover outages, never a real all-clear.
-    const [weather, alertsResult] = await Promise.all([
+    const [weather, alertsResult, cityTemps] = await Promise.all([
       fetchWeather(stop),
       fetchAlerts(stop).catch(() => null),
+      fetchCityTemps(stop).catch(() => null),
     ]);
     if (seq !== requestSeq) return;
     renderWeather(stop, weather, alertsResult ?? heldAlerts(stop));
+    renderCityTemps(stop, cityTemps);
   } catch (error) {
     if (seq !== requestSeq) return;
     // A transient failure on the 5-minute refresh (or a retry) for the stop
