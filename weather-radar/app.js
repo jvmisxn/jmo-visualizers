@@ -726,12 +726,18 @@ function isEveningNight(current, daily, isNight) {
     && daily.sunrise[0] < current.time;
 }
 
+// Rain chances air only when rain is in play — same 25% "chance of rain"
+// floor as the hours-ahead strip. A dry week's "0% rain" in every forecast
+// line (and a column of 0% down the extended panel) is dead air, and the
+// three surfaces gating differently would read as a disagreement.
+function rainChanceClause(pop) {
+  return Number.isFinite(pop) && pop >= 25 ? ` ${Math.round(pop)}% rain.` : "";
+}
+
 function todayForecastLine(daily, current, isNight) {
   const hi = fmtTemp(daily.temperature_2m_max?.[0]);
   const lo = fmtTemp(daily.temperature_2m_min?.[0]);
-  const pop = Number.isFinite(daily.precipitation_probability_max?.[0])
-    ? `${Math.round(daily.precipitation_probability_max[0])}% rain`
-    : "rain chance --";
+  const pop = rainChanceClause(daily.precipitation_probability_max?.[0]);
   // After dark, "Sunset 8:04 PM" is old news; pitch the next sunrise instead.
   // Open-Meteo returns location-local ISO strings, so comparing against
   // current.time picks today's sunrise pre-dawn and tomorrow's after sunset.
@@ -744,20 +750,18 @@ function todayForecastLine(daily, current, isNight) {
       const condition = WEATHER_CODES[current?.weather_code] || "Skies";
       return `Tonight ${condition}. Lo ${fmtTemp(daily.temperature_2m_min?.[1])}. Sunrise ${fmtClock(sunrise)}.`;
     }
-    return `Today ${hi} / ${lo}. ${pop}. Sunrise ${fmtClock(sunrise)}.`;
+    return `Today ${hi} / ${lo}.${pop} Sunrise ${fmtClock(sunrise)}.`;
   }
-  return `Today ${hi} / ${lo}. ${pop}. Sunset ${fmtClock(daily.sunset?.[0])}.`;
+  return `Today ${hi} / ${lo}.${pop} Sunset ${fmtClock(daily.sunset?.[0])}.`;
 }
 
 function tomorrowForecastLine(daily) {
   const hi = fmtTemp(daily.temperature_2m_max?.[1]);
   const lo = fmtTemp(daily.temperature_2m_min?.[1]);
-  const pop = Number.isFinite(daily.precipitation_probability_max?.[1])
-    ? `${Math.round(daily.precipitation_probability_max[1])}% rain`
-    : "rain chance --";
+  const pop = rainChanceClause(daily.precipitation_probability_max?.[1]);
   const code = daily.weather_code?.[1];
   const condition = WEATHER_CODES[code] || "Forecast update";
-  return `Tomorrow ${condition}. ${hi} / ${lo}. ${pop}.`;
+  return `Tomorrow ${condition}. ${hi} / ${lo}.${pop}`;
 }
 
 function buildDetailSlides(stop, weather, alerts, condition, isNight) {
@@ -1172,11 +1176,12 @@ function renderWeather(stop, weather, alerts) {
     const label = shortDate(daily.time[i], i);
     const hi = fmtTemp(daily.temperature_2m_max?.[i]);
     const lo = fmtTemp(daily.temperature_2m_min?.[i]);
-    const pop = Number.isFinite(daily.precipitation_probability_max?.[i])
-      ? `${Math.round(daily.precipitation_probability_max[i])}%`
-      : "--";
+    // Same 25% floor as rainChanceClause: a dry stretch airs a clean hi/lo
+    // column instead of a stack of "0%" down the panel.
+    const popMax = daily.precipitation_probability_max?.[i];
+    const pop = Number.isFinite(popMax) && popMax >= 25 ? ` &nbsp; ${Math.round(popMax)}%` : "";
     const dayCondition = WEATHER_CODES[daily.weather_code?.[i]] || "";
-    row.innerHTML = `<span class="day-name">${label}</span><span class="day-cond">${dayCondition}</span><span class="day-temps">${hi} / ${lo} &nbsp; ${pop}</span>`;
+    row.innerHTML = `<span class="day-name">${label}</span><span class="day-cond">${dayCondition}</span><span class="day-temps">${hi} / ${lo}${pop}</span>`;
     els.daily.appendChild(row);
   }
 
