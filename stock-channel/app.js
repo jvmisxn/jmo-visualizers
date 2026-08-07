@@ -118,8 +118,11 @@ function formatClock() {
 }
 
 function tick() {
+  const state = marketState();
+  const allowLocalDrift = state === "MARKET OPEN";
   for (const quote of QUOTES) {
     if (liveMode && Date.now() - (quote.lastTradeAt || 0) < 12000) continue;
+    if (!liveMode && !allowLocalDrift) continue;
     const mood = Math.sin(Date.now() / 22000 + quote.symbol.charCodeAt(0)) * 0.0009;
     const randomWalk = (Math.random() - 0.48) * 0.0032;
     quote.price *= 1 + quote.drift / 10000 + mood + randomWalk;
