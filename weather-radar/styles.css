@@ -296,6 +296,9 @@ body,
   font-size: 27px;
   font-weight: 900;
   color: #d8efff;
+  /* Ticking seconds in a proportional face make the whole clock shimmy
+     sideways every second; tabular digits hold each slot's width. */
+  font-variant-numeric: tabular-nums;
 }
 
 .clock-date {
@@ -739,8 +742,10 @@ body,
     grid-area: clock;
   }
 
+  /* The seconds-ticking clock is three digits wider than the old HH:MM
+     face; the narrow topbar clips it at 16px. */
   .clock {
-    font-size: 16px;
+    font-size: 13px;
     white-space: nowrap;
   }
 
@@ -870,7 +875,7 @@ body,
   }
 
   .clock {
-    font-size: 15px;
+    font-size: 12px;
   }
 
   .forecast-panel {
