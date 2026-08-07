@@ -742,7 +742,15 @@ function buildDetailSlides(stop, weather, alerts, condition, isNight) {
     const points = [2, 5, 8]
       .map((offset) => hourlyStart + offset)
       .filter((i) => hourly.time?.[i] && Number.isFinite(hourly.temperature_2m?.[i]))
-      .map((i) => `${fmtHourLabel(hourly.time[i])} ${fmtTemp(hourly.temperature_2m[i])}`);
+      .map((i) => {
+        // Old-school hourly strips carried a rain chance next to the temp when
+        // rain was in play; a dry hour stays a clean "8 PM 71°". The bare
+        // percentage matches the extended-forecast rows, and 25% is where
+        // broadcast copy starts saying "a chance of rain".
+        const pop = hourly.precipitation_probability?.[i];
+        const rain = Number.isFinite(pop) && pop >= 25 ? ` ${Math.round(pop)}%` : "";
+        return `${fmtHourLabel(hourly.time[i])} ${fmtTemp(hourly.temperature_2m[i])}${rain}`;
+      });
     if (points.length === 3) {
       slides.push({
         kicker: "HOURS AHEAD",
@@ -891,7 +899,7 @@ async function fetchWeather(stop) {
     longitude: stop.lon,
     current: "temperature_2m,relative_humidity_2m,apparent_temperature,dew_point_2m,precipitation,weather_code,wind_speed_10m,wind_direction_10m,wind_gusts_10m,cloud_cover,pressure_msl,visibility,is_day",
     daily: "temperature_2m_max,temperature_2m_min,precipitation_probability_max,weather_code,sunrise,sunset,uv_index_max",
-    hourly: "temperature_2m",
+    hourly: "temperature_2m,precipitation_probability",
     temperature_unit: "fahrenheit",
     wind_speed_unit: "mph",
     precipitation_unit: "inch",
