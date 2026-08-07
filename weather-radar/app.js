@@ -1,17 +1,24 @@
+// `phrase` is the name as it reads mid-sentence: panel chips and ticker labels
+// air the bare name, but spoken-style copy needs the article ("across the
+// Pacific Northwest", not "near Pacific Northwest").
 const STOPS = [
   { name: "Seattle and Puget Sound", lat: 47.6062, lon: -122.3321, zoom: 8, mode: "LOCAL FORECAST", noaa: true },
-  { name: "Pacific Northwest", lat: 45.9, lon: -121.5, zoom: 7, mode: "REGIONAL SCAN", noaa: true },
+  { name: "Pacific Northwest", phrase: "the Pacific Northwest", lat: 45.9, lon: -121.5, zoom: 7, mode: "REGIONAL SCAN", noaa: true },
   { name: "Northern California", lat: 38.6, lon: -121.5, zoom: 7, mode: "WEST COAST", noaa: true },
-  { name: "Central Plains", lat: 39.2, lon: -97.2, zoom: 6, mode: "NATIONAL RADAR", noaa: true },
-  { name: "Great Lakes", lat: 42.6, lon: -84.8, zoom: 6, mode: "REGIONAL SCAN", noaa: true },
-  { name: "Gulf Coast", lat: 29.7, lon: -90.4, zoom: 7, mode: "GULF WATCH", noaa: true },
-  { name: "Florida Peninsula", lat: 27.6, lon: -81.7, zoom: 7, mode: "TROPICS WATCH", noaa: true },
+  { name: "Central Plains", phrase: "the Central Plains", lat: 39.2, lon: -97.2, zoom: 6, mode: "NATIONAL RADAR", noaa: true },
+  { name: "Great Lakes", phrase: "the Great Lakes", lat: 42.6, lon: -84.8, zoom: 6, mode: "REGIONAL SCAN", noaa: true },
+  { name: "Gulf Coast", phrase: "the Gulf Coast", lat: 29.7, lon: -90.4, zoom: 7, mode: "GULF WATCH", noaa: true },
+  { name: "Florida Peninsula", phrase: "the Florida Peninsula", lat: 27.6, lon: -81.7, zoom: 7, mode: "TROPICS WATCH", noaa: true },
   { name: "Western Europe", lat: 50.1, lon: 4.4, zoom: 6, mode: "WORLD SCAN" },
-  { name: "Mediterranean", lat: 41.9, lon: 12.5, zoom: 6, mode: "WORLD SCAN" },
+  { name: "Mediterranean", phrase: "the Mediterranean", lat: 41.9, lon: 12.5, zoom: 6, mode: "WORLD SCAN" },
   { name: "Japan and Korea", lat: 35.7, lon: 139.7, zoom: 6, mode: "PACIFIC SCAN" },
   { name: "Eastern Australia", lat: -33.9, lon: 151.2, zoom: 6, mode: "WORLD SCAN" },
-  { name: "Western Atlantic", lat: 25.7, lon: -72.5, zoom: 5, mode: "TROPICS WATCH" },
+  { name: "Western Atlantic", phrase: "the Western Atlantic", lat: 25.7, lon: -72.5, zoom: 5, mode: "TROPICS WATCH" },
 ];
+
+function stopPhrase(stop) {
+  return stop.phrase || stop.name;
+}
 
 const WEATHER_CODES = {
   0: "Clear",
@@ -663,7 +670,7 @@ function buildDetailSlides(stop, weather, alerts, condition, isNight) {
 
   slides.push({
     kicker: isNight ? "NIGHT CONDITIONS" : "CURRENT CONDITIONS",
-    summary: `${condition} near ${stop.name}. ${fmtTemp(current.temperature_2m)}, ${fmtShortWind(current.wind_speed_10m, current.wind_direction_10m)}${gust}.`,
+    summary: `${condition} across ${stopPhrase(stop)}. ${fmtTemp(current.temperature_2m)}, ${fmtShortWind(current.wind_speed_10m, current.wind_direction_10m)}${gust}.`,
     tickerLead: `${stop.name}: ${condition}, ${fmtTemp(current.temperature_2m)}, ${fmtWind(current.wind_speed_10m, current.wind_direction_10m)}`,
   });
 
@@ -743,14 +750,14 @@ function buildDetailSlides(stop, weather, alerts, condition, isNight) {
     const latestScan = broadcastTime(new Date(radarFrames[radarFrames.length - 1].time * 1000));
     slides.push({
       kicker: "RADAR SCAN",
-      summary: `Live radar loop over ${stop.name}. Most recent scan ${latestScan}.`,
-      tickerLead: `RADAR: live loop over ${stop.name}, latest scan ${latestScan}`,
+      summary: `Live radar loop over ${stopPhrase(stop)}. Most recent scan ${latestScan}.`,
+      tickerLead: `RADAR: live loop over ${stopPhrase(stop)}, latest scan ${latestScan}`,
     });
   } else if (stop.noaa) {
     slides.push({
       kicker: "RADAR SCAN",
-      summary: `Current radar snapshot over ${stop.name}. Live loop resumes shortly.`,
-      tickerLead: `RADAR: current snapshot over ${stop.name}`,
+      summary: `Current radar snapshot over ${stopPhrase(stop)}. Live loop resumes shortly.`,
+      tickerLead: `RADAR: current snapshot over ${stopPhrase(stop)}`,
     });
   }
 
@@ -1041,12 +1048,12 @@ function renderFallback(stop, error) {
   els.daily.innerHTML = "";
   els.lowerThird.classList.remove("alert-slide");
   els.viewing.textContent = "STANDBY";
-  els.summary.textContent = `Scanning ${stop.name}`;
+  els.summary.textContent = `Scanning ${stopPhrase(stop)}`;
   updateRadarStamp();
   // Raw error text ("weather 500", timeout messages) is debug detail, not
   // broadcast copy; keep it in the console and put clean standby copy on air.
   console.warn(`weather fetch failed for ${stop.name}:`, error);
-  setTickerText(`STAND BY: updating conditions for ${stop.name}     •     DATA: NOAA/NWS alerts, RainViewer radar, Open-Meteo forecast, CARTO/OpenStreetMap     •     JMO WEATHER SCAN`);
+  setTickerText(`STAND BY: updating conditions for ${stopPhrase(stop)}     •     DATA: NOAA/NWS alerts, RainViewer radar, Open-Meteo forecast, CARTO/OpenStreetMap     •     JMO WEATHER SCAN`);
 }
 
 // Fetches and renders data only; never moves the map. The periodic refresh
