@@ -86,6 +86,7 @@ const els = {
   cameraLocation: document.querySelector("#camera-location"),
   cameraUpdated: document.querySelector("#camera-updated"),
   lowerThird: document.querySelector(".lower-third"),
+  slideCopy: document.querySelector(".slide-copy"),
   radarLegend: document.querySelector("#radar-legend"),
 };
 
@@ -809,8 +810,18 @@ function renderDetailSlide() {
   // slide itself carries a red kicker chip to read differently from the
   // routine conditions slides.
   els.lowerThird.classList.toggle("alert-slide", Boolean(slide.alert));
+  // Only animate when the copy actually changes: the 5-minute data refresh
+  // re-renders the current slide in place, and a blink there reads as a
+  // glitch rather than a rotation.
+  const slideChanged = els.viewing.textContent !== slide.kicker
+    || els.summary.textContent !== slide.summary;
   els.viewing.textContent = slide.kicker;
   els.summary.textContent = slide.summary;
+  if (slideChanged) {
+    els.slideCopy.classList.remove("slide-change");
+    void els.slideCopy.offsetWidth;
+    els.slideCopy.classList.add("slide-change");
+  }
   if (detailIndex === 0) renderTicker(slides);
 }
 

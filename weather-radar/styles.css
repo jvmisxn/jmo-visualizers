@@ -496,6 +496,31 @@ body,
   color: var(--amber);
 }
 
+/* Slides used to hard-swap their text mid-air; broadcast graphics cut in with
+   a beat. A short rise-and-fade marks each rotation without calling attention
+   to itself — the class is re-applied per change, so the refresh re-render of
+   an identical slide doesn't blink the copy. */
+@keyframes slide-copy-in {
+  from {
+    opacity: 0;
+    transform: translateY(7px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.slide-copy.slide-change {
+  animation: slide-copy-in 280ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide-copy.slide-change {
+    animation: none;
+  }
+}
+
 /* Minor advisories keep the blue chrome (STORM WATCH red is reserved for
    severe alerts), so the alert slide announces itself with a red kicker chip
    instead of blending in with the routine conditions slides. */
