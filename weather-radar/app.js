@@ -1203,6 +1203,47 @@ setInterval(() => {
 // read speed drifts until the next copy change swaps the text. Recompute once
 // the resize settles; clearing textContent first defeats setTickerText's
 // identical-text skip so the crawl restarts cleanly at the new width.
+// A 24/7 OBS source loads the page once and then airs it for days; pushed
+// updates never reach the stream because every asset URL is pinned by the
+// cache-buster it loaded with. Poll the live index.html for changed ?v=
+// tokens and reload once when a deploy lands — a one-time blip at deploy
+// time beats a broadcast running week-old chrome.
+const VERSION_CHECK_MS = 600000;
+
+function assetVersionSignature(html) {
+  const app = /app\.js\?v=([\w.-]+)/.exec(html)?.[1] || "";
+  const css = /styles\.css\?v=([\w.-]+)/.exec(html)?.[1] || "";
+  return app || css ? `${app}|${css}` : "";
+}
+
+const loadedVersionSignature = assetVersionSignature(
+  Array.from(document.querySelectorAll("script[src], link[rel=stylesheet]"))
+    .map((el) => el.getAttribute("src") || el.getAttribute("href"))
+    .join(" "),
+);
+
+async function checkForDeploy() {
+  try {
+    const response = await fetch("./index.html", {
+      cache: "no-store",
+      signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
+    });
+    if (!response.ok) return;
+    const live = assetVersionSignature(await response.text());
+    if (!live || !loadedVersionSignature || live === loadedVersionSignature) return;
+    // Pages can keep serving a cached index for a few minutes after a deploy,
+    // so the reloaded page may still carry the old tokens; reloading again for
+    // the same target signature would blink the broadcast in a loop.
+    if (sessionStorage.getItem("weather-reloaded-for") === live) return;
+    sessionStorage.setItem("weather-reloaded-for", live);
+    location.reload();
+  } catch (error) {
+    // Transient fetch/storage failure; the next poll retries.
+  }
+}
+
+setInterval(checkForDeploy, VERSION_CHECK_MS);
+
 let tickerResizeTimer = 0;
 window.addEventListener("resize", () => {
   clearTimeout(tickerResizeTimer);
