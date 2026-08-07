@@ -768,6 +768,7 @@ function renderDetailSlide() {
     lastRendered.isNight,
   );
   if (!slides.length) return;
+  detailSlideCount = slides.length;
   const slide = slides[detailIndex % slides.length];
   // Minor advisories don't trip the full red alert-mode chrome, so the alert
   // slide itself carries a red kicker chip to read differently from the
@@ -783,9 +784,22 @@ function renderDetailSlide() {
 // (alerts / current conditions) off screen in under a second.
 let detailRotateTimer = 0;
 
+// A stop airs for 65s, but a busy deck (alerts + UV + radar) runs 8 slides —
+// at a fixed 11s spin the last two (NEXT OUTLOOK, RADAR SCAN) never make air
+// before the rotation moves on. Pace the spin to the deck so the whole
+// rundown completes once per stop, floored so copy still gets a full read.
+const DETAIL_ROTATE_MIN_MS = 8000;
+let detailSlideCount = 0;
+
+function detailRotateInterval() {
+  if (!detailSlideCount) return REGION_DETAIL_ROTATE_MS;
+  const fitted = Math.floor(STOP_DWELL_MS / detailSlideCount);
+  return Math.max(DETAIL_ROTATE_MIN_MS, Math.min(REGION_DETAIL_ROTATE_MS, fitted));
+}
+
 function scheduleDetailRotation() {
   clearTimeout(detailRotateTimer);
-  detailRotateTimer = setTimeout(advanceDetailSlide, REGION_DETAIL_ROTATE_MS);
+  detailRotateTimer = setTimeout(advanceDetailSlide, detailRotateInterval());
 }
 
 function advanceDetailSlide() {
