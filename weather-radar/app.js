@@ -946,7 +946,7 @@ async function fetchAlerts(stop) {
     headers: { Accept: "application/geo+json" },
     signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
   });
-  if (!response.ok) return [];
+  if (!response.ok) throw new Error(`alerts ${response.status}`);
   const data = await response.json();
   if (!Array.isArray(data.features)) return [];
   return data.features
@@ -1056,6 +1056,22 @@ function renderFallback(stop, error) {
   setTickerText(`STAND BY: updating conditions for ${stopPhrase(stop)}     •     DATA: NOAA/NWS alerts, RainViewer radar, Open-Meteo forecast, CARTO/OpenStreetMap     •     JMO WEATHER SCAN`);
 }
 
+// NWS drops a request now and then; airing that as "no alerts" mid-storm
+// strikes the STORM WATCH chrome and reshuffles the slide deck, then snaps it
+// all back on the next successful poll — a visible glitch exactly when alerts
+// matter most. Hold the stop's last known alerts through a failed poll,
+// minus any that have expired while NWS was unreachable.
+function heldAlerts(stop) {
+  if (lastRendered?.stop !== stop) return [];
+  const now = Date.now();
+  return lastRendered.alerts.filter((alert) => {
+    const ends = alert.properties?.ends || alert.properties?.expires;
+    if (!ends) return true;
+    const endsMs = Date.parse(ends);
+    return !Number.isFinite(endsMs) || endsMs > now;
+  });
+}
+
 // Fetches and renders data only; never moves the map. The periodic refresh
 // and error retries reuse this so they can't cancel an in-flight flyTo glide
 // (setView during flyTo snaps the camera).
@@ -1067,14 +1083,15 @@ async function loadStopData(index) {
   // on; only the most recent request is allowed to touch the panel.
   try {
     // Alerts are a decoration on top of the forecast; a flaky NWS response
-    // (timeout/network error throws past the !ok guard) must not blank the
-    // whole panel when the forecast itself succeeded.
-    const [weather, alerts] = await Promise.all([
+    // must not blank the whole panel when the forecast itself succeeded.
+    // The null sentinel marks "poll failed" apart from "genuinely no alerts"
+    // so held alerts only cover outages, never a real all-clear.
+    const [weather, alertsResult] = await Promise.all([
       fetchWeather(stop),
-      fetchAlerts(stop).catch(() => []),
+      fetchAlerts(stop).catch(() => null),
     ]);
     if (seq !== requestSeq) return;
-    renderWeather(stop, weather, alerts);
+    renderWeather(stop, weather, alertsResult ?? heldAlerts(stop));
   } catch (error) {
     if (seq !== requestSeq) return;
     renderFallback(stop, error);
