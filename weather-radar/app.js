@@ -1119,7 +1119,16 @@ async function loadStopData(index) {
     renderWeather(stop, weather, alertsResult ?? heldAlerts(stop));
   } catch (error) {
     if (seq !== requestSeq) return;
-    renderFallback(stop, error);
+    // A transient failure on the 5-minute refresh (or a retry) for the stop
+    // that's already on air must not yank live conditions down to "--"
+    // standby; holding a slightly stale panel beats blanking it. The stamp
+    // keeps its last "Updated" time, so the hold stays honest. A stop with
+    // no data yet still airs the standby fallback.
+    if (lastRendered?.stop === stop) {
+      console.warn(`weather refresh failed for ${stop.name}, holding last render:`, error);
+    } else {
+      renderFallback(stop, error);
+    }
     // The panel says "Retrying", so actually retry well before the next
     // 90s rotation; the seq guard drops the retry if rotation moved on.
     clearTimeout(retryTimer);
