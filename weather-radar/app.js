@@ -1042,11 +1042,14 @@ function renderWeather(stop, weather, alerts) {
   // The 5-minute data refresh re-renders mid-dwell; resetting the deck then
   // yanks whatever slide is mid-read back to slide one, a visible jump every
   // refresh. Keep the slide position when it's the same stop and the alert
-  // count hasn't changed — a new alert still restarts the deck so it airs
-  // immediately instead of waiting for the wrap.
-  const sameDeck = lastRendered?.stop === stop && lastRendered.alerts.length === alerts.length;
+  // set hasn't changed — a new alert still restarts the deck so it airs
+  // immediately instead of waiting for the wrap. Identity, not count: NWS
+  // routinely swaps a watch for a warning in one poll, and a count-only gate
+  // would sit on the upgraded headline for most of the dwell.
+  const alertSignature = alerts.map((alert) => alert.id || alert.properties?.id || "").join("|");
+  const sameDeck = lastRendered?.stop === stop && lastRendered.alertSignature === alertSignature;
   if (!sameDeck) detailIndex = 0;
-  lastRendered = { stop, weather, alerts, condition, isNight };
+  lastRendered = { stop, weather, alerts, condition, isNight, alertSignature };
   renderDetailSlide();
   if (!sameDeck) scheduleDetailRotation();
 
