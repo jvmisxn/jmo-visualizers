@@ -1,0 +1,34 @@
+name: Sync gh-pages
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "market-data/quotes.json"
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: sync-gh-pages
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Publish main to gh-pages
+        run: |
+          git push origin HEAD:gh-pages --force-with-lease
+      - name: Request Pages build
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh api "repos/${GH_REPO}/pages/builds" -X POST
