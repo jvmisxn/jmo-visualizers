@@ -35,5 +35,6 @@ jobs:
           git add airport-channel/data.json market-data/quotes.json retro-shopping/products.json
           git diff --cached --quiet || git commit -m "update market data"
           git push
+          git fetch origin gh-pages
           git push origin HEAD:gh-pages --force-with-lease
           gh api "repos/${GH_REPO}/pages/builds" -X POST
