@@ -435,7 +435,8 @@ body,
 
 .daily div {
   display: grid;
-  grid-template-columns: 50px minmax(0, 1fr) auto;
+  /* Wide enough for the after-sunset TONIGHT lead row, not just TODAY/MON. */
+  grid-template-columns: 66px minmax(0, 1fr) auto;
   align-items: baseline;
   gap: 9px;
   font-size: 15px;

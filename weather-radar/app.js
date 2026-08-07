@@ -621,6 +621,17 @@ function uvCategory(uv) {
   return "extreme";
 }
 
+// After sunset, "Today 91° / 64°" recaps a day that's over — the high already
+// happened, and index 0's min is this morning's low, not tonight's (Open-Meteo
+// mins are calendar-day, so the overnight low lands in tomorrow's slot).
+// Old-school extended forecasts flip the lead to TONIGHT with the overnight
+// low. Pre-dawn the day is still ahead, so TODAY stays: a current time past
+// this calendar day's sunrise means the evening side of night.
+function isEveningNight(current, daily, isNight) {
+  return isNight && Boolean(current?.time) && Boolean(daily.sunrise?.[0])
+    && daily.sunrise[0] < current.time;
+}
+
 function todayForecastLine(daily, current, isNight) {
   const hi = fmtTemp(daily.temperature_2m_max?.[0]);
   const lo = fmtTemp(daily.temperature_2m_min?.[0]);
@@ -633,6 +644,12 @@ function todayForecastLine(daily, current, isNight) {
   if (isNight) {
     const now = current?.time || "";
     const sunrise = daily.sunrise?.[0] > now ? daily.sunrise?.[0] : daily.sunrise?.[1];
+    // Evenings pitch tonight instead: current sky, the overnight low, and the
+    // next sunrise. Today's rain chance is mostly spent by then, so it sits out.
+    if (isEveningNight(current, daily, isNight)) {
+      const condition = WEATHER_CODES[current?.weather_code] || "Skies";
+      return `Tonight ${condition}. Lo ${fmtTemp(daily.temperature_2m_min?.[1])}. Sunrise ${fmtClock(sunrise)}.`;
+    }
     return `Today ${hi} / ${lo}. ${pop}. Sunrise ${fmtClock(sunrise)}.`;
   }
   return `Today ${hi} / ${lo}. ${pop}. Sunset ${fmtClock(daily.sunset?.[0])}.`;
@@ -986,8 +1003,16 @@ function renderWeather(stop, weather, alerts) {
   els.updated.textContent = `Updated ${broadcastTime()}`;
 
   els.daily.innerHTML = "";
+  const evening = isEveningNight(current, daily, isNight);
   for (let i = 0; i < Math.min(4, daily.time?.length || 0); i += 1) {
     const row = document.createElement("div");
+    // Lead row after sunset: TONIGHT with the current sky and the overnight
+    // low (tomorrow's calendar-day min) — today's high is old news by then.
+    if (evening && i === 0) {
+      row.innerHTML = `<span class="day-name">TONIGHT</span><span class="day-cond">${condition}</span><span class="day-temps">Lo ${fmtTemp(daily.temperature_2m_min?.[1])}</span>`;
+      els.daily.appendChild(row);
+      continue;
+    }
     const label = shortDate(daily.time[i], i);
     const hi = fmtTemp(daily.temperature_2m_max?.[i]);
     const lo = fmtTemp(daily.temperature_2m_min?.[i]);
