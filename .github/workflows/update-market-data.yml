@@ -20,10 +20,14 @@ jobs:
         run: node scripts/update-market-data.mjs
         env:
           FINNHUB_TOKEN: ${{ secrets.FINNHUB_TOKEN }}
-      - name: Commit quote snapshot
+      - name: Fetch public channel snapshots
+        run: node scripts/update-channel-data.mjs
+        env:
+          SHOP_FEED_URL: ${{ vars.SHOP_FEED_URL }}
+      - name: Commit live snapshots
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add market-data/quotes.json
+          git add airport-channel/data.json market-data/quotes.json retro-shopping/products.json
           git diff --cached --quiet || git commit -m "update market data"
           git push

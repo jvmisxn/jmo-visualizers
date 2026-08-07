@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>JMO Airport Channel</title>
-    <link rel="stylesheet" href="./styles.css?v=airport-1">
+    <link rel="stylesheet" href="./styles.css?v=airport-real-1">
   </head>
   <body>
     <main class="frame">
@@ -31,22 +31,22 @@
 
       <section class="board departures">
         <div class="board-head">
-          <span class="board-title">DEPARTURES</span>
+          <span class="board-title">FAA NAS STATUS</span>
           <span id="dep-page" class="board-page">1/2</span>
         </div>
         <div class="board-cols">
-          <span>TIME</span><span>FLIGHT</span><span>DESTINATION</span><span>GATE</span><span>STATUS</span>
+          <span>TIME</span><span>CODE</span><span>EVENT</span><span>SRC</span><span>STATUS</span>
         </div>
         <div id="dep-rows" class="board-rows"></div>
       </section>
 
       <aside class="board arrivals">
         <div class="board-head">
-          <span class="board-title">ARRIVALS</span>
+          <span class="board-title">AVIATION WX</span>
           <span id="arr-page" class="board-page">1/2</span>
         </div>
         <div class="board-cols compact">
-          <span>TIME</span><span>FLIGHT</span><span>ORIGIN</span><span>STATUS</span>
+          <span>TIME</span><span>TYPE</span><span>PRODUCT</span><span>STATUS</span>
         </div>
         <div id="arr-rows" class="board-rows compact"></div>
       </aside>
@@ -62,12 +62,12 @@
           <div class="wx-cell"><span class="wx-label">FLT CAT</span><span id="wx-cat" class="wx-value cat-vfr">VFR</span></div>
         </div>
         <div id="metar-raw" class="metar-raw">METAR LOADING...</div>
-        <div id="wx-source" class="wx-source">DEMO DATA</div>
+        <div id="wx-source" class="wx-source">LIVE SNAPSHOT LOADING</div>
       </aside>
 
       <section class="status-panel">
-        <div id="status-label" class="status-label">RAMP OPERATIONS</div>
-        <div id="status-text" class="status-text">Monitoring airfield movement, gate turns, and terminal flow.</div>
+        <div id="status-label" class="status-label">LIVE DATA DESK</div>
+        <div id="status-text" class="status-text">Loading FAA and NOAA airport status snapshot.</div>
       </section>
 
       <footer class="ticker">
@@ -75,6 +75,6 @@
       </footer>
     </main>
 
-    <script src="./app.js?v=airport-1"></script>
+    <script src="./app.js?v=airport-real-1"></script>
   </body>
 </html>

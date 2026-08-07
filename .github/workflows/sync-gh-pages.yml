@@ -5,8 +5,6 @@ on:
   push:
     branches:
       - main
-    paths-ignore:
-      - "market-data/quotes.json"
 
 permissions:
   contents: write

@@ -1,13 +1,13 @@
 const QUOTES = [
-  { symbol: "SPY", name: "S&P 500 ETF", price: 548.42, drift: 0.012, group: "index" },
-  { symbol: "QQQ", name: "Nasdaq 100 ETF", price: 475.18, drift: 0.018, group: "index" },
-  { symbol: "DIA", name: "Dow 30 ETF", price: 402.31, drift: -0.004, group: "index" },
-  { symbol: "IWM", name: "Russell 2000 ETF", price: 218.54, drift: 0.006, group: "index" },
-  { symbol: "AAPL", name: "Apple", price: 224.91, drift: 0.01, group: "watch" },
-  { symbol: "NVDA", name: "NVIDIA", price: 121.66, drift: 0.026, group: "watch" },
-  { symbol: "MSFT", name: "Microsoft", price: 419.88, drift: 0.008, group: "watch" },
-  { symbol: "TSLA", name: "Tesla", price: 238.75, drift: -0.015, group: "watch" },
-  { symbol: "BTC", name: "Bitcoin", price: 68420, drift: 0.021, group: "watch" },
+  { symbol: "SPY", name: "S&P 500 ETF", price: null, group: "index" },
+  { symbol: "QQQ", name: "Nasdaq 100 ETF", price: null, group: "index" },
+  { symbol: "DIA", name: "Dow 30 ETF", price: null, group: "index" },
+  { symbol: "IWM", name: "Russell 2000 ETF", price: null, group: "index" },
+  { symbol: "AAPL", name: "Apple", price: null, group: "watch" },
+  { symbol: "NVDA", name: "NVIDIA", price: null, group: "watch" },
+  { symbol: "MSFT", name: "Microsoft", price: null, group: "watch" },
+  { symbol: "TSLA", name: "Tesla", price: null, group: "watch" },
+  { symbol: "BTC", name: "Bitcoin", price: null, group: "watch" },
 ];
 
 const FINNHUB_SYMBOLS = new Map([
@@ -22,16 +22,15 @@ const FINNHUB_SYMBOLS = new Map([
   ["BTC", "BINANCE:BTCUSDT"],
 ]);
 
-const PUBLIC_QUOTES_URL = "https://raw.githubusercontent.com/jvmisxn/jmo-visualizers/main/market-data/quotes.json";
+const PUBLIC_QUOTES_URL = "../market-data/quotes.json";
 const PUBLIC_QUOTES_REFRESH_MS = 60000;
 const MARKET_PROXY_URL = window.JMO_MARKET_PROXY_URL || "";
 
 const HEADLINES = [
-  "Tech leads the tape while small caps try to hold the morning bid.",
-  "Rates, crude, mega-cap momentum, and crypto are driving the current scan.",
-  "Market breadth is mixed as traders rotate between growth and defensives.",
-  "Energy and semis are setting the pace in this market scan.",
-  "Futures tone remains active; watch volatility into the next data print.",
+  "Showing Finnhub quote snapshots only. No simulated market movement.",
+  "Chart line connects real previous close/open estimate to the latest snapshot.",
+  "Public page uses GitHub Actions snapshots so the API key stays private.",
+  "Live mode uses Finnhub trades only when a private token is supplied in the URL hash.",
 ];
 
 const els = {
@@ -61,19 +60,9 @@ let lastLiveTradeAt = 0;
 let lastSnapshotAt = 0;
 
 for (const quote of QUOTES) {
-  quote.open = quote.price;
+  quote.open = null;
   quote.change = 0;
-  series.set(quote.symbol, seedSeries(quote.price));
-}
-
-function seedSeries(base) {
-  const values = [];
-  let value = base;
-  for (let i = 0; i < 160; i += 1) {
-    value *= 1 + (Math.sin(i * 0.19) * 0.0007) + ((Math.random() - 0.5) * 0.0018);
-    values.push(value);
-  }
-  return values;
+  series.set(quote.symbol, []);
 }
 
 function resize() {
@@ -118,20 +107,6 @@ function formatClock() {
 }
 
 function tick() {
-  const state = marketState();
-  const allowLocalDrift = state === "MARKET OPEN";
-  for (const quote of QUOTES) {
-    if (liveMode && Date.now() - (quote.lastTradeAt || 0) < 12000) continue;
-    if (!liveMode && !allowLocalDrift) continue;
-    const mood = Math.sin(Date.now() / 22000 + quote.symbol.charCodeAt(0)) * 0.0009;
-    const randomWalk = (Math.random() - 0.48) * 0.0032;
-    quote.price *= 1 + quote.drift / 10000 + mood + randomWalk;
-    quote.change = ((quote.price - quote.open) / quote.open) * 100;
-
-    const values = series.get(quote.symbol);
-    values.push(quote.price);
-    if (values.length > 180) values.shift();
-  }
   renderQuotes();
   draw();
 }
@@ -167,7 +142,7 @@ async function loadPublicQuoteSnapshot() {
     renderQuotes();
     draw();
   } catch (error) {
-    if (!lastSnapshotAt) els.headlineSource.textContent = "SIMULATED TAPE";
+    if (!lastSnapshotAt) els.headlineSource.textContent = "SNAPSHOT UNAVAILABLE";
   }
 }
 
@@ -177,9 +152,7 @@ function applyQuoteSnapshot(quote, quoteData) {
   quote.open = quote.change === -100 ? quote.price : quote.price / (1 + quote.change / 100);
   quote.lastSnapshotAt = Date.now();
 
-  const values = seedSeries(quote.price);
-  values[values.length - 1] = quote.price;
-  series.set(quote.symbol, values);
+  series.set(quote.symbol, [quote.open, quote.price]);
 }
 
 function renderQuotes() {
@@ -187,14 +160,14 @@ function renderQuotes() {
   els.activeSymbol.textContent = active.symbol;
   els.activeName.textContent = active.name;
   els.activePrice.textContent = formatPrice(active);
-  els.activeChange.textContent = `${active.change >= 0 ? "+" : ""}${active.change.toFixed(2)}%`;
+  els.activeChange.textContent = formatChange(active);
   setDirectionClass(els.activeChange, active.change);
 
   els.indices.innerHTML = QUOTES.filter((quote) => quote.group === "index").map(renderQuoteRow).join("");
   els.watchlist.innerHTML = QUOTES.filter((quote) => quote.group === "watch").map(renderQuoteRow).join("");
   els.ticker.innerHTML = QUOTES.map((quote) => {
     const direction = quote.change >= 0 ? "ticker-up" : "ticker-down";
-    return `<span>${quote.symbol} ${formatPrice(quote)} <span class="${direction}">${quote.change >= 0 ? "+" : ""}${quote.change.toFixed(2)}%</span></span>`;
+    return `<span>${quote.symbol} ${formatPrice(quote)} <span class="${direction}">${formatChange(quote)}</span></span>`;
   }).join("");
 }
 
@@ -204,7 +177,7 @@ function renderQuoteRow(quote) {
     <div class="quote-item ${direction}">
       <div class="quote-symbol">${quote.symbol}</div>
       <div class="quote-price">${formatPrice(quote)}</div>
-      <div class="quote-change">${quote.change >= 0 ? "+" : ""}${quote.change.toFixed(2)}%</div>
+      <div class="quote-change">${formatChange(quote)}</div>
     </div>
   `;
 }
@@ -215,10 +188,16 @@ function setDirectionClass(el, change) {
 }
 
 function formatPrice(quote) {
+  if (!Number.isFinite(quote.price)) return "--";
   if (quote.symbol === "BTC") {
     return `$${Math.round(quote.price).toLocaleString("en-US")}`;
   }
   return `$${quote.price.toFixed(2)}`;
+}
+
+function formatChange(quote) {
+  if (!Number.isFinite(quote.price) || !Number.isFinite(quote.change)) return "--";
+  return `${quote.change >= 0 ? "+" : ""}${quote.change.toFixed(2)}%`;
 }
 
 function rotateActive() {
@@ -249,14 +228,14 @@ function getFinnhubToken() {
 function connectFinnhub() {
   const token = getFinnhubToken();
   if (!token) {
-    els.headlineSource.textContent = "SIMULATED TAPE";
+    els.headlineSource.textContent = lastSnapshotAt ? "REAL SNAPSHOT" : "SNAPSHOT LOADING";
     return;
   }
 
   try {
     finnhubSocket = new WebSocket(`wss://ws.finnhub.io?token=${encodeURIComponent(token)}`);
   } catch (error) {
-    els.headlineSource.textContent = "SIM FALLBACK";
+    els.headlineSource.textContent = lastSnapshotAt ? "REAL SNAPSHOT" : "LIVE UNAVAILABLE";
     return;
   }
 
@@ -285,18 +264,18 @@ function connectFinnhub() {
 
   finnhubSocket.addEventListener("close", () => {
     liveMode = false;
-    els.headlineSource.textContent = lastLiveTradeAt ? "LIVE PAUSED" : "SIM FALLBACK";
+    els.headlineSource.textContent = lastLiveTradeAt ? "LIVE PAUSED" : "REAL SNAPSHOT";
     setTimeout(connectFinnhub, 15000);
   });
 
   finnhubSocket.addEventListener("error", () => {
-    els.headlineSource.textContent = lastLiveTradeAt ? "LIVE DEGRADED" : "SIM FALLBACK";
+    els.headlineSource.textContent = lastLiveTradeAt ? "LIVE DEGRADED" : "REAL SNAPSHOT";
   });
 }
 
 function applyFinnhubTrade(trade) {
   const quote = QUOTES.find((item) => FINNHUB_SYMBOLS.get(item.symbol) === trade.s);
-  if (!quote || !Number.isFinite(trade.p)) return;
+  if (!quote || !Number.isFinite(trade.p) || !Number.isFinite(quote.open)) return;
   quote.price = trade.p;
   quote.change = ((quote.price - quote.open) / quote.open) * 100;
   quote.lastTradeAt = Date.now();
@@ -342,6 +321,14 @@ function drawGrid() {
 }
 
 function drawSeries(values, change) {
+  if (!Array.isArray(values) || values.length < 2 || !values.every(Number.isFinite)) {
+    ctx.save();
+    ctx.fillStyle = "rgba(232, 251, 255, 0.84)";
+    ctx.font = "700 28px Arial, sans-serif";
+    ctx.fillText("WAITING FOR REAL MARKET SNAPSHOT", width * 0.08, height * 0.48);
+    ctx.restore();
+    return;
+  }
   const chartLeft = width * 0.08;
   const chartRight = width * 0.72;
   const chartTop = height * 0.24;
@@ -358,7 +345,7 @@ function drawSeries(values, change) {
   ctx.strokeStyle = color;
   ctx.beginPath();
   values.forEach((value, index) => {
-    const x = chartLeft + (index / (values.length - 1)) * (chartRight - chartLeft);
+    const x = chartLeft + (index / Math.max(1, values.length - 1)) * (chartRight - chartLeft);
     const y = chartBottom - ((value - min) / range) * (chartBottom - chartTop);
     if (index === 0) ctx.moveTo(x, y);
     else ctx.lineTo(x, y);
@@ -377,17 +364,19 @@ function drawSeries(values, change) {
 }
 
 function drawVolumeBars() {
+  const quotes = QUOTES.filter((quote) => Number.isFinite(quote.change));
+  if (!quotes.length) return;
   ctx.save();
-  const bars = 54;
   const baseY = height * 0.92;
   const maxH = height * 0.14;
   const startX = width * 0.08;
   const span = width * 0.64;
-  for (let i = 0; i < bars; i += 1) {
-    const pulse = 0.28 + Math.abs(Math.sin(Date.now() / 900 + i * 0.7)) * 0.72;
-    const barH = maxH * pulse;
-    ctx.fillStyle = i % 5 === 0 ? "rgba(255, 216, 107, 0.72)" : "rgba(123, 231, 255, 0.46)";
-    ctx.fillRect(startX + (i / bars) * span, baseY - barH, span / bars - 4, barH);
+  const maxChange = Math.max(0.1, ...quotes.map((quote) => Math.abs(quote.change)));
+  for (let i = 0; i < quotes.length; i += 1) {
+    const quote = quotes[i];
+    const barH = maxH * (Math.abs(quote.change) / maxChange);
+    ctx.fillStyle = quote.change >= 0 ? "rgba(89, 242, 162, 0.72)" : "rgba(255, 93, 115, 0.72)";
+    ctx.fillRect(startX + (i / quotes.length) * span, baseY - barH, span / quotes.length - 10, barH);
   }
   ctx.restore();
 }

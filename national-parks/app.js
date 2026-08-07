@@ -1,6 +1,6 @@
 "use strict";
 
-// JMO Parks Channel — fake broadcast national parks tour.
+// JMO Parks Channel — real-weather national parks tour.
 // Data: Open-Meteo forecast + air-quality (keyless, CORS-enabled).
 // Scenery: procedural canvas panorama per park (always works offline);
 // a small curated set of long-lived NPS webcam JPGs feeds the inset

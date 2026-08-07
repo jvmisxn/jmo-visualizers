@@ -6,10 +6,17 @@ Open `index.html` directly or use the hosted GitHub Pages path once deployed:
 
 `https://jvmisxn.github.io/jmo-visualizers/stock-channel/`
 
-The visualizer works without credentials by using a realistic local tick simulation. To enable Finnhub WebSocket trades, open it once with:
+The visualizer works without exposing credentials by loading
+`market-data/quotes.json`, a public Finnhub snapshot refreshed by GitHub
+Actions using the private `FINNHUB_TOKEN` repository secret. No local price
+simulation is used.
+
+To enable Finnhub WebSocket trades in a private OBS/browser profile, open it
+once with:
 
 `#finnhub=YOUR_TOKEN`
 
 The token is stored in browser localStorage for that OBS/browser profile. Use `#token=YOUR_TOKEN` as a shorter alias. Query params still work for compatibility, but the hash form is preferred because it is not sent to GitHub Pages as part of the HTTP request.
 
-Without a browser token, the hosted page loads `market-data/quotes.json`, a public Finnhub snapshot refreshed by GitHub Actions using the private `FINNHUB_TOKEN` repository secret. That gives normal page visitors real values without exposing the API key.
+The token is never committed. Hash form is preferred because it is not sent to
+GitHub Pages as part of the HTTP request.
