@@ -526,6 +526,18 @@ function fmtClock(value) {
   return `${hour}:${minute} ${suffix}`;
 }
 
+// Short hour label for the hours-ahead strip: "8 PM", not "8:00 PM" — the
+// strip reads three of these in a row and the :00 is noise at a glance.
+function fmtHourLabel(value) {
+  const match = /T(\d{2}):/.exec(value || "");
+  if (!match) return "";
+  let hour = Number(match[1]);
+  const suffix = hour >= 12 ? "PM" : "AM";
+  hour %= 12;
+  if (hour === 0) hour = 12;
+  return `${hour} ${suffix}`;
+}
+
 function shortDate(value, index) {
   const date = new Date(`${value}T12:00:00Z`);
   if (index === 0) return "TODAY";
@@ -688,6 +700,29 @@ function buildDetailSlides(stop, weather, alerts, condition, isNight) {
     });
   }
 
+  // The deck jumps from current conditions to today's high/low, but the
+  // high/low says nothing about whether tonight cools off or tomorrow's front
+  // arrives before dawn. Old-school Local Forecast segments always aired an
+  // hours-ahead strip: three readings spanning the next ~8 hours, in the
+  // region's own clock (Open-Meteo hourly times are location-local).
+  const hourly = weather.hourly || {};
+  const hourlyStart = current.time
+    ? (hourly.time || []).findIndex((time) => time > current.time)
+    : -1;
+  if (hourlyStart >= 0) {
+    const points = [2, 5, 8]
+      .map((offset) => hourlyStart + offset)
+      .filter((i) => hourly.time?.[i] && Number.isFinite(hourly.temperature_2m?.[i]))
+      .map((i) => `${fmtHourLabel(hourly.time[i])} ${fmtTemp(hourly.temperature_2m[i])}`);
+    if (points.length === 3) {
+      slides.push({
+        kicker: "HOURS AHEAD",
+        summary: `Coming up: ${points.join(", ")}.`,
+        tickerLead: `HOURS AHEAD: ${points.join(", ")}`,
+      });
+    }
+  }
+
   slides.push({
     kicker: "FORECAST SNAPSHOT",
     summary: todayForecastLine(daily, current, isNight),
@@ -817,6 +852,7 @@ async function fetchWeather(stop) {
     longitude: stop.lon,
     current: "temperature_2m,relative_humidity_2m,apparent_temperature,dew_point_2m,precipitation,weather_code,wind_speed_10m,wind_direction_10m,wind_gusts_10m,cloud_cover,pressure_msl,visibility,is_day",
     daily: "temperature_2m_max,temperature_2m_min,precipitation_probability_max,weather_code,sunrise,sunset,uv_index_max",
+    hourly: "temperature_2m",
     temperature_unit: "fahrenheit",
     wind_speed_unit: "mph",
     precipitation_unit: "inch",
