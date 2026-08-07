@@ -472,10 +472,15 @@ function fmtShortWind(value, direction) {
 // Broadcast conditions decks pitch "Feels like" only when it's a story —
 // heat index or wind chill pulling meaningfully away from the thermometer.
 // Airing "91° / Feels like 91°" full-time is dead weight, so the line only
-// takes the panel when the rounded readings are 3°+ apart.
+// airs when the rounded readings are 3°+ apart. One gate shared by the
+// conditions panel and the LOCAL DETAILS slide so the two never disagree.
+function feelsLikeIsStory(actual, apparent) {
+  return Number.isFinite(actual) && Number.isFinite(apparent)
+    && Math.abs(Math.round(apparent) - Math.round(actual)) >= 3;
+}
+
 function renderFeelsLike(actual, apparent) {
-  if (!Number.isFinite(actual) || !Number.isFinite(apparent)
-    || Math.abs(Math.round(apparent) - Math.round(actual)) < 3) {
+  if (!feelsLikeIsStory(actual, apparent)) {
     els.feelsLike.hidden = true;
     return;
   }
@@ -649,10 +654,14 @@ function buildDetailSlides(stop, weather, alerts, condition, isNight) {
     tickerLead: `${stop.name}: ${condition}, ${fmtTemp(current.temperature_2m)}, ${fmtWind(current.wind_speed_10m, current.wind_direction_10m)}`,
   });
 
+  // Same significance gate as the panel's feels-like line: when the apparent
+  // temperature matches the thermometer, the slide reads two facts instead of
+  // padding itself with a non-story.
+  const feelsSlide = feelsLikeIsStory(current.temperature_2m, current.apparent_temperature);
   slides.push({
     kicker: "LOCAL DETAILS",
-    summary: `Feels like ${fmtTemp(current.apparent_temperature)}. Humidity ${fmtPercent(current.relative_humidity_2m)}. Clouds ${fmtPercent(current.cloud_cover)}.`,
-    tickerLead: `DETAILS: feels ${fmtTemp(current.apparent_temperature)}, humidity ${fmtPercent(current.relative_humidity_2m)}, clouds ${fmtPercent(current.cloud_cover)}`,
+    summary: `${feelsSlide ? `Feels like ${fmtTemp(current.apparent_temperature)}. ` : ""}Humidity ${fmtPercent(current.relative_humidity_2m)}. Clouds ${fmtPercent(current.cloud_cover)}.`,
+    tickerLead: `DETAILS: ${feelsSlide ? `feels ${fmtTemp(current.apparent_temperature)}, ` : ""}humidity ${fmtPercent(current.relative_humidity_2m)}, clouds ${fmtPercent(current.cloud_cover)}`,
   });
 
   // "Rain 0.00 in" is dead air on a dry day; broadcast observation decks fill
