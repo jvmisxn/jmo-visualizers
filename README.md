@@ -9,6 +9,7 @@ Hosted page: <https://jvmisxn.github.io/jmo-visualizers/>
 - [Starfield](https://jvmisxn.github.io/jmo-visualizers/starfield/)
 - [Fish Tank](https://jvmisxn.github.io/jmo-visualizers/godot-aquarium/) — Godot version; canonical aquarium visualizer
 - [Weather Radar](https://jvmisxn.github.io/jmo-visualizers/weather-radar/)
+- [News Globe](https://jvmisxn.github.io/jmo-visualizers/news-globe/)
 - [Market Scan](https://jvmisxn.github.io/jmo-visualizers/stock-channel/)
 - [TV Static](https://jvmisxn.github.io/jmo-visualizers/tv-static/)
 - [Airport Channel](https://jvmisxn.github.io/jmo-visualizers/airport-channel/)

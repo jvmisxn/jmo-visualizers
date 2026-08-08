@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JMO News Globe</title>
+    <link rel="stylesheet" href="../weather-radar/vendor/leaflet/leaflet.css?v=vendor-leaflet-1">
+    <link rel="stylesheet" href="./styles.css?v=news-globe-1">
+  </head>
+  <body>
+    <main class="frame">
+      <section id="map" aria-label="Global news map"></section>
+
+      <div class="map-grid" aria-hidden="true"></div>
+      <div class="scanlines" aria-hidden="true"></div>
+      <div class="vignette" aria-hidden="true"></div>
+
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark">JMO</span>
+          <span class="brand-title">News Globe</span>
+        </div>
+        <div id="mode" class="mode">GLOBAL DESK</div>
+        <div class="clock-block">
+          <div id="clock" class="clock">--:-- PT</div>
+          <div id="clock-date" class="clock-date">--</div>
+        </div>
+      </header>
+
+      <aside class="story-panel">
+        <div id="region" class="region">Loading global desk...</div>
+        <div id="story-count" class="story-count">Stories pending</div>
+        <div id="topic-stack" class="topic-stack"></div>
+      </aside>
+
+      <aside class="signal-panel">
+        <div class="signal-header">
+          <span>NEWS SIGNAL</span>
+          <span id="signal-status">SYNCING</span>
+        </div>
+        <div class="signal-bars" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div id="source-line" class="source-line">GDELT / curated fallback</div>
+      </aside>
+
+      <section id="breaking" class="breaking" hidden>
+        <span>MAJOR STORY</span>
+        <strong id="breaking-topic">GLOBAL ALERT</strong>
+      </section>
+
+      <section class="lower-third">
+        <div class="slide-copy">
+          <div id="kicker" class="kicker">NOW VIEWING</div>
+          <div id="headline" class="headline">Global news map initializing</div>
+          <div id="meta" class="meta">Source sync pending</div>
+        </div>
+        <a id="story-link" class="story-link" href="#" target="_blank" rel="noreferrer">SOURCE</a>
+      </section>
+
+      <footer class="ticker">
+        <div id="ticker-text" class="ticker-text">
+          DATA: GDELT PROJECT, OPENSTREETMAP, CARTO
+        </div>
+      </footer>
+    </main>
+
+    <script src="../weather-radar/vendor/leaflet/leaflet.js?v=vendor-leaflet-1"></script>
+    <script src="./app.js?v=news-globe-1"></script>
+  </body>
+</html>
