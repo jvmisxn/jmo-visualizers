@@ -4,10 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>JMO Airport Channel</title>
-    <link rel="stylesheet" href="./styles.css?v=airport-real-1">
+    <link rel="stylesheet" href="../weather-radar/vendor/leaflet/leaflet.css?v=vendor-leaflet-1">
+    <link rel="stylesheet" href="./styles.css?v=airport-live-map-1">
   </head>
   <body>
     <main class="frame">
+      <section id="map" aria-label="Airport regional map"></section>
       <canvas id="airfield" aria-label="Airfield ground view"></canvas>
 
       <div class="grid-glow"></div>
@@ -70,11 +72,25 @@
         <div id="status-text" class="status-text">Loading FAA and NOAA airport status snapshot.</div>
       </section>
 
+      <section class="camera-stage" aria-label="Live airport camera">
+        <div class="camera-head">
+          <span id="camera-source">KING COUNTY AIRPORT</span>
+          <span id="camera-live">LIVE</span>
+        </div>
+        <iframe id="camera-frame" title="Live airport camera" allow="autoplay; fullscreen" hidden></iframe>
+        <img id="camera-image" alt="Airport camera" hidden>
+        <div class="camera-foot">
+          <span id="camera-location">Boeing Field airfield</span>
+          <span id="camera-updated">refreshing</span>
+        </div>
+      </section>
+
       <footer class="ticker">
         <div id="ticker-text" class="ticker-text">AIRPORT ADVISORY TAPE LOADING...</div>
       </footer>
     </main>
 
-    <script src="./app.js?v=airport-real-1"></script>
+    <script src="../weather-radar/vendor/leaflet/leaflet.js?v=vendor-leaflet-1"></script>
+    <script src="./app.js?v=airport-live-map-1"></script>
   </body>
 </html>

@@ -32,6 +32,11 @@ const PARKS = [
     acres: 2219791,
     visitors: "4.5M",
     fact: "The world's first national park holds more than half of Earth's active geysers.",
+    cams: [
+      { location: "North Entrance — NPS", url: "https://www.nps.gov/webcams-yell/mammoth_arch.jpg" },
+      { location: "Electric Peak — NPS", url: "https://www.nps.gov/webcams-yell/mammoth_electric.jpg" },
+      { location: "Mount Washburn NE — NPS", url: "https://www.nps.gov/webcams-yell/washburn_ne.jpg" },
+    ],
   },
   {
     name: "Grand Canyon",
@@ -43,6 +48,7 @@ const PARKS = [
     acres: 1201647,
     visitors: "4.7M",
     fact: "The canyon runs 277 river miles long, up to 18 miles wide, and a mile deep.",
+    cams: [{ location: "South Entrance Station — NPS", url: "https://www.nps.gov/webcams-grca/camera.jpg" }],
   },
   {
     name: "Zion",
@@ -65,7 +71,12 @@ const PARKS = [
     acres: 236381,
     visitors: "1.6M",
     fact: "At 14,410 feet, Rainier is the most glaciated peak in the contiguous U.S.",
-    cams: [{ location: "Paradise — NPS", url: "https://www.nps.gov/webcams-mora/mountain.jpg" }],
+    cams: [
+      { location: "Paradise Mountain — NPS", url: "https://www.nps.gov/webcams-mora/mountain.jpg" },
+      { location: "Longmire — NPS", url: "https://www.nps.gov/webcams-mora/longmire.jpg" },
+      { location: "Paradise East — NPS", url: "https://www.nps.gov/webcams-mora/east.jpg" },
+      { location: "Paradise West — NPS", url: "https://www.nps.gov/webcams-mora/west.jpg" },
+    ],
   },
   {
     name: "Olympic",
@@ -77,6 +88,7 @@ const PARKS = [
     acres: 922649,
     visitors: "2.9M",
     fact: "One park spans glacier-capped peaks, temperate rainforest, and wild coastline.",
+    cams: [{ location: "Hurricane Ridge — NPS", url: "https://www.nps.gov/olym/images/Hurricane-Ridge-webcam_1.jpg" }],
   },
   {
     name: "Glacier",
@@ -88,6 +100,11 @@ const PARKS = [
     acres: 1013126,
     visitors: "3.2M",
     fact: "Going-to-the-Sun Road crosses the Continental Divide at Logan Pass.",
+    cams: [
+      { location: "Lake McDonald — NPS", url: "https://www.nps.gov/webcams-glac/LakeMcDonald1.jpg" },
+      { location: "Apgar Village — NPS", url: "https://www.nps.gov/webcams-glac/ApgarVillage.jpg" },
+      { location: "Apgar Lookout — NPS", url: "https://www.nps.gov/webcams-glac/ApgarLookout-01.jpg" },
+    ],
   },
   {
     name: "Great Smoky Mountains",
@@ -123,6 +140,8 @@ const PARKS = [
     fact: "The Teton Range rises 7,000 feet straight off the valley floor with no foothills.",
   },
 ];
+
+const TOUR_STOPS = PARKS.filter((park) => park.cams?.length);
 
 const WEATHER_TEXT = {
   0: "Clear",
@@ -194,8 +213,10 @@ const els = {
 
 // ?stop=N jumps the rotation to a given stop (1-based) for testing.
 const stopParam = Number(new URLSearchParams(location.search).get("stop"));
-let stopIndex = Number.isInteger(stopParam) && stopParam >= 1 ? (stopParam - 1) % PARKS.length : 0;
+let stopIndex = Number.isInteger(stopParam) && stopParam >= 1 ? (stopParam - 1) % TOUR_STOPS.length : 0;
 const dataCache = new Map(); // park.name -> { at, weather, aqi, tz }
+let map = null;
+let activeMarker = null;
 
 // ---------------------------------------------------------------------------
 // Clock
@@ -225,7 +246,66 @@ function tickClock() {
 }
 
 function currentPark() {
-  return PARKS[stopIndex % PARKS.length];
+  return TOUR_STOPS[stopIndex % TOUR_STOPS.length];
+}
+
+function initMap() {
+  if (!window.L) return;
+  map = L.map("map", {
+    zoomControl: false,
+    attributionControl: false,
+    dragging: false,
+    scrollWheelZoom: false,
+    doubleClickZoom: false,
+    boxZoom: false,
+    keyboard: false,
+    tap: false,
+  }).setView([39.5, -98.5], 4);
+  L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png", {
+    subdomains: "abcd",
+    maxZoom: 10,
+    minZoom: 3,
+    opacity: 0.98,
+  }).addTo(map);
+  L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}{r}.png", {
+    subdomains: "abcd",
+    maxZoom: 10,
+    minZoom: 3,
+    opacity: 0.76,
+  }).addTo(map);
+  PARKS.forEach((park) => {
+    L.marker([park.lat, park.lon], {
+      interactive: false,
+      icon: L.divIcon({
+        className: "",
+        html: `<div class="park-marker"></div><div class="park-label">${escapeHtml(park.name)}</div>`,
+        iconSize: [1, 1],
+        iconAnchor: [0, 0],
+      }),
+    }).addTo(map);
+  });
+}
+
+function focusMap(park) {
+  if (!map) return;
+  map.flyTo([park.lat, park.lon], 7, { animate: true, duration: 1.6 });
+  if (activeMarker) activeMarker.remove();
+  activeMarker = L.circleMarker([park.lat, park.lon], {
+    radius: 22,
+    color: "#e8a33d",
+    weight: 2,
+    fillColor: "#7fce8e",
+    fillOpacity: 0.18,
+    interactive: false,
+  }).addTo(map);
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
 }
 
 // ---------------------------------------------------------------------------
@@ -361,7 +441,7 @@ function renderCam(park) {
     els.camPanel.hidden = true;
     return;
   }
-  const cam = cams[0];
+  const cam = cams[Math.floor(Date.now() / CAM_REFRESH_MS) % cams.length];
   const probe = new Image();
   probe.onload = () => {
     if (seq !== camSeq) return;
@@ -763,7 +843,8 @@ async function showStop() {
   els.pfVisitors.textContent = park.visitors;
   els.pfFact.textContent = park.fact;
   els.parkLocalTime.textContent = "--:--";
-  els.segment.textContent = `STOP ${(stopIndex % PARKS.length) + 1} OF ${PARKS.length}`;
+  els.segment.textContent = `LIVE CAM ${(stopIndex % TOUR_STOPS.length) + 1} OF ${TOUR_STOPS.length}`;
+  focusMap(park);
   scene.setPark(park);
   scene.setWeatherCode(dataCache.get(park.name)?.weather?.current?.weather_code);
   renderCam(park);
@@ -775,17 +856,21 @@ async function showStop() {
   }
   tickClock();
   // Warm the next stop so its cards land populated.
-  const next = PARKS[(stopIndex + 1) % PARKS.length];
+  const next = TOUR_STOPS[(stopIndex + 1) % TOUR_STOPS.length];
   loadParkData(next).catch(() => {});
 }
 
 function advance() {
-  stopIndex = (stopIndex + 1) % PARKS.length;
+  stopIndex = (stopIndex + 1) % TOUR_STOPS.length;
   showStop();
 }
 
 tickClock();
+initMap();
 setInterval(tickClock, 1000);
+window.addEventListener("resize", () => {
+  if (map) setTimeout(() => map.invalidateSize(), 50);
+});
 showStop();
 setInterval(advance, STOP_MS);
 setInterval(renderTicker, 90 * 1000);

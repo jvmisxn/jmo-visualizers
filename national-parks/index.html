@@ -4,10 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>JMO Parks Channel</title>
-    <link rel="stylesheet" href="./styles.css?v=parks-1">
+    <link rel="stylesheet" href="../weather-radar/vendor/leaflet/leaflet.css?v=vendor-leaflet-1">
+    <link rel="stylesheet" href="./styles.css?v=parks-live-map-1">
   </head>
   <body>
     <main class="frame">
+      <section id="map" aria-label="National parks map"></section>
       <canvas id="scene" aria-label="Scenic park panorama"></canvas>
 
       <div class="film-grain"></div>
@@ -92,6 +94,7 @@
       </footer>
     </main>
 
-    <script src="./app.js?v=parks-1"></script>
+    <script src="../weather-radar/vendor/leaflet/leaflet.js?v=vendor-leaflet-1"></script>
+    <script src="./app.js?v=parks-live-map-1"></script>
   </body>
 </html>

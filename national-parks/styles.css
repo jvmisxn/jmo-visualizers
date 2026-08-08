@@ -22,6 +22,7 @@
 html,
 body,
 .frame,
+#map,
 #scene {
   width: 100%;
   height: 100%;
@@ -43,6 +44,44 @@ body {
 #scene {
   position: absolute;
   inset: 0;
+  z-index: 20;
+  opacity: 0.18;
+  mix-blend-mode: screen;
+}
+
+#map {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  background: #081118;
+  filter: saturate(0.82) contrast(1.06) brightness(0.74);
+}
+
+.leaflet-container {
+  background: #081118;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.park-marker {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--pine);
+  border: 2px solid rgba(244, 236, 216, 0.95);
+  box-shadow: 0 0 0 6px rgba(127, 206, 142, 0.16), 0 0 20px rgba(127, 206, 142, 0.62);
+}
+
+.park-label {
+  transform: translate(16px, -18px);
+  padding: 3px 7px;
+  border: 1px solid rgba(232, 163, 61, 0.58);
+  background: rgba(8, 18, 12, 0.78);
+  color: var(--cream);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .film-grain,
@@ -340,26 +379,37 @@ body {
 .cam-panel {
   left: var(--safe-x);
   top: calc(var(--topbar-h) + 24px);
-  width: 300px;
+  width: min(50vw, 860px);
+  height: min(34vw, 560px);
   margin: 0;
+  overflow: hidden;
   background: var(--panel-strong);
   border: 2px solid rgba(244, 236, 216, 0.72);
-  box-shadow: 7px 7px 0 rgba(0, 0, 0, 0.38);
+  border-radius: 8px;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 12px 32px rgba(0, 0, 0, 0.52);
 }
 
 .cam-panel img {
   display: block;
   width: 100%;
-  height: 168px;
+  height: 100%;
   object-fit: cover;
-  border-bottom: 2px solid rgba(232, 163, 61, 0.7);
+  border-bottom: 0;
 }
 
 .cam-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: flex;
   align-items: center;
   gap: 10px;
   padding: 8px 10px;
+  background: rgba(8, 18, 12, 0.82);
+  border-top: 1px solid rgba(232, 163, 61, 0.48);
 }
 
 .cam-badge {

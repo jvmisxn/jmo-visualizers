@@ -17,6 +17,42 @@
   const DATA_URL = "./data.json?v=" + Math.floor(Date.now() / (5 * 60 * 1000));
   const PAGE_FLIP_MS = 12000;
   const STATUS_ROTATE_MS = 14000;
+  const CAMERA_ROTATE_MS = 30000;
+
+  const CAMERA_STOPS = [
+    {
+      type: "iframe",
+      source: "KING COUNTY AIRPORT",
+      location: "Boeing Field Camera 1",
+      lat: 47.5368,
+      lon: -122.3039,
+      url: "https://player.invintus.com/index.html?clientID=6779541715&encoder=%7B%22encoderID%22%3A%22tifkljs1%22%2C%22streamName%22%3A%22KCIA-camera1%22%2C%22live247URI%22%3A%22https%3A%2F%2Fapi.v3.invintus.com%2FStreamURI%2Fpersis%2F6779541715%2FKCIA-camera1%2Fmedia.m3u8%22%7D&model=%7B%22key%22%3A%22encoder%22%2C%22encoderID%22%3A%22uid%22%2C%22streamName%22%3A%22name%22%2C%22live247URI%22%3A%22uri%22%7D&player=%7B%22autoStart%22%3Atrue%2C%22trackAnalytics%22%3Afalse%7D",
+    },
+    {
+      type: "iframe",
+      source: "KING COUNTY AIRPORT",
+      location: "Boeing Field Camera 2",
+      lat: 47.5368,
+      lon: -122.3039,
+      url: "https://player.invintus.com/index.html?clientID=6779541715&encoder=%7B%22encoderID%22%3A%22g5wjadzz%22%2C%22streamName%22%3A%22KCIA-camera2%22%2C%22live247URI%22%3A%22https%3A%2F%2Fapi.v3.invintus.com%2FStreamURI%2Fpersis%2F6779541715%2FKCIA-camera2%2Fmedia.m3u8%22%7D&model=%7B%22key%22%3A%22encoder%22%2C%22encoderID%22%3A%22uid%22%2C%22streamName%22%3A%22name%22%2C%22live247URI%22%3A%22uri%22%7D&player=%7B%22autoStart%22%3Atrue%2C%22trackAnalytics%22%3Afalse%7D",
+    },
+    {
+      type: "image",
+      source: "WASAR / MODERN AVIATION",
+      location: "Boeing Field Northwest",
+      lat: 47.5368,
+      lon: -122.3039,
+      url: "https://kbfi.wasar.org/north.jpg",
+    },
+    {
+      type: "image",
+      source: "WASAR / MODERN AVIATION",
+      location: "Boeing Field Southwest",
+      lat: 47.5368,
+      lon: -122.3039,
+      url: "https://kbfi.wasar.org/south.jpg",
+    },
+  ];
 
   const STATUS_MESSAGES = [
     ["LIVE DATA DESK", "FAA NAS status and NOAA aviation weather snapshots only. No simulated flights on this channel."],
@@ -30,6 +66,9 @@
   let depPage = 0;
   let arrPage = 0;
   let statusIdx = 0;
+  let cameraIdx = 0;
+  let map = null;
+  let cameraMarker = null;
 
   function fmtTime(ms) {
     if (!Number.isFinite(ms)) return "--:--";
@@ -206,6 +245,79 @@
     $("ticker-text").textContent = items.join("   •••   ") + "   •••   ";
   }
 
+  function initMap() {
+    if (!window.L) return;
+    map = L.map("map", {
+      zoomControl: false,
+      attributionControl: false,
+      dragging: false,
+      scrollWheelZoom: false,
+      doubleClickZoom: false,
+      boxZoom: false,
+      keyboard: false,
+      tap: false,
+    }).setView([47.54, -122.31], 10);
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png", {
+      subdomains: "abcd",
+      maxZoom: 13,
+      minZoom: 3,
+      opacity: 0.98,
+    }).addTo(map);
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}{r}.png", {
+      subdomains: "abcd",
+      maxZoom: 13,
+      minZoom: 3,
+      opacity: 0.82,
+    }).addTo(map);
+    [
+      { label: "SEA", lat: 47.4502, lon: -122.3088 },
+      { label: "BFI", lat: 47.53, lon: -122.3019 },
+      { label: "RNT", lat: 47.4931, lon: -122.2158 },
+      { label: "PAE", lat: 47.9063, lon: -122.2816 },
+    ].forEach((item) => {
+      L.marker([item.lat, item.lon], {
+        interactive: false,
+        icon: L.divIcon({
+          className: "",
+          html: `<div class="airport-marker"></div><div class="airport-label">${item.label}</div>`,
+          iconSize: [1, 1],
+          iconAnchor: [0, 0],
+        }),
+      }).addTo(map);
+    });
+  }
+
+  function renderCamera() {
+    const camera = CAMERA_STOPS[cameraIdx % CAMERA_STOPS.length];
+    const frame = $("camera-frame");
+    const image = $("camera-image");
+    $("camera-source").textContent = camera.source;
+    $("camera-location").textContent = camera.location;
+    $("camera-updated").textContent = camera.type === "image" ? "updates about every 30 sec" : "24/7 stream";
+    if (camera.type === "iframe") {
+      if (frame.src !== camera.url) frame.src = camera.url;
+      frame.hidden = false;
+      image.hidden = true;
+    } else {
+      image.src = camera.url + "?v=" + Math.floor(Date.now() / 30000);
+      image.hidden = false;
+      frame.hidden = true;
+    }
+    if (map) {
+      map.flyTo([camera.lat, camera.lon], 11, { animate: true, duration: 1.5 });
+      if (cameraMarker) cameraMarker.remove();
+      cameraMarker = L.circleMarker([camera.lat, camera.lon], {
+        radius: 18,
+        color: "#ffb638",
+        weight: 2,
+        fillColor: "#6df28e",
+        fillOpacity: 0.25,
+        interactive: false,
+      }).addTo(map);
+    }
+    cameraIdx++;
+  }
+
   function renderAll() {
     renderClocks();
     renderBoards(false);
@@ -226,6 +338,7 @@
   window.addEventListener("resize", () => {
     resize();
     renderBoards(false);
+    if (map) setTimeout(() => map.invalidateSize(), 50);
   });
   resize();
 
@@ -331,6 +444,8 @@
   renderStatus();
   renderAll();
   loadData();
+  initMap();
+  renderCamera();
   spawnPlane();
   spawnPlane();
   requestAnimationFrame(frame);
@@ -339,5 +454,6 @@
   setInterval(() => renderBoards(true), PAGE_FLIP_MS);
   setInterval(renderStatus, STATUS_ROTATE_MS);
   setInterval(loadData, 5 * 60 * 1000);
+  setInterval(renderCamera, CAMERA_ROTATE_MS);
   setInterval(() => { if (planes.length < 4) spawnPlane(); }, 6500);
 })();
