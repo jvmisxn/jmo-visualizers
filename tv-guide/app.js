@@ -202,7 +202,7 @@
   var SCROLL_PX_PER_SEC = clampInt(params.get("speed"), 5, 200, 34);
   var CSV_REFRESH_MS = clampInt(params.get("refresh"), 10, 3600, 60) * 1000;
   var SLOT_MINUTES = 30;
-  var DATA_URL = "./guide.csv";
+  var DATA_URL = params.get("csv") || "./guide.csv";
 
   var state = {
     guide: { channels: [] },
@@ -432,7 +432,7 @@
   /* ---- data loading ---- */
 
   function loadGuide() {
-    var url = DATA_URL + "?v=" + Date.now();
+    var url = DATA_URL + (DATA_URL.indexOf("?") === -1 ? "?v=" : "&v=") + Date.now();
     fetch(url, { cache: "no-store" })
       .then(function (response) {
         if (!response.ok) throw new Error("guide.csv " + response.status);
