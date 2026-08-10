@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JMO TV Guide</title>
+    <link rel="stylesheet" href="./styles.css?v=tv-guide-1">
+  </head>
+  <body>
+    <main class="stage" aria-label="Retro TV guide channel visualizer">
+      <header class="topbar">
+        <section class="promo">
+          <div class="promo-label" id="promo-label">JMO TV</div>
+          <div class="promo-body" id="promo-body">
+            <div class="promo-title">LOADING LISTINGS…</div>
+            <div class="promo-desc">Reading guide.csv</div>
+          </div>
+        </section>
+        <section class="clockbox">
+          <div class="brand">JMO <span>TV GUIDE</span></div>
+          <div id="clock-time">--:--:--</div>
+          <div id="clock-date">&nbsp;</div>
+        </section>
+      </header>
+
+      <div class="timebar">
+        <div class="timebar-channel">CHANNEL</div>
+        <div class="timebar-slots" id="timebar-slots"></div>
+      </div>
+
+      <div class="grid-viewport" id="grid-viewport">
+        <div class="grid-strip" id="grid-strip" data-loop="0"></div>
+      </div>
+
+      <div class="scanlines"></div>
+      <div class="vignette"></div>
+    </main>
+    <script src="./app.js?v=tv-guide-1"></script>
+  </body>
+</html>

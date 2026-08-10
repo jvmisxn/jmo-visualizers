@@ -15,5 +15,6 @@ Hosted page: <https://jvmisxn.github.io/jmo-visualizers/>
 - [Airport Channel](https://jvmisxn.github.io/jmo-visualizers/airport-channel/)
 - [Retro Shopping](https://jvmisxn.github.io/jmo-visualizers/retro-shopping/)
 - [National Parks](https://jvmisxn.github.io/jmo-visualizers/national-parks/)
+- [TV Guide](https://jvmisxn.github.io/jmo-visualizers/tv-guide/) — Prevue-style program grid fed by `tv-guide/guide.csv`
 
 `fish-tank/` is the older canvas prototype and is no longer part of normal improvement work.
