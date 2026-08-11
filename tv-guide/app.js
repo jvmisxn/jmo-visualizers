@@ -208,6 +208,7 @@
     guide: { channels: [] },
     windowStart: null, // minutes from midnight, floored to slot
     promoIndex: 0,
+    guideText: null,
   };
 
   function clampInt(raw, min, max, fallback) {
@@ -478,18 +479,19 @@
   /* ---- data loading ---- */
 
   function loadGuide() {
-    var url = DATA_URL + (DATA_URL.indexOf("?") === -1 ? "?v=" : "&v=") + Date.now();
-    fetch(url, { cache: "no-store" })
+    fetch(DATA_URL, { cache: "no-cache" })
       .then(function (response) {
         if (!response.ok) throw new Error("guide.csv " + response.status);
         return response.text();
       })
       .then(function (text) {
+        if (text === state.guideText) return;
         var guide = parseGuide(text);
         if (guide.channels.length === 0) {
           console.warn("tv-guide: guide.csv parsed to 0 channels; keeping previous grid");
           return;
         }
+        state.guideText = text;
         state.guide = guide;
         renderGrid();
         updatePromo();
