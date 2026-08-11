@@ -1,7 +1,7 @@
 {
   "provider": "Fourthwall public collection JSON",
   "sourceUrl": "https://shop.fourthwall.com/collections/all.json",
-  "generatedAt": 1786469622531,
+  "generatedAt": 1786471060829,
   "collection": "All Products",
   "products": [
     {
@@ -229,7 +229,7 @@
       "available": true,
       "image": "https://imgproxy.fourthwall.dev/O-wFcfoxaxcb-Th91ej6o74YeGX7dKEMQwXZadx3jWY/rt:fill/w:422/sm:1/enc/gTehLSrSTbPneIEG/WCW8rY4rA1No0fNL/Crzb-TafQ6YpdqbW/T51M7xEOIW9Vnk82/1vnFHB20LRySuqib/A2NjkvrSBUvkP7zS/gHUdNBdkU1MwlpqY/_ELgfNQMvn3D7Gl7/VxX0J6GXICA_U92e/Z6u733PXzKB8ii4c/mwX05a45lMGueLQ1/1Pp17KyH7Rt3JL6Z/5TRHnhpC0vOyhVwa/BRky1w5t6GlxW2oa/eGxHq7MMr8g.jpg",
       "url": "https://shop.fourthwall.com/products/spider-crew",
-      "updatedAt": "2026-07-09 15:39:41 UTC",
+      "updatedAt": "2026-08-11 17:40:29 UTC",
       "variants": 12
     },
     {
