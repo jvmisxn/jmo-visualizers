@@ -220,6 +220,7 @@ const RADAR_ANIMATION_STALE_MS = 1800000;
 const RADAR_FRAME_MS = 1400;
 const RADAR_LATEST_HOLD_MS = 4200;
 const RADAR_MAX_FRAMES = 6;
+const RADAR_WARMUP_TIMEOUT_MS = 9000;
 const RAINVIEWER_COLOR_SCHEME = 4;
 const STOP_DWELL_MS = 65000;
 const CAMERA_GLIDE_SECONDS = 52;
@@ -270,6 +271,7 @@ let radarFrameIndex = 0;
 let radarAnimationTimer = 0;
 let radarAnimationLoadedAt = 0;
 let radarFrameSignature = "";
+let radarLoadSeq = 0;
 
 // The WMS layer only fetches tiles when the view changes, so a long-running
 // OBS source would keep showing cached radar. Rolling the ts param forces a
@@ -317,6 +319,7 @@ async function loadAnimatedRadar() {
 }
 
 function teardownAnimatedRadar() {
+  radarLoadSeq += 1;
   clearTimeout(radarAnimationTimer);
   radarAnimationTimer = 0;
   radarFrameLayers.forEach((layer) => map.removeLayer(layer));
@@ -326,21 +329,43 @@ function teardownAnimatedRadar() {
   radarFrameSignature = "";
 }
 
-function setAnimatedRadarFrames(host, frames) {
-  radarAnimationLoadedAt = Date.now();
+function tileLayerIsReady(layer) {
+  return typeof layer.isLoading === "function" ? !layer.isLoading() : true;
+}
 
+function waitForTileLayerWarm(layer) {
+  return new Promise((resolve) => {
+    let settled = false;
+    let timeout = 0;
+
+    const finish = () => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timeout);
+      layer.off("load", finish);
+      layer.off("tileerror", check);
+      resolve();
+    };
+
+    const check = () => {
+      if (tileLayerIsReady(layer)) finish();
+    };
+
+    layer.on("load", finish);
+    layer.on("tileerror", check);
+    requestAnimationFrame(check);
+    timeout = setTimeout(finish, RADAR_WARMUP_TIMEOUT_MS);
+  });
+}
+
+async function setAnimatedRadarFrames(host, frames) {
   // RainViewer publishes new frames roughly every 10 minutes but this reloads
   // every 5; rebuilding the layers with an identical frame list blanks the
   // radar while every tile refetches, so keep the running loop instead.
   const signature = frames.map((frame) => `${host}${frame.path}`).join("|");
   if (signature === radarFrameSignature && radarFrameLayers.length === frames.length) return;
-  radarFrameSignature = signature;
-
-  clearTimeout(radarAnimationTimer);
-  radarAnimationTimer = 0;
-
-  radarFrameIndex = 0;
-  radarFrames = frames.map((frame, index) => ({
+  const seq = ++radarLoadSeq;
+  const nextFrames = frames.map((frame) => ({
     time: frame.time,
     url: `${host}${frame.path}/512/{z}/{x}/{y}/${RAINVIEWER_COLOR_SCHEME}/1_1.png`,
   }));
@@ -348,9 +373,8 @@ function setAnimatedRadarFrames(host, frames) {
   // One preloaded layer per frame, toggled via opacity. Swapping a single
   // layer's URL discards its tiles and refetches every 1.4s frame advance,
   // which blanks the radar while tiles stream back in.
-  radarFrameLayers.forEach((layer) => map.removeLayer(layer));
-  radarFrameLayers = radarFrames.map((frame, index) => L.tileLayer(frame.url, {
-    opacity: index === 0 ? 0.74 : 0,
+  const nextLayers = nextFrames.map((frame) => L.tileLayer(frame.url, {
+    opacity: 0,
     pane: "radarPane",
     tileSize: 512,
     zoomOffset: -1,
@@ -358,6 +382,22 @@ function setAnimatedRadarFrames(host, frames) {
     minZoom: 4,
   }).addTo(map));
 
+  await Promise.all(nextLayers.map(waitForTileLayerWarm));
+  if (seq !== radarLoadSeq) {
+    nextLayers.forEach((layer) => map.removeLayer(layer));
+    return;
+  }
+
+  const oldLayers = radarFrameLayers;
+  radarFrameSignature = signature;
+  radarAnimationLoadedAt = Date.now();
+  clearTimeout(radarAnimationTimer);
+  radarAnimationTimer = 0;
+  radarFrameIndex = Math.max(0, nextFrames.length - 1);
+  radarFrames = nextFrames;
+  radarFrameLayers = nextLayers;
+  radarFrameLayers[radarFrameIndex].setOpacity(0.74);
+  oldLayers.forEach((layer) => map.removeLayer(layer));
   updateRadarLayerForStop();
   scheduleNextRadarFrame();
   updateRadarStamp();
