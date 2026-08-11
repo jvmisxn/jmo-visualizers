@@ -395,21 +395,46 @@
     });
     strip.appendChild(pane);
 
-    // Duplicate the pane so the vertical scroll can loop seamlessly. Only
-    // needed (and only looped) when the rows overflow the viewport.
+    // Duplicate the pane so the vertical scroll can loop seamlessly: append
+    // cloned copies until the duplicates cover at least one viewport, so the
+    // frame shown at offset === paneHeight is pixel-identical to offset 0.
+    // Only needed (and only looped) when the rows overflow the viewport.
+    // Heights come from getBoundingClientRect() (sub-pixel) — offsetHeight
+    // rounds to integers, which made every wrap jump by a fraction of a px.
     var viewport = document.getElementById("grid-viewport");
-    if (pane.offsetHeight > viewport.offsetHeight) {
-      strip.appendChild(pane.cloneNode(true));
+    var paneHeight = pane.getBoundingClientRect().height;
+    var viewportHeight = viewport.getBoundingClientRect().height;
+    if (paneHeight > viewportHeight && paneHeight > 0) {
+      var extra = 0;
+      while (extra < viewportHeight) {
+        strip.appendChild(pane.cloneNode(true));
+        extra += paneHeight;
+      }
       strip.dataset.loop = "1";
+      scroll.loop = true;
+      scroll.paneHeight = paneHeight;
+      // Keep the current position across rebuilds (60s CSV refresh,
+      // half-hour window roll) instead of snapping back to the top; the
+      // modulo re-bases the offset if the row count / pane height changed.
+      scroll.offset = scroll.offset % paneHeight;
     } else {
       strip.dataset.loop = "0";
+      scroll.loop = false;
+      scroll.paneHeight = 0;
+      scroll.offset = 0;
     }
-    scroll.offset = 0;
+    applyScroll(strip);
   }
 
   /* ---- continuous scroll ---- */
 
-  var scroll = { offset: 0, last: null };
+  var scroll = { offset: 0, last: null, loop: false, paneHeight: 0 };
+
+  function applyScroll(strip) {
+    // translate3d keeps the strip on the compositor (smoother in OBS
+    // browser sources than repositioning via layout).
+    strip.style.transform = "translate3d(0," + (-scroll.offset).toFixed(2) + "px,0)";
+  }
 
   function scrollFrame(timestamp) {
     var strip = document.getElementById("grid-strip");
@@ -417,15 +442,12 @@
     var delta = (timestamp - scroll.last) / 1000;
     scroll.last = timestamp;
 
-    if (strip.dataset.loop === "1") {
-      var paneHeight = strip.firstChild ? strip.firstChild.offsetHeight : 0;
-      if (paneHeight > 0) {
-        scroll.offset = (scroll.offset + delta * SCROLL_PX_PER_SEC) % paneHeight;
-        strip.style.transform = "translateY(" + (-scroll.offset).toFixed(2) + "px)";
-      }
+    if (scroll.loop && scroll.paneHeight > 0) {
+      scroll.offset = (scroll.offset + delta * SCROLL_PX_PER_SEC) % scroll.paneHeight;
     } else {
-      strip.style.transform = "translateY(0)";
+      scroll.offset = 0;
     }
+    applyScroll(strip);
     root.requestAnimationFrame(scrollFrame);
   }
 
