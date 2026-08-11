@@ -282,6 +282,19 @@ body {
   font-weight: 400;
 }
 
+.source-credit {
+  position: absolute;
+  right: 1.5vw;
+  bottom: 0.8vh;
+  z-index: 4;
+  color: rgba(244, 244, 255, 0.58);
+  font-size: 1.4vh;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-shadow: 0.12vh 0.12vh 0 #000050;
+}
+
 /* ---------- CRT flavor ---------- */
 
 .scanlines {

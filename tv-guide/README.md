@@ -14,6 +14,9 @@ directory.
 - **Clock/date header** — live clock, retro styling, scanlines + vignette.
 - **Live CSV reload** — `guide.csv` is re-fetched every 60 seconds with a
   cache-busting query param, so edits show up in OBS without a manual refresh.
+- **Real filler schedules** — channel 02 is JMO TV from
+  `stream-ops/configs/program_tv_schedule.json`; ABC/CBS/NBC/FOX/CW rows are
+  generated from TVmaze's public schedule API when available.
 - Designed for 16:9; all sizing is viewport-relative (vh/vw), so it scales
   cleanly at a 1920x1080 browser source.
 
@@ -54,9 +57,10 @@ GitHub Pages URLs (see `stream-ops/configs/scene_music.json`), e.g.:
 https://jvmisxn.github.io/jmo-visualizers/tv-guide/?dpr=1&fps=30&seed=obs
 ```
 
-Hosted mode serves the **committed** `guide.csv` — editing listings means
-commit + push, then wait out the Pages deploy. Fine for a stable schedule,
-bad for quick edits.
+Hosted mode serves the **committed** `guide.csv` — the daily sync script
+regenerates it from the JMO TV schedule plus TVmaze broadcaster listings, then
+pushes the change for GitHub Pages. Manual edits still require commit + push,
+then waiting out the Pages deploy.
 
 For truly local editing, point the OBS browser source at the local clone
 instead:
