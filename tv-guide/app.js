@@ -245,6 +245,28 @@
     return { num: "", name: id };
   }
 
+  var GAP_TITLES = {
+    "ABC": "ABC Programming",
+    "CBS": "CBS Programming",
+    "NBC": "NBC Programming",
+    "FOX": "FOX Programming",
+    "CW": "The CW Programming",
+    "CNN": "CNN Programming",
+    "CNBC": "CNBC Programming",
+    "ESPN": "SportsCenter",
+    "FOOD": "Food Network Programming",
+    "HIST": "History Programming",
+    "HGTV": "HGTV Programming",
+    "DISC": "Discovery Programming",
+    "HBO": "HBO Movie Presentation",
+    "PBS": "PBS Programming",
+  };
+
+  function gapTitle(channel) {
+    var parts = channelParts(channel.id);
+    return GAP_TITLES[parts.name] || (parts.name ? parts.name + " Programming" : "Regular Programming");
+  }
+
   /* ---- clock / date ---- */
 
   var DAYS = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"];
@@ -343,13 +365,13 @@
     clipped.forEach(function (entry) {
       if (entry.hit.start < cursor) return; // overlapping rows: first wins
       if (entry.hit.start > cursor) {
-        lane.appendChild(fillerBlock(cursor, entry.hit.start, windowStart));
+        lane.appendChild(fillerBlock(channel, cursor, entry.hit.start, windowStart));
       }
       lane.appendChild(programBlock(entry, windowStart));
       cursor = entry.hit.end;
     });
     if (cursor < windowEnd) {
-      lane.appendChild(fillerBlock(cursor, windowEnd, windowStart));
+      lane.appendChild(fillerBlock(channel, cursor, windowEnd, windowStart));
     }
 
     row.appendChild(lane);
@@ -373,11 +395,13 @@
     return block;
   }
 
-  function fillerBlock(start, end, windowStart) {
+  function fillerBlock(channel, start, end, windowStart) {
     var block = document.createElement("div");
     block.className = "program-block filler";
     blockGeometry(block, start, end, windowStart);
-    block.innerHTML = '<span class="program-title">OFF AIR</span>';
+    var title = gapTitle(channel);
+    block.innerHTML = '<span class="program-title">' + escapeHTML(title) + "</span>";
+    block.title = title;
     return block;
   }
 
