@@ -456,13 +456,10 @@ const CAMERA_ROTATE_MS = 18000;
 
 function updateClock() {
   const now = new Date();
-  // The classic LDL clock ticks seconds — a static minutes-only clock reads
-  // as a frozen graphic on a live stream; updateClock already runs every 1s.
   els.clock.textContent = new Intl.DateTimeFormat("en-US", {
     timeZone: "America/Los_Angeles",
     hour: "numeric",
     minute: "2-digit",
-    second: "2-digit",
     hour12: true,
   }).format(now).replace(" ", "") + " PT";
   els.clockDate.textContent = new Intl.DateTimeFormat("en-US", {
