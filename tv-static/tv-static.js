@@ -19,6 +19,7 @@ let renderTimerId = null;
 let lastRenderTime = 0;
 let resizeId = null;
 
+const grainTable = createGrainTable(65536);
 const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 const reducedMotionFrameInterval = 180;
 
@@ -78,6 +79,8 @@ function render(timestamp = 0) {
   const bandStrength = reducedMotion ? 18 : 54;
   const rowPulseStrength = reducedMotion ? 7 : 18;
   const grainStrength = reducedMotion ? 0.72 : 0.82;
+  const grainMask = grainTable.length - 1;
+  const grainSeed = (frame * (reducedMotion ? 4099 : 9973)) & grainMask;
 
   for (let y = 0; y < noiseHeight; y += 1) {
     const band = Math.abs(y - bandY) < 5 ? bandStrength : 0;
@@ -86,8 +89,9 @@ function render(timestamp = 0) {
 
   for (let y = 0; y < noiseHeight; y += 1) {
     const rowOffset = rowOffsets[y];
+    const rowSeed = (grainSeed + y * 131) & grainMask;
     for (let x = 0; x < noiseWidth; x += 1) {
-      const grain = Math.random() * 255;
+      const grain = grainTable[(rowSeed + x * 17) & grainMask];
       const hash = ((x * 13 + y * 7 + frame * 17) % 31) * 2;
       const value = clamp(grain * grainStrength + hash + rowOffset) | 0;
       noisePixels[y * noiseWidth + x] = 0xff000000 | (value << 16) | (value << 8) | value;
@@ -144,6 +148,18 @@ function drawBurst(reducedMotion) {
 
 function clamp(value) {
   return Math.max(0, Math.min(255, value));
+}
+
+function createGrainTable(size) {
+  const table = new Uint8Array(size);
+  let seed = 0x4d595446;
+
+  for (let i = 0; i < size; i += 1) {
+    seed = (1664525 * seed + 1013904223) >>> 0;
+    table[i] = seed >>> 24;
+  }
+
+  return table;
 }
 
 function queueRender(delay = 0) {
