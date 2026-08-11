@@ -256,7 +256,7 @@
     if (hours === 0) hours = 12;
     var suffix = now.getHours() >= 12 ? "PM" : "AM";
     document.getElementById("clock-time").textContent =
-      hours + ":" + pad(now.getMinutes()) + ":" + pad(now.getSeconds()) + " " + suffix;
+      hours + ":" + pad(now.getMinutes()) + " " + suffix;
     document.getElementById("clock-date").textContent =
       DAYS[now.getDay()] + " " + MONTHS[now.getMonth()] + " " + now.getDate();
   }
