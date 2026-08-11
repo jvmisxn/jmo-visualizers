@@ -15,6 +15,7 @@ let frame = 0;
 let verticalHold = 0;
 let nextHoldJump = 90;
 let animationId = null;
+let renderTimerId = null;
 let lastRenderTime = 0;
 let resizeId = null;
 
@@ -64,9 +65,10 @@ function scheduleResize() {
 }
 
 function render(timestamp = 0) {
+  animationId = null;
   const reducedMotion = reducedMotionQuery.matches;
-  if (reducedMotion && timestamp - lastRenderTime < reducedMotionFrameInterval) {
-    animationId = requestAnimationFrame(render);
+  if (reducedMotion && lastRenderTime && timestamp - lastRenderTime < reducedMotionFrameInterval) {
+    queueRender(reducedMotionFrameInterval - (timestamp - lastRenderTime));
     return;
   }
 
@@ -94,7 +96,7 @@ function render(timestamp = 0) {
 
   noiseCtx.putImageData(noiseImage, 0, 0);
   drawSignal(reducedMotion);
-  animationId = requestAnimationFrame(render);
+  queueRender(reducedMotion ? reducedMotionFrameInterval : 0);
 }
 
 function drawSignal(reducedMotion) {
@@ -144,19 +146,42 @@ function clamp(value) {
   return Math.max(0, Math.min(255, value));
 }
 
-window.addEventListener("resize", scheduleResize);
-document.addEventListener("visibilitychange", () => {
-  if (document.hidden) {
-    cancelAnimationFrame(animationId);
-    animationId = null;
+function queueRender(delay = 0) {
+  if (delay > 0) {
+    renderTimerId = window.setTimeout(() => {
+      renderTimerId = null;
+      animationId = requestAnimationFrame(render);
+    }, delay);
     return;
   }
 
-  if (animationId === null) {
+  animationId = requestAnimationFrame(render);
+}
+
+function stopRenderLoop() {
+  if (animationId !== null) {
+    cancelAnimationFrame(animationId);
+    animationId = null;
+  }
+
+  if (renderTimerId !== null) {
+    clearTimeout(renderTimerId);
+    renderTimerId = null;
+  }
+}
+
+window.addEventListener("resize", scheduleResize);
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    stopRenderLoop();
+    return;
+  }
+
+  if (animationId === null && renderTimerId === null) {
     lastRenderTime = 0;
-    animationId = requestAnimationFrame(render);
+    queueRender();
   }
 });
 
 resize();
-animationId = requestAnimationFrame(render);
+queueRender();
