@@ -9,6 +9,8 @@ let height = 0;
 let noiseWidth = 0;
 let noiseHeight = 0;
 let noiseImage = null;
+let noisePixels = null;
+let rowOffsets = null;
 let frame = 0;
 let verticalHold = 0;
 let nextHoldJump = 90;
@@ -48,6 +50,8 @@ function resize() {
   noiseCanvas.width = noiseWidth;
   noiseCanvas.height = noiseHeight;
   noiseImage = noiseCtx.createImageData(noiseWidth, noiseHeight);
+  noisePixels = new Uint32Array(noiseImage.data.buffer);
+  rowOffsets = new Float32Array(noiseHeight);
 }
 
 function scheduleResize() {
@@ -68,7 +72,6 @@ function render(timestamp = 0) {
 
   lastRenderTime = timestamp;
   frame += 1;
-  const data = noiseImage.data;
   const bandY = (frame * (reducedMotion ? 1 : 3)) % noiseHeight;
   const bandStrength = reducedMotion ? 18 : 54;
   const rowPulseStrength = reducedMotion ? 7 : 18;
@@ -76,16 +79,16 @@ function render(timestamp = 0) {
 
   for (let y = 0; y < noiseHeight; y += 1) {
     const band = Math.abs(y - bandY) < 5 ? bandStrength : 0;
-    const rowPulse = Math.sin((y + frame * 2) * 0.09) * rowPulseStrength;
+    rowOffsets[y] = band + Math.sin((y + frame * 2) * 0.09) * rowPulseStrength;
+  }
+
+  for (let y = 0; y < noiseHeight; y += 1) {
+    const rowOffset = rowOffsets[y];
     for (let x = 0; x < noiseWidth; x += 1) {
-      const index = (y * noiseWidth + x) * 4;
       const grain = Math.random() * 255;
       const hash = ((x * 13 + y * 7 + frame * 17) % 31) * 2;
-      const value = clamp(grain * grainStrength + hash + band + rowPulse);
-      data[index] = value;
-      data[index + 1] = value;
-      data[index + 2] = value;
-      data[index + 3] = 255;
+      const value = clamp(grain * grainStrength + hash + rowOffset) | 0;
+      noisePixels[y * noiseWidth + x] = 0xff000000 | (value << 16) | (value << 8) | value;
     }
   }
 
