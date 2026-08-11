@@ -14,16 +14,31 @@ let verticalHold = 0;
 let nextHoldJump = 90;
 let animationId = null;
 let lastRenderTime = 0;
+let resizeId = null;
 
 const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 const reducedMotionFrameInterval = 180;
 
 function resize() {
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  width = Math.floor(window.innerWidth);
-  height = Math.floor(window.innerHeight);
-  canvas.width = Math.floor(width * dpr);
-  canvas.height = Math.floor(height * dpr);
+  const nextWidth = Math.floor(window.innerWidth);
+  const nextHeight = Math.floor(window.innerHeight);
+  const nextCanvasWidth = Math.floor(nextWidth * dpr);
+  const nextCanvasHeight = Math.floor(nextHeight * dpr);
+
+  if (
+    width === nextWidth &&
+    height === nextHeight &&
+    canvas.width === nextCanvasWidth &&
+    canvas.height === nextCanvasHeight
+  ) {
+    return;
+  }
+
+  width = nextWidth;
+  height = nextHeight;
+  canvas.width = nextCanvasWidth;
+  canvas.height = nextCanvasHeight;
   canvas.style.width = `${width}px`;
   canvas.style.height = `${height}px`;
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -33,6 +48,15 @@ function resize() {
   noiseCanvas.width = noiseWidth;
   noiseCanvas.height = noiseHeight;
   noiseImage = noiseCtx.createImageData(noiseWidth, noiseHeight);
+}
+
+function scheduleResize() {
+  if (resizeId !== null) return;
+
+  resizeId = requestAnimationFrame(() => {
+    resizeId = null;
+    resize();
+  });
 }
 
 function render(timestamp = 0) {
@@ -117,7 +141,7 @@ function clamp(value) {
   return Math.max(0, Math.min(255, value));
 }
 
-window.addEventListener("resize", resize);
+window.addEventListener("resize", scheduleResize);
 document.addEventListener("visibilitychange", () => {
   if (document.hidden) {
     cancelAnimationFrame(animationId);
