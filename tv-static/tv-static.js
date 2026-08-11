@@ -21,6 +21,7 @@ let resizeId = null;
 
 const grainTable = createGrainTable(65536);
 const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+const standardFrameInterval = 33;
 const reducedMotionFrameInterval = 180;
 
 function resize() {
@@ -68,8 +69,9 @@ function scheduleResize() {
 function render(timestamp = 0) {
   animationId = null;
   const reducedMotion = reducedMotionQuery.matches;
-  if (reducedMotion && lastRenderTime && timestamp - lastRenderTime < reducedMotionFrameInterval) {
-    queueRender(reducedMotionFrameInterval - (timestamp - lastRenderTime));
+  const frameInterval = reducedMotion ? reducedMotionFrameInterval : standardFrameInterval;
+  if (lastRenderTime && timestamp - lastRenderTime < frameInterval) {
+    queueRender(frameInterval - (timestamp - lastRenderTime));
     return;
   }
 
