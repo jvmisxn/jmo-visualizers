@@ -12,6 +12,10 @@ let noiseImage = null;
 let frame = 0;
 let verticalHold = 0;
 let nextHoldJump = 90;
+let animationId = null;
+let lastRenderTime = 0;
+
+const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 function resize() {
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -30,7 +34,13 @@ function resize() {
   noiseImage = noiseCtx.createImageData(noiseWidth, noiseHeight);
 }
 
-function render() {
+function render(timestamp = 0) {
+  if (reducedMotionQuery.matches && timestamp - lastRenderTime < 100) {
+    animationId = requestAnimationFrame(render);
+    return;
+  }
+
+  lastRenderTime = timestamp;
   frame += 1;
   const data = noiseImage.data;
   const bandY = (frame * 3) % noiseHeight;
@@ -52,7 +62,7 @@ function render() {
 
   noiseCtx.putImageData(noiseImage, 0, 0);
   drawSignal();
-  requestAnimationFrame(render);
+  animationId = requestAnimationFrame(render);
 }
 
 function drawSignal() {
@@ -102,5 +112,18 @@ function clamp(value) {
 }
 
 window.addEventListener("resize", resize);
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    cancelAnimationFrame(animationId);
+    animationId = null;
+    return;
+  }
+
+  if (animationId === null) {
+    lastRenderTime = 0;
+    animationId = requestAnimationFrame(render);
+  }
+});
+
 resize();
-render();
+animationId = requestAnimationFrame(render);
