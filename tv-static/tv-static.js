@@ -165,6 +165,10 @@ function createGrainTable(size) {
 }
 
 function queueRender(delay = 0) {
+  if (animationId !== null || renderTimerId !== null) {
+    return;
+  }
+
   if (delay > 0) {
     renderTimerId = window.setTimeout(() => {
       renderTimerId = null;
