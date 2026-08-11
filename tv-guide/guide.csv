@@ -12,7 +12,7 @@ channel,title,start,end,description
 02 JMO TV,Game Replays,05:00,06:00,"Full-game replays from the library, in order."
 02 JMO TV,JMO Game Shows,06:00,07:00,JMO original game-show episodes back to back.
 02 JMO TV,Weather Channel,07:00,08:00,Live PNW radar with smooth jazz.
-02 JMO TV,Esports,08:00,09:00,Tournament VODs from the esports archive.
+02 JMO TV,Game Replays,08:00,09:00,"Full-game replays from the library, in order."
 02 JMO TV,AI Plays: Frogger,09:00,10:00,A neural net attempts to cross the road. Live.
 02 JMO TV,Portfolio Edits,10:00,11:00,Fresh cuts and directed work from the portfolio.
 02 JMO TV,Game Replays,11:00,12:00,"Full-game replays from the library, in order."
@@ -22,12 +22,7 @@ channel,title,start,end,description
 02 JMO TV,JMO Game Shows,15:00,16:00,JMO original game-show episodes back to back.
 02 JMO TV,Portfolio Edits,16:00,17:00,Fresh cuts and directed work from the portfolio.
 02 JMO TV,JMO Game Shows,17:00,18:00,JMO original game-show episodes back to back.
-02 JMO TV,Portfolio Edits,18:00,19:00,Fresh cuts and directed work from the portfolio.
-02 JMO TV,Esports,19:00,20:00,Tournament VODs from the esports archive.
-02 JMO TV,AI Plays: Frogger,20:00,21:00,A neural net attempts to cross the road. Live.
-02 JMO TV,JMO Game Shows,21:00,22:00,JMO original game-show episodes back to back.
-02 JMO TV,Esports,22:00,23:00,Tournament VODs from the esports archive.
-02 JMO TV,Portfolio Edits,23:00,24:00,Fresh cuts and directed work from the portfolio.
+02 JMO TV,Game Replays,18:00,24:00,"Full-game replays from the library, in order."
 03 ABC,"Good Morning America: Pepe Martí, Jake Dennis, Chef Caroline Chambers",04:00,06:00,"ABC · S2026E159 · Formula E racing drivers Pepe Martí and Jake Dennis ; chef Caroline Chambers (""What to Cook When You Don't Feel Like Cooking: Make It Fast"") ; Deals & Steals with ABC e-commerce ed"
 03 ABC,"GMA3: Mo Gilligan, Chef Caroline Chambers",10:00,11:00,"ABC · S06E230 · Comedian Mo Gilligan (""Big Chicken: A Fast Food Conspiracy""); chef Caroline Chambers (""What to Cook When You Don't Feel Like Cooking: Make It Fast""); ABC News correspondent Ashan S"
 03 ABC,General Hospital: Ep. #16021,11:00,12:00,ABC · S2026E156
@@ -48,3 +43,35 @@ channel,title,start,end,description
 06 FOX,Kitchen Nightmares: Renate's German Restaurant,17:00,18:02,"FOX · S10E05 · With few customers to fill the dining room and constant complaints about cold, unappetizing food, Gordon must convince the proud owner of a struggling restaurant to abandon her int"
 06 FOX,"Beat Shazam: Which is Best, South, East or West?",18:02,19:00,"FOX · S08E03 · Los Angeles skateboarding buddies, New York besties, and sisters from Georgia battle it out."
 07 CW,WWE NXT: 32,17:00,19:00,The CW · S20E32
+08 CNN,CNN This Morning,03:00,04:00,CNN · S2026E159
+08 CNN,CNN News Central,04:00,07:00,CNN · S2026E159
+08 CNN,The Situation Room,07:00,09:00,CNN · S2026E159
+08 CNN,Inside Politics,09:00,10:00,CNN · S2026E158
+08 CNN,CNN News Central (PM),10:00,13:00,CNN · S2026E159
+08 CNN,The Arena with Kasie Hunt,13:00,14:00,CNN · S2026E159
+08 CNN,The Lead with Jake Tapper,14:00,16:00,CNN · S2026E158
+08 CNN,Erin Burnett OutFront,16:00,17:00,CNN · S2026E158
+08 CNN,Anderson Cooper 360°,17:00,18:00,CNN · S2026E108
+08 CNN,The Source with Kaitlan Collins,18:00,19:00,CNN · S2026E149
+08 CNN,CNN NewsNight with Abby Phillip,19:00,20:00,CNN · S2026E153
+08 CNN,The Story Is with Elex Michaelson,21:00,23:00,CNN · S2026E155
+09 CNBC,Morning Call,02:00,03:00,CNBC · S2026E102
+09 CNBC,Squawk Box,03:00,06:00,CNBC · S2026E159
+09 CNBC,Squawk on the Street,06:00,08:00,CNBC · S2026E158
+09 CNBC,Fast Money Halftime Report,09:00,10:00,CNBC · S2026E158
+09 CNBC,The Exchange,10:00,11:00,CNBC · S2026E158
+09 CNBC,Power Lunch,11:00,12:00,CNBC · S2026E158
+09 CNBC,Closing Bell,12:00,13:00,CNBC · S2026E158
+09 CNBC,Closing Bell: Overtime,13:00,14:00,CNBC · S2026E158
+09 CNBC,Fast Money,14:00,15:00,CNBC · S2026E158
+09 CNBC,Mad Money,15:00,16:00,CNBC · S2026E158
+10 ESPN,WNBA Countdown,16:00,16:30,"ESPN · S05E13 · Bold opinions, discussion and debate centered on the top storylines from around the league. Hosted by Malika Andrews alongside analysts Andraya Carter, Chiney Ogwumike."
+11 FOOD,Beat Bobby Flay: Joy and Pain,17:00,17:30,Food Network · S2026E27 · Journalist Hoda Kotb and Katie Lee Biegel recruit chefs Emma Woods and Quentin Garcia to take some joy in Bobby Flay's pain.
+11 FOOD,Kitchen Undercover: The San Pedro Sting,18:00,19:00,"Food Network · S01E03 · At the struggling San Pedro Brewing Company, owner James is desperate to reclaim his once-thriving business after a sudden drop in sales. Chef Antonia Lofaso launches a secret inve"
+12 HIST,The Secret of Skinwalker Ranch: Heating Up,18:00,19:00,History · S07E13
+12 HIST,The Secret of Skinwalker Ranch: Behind the Gates: Blown Away,19:00,19:30,History · S03E13
+12 HIST,"The Proof Is Out There: Floating Boomerang UFO, Mermaid Stalks Boat, and Underwater Ocean Boom",19:32,20:33,History · S06E10 · Did a UFO shut down an airport in England? A relaxing trip on a river takes a strange turn - did tourists see a mermaid? Did the Navy record the cry of a mysterious underwater crea
+13 HGTV,Love It or List It: Tightly Squeezed,17:00,18:00,HGTV · S21E08
+14 DISC,Homestead Rescue: Intervention: Bee Stings and Better Days,17:00,19:00,"Discovery · S01E04 · In New Mexico, parents plead for intervention with a homestead where a couple battles crippling Lyme disease. The Raneys discover that the couple has turned to bee sting therapy --"
+15 HBO,Hard Knocks: Training Camp with the Seattle Seahawks - #2,18:00,19:00,HBO · S21E02
+16 PBS,Amanpour & Co.,20:00,21:00,PBS · S2026E159
