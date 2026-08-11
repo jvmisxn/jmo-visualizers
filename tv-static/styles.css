@@ -146,3 +146,15 @@ body {
     font-size: 13px;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .sync-roll,
+  .channel-id {
+    animation: none;
+  }
+
+  .sync-roll {
+    opacity: 0.34;
+    transform: translateY(0);
+  }
+}
