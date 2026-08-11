@@ -8,6 +8,7 @@ let width = 0;
 let height = 0;
 let noiseWidth = 0;
 let noiseHeight = 0;
+let noiseImage = null;
 let frame = 0;
 let verticalHold = 0;
 let nextHoldJump = 90;
@@ -26,12 +27,12 @@ function resize() {
   noiseHeight = Math.max(135, Math.floor(height / 3));
   noiseCanvas.width = noiseWidth;
   noiseCanvas.height = noiseHeight;
+  noiseImage = noiseCtx.createImageData(noiseWidth, noiseHeight);
 }
 
 function render() {
   frame += 1;
-  const image = noiseCtx.createImageData(noiseWidth, noiseHeight);
-  const data = image.data;
+  const data = noiseImage.data;
   const bandY = (frame * 3) % noiseHeight;
 
   for (let y = 0; y < noiseHeight; y += 1) {
@@ -49,7 +50,7 @@ function render() {
     }
   }
 
-  noiseCtx.putImageData(image, 0, 0);
+  noiseCtx.putImageData(noiseImage, 0, 0);
   drawSignal();
   requestAnimationFrame(render);
 }
