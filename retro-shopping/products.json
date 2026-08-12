@@ -1,7 +1,7 @@
 {
   "provider": "Fourthwall public collection JSON",
   "sourceUrl": "https://shop.fourthwall.com/collections/all.json",
-  "generatedAt": 1786569887185,
+  "generatedAt": 1786571090129,
   "collection": "All Products",
   "products": [
     {
@@ -157,7 +157,7 @@
       "available": true,
       "image": "https://imgproxy.fourthwall.dev/JLGFPrZnqsy2Fs-FFCRYrnUqqlAptlFTSzUl1MhzKWg/rt:fill/w:422/sm:1/enc/7_tOVCb8PNt22cxS/cBTPTO_0KREzfYj6/-VULc_xgVMosnFYx/vc6TBvzJitlvWL5R/RqJObhGQNZZJ7MRc/cFfGxTL1ksHe5sLN/WcOhvkfERiWLOi4i/zu4O5C3qPhe_yV1z/z3XrUGC8bFhSvxdf/IjDqTgH0TUCFF4yA/W-94-7-pqAAjI1Wq/wNWeKY08i22vOE4m/G1ab8EYWT-VK6TFr/lvo1c2eIhzLi0MqL/-iZbvYMaCDs.jpg",
       "url": "https://shop.fourthwall.com/products/fourthwall-signature-hoodie",
-      "updatedAt": "2026-04-16 18:26:08 UTC",
+      "updatedAt": "2026-08-12 21:28:03 UTC",
       "variants": 6
     },
     {
