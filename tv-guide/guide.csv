@@ -8,12 +8,12 @@ channel,title,start,end,description
 02 JMO TV,Esports,01:00,02:00,Tournament VODs from the esports archive.
 02 JMO TV,Game Replays,02:00,03:00,"Full-game replays from the library, in order."
 02 JMO TV,Esports,03:00,04:00,Tournament VODs from the esports archive.
-02 JMO TV,AI Plays: Pokémon Red,04:00,05:00,A neural net grinds for badges in Kanto. Live.
+02 JMO TV,Portfolio Edits,04:00,05:00,Fresh cuts and directed work from the portfolio.
 02 JMO TV,Game Replays,05:00,06:00,"Full-game replays from the library, in order."
 02 JMO TV,JMO Game Shows,06:00,07:00,JMO original game-show episodes back to back.
 02 JMO TV,Weather Channel,07:00,08:00,Live PNW radar with smooth jazz.
 02 JMO TV,Game Replays,08:00,09:00,"Full-game replays from the library, in order."
-02 JMO TV,AI Plays: Frogger,09:00,10:00,A neural net attempts to cross the road. Live.
+02 JMO TV,Esports,09:00,10:00,Tournament VODs from the esports archive.
 02 JMO TV,Portfolio Edits,10:00,11:00,Fresh cuts and directed work from the portfolio.
 02 JMO TV,Game Replays,11:00,12:00,"Full-game replays from the library, in order."
 02 JMO TV,Esports,12:00,13:00,Tournament VODs from the esports archive.
@@ -23,55 +23,55 @@ channel,title,start,end,description
 02 JMO TV,Portfolio Edits,16:00,17:00,Fresh cuts and directed work from the portfolio.
 02 JMO TV,JMO Game Shows,17:00,18:00,JMO original game-show episodes back to back.
 02 JMO TV,Game Replays,18:00,24:00,"Full-game replays from the library, in order."
-03 ABC,"Good Morning America: Pepe Martí, Jake Dennis, Chef Caroline Chambers",04:00,06:00,"ABC · S2026E159 · Formula E racing drivers Pepe Martí and Jake Dennis ; chef Caroline Chambers (""What to Cook When You Don't Feel Like Cooking: Make It Fast"") ; Deals & Steals with ABC e-commerce ed"
-03 ABC,"GMA3: Mo Gilligan, Chef Caroline Chambers",10:00,11:00,"ABC · S06E230 · Comedian Mo Gilligan (""Big Chicken: A Fast Food Conspiracy""); chef Caroline Chambers (""What to Cook When You Don't Feel Like Cooking: Make It Fast""); ABC News correspondent Ashan S"
-03 ABC,General Hospital: Ep. #16021,11:00,12:00,ABC · S2026E156
-03 ABC,ABC World News Tonight with David Muir,15:30,16:00,ABC · S2026E219
-03 ABC,"Jimmy Kimmel Live: Earvin ""Magic"" Johnson, Aaron Pierre, Maiya Sykes, Low Cut Connie",20:35,21:35,"ABC · S2026E95 · 1. Earvin ""Magic"" Johnson. 2. Aaron Pierre (""Lanterns""). 3. Maiya Sykes sits in with The Cletones. 4. Musical Guest Low Cut Connie."
-03 ABC,ABC World News Now,23:00,24:00,ABC · S2026E157
-04 CBS,CBS Mornings: Reece Weaver,04:00,06:00,"CBS · S2026E159 · Reece Weaver, former Dallas Cowboys Cheerleader."
-04 CBS,The Young and the Restless: Ep. #13439,09:30,10:30,CBS · S2026E155
-04 CBS,The Bold and the Beautiful: Ep. #9840,10:30,11:00,CBS · S2026E156
-04 CBS,Beyond the Gates,11:00,12:00,"CBS · S2026E145 · Bill has a request of Dani that enrages Hayley; Vernon demands answers from Joey; Nicole and Kial receive unsettling news; Leslie reaches out to someone in need; Chelsea, Kat, Naom"
-04 CBS,CBS Evening News,15:30,16:00,CBS · S2026E159
-05 NBC,Today: Omi Hopper,04:00,06:00,"NBC · S2026E159 · First Day Back-to-School with Greenville, SC. Today's Consumer: Men's Beauty. Steals & Deals: Summer Blowout Day 1 with Jill Martin. Today Food with Omi Hopper. Significant New Dis"
-05 NBC,"Today 3rd Hour: Jalen Brunson, Romeo Santos",06:00,07:00,"NBC · S2026E158 · Fact vs. Myth: Everyday Wellness with Dr. John Torres. Catching up with Jalen and Sandra Brunson. Catching up with Romeo Santos. Today Food with Matt Broussard. Performance from ""S"
-05 NBC,TODAY with Jenna & Sheinelle: Sugarland,07:00,08:00,NBC · S01E151 · Catching up with Sugarland. A.I. Life Hacks with Sinead Bovell. Get the Look with Gucci Westman. Plaza Fan Pop Quiz.
-05 NBC,NBC Nightly News: Aug 11 Tue,15:30,16:00,NBC · S2026E204
-05 NBC,America's Got Talent: Judges' Callbacks 2,17:00,19:00,"NBC · S21E11 · Howie Mandel and Sofía Vergara pick their final acts to go to the live shows; Howie is joined by comedian Nikki Glaser at the iconic Laugh Factory in Hollywood, while Sofía welcome"
-05 NBC,"The Tonight Show Starring Jimmy Fallon: Dakota Fanning, 50 Cent, Jon Lovitz, Ainsley Bailey",20:35,21:35,"NBC · S2026E96 · Guest includes Dakota Fanning, 50 Cent, Jon Lovitz, and Ainsley Bailey."
-06 FOX,Kitchen Nightmares: Renate's German Restaurant,17:00,18:02,"FOX · S10E05 · With few customers to fill the dining room and constant complaints about cold, unappetizing food, Gordon must convince the proud owner of a struggling restaurant to abandon her int"
-06 FOX,"Beat Shazam: Which is Best, South, East or West?",18:02,19:00,"FOX · S08E03 · Los Angeles skateboarding buddies, New York besties, and sisters from Georgia battle it out."
-07 CW,WWE NXT: 32,17:00,19:00,The CW · S20E32
-08 CNN,CNN This Morning,03:00,04:00,CNN · S2026E159
-08 CNN,CNN News Central,04:00,07:00,CNN · S2026E159
-08 CNN,The Situation Room,07:00,09:00,CNN · S2026E159
-08 CNN,Inside Politics,09:00,10:00,CNN · S2026E158
-08 CNN,CNN News Central (PM),10:00,13:00,CNN · S2026E159
-08 CNN,The Arena with Kasie Hunt,13:00,14:00,CNN · S2026E159
-08 CNN,The Lead with Jake Tapper,14:00,16:00,CNN · S2026E158
-08 CNN,Erin Burnett OutFront,16:00,17:00,CNN · S2026E158
-08 CNN,Anderson Cooper 360°,17:00,18:00,CNN · S2026E108
-08 CNN,The Source with Kaitlan Collins,18:00,19:00,CNN · S2026E149
-08 CNN,CNN NewsNight with Abby Phillip,19:00,20:00,CNN · S2026E153
-08 CNN,The Story Is with Elex Michaelson,21:00,23:00,CNN · S2026E155
-09 CNBC,Morning Call,02:00,03:00,CNBC · S2026E102
-09 CNBC,Squawk Box,03:00,06:00,CNBC · S2026E159
-09 CNBC,Squawk on the Street,06:00,08:00,CNBC · S2026E158
-09 CNBC,Fast Money Halftime Report,09:00,10:00,CNBC · S2026E158
-09 CNBC,The Exchange,10:00,11:00,CNBC · S2026E158
-09 CNBC,Power Lunch,11:00,12:00,CNBC · S2026E158
-09 CNBC,Closing Bell,12:00,13:00,CNBC · S2026E158
-09 CNBC,Closing Bell: Overtime,13:00,14:00,CNBC · S2026E158
-09 CNBC,Fast Money,14:00,15:00,CNBC · S2026E158
-09 CNBC,Mad Money,15:00,16:00,CNBC · S2026E158
-10 ESPN,WNBA Countdown,16:00,16:30,"ESPN · S05E13 · Bold opinions, discussion and debate centered on the top storylines from around the league. Hosted by Malika Andrews alongside analysts Andraya Carter, Chiney Ogwumike."
-11 FOOD,Beat Bobby Flay: Joy and Pain,17:00,17:30,Food Network · S2026E27 · Journalist Hoda Kotb and Katie Lee Biegel recruit chefs Emma Woods and Quentin Garcia to take some joy in Bobby Flay's pain.
-11 FOOD,Kitchen Undercover: The San Pedro Sting,18:00,19:00,"Food Network · S01E03 · At the struggling San Pedro Brewing Company, owner James is desperate to reclaim his once-thriving business after a sudden drop in sales. Chef Antonia Lofaso launches a secret inve"
-12 HIST,The Secret of Skinwalker Ranch: Heating Up,18:00,19:00,History · S07E13
-12 HIST,The Secret of Skinwalker Ranch: Behind the Gates: Blown Away,19:00,19:30,History · S03E13
-12 HIST,"The Proof Is Out There: Floating Boomerang UFO, Mermaid Stalks Boat, and Underwater Ocean Boom",19:32,20:33,History · S06E10 · Did a UFO shut down an airport in England? A relaxing trip on a river takes a strange turn - did tourists see a mermaid? Did the Navy record the cry of a mysterious underwater crea
-13 HGTV,Love It or List It: Tightly Squeezed,17:00,18:00,HGTV · S21E08
-14 DISC,Homestead Rescue: Intervention: Bee Stings and Better Days,17:00,19:00,"Discovery · S01E04 · In New Mexico, parents plead for intervention with a homestead where a couple battles crippling Lyme disease. The Raneys discover that the couple has turned to bee sting therapy --"
-15 HBO,Hard Knocks: Training Camp with the Seattle Seahawks - #2,18:00,19:00,HBO · S21E02
-16 PBS,Amanpour & Co.,20:00,21:00,PBS · S2026E159
+03 ABC,"Good Morning America: Mark Ballas, Shirley Ballas, Chef Anthony Vitolo",04:00,06:00,"ABC · S2026E160 · Ballroom dancers and judges Mark Ballas and Shirley Ballas (""Dancing with the Stars: The Next Pro""); chef Anthony Vitolo ; Deals & Steals with ABC e-commerce editor Tory Johnson ."
+03 ABC,"GMA3: Mark Ballas, Shirley Ballas, Chef Anthony Vitolo",10:00,11:00,"ABC · S06E231 · Ballroom dancers and judges Mark Ballas and Shirley Ballas (""Dancing with the Stars: The Next Pro""); chef Anthony Vitolo ; ABC Secret Savings with ABC News' Will Ganss ; Deals & St"
+03 ABC,General Hospital: Ep. #16022,11:00,12:00,ABC · S2026E157
+03 ABC,ABC World News Tonight with David Muir,15:30,16:00,ABC · S2026E220
+03 ABC,Who Wants to Be a Millionaire: In The Hot Seat: Jesse Eisenberg & Paul Giamatti / Krysten Ritter & Sarah Shahi,17:00,18:00,"ABC · S2026E04 · Actors Jesse Eisenberg and Paul Giamatti, followed by Krysten Ritter and Sarah Shahi, bring their competitive spirit to the hot seat."
+03 ABC,"Jimmy Kimmel Live: Kyle Chandler, Hannah Einbinder, Maiya Sykes, Ziggy Marley",20:35,21:35,"ABC · S2026E96 · 1. Kyle Chandler (""Lanterns""). 2. Hannah Einbinder (""Teenage Sex and Death at Camp Miasma"" and ""Hacks""). 3. Maiya Sykes sits in with The Cletones. 4. Musical Guest Ziggy Marley."
+03 ABC,ABC World News Now,23:00,24:00,ABC · S2026E158
+04 CBS,CBS Mornings: Dominic Sessa,04:00,06:00,"CBS · S2026E160 · Dominic Sessa, actor in ""Tony"".Peyton ""Pop"" Houston, quarterback from Evangel Christian Academy in Louisiana."
+04 CBS,The Young and the Restless: Ep. #13440,09:30,10:30,CBS · S2026E156
+04 CBS,The Bold and the Beautiful: Ep. #9841,10:30,11:00,CBS · S2026E157
+04 CBS,Beyond the Gates,11:00,12:00,CBS · S2026E146 · Dani seeks Vanessa's advice while Andre does the same with Ted; Kat's actions put her in Hayley's crosshairs; Naomi and Tomas lock horns; Martin and Smitty try to help Tyrell throu
+04 CBS,CBS Evening News,15:30,16:00,CBS · S2026E160
+04 CBS,Big Brother,17:00,18:30,CBS · S28E15
+05 NBC,"Today: Neil Patrick Harris, Julianne Hough, Austin Scott, Jeff Daniels",04:00,06:00,"NBC · S2026E160 · New GLP-1 Evaluation out of U.S. News & World Report. Neil Patrick Harris, Julianne Hough and Austin Scott on ""Damn Yankees."" Jeff Daniels on ""The Brink of War."" Steals & Deals: Su"
+05 NBC,"Today 3rd Hour: Jared Harris, Rory Scovel",06:00,07:00,"NBC · S2026E159 · On the Money: Back-to-School Savings. She Made It: Wildwonder + Jennifer Fisher Jewelry. Catching up with Jared Harris. Rory Scovel on ""Rory Scovel: Show Must Go On."" Food & Wine: "
+05 NBC,"TODAY with Jenna & Sheinelle: Geno Auriemma, Andy Baraghani",07:00,08:00,"NBC · S01E152 · Never Have I Ever. Coach Geno Auriemma on ""The Dynasty: UConn Huskies."" Today, Food: Summer Dinner Salads with Andy Baraghani. Back-to-School Gear with Meaghan Murphy. This Day in "
+05 NBC,NBC Nightly News: Aug 12 Wed,15:30,16:00,NBC · S2026E205
+05 NBC,"The Tonight Show Starring Jimmy Fallon: Matthew McConaughey, KATSEYE",20:35,21:35,"NBC · S2026E97 · Guest include Matthew McConaughey, plus KATSEYE chats and performs."
+06 FOX,MasterChef: Tag Team,17:00,18:02,"FOX · S16E13 · The remaining home cooks compete in pairs as they race to recreate dishes inspired by the judges' most cherished culinary memories; in the end, one team's journey comes to an end w"
+06 FOX,Nation's Dumbest: The Midterms,18:02,19:00,FOX · S01E05 · The dreaded midterms are the last chance for the celebrities to avoid being in the bottom half of the class; but will a mystery guest outshine them all?
+08 CNN,CNN This Morning,03:00,04:00,CNN · S2026E160
+08 CNN,CNN News Central,04:00,07:00,CNN · S2026E160
+08 CNN,The Situation Room,07:00,09:00,CNN · S2026E160
+08 CNN,Inside Politics,09:00,10:00,CNN · S2026E159
+08 CNN,CNN News Central (PM),10:00,13:00,CNN · S2026E160
+08 CNN,The Arena with Kasie Hunt,13:00,14:00,CNN · S2026E160
+08 CNN,The Lead with Jake Tapper,14:00,16:00,CNN · S2026E159
+08 CNN,Erin Burnett OutFront,16:00,17:00,CNN · S2026E159
+08 CNN,Anderson Cooper 360°,17:00,18:00,CNN · S2026E109
+08 CNN,The Source with Kaitlan Collins,18:00,19:00,CNN · S2026E150
+08 CNN,CNN NewsNight with Abby Phillip,19:00,20:00,CNN · S2026E154
+08 CNN,The Story Is with Elex Michaelson,21:00,23:00,CNN · S2026E156
+09 CNBC,Morning Call,02:00,03:00,CNBC · S2026E103
+09 CNBC,Squawk Box,03:00,06:00,CNBC · S2026E160
+09 CNBC,Squawk on the Street,06:00,08:00,CNBC · S2026E159
+09 CNBC,Fast Money Halftime Report,09:00,10:00,CNBC · S2026E159
+09 CNBC,The Exchange,10:00,11:00,CNBC · S2026E159
+09 CNBC,Power Lunch,11:00,12:00,CNBC · S2026E159
+09 CNBC,Closing Bell,12:00,13:00,CNBC · S2026E159
+09 CNBC,Closing Bell: Overtime,13:00,14:00,CNBC · S2026E159
+09 CNBC,Fast Money,14:00,15:00,CNBC · S2026E159
+09 CNBC,Mad Money,15:00,16:00,CNBC · S2026E159
+10 ESPN,First Take,07:00,08:00,ESPN · S20E228
+11 FOOD,Kitchen Chaos: The Great Outdoors and I Do Disasters,19:00,19:30,"Food Network · S01E09 · Campfire cooking adventures heat up, wedding cakes collapse at the worst possible moment, and drive-thru encounters take unexpected turns as Kitchen Chaos serves up another collect"
+12 HIST,Alone: Icebound,18:00,19:34,"History · S13E09 · As the temperature plummets, the river begins to lock up. Shelter designs are put to the ultimate test, leaving one survivalist struggling to stay warm while smoke causes another t"
+12 HIST,Forged in Fire: Beat the Judges: Katana Battle,19:34,20:34,History · S11E07
+13 HGTV,Renovation Resort Showdown: Living the Dream,18:00,19:00,HGTV · S03E07
+13 HGTV,Worst Yard on the Block: Burdened by Weeds,19:00,19:30,HGTV · S01E09
+13 HGTV,Worst Yard on the Block: Forgotten Yard to Thriving Hub,19:00,19:30,HGTV · S01E10
+14 DISC,Expedition Unknown: Shark Secrets Aired,18:00,18:42,"Discovery · S17E07 · Josh Gates investigates the USS Indianapolis disaster, which led to the deadliest shark attack in history, explores the mystery of Scotland's Stronsay Beast, and examines ancient r"
+14 DISC,How to Catch a Dirtbag: The Kilted Keisterer?,19:01,20:01,"Discovery · S01E02 · Tizzy identifies a disturbingly brazen shopper who places merchandise under his kilt. An angry golfer tees off on bystanders, a man has an ice cream truck meltdown, and a woman cla"
+16 PBS,Amanpour & Co.,20:00,21:00,PBS · S2026E160
