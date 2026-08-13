@@ -1,7 +1,7 @@
 {
   "provider": "Fourthwall public collection JSON",
   "sourceUrl": "https://shop.fourthwall.com/collections/all.json",
-  "generatedAt": 1786594822126,
+  "generatedAt": 1786597331774,
   "collection": "All Products",
   "products": [
     {
@@ -145,7 +145,7 @@
       "available": false,
       "image": "https://imgproxy.fourthwall.dev/aBY_7UIV5HixoUXynauZCNx_9_q3xJRLCqOUBU71_3c/rt:fill/w:422/sm:1/enc/i8DsTswklFnQx0jh/WsVHX-NJUBLuHljs/ve251lf9m-zufze2/xX--s4B_gU0XneXD/ava4-CQK0JGQI-px/BiVJxLLvKP-UziNk/Nea9mtXBd0OzyBPu/h-KHM3GblmGVVzwo/yAkh6vBzxwymVKw0/Au0pea6G-46orVue/EJrjUwSMNRj3RrYY/JQ81sskHoCaUtgzr/b1A5OL6KtLFZrBOn/2TA-UT4csfhoeB_0/3Dtowliglkk.jpg",
       "url": "https://shop.fourthwall.com/products/fourthwall-create-tee",
-      "updatedAt": "2026-06-17 20:29:19 UTC",
+      "updatedAt": "2026-08-13 04:49:33 UTC",
       "variants": 6
     },
     {
