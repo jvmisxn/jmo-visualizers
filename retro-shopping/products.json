@@ -1,7 +1,7 @@
 {
   "provider": "Fourthwall public collection JSON",
   "sourceUrl": "https://shop.fourthwall.com/collections/all.json",
-  "generatedAt": 1786581427660,
+  "generatedAt": 1786583116261,
   "collection": "All Products",
   "products": [
     {
@@ -181,7 +181,7 @@
       "available": true,
       "image": "https://imgproxy.fourthwall.dev/Ojgq_U9K6NkxLrZUVFYYXC15aKDtASNi2QKHc4GtGYQ/rt:fill/w:422/sm:1/enc/KmbxYjfPBhqozwn9/g8oDpTxUTJfovS7P/JcxMVdNpjsfrVR3o/yW7W8TZelvROuHrP/eoxka53FZ4Mbh7A5/85-MeTdy6sz9iwPE/bfsyzefDMTbtEYhc/vhNQ5GlGqCVxG1nq/mjb-QF5LLOy2jf4_/-mvATzowhD00E6-b/SMY6iY05275pICVG/jhg1QRMWHD9ZJnJ3/pPoqx3xwZq9jytnm/ZLNYIJ0FExko6GpW/fLXgBFH3FXQ.jpg",
       "url": "https://shop.fourthwall.com/products/powered-by-fourthwall-crewneck",
-      "updatedAt": "2026-04-16 18:26:08 UTC",
+      "updatedAt": "2026-08-13 00:40:45 UTC",
       "variants": 6
     },
     {
