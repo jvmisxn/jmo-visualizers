@@ -1,6 +1,6 @@
 {
   "provider": "FAA NAS Status + NOAA AviationWeather",
-  "generatedAt": 1786727331076,
+  "generatedAt": 1786728796346,
   "airport": {
     "icao": "KSEA",
     "iata": "SEA",
@@ -15,9 +15,9 @@
     "ceiling": "200 FT",
     "category": "LIFR"
   },
-  "taf": "TAF KSEA 141646Z 1417/1518 21007KT 3/4SM BR BKN002 FM141830 20006KT 3SM BR BKN008 FM141900 23005KT P6SM SCT050 SCT100 FM150100 26005KT P6SM SCT250 FM151100 22003KT 1SM BR BKN005",
+  "taf": "TAF KSEA 141720Z 1418/1524 21007KT 1SM BR BKN002 FM141830 20006KT 3SM BR BKN008 FM141930 23005KT P6SM SCT050 SCT100 FM150100 26005KT P6SM SCT250 FM151100 22003KT 1SM BR BKN005",
   "faa": {
-    "updateTime": "Fri Aug 14 17:08:02 2026 GMT",
+    "updateTime": "Fri Aug 14 17:33:06 2026 GMT",
     "events": [],
     "available": true
   }
