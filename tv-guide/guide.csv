@@ -4,69 +4,70 @@
 # Falls back to stream-ops/configs/tv_guide_filler.csv if live schedule fetch fails.
 # Columns: channel,title,start,end,description. Times are 24h HH:MM and repeat daily.
 channel,title,start,end,description
-02 JMO TV,JMO Game Shows,00:00,01:00,JMO original game-show episodes back to back.
+02 JMO TV,Game Show After Dark,00:00,01:00,JMO original game-show episodes back to back.
 02 JMO TV,Esports,01:00,02:00,Tournament VODs from the esports archive.
 02 JMO TV,Game Replays,02:00,03:00,"Full-game replays from the library, in order."
 02 JMO TV,Esports,03:00,04:00,Tournament VODs from the esports archive.
-02 JMO TV,Portfolio Edits,04:00,05:00,Fresh cuts and directed work from the portfolio.
+02 JMO TV,JMO Cut Room,04:00,05:00,Fresh cuts and directed work from the portfolio.
 02 JMO TV,Game Replays,05:00,06:00,"Full-game replays from the library, in order."
-02 JMO TV,JMO Game Shows,06:00,07:00,JMO original game-show episodes back to back.
+02 JMO TV,Game Show After Dark,06:00,07:00,JMO original game-show episodes back to back.
 02 JMO TV,Weather Channel,07:00,08:00,Live PNW radar with smooth jazz.
 02 JMO TV,Game Replays,08:00,09:00,"Full-game replays from the library, in order."
 02 JMO TV,Esports,09:00,10:00,Tournament VODs from the esports archive.
-02 JMO TV,Portfolio Edits,10:00,11:00,Fresh cuts and directed work from the portfolio.
+02 JMO TV,JMO Cut Room,10:00,11:00,Fresh cuts and directed work from the portfolio.
 02 JMO TV,Game Replays,11:00,12:00,"Full-game replays from the library, in order."
 02 JMO TV,Esports,12:00,13:00,Tournament VODs from the esports archive.
-02 JMO TV,JMO Game Shows,13:00,14:00,JMO original game-show episodes back to back.
-02 JMO TV,Portfolio Edits,14:00,15:00,Fresh cuts and directed work from the portfolio.
-02 JMO TV,JMO Game Shows,15:00,16:00,JMO original game-show episodes back to back.
-02 JMO TV,Portfolio Edits,16:00,17:00,Fresh cuts and directed work from the portfolio.
-02 JMO TV,JMO Game Shows,17:00,18:00,JMO original game-show episodes back to back.
+02 JMO TV,Game Show After Dark,13:00,14:00,JMO original game-show episodes back to back.
+02 JMO TV,JMO Cut Room,14:00,15:00,Fresh cuts and directed work from the portfolio.
+02 JMO TV,Game Show After Dark,15:00,16:00,JMO original game-show episodes back to back.
+02 JMO TV,JMO Cut Room,16:00,17:00,Fresh cuts and directed work from the portfolio.
+02 JMO TV,Game Show After Dark,17:00,18:00,JMO original game-show episodes back to back.
 02 JMO TV,Game Replays,18:00,24:00,"Full-game replays from the library, in order."
-03 ABC,Good Morning America: Travis Barker,04:00,06:00,"ABC · S2026E161 · Musician Travis Barker discusses ""Travis Barker: Louder Than Fear"" with ABC News' Chris Connelly ; Deals & Steals with ABC e-commerce editor Tory Johnson ."
-03 ABC,"GMA3: Patrick Ta, Travis Barker",10:00,11:00,"ABC · S06E232 · Makeup artist Patrick Ta ; musician Travis Barker discusses ""Travis Barker: Louder Than Fear"" with ABC News' Chris Connelly ; Deals & Steals with ABC e-commerce editor Tory Johnson"
-03 ABC,General Hospital: Ep. #16023,11:00,12:00,ABC · S2026E158
-03 ABC,ABC World News Tonight with David Muir,15:30,16:00,ABC · S2026E221
-03 ABC,Celebrity Family Feud: Nicole Byer vs. Margaret Cho and Kathy Hilton vs. Da Brat,17:00,18:00,"ABC · S12E06 · Hosted by Steve Harvey, comedians-actresses Nicole Byer and Margaret Cho go head-to-head. Then, television personality Kathy Hilton takes on rapper Da Brat for their selected chari"
-03 ABC,Press Your Luck: Frickin' Brisbane,19:00,20:00,ABC · S07E06
-03 ABC,"Jimmy Kimmel Live: Dave Franco, Jaylen Brown, Maiya Sykes",20:35,21:35,"ABC · S2026E97 · 1. Dave Franco (""Idiots""). 2. Jaylen Brown. 3. Maiya Sykes sits in with The Cletones."
-03 ABC,ABC World News Now,23:00,24:00,ABC · S2026E159
-04 CBS,CBS Mornings: Becky G.,04:00,06:00,CBS · S2026E161 · EXCLUSIVE: Co-host Gayle King talks with singer Becky G.
-04 CBS,The Young and the Restless: Ep. #13441,09:30,10:30,CBS · S2026E157
-04 CBS,The Bold and the Beautiful: Ep. #9842,10:30,11:00,CBS · S2026E158
-04 CBS,Beyond the Gates,11:00,12:00,CBS · S2026E147 · Andre has a tense visit with Bill; Joey and Vanessa do not see eye to eye when it comes to his sister; Smitty ponders an interesting opportunity; Ashley and Grayson worry about a f
-04 CBS,CBS Evening News,15:30,16:00,CBS · S2026E161
-04 CBS,Big Brother,17:00,18:00,CBS · S28E16
-05 NBC,"Today: Matthew McConaughey, Mariska Hargitay, Chef Rocco DiSpirito",04:00,06:00,"NBC · S2026E161 · Matthew McConaughey on ""The Rivals of Maziah King."" Catching up with Mariska Hargitay. What to Shop This Week: End of Summer Deals with Melissa Garcia. Today Food with Rocco DiSpir"
-05 NBC,"Today 3rd Hour: Noah Centineo, Will Poulter, Rob Gronkowski",06:00,07:00,"NBC · S2026E160 · Today's Checklist: Breaking Down Over-the-Counter Medicines with Dr. Akshay Syal. Noah Centineo and Will Poulter on ""Union County."" Catching up with Rob Gronkowski. Today, Climate:"
-05 NBC,"TODAY with Jenna & Sheinelle: Daveed Diggs, Chef Alex Guarnaschelli",07:00,08:00,"NBC · S01E153 · Daveed Diggs on ""The Boys."" Paul C. Brunson and Dr. Lisa Paz on ""Married at First Sight."" Today Food with Alex Guarnaschelli. I'm Obsessed With..."
-05 NBC,NBC Nightly News: Aug 13 Thur,15:30,16:00,NBC · S2026E206
-05 NBC,"The Tonight Show Starring Jimmy Fallon: Adam Scott, Sebastian Maniscalco, Dogstar",20:35,21:35,"NBC · S2026E98 · Guest includes Adam Scott, Sebastian Maniscalco, and a musical performance by Dogstar."
-08 CNN,CNN This Morning,03:00,04:00,CNN · S2026E161
-08 CNN,CNN News Central,04:00,07:00,CNN · S2026E161
-08 CNN,The Situation Room,07:00,09:00,CNN · S2026E161
-08 CNN,Inside Politics,09:00,10:00,CNN · S2026E160
-08 CNN,CNN News Central (PM),10:00,13:00,CNN · S2026E161
-08 CNN,The Arena with Kasie Hunt,13:00,14:00,CNN · S2026E161
-08 CNN,The Lead with Jake Tapper,14:00,16:00,CNN · S2026E160
-08 CNN,Erin Burnett OutFront,16:00,17:00,CNN · S2026E160
-08 CNN,Anderson Cooper 360°,17:00,18:00,CNN · S2026E110
-08 CNN,The Source with Kaitlan Collins,18:00,19:00,CNN · S2026E151
-08 CNN,CNN NewsNight with Abby Phillip,19:00,20:00,CNN · S2026E155
-08 CNN,The Story Is with Elex Michaelson,21:00,23:00,CNN · S2026E157
-09 CNBC,Morning Call,02:00,03:00,CNBC · S2026E104
-09 CNBC,Squawk Box,03:00,06:00,CNBC · S2026E161
-09 CNBC,Squawk on the Street,06:00,08:00,CNBC · S2026E160
-09 CNBC,Fast Money Halftime Report,09:00,10:00,CNBC · S2026E160
-09 CNBC,The Exchange,10:00,11:00,CNBC · S2026E160
-09 CNBC,Power Lunch,11:00,12:00,CNBC · S2026E160
-09 CNBC,Closing Bell,12:00,13:00,CNBC · S2026E160
-09 CNBC,Closing Bell: Overtime,13:00,14:00,CNBC · S2026E160
-09 CNBC,Fast Money,14:00,15:00,CNBC · S2026E160
-09 CNBC,Mad Money,15:00,16:00,CNBC · S2026E160
-11 FOOD,Restaurant Impossible: Last Call: Raising the Bar,17:00,18:00,"Food Network · S01E04 · A devoted father sinks his retirement savings into the neighborhood bar that shaped his life. But as his loyal customer base literally dies off, he must learn to let go of the past"
-12 HIST,Secrets Declassified with David Duchovny: Cat & Mouse,18:00,19:03,"History · S02E19 · Some targets are taken by force – others require a game of cat and mouse played out across continents and years of relentless chase. While the prey changes, the pursuit never does."
-12 HIST,Ancient Aliens: Spy Gadgets,19:00,20:00,"History · S22E16 · In the jungles of Vietnam, the U.S. military built sensors that could sniff out hidden enemies; a CIA operation hauled a nuclear-powered surveillance device to the summit of a Hima"
-12 HIST,Engineering From Above: Fortresses,19:03,20:05,History · S01E01 · Revealed from above; an ancient defensive wall surrounding a historic Colombian city; eerie metal towers looming over the seas of the English Channel.
-15 HBO,Monsters of God: Operation Cobra,18:00,19:00,HBO · S01E02 · Florida reptile dealer Ray Van Nostrand enters the fray and takes the trade business into the dark underworld of Miami drug smuggling and gun running with his connection to known c
-16 PBS,Amanpour & Co.,20:00,21:00,PBS · S2026E161
+03 ABC,Good Morning America: Sublime,04:00,06:00,"ABC · S2026E162 · ""GMA"" Summer Concert series, featuring a musical performance by Sublime ; GMA G ame Day: Countdown to the Superbowl – New York Jets; Deals & Steals with ABC e-commerce editor Tory "
+03 ABC,GMA3: Sublime,10:00,11:00,ABC · S06E233 · A musical performance by Sublime ; GMA Game Day: Countdown to the Superbowl – New York Jets; Deals & Steals with ABC e-commerce editor Tory Johnson .
+03 ABC,General Hospital: Ep. #16024,11:00,12:00,ABC · S2026E159
+03 ABC,ABC World News Tonight with David Muir,15:30,16:00,ABC · S2026E222
+03 ABC,ABC World News Now,23:00,24:00,ABC · S2026E160
+04 CBS,"CBS Mornings: Terry Crews, Mckenna Grace, Hayden Chemberlen",04:00,06:00,"CBS · S2026E162 · Terry Crews, Mckenna Grace, Hayden Chemberlen, voice actors in Paramount's new movie PAW PATROL: THE DINO MOVIE."
+04 CBS,The Young and the Restless: Ep. #13442,09:30,10:30,CBS · S2026E158
+04 CBS,The Bold and the Beautiful: Ep. #9843,10:30,11:00,CBS · S2026E159
+04 CBS,Beyond the Gates,11:00,12:00,"CBS · S2026E148 · Dani is in the hot seat with Anita, Vernon, and Nicole; Vanessa meets Noah while he's out with Deanna; Joey confronts Heather; Chelsea updates Kat; one couple reaches a new underst"
+04 CBS,CBS Evening News,15:30,16:00,CBS · S2026E162
+05 NBC,Today: Katseye,04:00,06:00,"NBC · S2026E162 · Today, Consumer: Could Your Grocery Store Prepared Food Aisle be the Hottest New Restaurant? Citi Concert Series: KATSEYE."
+05 NBC,Today 3rd Hour: Katseye,06:00,07:00,NBC · S2026E161 · By the Numbers: National Finance Awareness Day. Second Acts: VP of Footlocker Turned United Airlines Pilot Now Pays it Forward. Start Today with Joy: Back-to-School Breakfasts with
+05 NBC,"TODAY with Jenna & Sheinelle: Aug 14, 2026",07:00,08:00,"NBC · S01E154 · Trend or Pretend. Relationship Court with Devyn Simone. Back-to-School Style with Tiffany Reid. Spotlighting Topeka Teacher's ""Art-y Bus."" Plaza Fan Pop Quiz."
+05 NBC,NBC Nightly News: Aug 14 Fri,15:30,16:00,NBC · S2026E207
+07 CW,Totally Funny Animals: In Dad We Trust,18:00,18:30,The CW · S02E15 · A comedy clip show featuring caught-on-camera videos that highlight the outrageous and wacky world of animals.
+07 CW,Totally Funny Animals: Speed Bump,18:30,19:00,The CW · S02E16 · A comedy clip show featuring caught-on-camera videos that highlight the outrageous and wacky world of animals.
+08 CNN,CNN This Morning,03:00,04:00,CNN · S2026E162
+08 CNN,CNN News Central,04:00,07:00,CNN · S2026E162
+08 CNN,The Situation Room,07:00,09:00,CNN · S2026E162
+08 CNN,Inside Politics,09:00,10:00,CNN · S2026E161
+08 CNN,CNN News Central (PM),10:00,13:00,CNN · S2026E162
+08 CNN,The Arena with Kasie Hunt,13:00,14:00,CNN · S2026E162
+08 CNN,The Lead with Jake Tapper,14:00,16:00,CNN · S2026E161
+08 CNN,Erin Burnett OutFront,16:00,17:00,CNN · S2026E161
+08 CNN,Anderson Cooper 360°,17:00,18:00,CNN · S2026E111
+08 CNN,The Source with Kaitlan Collins,18:00,19:00,CNN · S2026E152
+08 CNN,CNN NewsNight with Abby Phillip,19:00,20:00,CNN · S2026E156
+08 CNN,The Story Is with Elex Michaelson,21:00,23:00,CNN · S2026E158
+09 CNBC,Morning Call,02:00,03:00,CNBC · S2026E105
+09 CNBC,Squawk Box,03:00,06:00,CNBC · S2026E162
+09 CNBC,Squawk on the Street,06:00,08:00,CNBC · S2026E161
+09 CNBC,Fast Money Halftime Report,09:00,10:00,CNBC · S2026E161
+09 CNBC,The Exchange,10:00,11:00,CNBC · S2026E161
+09 CNBC,Power Lunch,11:00,12:00,CNBC · S2026E161
+09 CNBC,Closing Bell,12:00,13:00,CNBC · S2026E161
+09 CNBC,Closing Bell: Overtime,13:00,14:00,CNBC · S2026E161
+09 CNBC,Fast Money,14:00,15:00,CNBC · S2026E161
+09 CNBC,Mad Money,15:00,16:00,CNBC · S2026E161
+11 FOOD,"Diners, Drive-Ins and Dives: Triple D Nation: Sandwiches, Scandinavian and Street Tacos",18:00,18:30,Food Network · S2026E15
+11 FOOD,"Triple D Nation: Sandwiches, Scandinavian and Street Tacos",18:00,18:30,Food Network · S01E124
+12 HIST,The UnXplained: Secrets of the Pyramids,18:00,19:03,"History · S08E16 · Were pyramids simply the most practical way to build toward the sky--or could they reveal a deeper pattern of sacred knowledge, celestial design, and hidden purpose shared across t"
+13 HGTV,My Lottery Dream Home: Single Mom Defies the Odds,18:00,18:30,HGTV · S19E13
+13 HGTV,Zillow Gone Wild: Rock Out,18:30,19:00,HGTV · S03E15
+13 HGTV,Roast My Rental: Lost in Space,19:00,19:30,HGTV · S01E04 · Leslie's disappointed after checking in at an out-of-this-world Joshua Tree spaceship desert escape. Broken furniture and a theme that's lost in space leave Jasmine with her hardes
+14 DISC,Deadliest Catch: Those in Peril on the Sea,17:00,18:01,"Discovery · S22E13 · Captains Sig and Sophia shift their fishing strategy as back-to-back injuries plague the Northwestern deck crew. When a Time Bandit crewman suffers a concussion, John must make a p"
+15 HBO,"Real Time with Bill Maher: Ryan Holiday, Andrew Cuomo, Kristen Soltis Anderson",19:02,20:02,"HBO · S24E23 · This week features a one-on-one interview with Ryan Holiday , host of ""The Daily Stoic"" podcast and New York Times #1 bestselling author of ""The Stoic Virtues Series"" book collecti"
+16 PBS,Washington Week with The Atlantic,17:00,17:30,PBS · S2026E33
+16 PBS,Amanpour & Co.,20:00,21:00,PBS · S2026E162
