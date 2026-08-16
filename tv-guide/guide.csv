@@ -12,19 +12,38 @@ channel,title,start,end,description
 02 JMO TV,Game Replays,05:00,06:00,"Full-game replays from the library, in order."
 02 JMO TV,Game Show After Dark,06:00,07:00,JMO original game-show episodes back to back.
 02 JMO TV,Weather Channel,07:00,08:00,Live PNW radar with smooth jazz.
-02 JMO TV,Saturday Morning Cartoons,08:00,09:00,Cereal optional. Cartoons mandatory.
+02 JMO TV,Game Replays,08:00,09:00,"Full-game replays from the library, in order."
 02 JMO TV,Esports,09:00,10:00,Tournament VODs from the esports archive.
-02 JMO TV,Saturday Morning Cartoons,10:00,11:00,Cereal optional. Cartoons mandatory.
-02 JMO TV,Game Show After Dark,11:00,12:00,JMO original game-show episodes back to back.
-02 JMO TV,Game Replays,12:00,13:00,"Full-game replays from the library, in order."
-02 JMO TV,Saturday Morning Cartoons,13:00,14:00,Cereal optional. Cartoons mandatory.
-02 JMO TV,Esports,14:00,15:00,Tournament VODs from the esports archive.
+02 JMO TV,JMO Cut Room,10:00,11:00,Fresh cuts and directed work from the portfolio.
+02 JMO TV,Game Replays,11:00,12:00,"Full-game replays from the library, in order."
+02 JMO TV,Esports,12:00,13:00,Tournament VODs from the esports archive.
+02 JMO TV,Game Show After Dark,13:00,14:00,JMO original game-show episodes back to back.
+02 JMO TV,JMO Cut Room,14:00,15:00,Fresh cuts and directed work from the portfolio.
 02 JMO TV,Game Show After Dark,15:00,16:00,JMO original game-show episodes back to back.
 02 JMO TV,JMO Cut Room,16:00,17:00,Fresh cuts and directed work from the portfolio.
 02 JMO TV,Game Show After Dark,17:00,18:00,JMO original game-show episodes back to back.
 02 JMO TV,Game Replays,18:00,24:00,"Full-game replays from the library, in order."
-03 ABC,"Good Morning America: Weekend Edition: Isaac Rochell, Jason Goldstein",04:00,05:00,ABC · S2026E65 · Former NFL player Isaac Rochell ; food blogger Jason Goldstein ; ABC Secret Savings; Deals & Steals with ABC e-commerce editor Tory Johnson .
-04 CBS,"CBS Saturday Morning: Jeff Daniels, Jared Harris, Janet Fash, Anders Krarup Lorenz, Rasmus Sjødahl, Elizabeth Cook",04:00,06:00,"CBS · S03E149 · Saturday Sessions: Elizabeth Cook , singer-songwriter. The Dish: Anders Krarup Lorenz and Rasmus Sjødahl , of Københavns Bageri. Jeff Daniels and Jared Harris, actors in ""The Brink"
-05 NBC,Saturday Today,04:00,06:00,NBC · S2026E33
-05 NBC,NBC Nightly News: Aug 15 Sat,15:30,16:00,NBC · S2026E208
-08 CNN,Smerconish,06:00,07:00,CNN · S2026E33 · Michael Smerconish tackles weekly American political and news stories from one perspective...his.
+03 ABC,"Good Morning America: Weekend Edition: Aug 16, 2026",04:00,05:00,ABC · S2026E66
+03 ABC,"This Week: Aug 16, 2026",07:00,08:00,ABC · S2026E33
+04 CBS,"CBS News Sunday Morning: Aug. 16, 2026",06:00,07:30,CBS · S2026E32 · WHAT'S WITH THE WEATHER? – Jonathan Vigliotti looks into the shifts in our weather this summer and what's behind the changes. RAHM EMANUEL – Robert Costa catches up with Rahm Emanu
+04 CBS,Face the Nation: 8/16 -,07:30,08:30,CBS · S2026E33
+04 CBS,Big Brother,17:00,18:00,CBS · S28E17
+05 NBC,Sunday TODAY with Willie Geist: Tracee Ellis Ross,05:00,06:00,NBC · S2026E29
+05 NBC,"Meet the Press: Rep. Hakeem Jeffries, AG Todd Blanche, Rep. Ro Khanna",06:00,07:00,NBC · S2026E29
+05 NBC,NBC Nightly News: Aug 16 Sun,15:30,16:00,NBC · S2026E209
+05 NBC,NBC Sunday Night Baseball: Seattle Mariners at Houston Astros,16:20,19:00,NBC · S01E22 · AL Triple Crown leader Yordan Alvarez and the first-place Houston Astros host three-time All-Star centerfielder Julio Rodríguez and the rival Seattle Mariners in an AL West matchup
+08 CNN,"State of the Union with Jake Tapper and Dana Bash: Aug 16, 2026",06:00,07:00,CNN · S2026E33
+08 CNN,Fareed Zakaria GPS,07:00,08:00,"CNN · S2026E33 · Journalist and author Fareed Zakaria hosts this in-depth look at the major global developments of the week (the title's ""GPS"" stands for ""Global Public Square""), with an emphasis o"
+08 CNN,The Whole Story with Anderson Cooper: Stacked: Inside the Enhancement Craze,17:00,18:00,CNN · S04E10 · CNN International Correspondent Isobel Yeung premieres an examination of the growing mainstream appeal of performance-enhancing drugs. Performance-enhancing drugs have long been on
+08 CNN,Decades in Sports: 1990s,18:00,19:00,"CNN · S01E04 · In the 1990s, athletes' celebrity power transcends the world of sports. Sports scandals are increasingly smeared across tabloid headlines, while Michael Jordan wins six titles and "
+10 ESPN,WNBA Countdown,13:30,14:00,"ESPN · S05E14 · Bold opinions, discussion and debate centered on the top storylines from around the league. Hosted by Malika Andrews alongside analysts Andraya Carter, Chiney Ogwumike."
+11 FOOD,The Great Food Truck Race: Sweet & Savory: The Great Gatlinburg Smoke Off,18:00,19:00,Food Network · S19E05
+12 HIST,Hazardous History with Henry Winkler: Crazy Cures,18:00,19:03,History · S02E17 · These are the curious cures and questionable treatments that offered hope to generations of patients… along with a host of side effects nobody expected.
+12 HIST,The Mega-Brands That Built America: Ideas That Stick,19:03,20:05,"History · S04E03 · A husband's homemade bandage, a college dropout's breakthrough adhesive, and a factory worker's wartime fix transform simple strips of tape into indispensable American icons — crea"
+13 HGTV,Maine Cabin Masters: All Inn: Three Cabins and a Lobby,18:00,19:00,"HGTV · S01E05 · With just a few months before guests arrive, Chase has a plan to build three new cabins to add more sleeping spaces. In the main building, the team creates a stylish new lobby, reh"
+14 DISC,Destination Dive: Diving Paradise: Key Largo,05:00,05:30,Discovery · S03E01
+14 DISC,"RV There Yet?: Leeper, PA",05:30,06:00,Discovery · S05E05
+14 DISC,Naked and Afraid: Shipwrecked: Snake Island Bites Back,17:00,19:01,"Discovery · S01E03 · Darrin leads a water pipeline build. Patrick calls out his partners. Adam squares off with a deadly viper. Dani scores a potential food win. In the dead of night, Jarrell's fire bl"
+14 DISC,In the Eye of the Storm: Stranded in St. Louis,19:00,20:00,Discovery · S04E07
+15 HBO,Lanterns: Pilot,18:00,19:00,HBO · S01E01
+15 HBO,Last Week Tonight with John Oliver,20:00,20:30,HBO · S13E21
