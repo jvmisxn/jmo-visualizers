@@ -1,7 +1,7 @@
 {
   "provider": "Fourthwall public collection JSON",
   "sourceUrl": "https://shop.fourthwall.com/collections/all.json",
-  "generatedAt": 1786990849109,
+  "generatedAt": 1786991960335,
   "collection": "All Products",
   "products": [
     {
@@ -61,7 +61,7 @@
       "available": true,
       "image": "https://imgproxy.fourthwall.dev/rFwIIyz0jwSgyNU7eH81qAboSQUBcAzj2cWgPE2t7Ug/rt:fill/w:422/sm:1/enc/jbIzQpkpV6Enz0u_/IZfzYMFFxUMavurl/lDwok-EdC-v1ebsw/PB1lD4h79ibfum_H/Haj3k7lyLjqevTze/ajYgiQJvEtJaBith/MwNFgdPpbrhk0d6L/uHtAe7wvNwh08W0H/mqx99zQ1M5hhDGs-/xnL9_gS4qkuZmEC0/iD96ctx45fXOH2Vo/AmG2ECAPPnXDwZim/ov71Rdv2icufWq1f/b5htPrDf2F6Wto69/hhurRGVLwWk.jpg",
       "url": "https://shop.fourthwall.com/products/stupid-v-day-baby-tee",
-      "updatedAt": "2026-02-05 18:56:05 UTC",
+      "updatedAt": "2026-08-17 18:28:21 UTC",
       "variants": 4
     },
     {
@@ -169,7 +169,7 @@
       "available": true,
       "image": "https://imgproxy.fourthwall.dev/PnUbu3STnmlEmrU5qgf8Axm9LZmMJ6iP7hyNkxnrF8k/rt:fill/w:422/sm:1/enc/w-Ii5JojkN4rdEcV/WzGsmO_vDHjKO_r1/o6P5D1jg2xrF8bra/cFRGZWcRvjx6f74E/GfXdep6O9ISayQ6X/5ZsPieTO4gJ5Wz1q/OY3gs1kO1d4k0w9Y/T3Omw0swsK6cSfi8/52Io9z0lD_WHserH/f8EbKYcUo5Yy5mKJ/QBaL7Nja-XFjKMiU/8JX1Tfrqx04-vGSB/jAy18R0s_7TxiAAJ/M3ZDPrq8qDNV8cjh/rfscnNo7J2c.jpg",
       "url": "https://shop.fourthwall.com/products/i-love-fourthwall-baby-tee",
-      "updatedAt": "2026-04-16 18:26:08 UTC",
+      "updatedAt": "2026-08-17 18:31:18 UTC",
       "variants": 4
     },
     {
