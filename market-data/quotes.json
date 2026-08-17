@@ -1,6 +1,6 @@
 {
   "provider": "finnhub",
-  "generatedAt": 1786997041875,
+  "generatedAt": 1786997713250,
   "quotes": [
     {
       "symbol": "SPY",
@@ -27,9 +27,9 @@
       "providerSymbol": "DIA",
       "name": "Dow 30 ETF",
       "group": "index",
-      "price": 534.22,
-      "change": -2.58,
-      "changePercent": -0.4806,
+      "price": 534.19,
+      "change": -2.61,
+      "changePercent": -0.4862,
       "providerTime": 1786996800000
     },
     {
@@ -37,9 +37,9 @@
       "providerSymbol": "IWM",
       "name": "Russell 2000 ETF",
       "group": "index",
-      "price": 304.04,
-      "change": -1.05,
-      "changePercent": -0.3442,
+      "price": 304.06,
+      "change": -1.03,
+      "changePercent": -0.3376,
       "providerTime": 1786996800000
     },
     {
@@ -87,10 +87,10 @@
       "providerSymbol": "BINANCE:BTCUSDT",
       "name": "Bitcoin",
       "group": "watch",
-      "price": 64275.51,
-      "change": 1164.68,
-      "changePercent": 1.8455,
-      "providerTime": 1786997041000
+      "price": 64309.19,
+      "change": 1173.22,
+      "changePercent": 1.8582,
+      "providerTime": 1786997696000
     }
   ]
 }
