@@ -23,27 +23,54 @@ channel,title,start,end,description
 02 JMO TV,JMO Cut Room,16:00,17:00,Fresh cuts and directed work from the portfolio.
 02 JMO TV,Game Show After Dark,17:00,18:00,JMO original game-show episodes back to back.
 02 JMO TV,Game Replays,18:00,24:00,"Full-game replays from the library, in order."
-03 ABC,"Good Morning America: Weekend Edition: Aug 16, 2026",04:00,05:00,ABC · S2026E66
-03 ABC,"This Week: Aug 16, 2026",07:00,08:00,ABC · S2026E33
-04 CBS,"CBS News Sunday Morning: Aug. 16, 2026",06:00,07:30,CBS · S2026E32 · WHAT'S WITH THE WEATHER? – Jonathan Vigliotti looks into the shifts in our weather this summer and what's behind the changes. RAHM EMANUEL – Robert Costa catches up with Rahm Emanu
-04 CBS,Face the Nation: 8/16 -,07:30,08:30,CBS · S2026E33
-04 CBS,Big Brother,17:00,18:00,CBS · S28E17
-05 NBC,Sunday TODAY with Willie Geist: Tracee Ellis Ross,05:00,06:00,NBC · S2026E29
-05 NBC,"Meet the Press: Rep. Hakeem Jeffries, AG Todd Blanche, Rep. Ro Khanna",06:00,07:00,NBC · S2026E29
-05 NBC,NBC Nightly News: Aug 16 Sun,15:30,16:00,NBC · S2026E209
-05 NBC,NBC Sunday Night Baseball: Seattle Mariners at Houston Astros,16:20,19:00,NBC · S01E22 · AL Triple Crown leader Yordan Alvarez and the first-place Houston Astros host three-time All-Star centerfielder Julio Rodríguez and the rival Seattle Mariners in an AL West matchup
-08 CNN,"State of the Union with Jake Tapper and Dana Bash: Aug 16, 2026",06:00,07:00,CNN · S2026E33
-08 CNN,Fareed Zakaria GPS,07:00,08:00,"CNN · S2026E33 · Journalist and author Fareed Zakaria hosts this in-depth look at the major global developments of the week (the title's ""GPS"" stands for ""Global Public Square""), with an emphasis o"
-08 CNN,The Whole Story with Anderson Cooper: Stacked: Inside the Enhancement Craze,17:00,18:00,CNN · S04E10 · CNN International Correspondent Isobel Yeung premieres an examination of the growing mainstream appeal of performance-enhancing drugs. Performance-enhancing drugs have long been on
-08 CNN,Decades in Sports: 1990s,18:00,19:00,"CNN · S01E04 · In the 1990s, athletes' celebrity power transcends the world of sports. Sports scandals are increasingly smeared across tabloid headlines, while Michael Jordan wins six titles and "
-10 ESPN,WNBA Countdown,13:30,14:00,"ESPN · S05E14 · Bold opinions, discussion and debate centered on the top storylines from around the league. Hosted by Malika Andrews alongside analysts Andraya Carter, Chiney Ogwumike."
-11 FOOD,The Great Food Truck Race: Sweet & Savory: The Great Gatlinburg Smoke Off,18:00,19:00,Food Network · S19E05
-12 HIST,Hazardous History with Henry Winkler: Crazy Cures,18:00,19:03,History · S02E17 · These are the curious cures and questionable treatments that offered hope to generations of patients… along with a host of side effects nobody expected.
-12 HIST,The Mega-Brands That Built America: Ideas That Stick,19:03,20:05,"History · S04E03 · A husband's homemade bandage, a college dropout's breakthrough adhesive, and a factory worker's wartime fix transform simple strips of tape into indispensable American icons — crea"
-13 HGTV,Maine Cabin Masters: All Inn: Three Cabins and a Lobby,18:00,19:00,"HGTV · S01E05 · With just a few months before guests arrive, Chase has a plan to build three new cabins to add more sleeping spaces. In the main building, the team creates a stylish new lobby, reh"
-14 DISC,Destination Dive: Diving Paradise: Key Largo,05:00,05:30,Discovery · S03E01
-14 DISC,"RV There Yet?: Leeper, PA",05:30,06:00,Discovery · S05E05
-14 DISC,Naked and Afraid: Shipwrecked: Snake Island Bites Back,17:00,19:01,"Discovery · S01E03 · Darrin leads a water pipeline build. Patrick calls out his partners. Adam squares off with a deadly viper. Dani scores a potential food win. In the dead of night, Jarrell's fire bl"
-14 DISC,In the Eye of the Storm: Stranded in St. Louis,19:00,20:00,Discovery · S04E07
-15 HBO,Lanterns: Pilot,18:00,19:00,HBO · S01E01
-15 HBO,Last Week Tonight with John Oliver,20:00,20:30,HBO · S13E21
+03 ABC,"Good Morning America: Paris Jackson, Witney Carson",04:00,06:00,"ABC · S2026E163 · ""GMA"" Summer Concert series, featuring a musical performance from paris jackson ; ""Dancing with the Stars"" pro Witney Carson (""Dancing with the Stars: The Next Pro""); A New Class o"
+03 ABC,GMA3: A New Class of Disney Legends,10:00,11:00,"ABC · S06E234 · A New Class of Disney Legends with Ginger Zee ; D23 Expo with Ginger Zee and ""GMA"" lifestyle contributor Lori Bergamotto ; Disney's Princess Week with ""GMA"" lifestyle contributor L"
+03 ABC,General Hospital: Ep. #16025,11:00,12:00,ABC · S2026E160
+03 ABC,ABC World News Tonight with David Muir,15:30,16:00,ABC · S2026E225
+03 ABC,Dancing with the Stars: The Next Pro: But Can You Teach? Coaching Superfans with Witney Carson,17:00,18:00,"ABC · S01E06 · Witney Carson joins to push dancers to face their toughest challenge yet, teaching ballroom novices. Paired with ""Dancing with the Stars"" superfans, they have just two days to prep"
+03 ABC,"Jimmy Kimmel Live: Hannah Waddingham, Ana Gasteyer, Bella Brown",20:35,21:35,"ABC · S2026E98 · 1. Hannah Waddingham (""Ted Lasso""). 2. Ana Gasteyer (""Schmigadoon!""). 3. Bella Brown sits in with The Cletones."
+03 ABC,ABC World News Now,23:00,24:00,ABC · S2026E161
+04 CBS,CBS Mornings: Jon Batiste,04:00,06:00,"CBS · S2026E163 · Megan McNamee , registered dietitian and author. Jon Batiste , musician and songwriter. WHAT TO WATCH: Eva Pilgrim , host of INSIDE EDITION. New installment of ""Beg-Knows America."""
+04 CBS,The Young and the Restless: Ep. #13443,09:30,10:30,CBS · S2026E159
+04 CBS,The Bold and the Beautiful: Ep. #9844,10:30,11:00,CBS · S2026E160
+04 CBS,Beyond the Gates,11:00,12:00,CBS · S2026E149 · Andre is pulled down by his past; tensions mount between Tomas and Naomi; Chelsea and Kat pair fashion with controversy; Vernon confronts Bill about his intentions with Dani.
+04 CBS,CBS Evening News,15:30,16:00,CBS · S2026E163
+05 NBC,Today: Leslie Mann,04:00,06:00,"NBC · S2026E163 · World's Ugliest Dog. Today's Consumer: How to Budget, Pay for and Survive a Group Trip. Back to School Today: Westfield Middle School. Leslie Mann on""Spa Weekend.""Shop This List: N"
+05 NBC,"Today 3rd Hour: Leslie Mann, Isla Fisher, Michelle Buteau, Anna Faris",06:00,07:00,"NBC · S2026E162 · Fact vs. Myth: Credit Cards. Food For Thought: Ikeda's California Country Market & Pie Shop. Leslie Mann, Isla Fisher, Michelle Buteau and Anna Faris on ""Spa Weekend."" Fall Fashion"
+05 NBC,"TODAY with Jenna & Sheinelle: Kara Young, Dr. Aliza Pressman",07:00,08:00,"NBC · S01E155 · The Scoop with Emily Curl. Kara Young on ""The Whoopi Monologues."" ""Stroller Baddie Season"" Viral Fitness Community. Back-to-School Parenting with Dr. Aliza Pressman. Wellness Week:"
+05 NBC,NBC Nightly News: Aug 17 Mon,15:30,16:00,NBC · S2026E210
+05 NBC,American Ninja Warrior: National Finals 2,17:00,19:00,NBC · S18E11 · More ninjas take on the course as the National Finals continue. The remaining competitors from across the country face off in a series of electrifying races with the hopes of being
+05 NBC,"The Tonight Show Starring Jimmy Fallon: Will Forte, Ariana Madix, Mike Tomlin, Dan White",20:35,21:35,"NBC · S2026E99 · Guest includes Will Forte, Ariana Madix, Mike Tomlin, and Dan White."
+06 FOX,The 1% Club: Second Chance Night,17:00,18:02,"FOX · S03E12 · It's time for a second Second Chance Night! Previous contenders return for one last shot at redemption, culminating in the biggest wipeout in The 1% Club history and an unforgettab"
+06 FOX,The Quiz with Balls: Dentists vs. Funeral Directors,18:00,19:00,"FOX · S03E12 · Tonight, we are standing on business, and it's all in the family in a battle between Dentists & Funeral Directors. These families compete to see who can bury the competition for th"
+07 CW,All American: Somehow Some Way,17:00,18:00,"The CW · S08E07 · On the heels of the ICE raid at South Crenshaw High, Coop, Layla, KJ, Breonna and Khalil go on a tireless mission to save their loved ones. Meanwhile, Jordan and Cassius come toget"
+08 CNN,CNN This Morning,03:00,04:00,CNN · S2026E163
+08 CNN,CNN News Central,04:00,07:00,CNN · S2026E163
+08 CNN,The Situation Room,07:00,09:00,CNN · S2026E163
+08 CNN,Inside Politics,09:00,10:00,CNN · S2026E162
+08 CNN,CNN News Central (PM),10:00,13:00,CNN · S2026E163
+08 CNN,The Arena with Kasie Hunt,13:00,14:00,CNN · S2026E163
+08 CNN,The Lead with Jake Tapper,14:00,16:00,CNN · S2026E162
+08 CNN,Erin Burnett OutFront,16:00,17:00,CNN · S2026E162
+08 CNN,Anderson Cooper 360°,17:00,18:00,CNN · S2026E112
+08 CNN,The Source with Kaitlan Collins,18:00,19:00,CNN · S2026E153
+08 CNN,CNN NewsNight with Abby Phillip,19:00,20:00,CNN · S2026E157
+08 CNN,The Story Is with Elex Michaelson,21:00,23:00,CNN · S2026E159
+09 CNBC,Morning Call,02:00,03:00,CNBC · S2026E106
+09 CNBC,Squawk Box,03:00,06:00,CNBC · S2026E163
+09 CNBC,Squawk on the Street,06:00,08:00,CNBC · S2026E162
+09 CNBC,Fast Money Halftime Report,09:00,10:00,CNBC · S2026E162
+09 CNBC,The Exchange,10:00,11:00,CNBC · S2026E162
+09 CNBC,Power Lunch,11:00,12:00,CNBC · S2026E162
+09 CNBC,Closing Bell,12:00,13:00,CNBC · S2026E162
+09 CNBC,Closing Bell: Overtime,13:00,14:00,CNBC · S2026E162
+09 CNBC,Fast Money,14:00,15:00,CNBC · S2026E162
+09 CNBC,Mad Money,15:00,16:00,CNBC · S2026E162
+10 ESPN,First Take,07:00,09:00,ESPN · S20E229
+10 ESPN,NFL Live,13:00,14:00,"ESPN · S28E90 · Host Laura Rutledge takes the helm of this weekday show featuring the likes of Marcus Spears, Dan Orlovsky, Ryan Clark, Mina Kimes, and Adam Schefter, who offer the latest news and"
+12 HIST,History's Greatest Mysteries: The Death of Alexander the Great,18:00,19:03,"History · S07E17 · As one of the greatest military leaders in history, his conquests were so legendary that some believed he was descended from the gods. At only 32, with a vast empire that was rapid"
+13 HGTV,Ugliest House in America: The Hideous Heartland,18:00,19:00,HGTV · S08E05
+13 HGTV,Crashers: Spa Day Every Day,19:00,20:00,HGTV · S01E11
+14 DISC,Contraband: Seized at the Border: Just Doing My Duty,17:00,18:00,Discovery · S09E09
+14 DISC,120 Hours Behind Bars: San Francisco County Jail,18:00,19:00,Discovery · S02E05
+16 PBS,Amanpour & Co.,20:00,21:00,PBS · S2026E163
