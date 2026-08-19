@@ -4,79 +4,59 @@
 # Falls back to stream-ops/configs/tv_guide_filler.csv if live schedule fetch fails.
 # Columns: channel,title,start,end,description. Times are 24h HH:MM and repeat daily.
 channel,title,start,end,description
-02 JMO TV,Game Show After Dark,00:00,01:00,JMO original game-show episodes back to back.
-02 JMO TV,Esports,01:00,02:00,Tournament VODs from the esports archive.
-02 JMO TV,Game Replays,02:00,03:00,"Full-game replays from the library, in order."
-02 JMO TV,Esports,03:00,04:00,Tournament VODs from the esports archive.
-02 JMO TV,JMO Cut Room,04:00,05:00,Fresh cuts and directed work from the portfolio.
-02 JMO TV,Game Replays,05:00,06:00,"Full-game replays from the library, in order."
-02 JMO TV,Game Show After Dark,06:00,07:00,JMO original game-show episodes back to back.
-02 JMO TV,Weather Channel,07:00,08:00,Live PNW radar with smooth jazz.
-02 JMO TV,Game Replays,08:00,09:00,"Full-game replays from the library, in order."
-02 JMO TV,Esports,09:00,10:00,Tournament VODs from the esports archive.
-02 JMO TV,JMO Cut Room,10:00,11:00,Fresh cuts and directed work from the portfolio.
-02 JMO TV,Game Replays,11:00,12:00,"Full-game replays from the library, in order."
-02 JMO TV,Esports,12:00,13:00,Tournament VODs from the esports archive.
-02 JMO TV,Game Show After Dark,13:00,14:00,JMO original game-show episodes back to back.
-02 JMO TV,JMO Cut Room,14:00,15:00,Fresh cuts and directed work from the portfolio.
-02 JMO TV,Game Show After Dark,15:00,16:00,JMO original game-show episodes back to back.
-02 JMO TV,JMO Cut Room,16:00,17:00,Fresh cuts and directed work from the portfolio.
-02 JMO TV,Game Show After Dark,17:00,18:00,JMO original game-show episodes back to back.
-02 JMO TV,Game Replays,18:00,24:00,"Full-game replays from the library, in order."
-03 ABC,"Good Morning America: Constance Zimmer, Pierce Abernathy, Tareasa ""ReesaTeesa"" Johnson",04:00,06:00,"ABC · S2026E164 · Actress Constance Zimmer (""Love Story""); recipe developer Pierce Abernathy (""Every Leaf, Every Stem""); content creator Tareasa ""ReesaTeesa"" Johnson (""What (TF) Do I Do Now?""); Deal"
-03 ABC,"GMA3: Michael James Scott, Pierce Abernathy",10:00,11:00,"ABC · S06E235 · A performance from Michael James Scott ; recipe developer Pierce Abernathy (""Every Leaf, Every Stem""); Deals & Steals with ABC e-commerce editor Tory Johnson ."
-03 ABC,General Hospital: Ep. #16026,11:00,12:00,ABC · S2026E161
-03 ABC,ABC World News Tonight with David Muir,15:30,16:00,ABC · S2026E226
-03 ABC,"Jimmy Kimmel Live: Jean Smart, Richard Gadd, Bella Brown",20:35,21:35,"ABC · S2026E99 · 1. Jean Smart (""Hacks""). 2. Richard Gadd (""Half Man""). 3. Bella Brown sits in with The Cletones."
-03 ABC,ABC World News Now,23:00,24:00,ABC · S2026E162
-04 CBS,"CBS Mornings: Dr. Amanda Kravitz, Sarah Gelman",04:00,06:00,"CBS · S2026E164 · Dr. Amanda Kravitz , pediatrician. Sarah Gelman , editorial director for Amazon Books."
-04 CBS,The Young and the Restless: Ep. #13444,09:30,10:30,CBS · S2026E160
-04 CBS,The Bold and the Beautiful: Ep. #9845,10:30,11:00,CBS · S2026E161
-04 CBS,Beyond the Gates,11:00,12:00,CBS · S2026E150 · Bill flirts with disaster; Hayley and Ashley clash; Eva's words instigate Leslie; Carlton gives Ted a major update while Nicole does the same with Vanessa; Shanice fields an unanti
-04 CBS,CBS Evening News,15:30,16:00,CBS · S2026E164
-05 NBC,"Today: Chase Stokes, Will Forte",04:00,06:00,"NBC · S2026E164 · Chase Stokes on ""Outer Banks."" Today, Bestsellers: August Bestsellers with Mario Armstrong. Will Forte on ""Coyote vs. Acme."""
-05 NBC,"Today 3rd Hour: Ariana Madix, Chase Stokes, Drew Starkey, Jonathan Daviss, Will Forte, Lana Condor",06:00,07:00,"NBC · S2026E163 · Catching up with Ariana Madix. Chase Stokes, Drew Starkey and Jonathan Daviss on ""Outer Banks."" Will Forte and Lana Condor on ""Coyote vs. Acme."" Shop Today: Curated Boxes with Meli"
-05 NBC,"TODAY with Jenna & Sheinelle: Adam Demos, Laura Moriarty",07:00,08:00,"NBC · S01E156 · Social Dilemmas. Adam Demos on ""Spa Weekend."" Viral No-Line Dining Mission. Laura Moriarty on ""Sunlight Finds You."" Wellness Week: Acupuncture Facial with Dr. Taz Bhatia."
-05 NBC,NBC Nightly News: Aug 18 Tue,15:30,16:00,NBC · S2026E211
-05 NBC,America's Got Talent: Quarterfinals 1,17:00,19:00,NBC · S21E12 · It's time for the live shows as eleven acts take the stage with the Live Show Golden Buzzer sending one act directly to the finals; America can vote for their three favorite acts t
-05 NBC,Password: When the Going Gets Tough: Darren Criss & Jimmy Fallon,19:00,19:30,"NBC · S03E14 · Jimmy Fallon and celebrity guest Darren Criss pair up with contestants for a word showdown featuring a round of ""hard"" words; hosted by Keke Palmer, players guess secret passwords "
-05 NBC,Password: Bodaciously Fresh: Darren Criss & Jimmy Fallon,19:30,20:00,"NBC · S03E15 · Jimmy Fallon and celebrity guest Darren Criss pair up with contestants for a word showdown featuring an '80s-inspired round; hosted by Keke Palmer, players guess secret passwords u"
-05 NBC,"The Tonight Show Starring Jimmy Fallon: Michael Strahan, Chase Stokes, Stray Cats",20:35,21:35,"NBC · S2026E100 · Guests includes Michael Strahan, Chase Stokes, and a musical performance by Stray Cats."
-06 FOX,Kitchen Nightmares: Boodles Restaurant,17:00,18:02,"FOX · S10E06 · After four decades of business, Boodles Restaurant is struggling as its aging owner and son clash over the restaurant's future, and poor communication leaves the staff disconnected"
-06 FOX,Beat Shazam: Girl Power Hour!,18:02,19:00,"FOX · S08E04 · It's Ladies Night as dance instructors, psychics, and baton twirlers go head-to-head for the million-dollar prize."
-07 CW,WWE NXT: 33,17:00,19:00,The CW · S20E33
-08 CNN,CNN This Morning,03:00,04:00,CNN · S2026E164
-08 CNN,CNN News Central,04:00,07:00,CNN · S2026E164
-08 CNN,The Situation Room,07:00,09:00,CNN · S2026E164
-08 CNN,Inside Politics,09:00,10:00,CNN · S2026E163
-08 CNN,CNN News Central (PM),10:00,13:00,CNN · S2026E164
-08 CNN,The Arena with Kasie Hunt,13:00,14:00,CNN · S2026E164
-08 CNN,The Lead with Jake Tapper,14:00,16:00,CNN · S2026E163
-08 CNN,Erin Burnett OutFront,16:00,17:00,CNN · S2026E163
-08 CNN,Anderson Cooper 360°: Election Night in America,17:00,18:00,"CNN · S2026E113 · Live coverage of election primary results in Alaska, Florida, and Wyoming."
-08 CNN,The Source with Kaitlan Collins: Election Night in America,18:00,19:00,"CNN · S2026E154 · Live coverage of election primary results in Alaska, Florida, and Wyoming."
-08 CNN,CNN NewsNight with Abby Phillip: Election Night in America,19:00,20:00,"CNN · S2026E158 · Live coverage of election primary results in Alaska, Florida, and Wyoming."
-08 CNN,The Story Is with Elex Michaelson: Election Night in America,21:00,23:00,"CNN · S2026E160 · Live coverage of election primary results in Alaska, Florida, and Wyoming."
-09 CNBC,Morning Call,02:00,03:00,CNBC · S2026E107
-09 CNBC,Squawk Box,03:00,06:00,CNBC · S2026E164
-09 CNBC,Squawk on the Street,06:00,08:00,CNBC · S2026E163
-09 CNBC,Fast Money Halftime Report,09:00,10:00,CNBC · S2026E163
-09 CNBC,The Exchange,10:00,11:00,CNBC · S2026E163
-09 CNBC,Power Lunch,11:00,12:00,CNBC · S2026E163
-09 CNBC,Closing Bell,12:00,13:00,CNBC · S2026E163
-09 CNBC,Closing Bell: Overtime,13:00,14:00,CNBC · S2026E163
-09 CNBC,Fast Money,14:00,15:00,CNBC · S2026E163
-09 CNBC,Mad Money,15:00,16:00,CNBC · S2026E163
-10 ESPN,First Take,07:00,09:00,ESPN · S20E230
-10 ESPN,NFL Live,13:00,14:00,"ESPN · S28E91 · Host Laura Rutledge takes the helm of this weekday show featuring the likes of Marcus Spears, Dan Orlovsky, Ryan Clark, Mina Kimes, and Adam Schefter, who offer the latest news and"
-10 ESPN,WNBA Countdown,15:30,16:00,"ESPN · S05E15 · Bold opinions, discussion and debate centered on the top storylines from around the league. Hosted by Malika Andrews alongside analysts Andraya Carter, Chiney Ogwumike."
-11 FOOD,Beat Bobby Flay: Titan Takeover,17:00,17:30,Food Network · S2026E28 · Bobby Flay gets blindsided by his Triple Threat Titans Ayesha Nurdjaja and Brooke Williamson with a surprise that changes everything.
-11 FOOD,Kitchen Undercover: Mission: ImPASTAble,18:00,19:00,Food Network · S01E04 · Landmark Italian restaurant Ricci's is on the brink. Overwhelmed new owner Edith asks Chef Antonia Lofaso and her undercover sous-chef Nestor Milian to expose the chaos before an a
-12 HIST,The Secret of Skinwalker Ranch: Top Secrets,18:00,19:00,History · S07E14
-12 HIST,The Secret of Skinwalker Ranch: Behind the Gates: All Roads Lead to Skinwalker Ranch,19:00,19:30,History · S03E14
-12 HIST,"The Proof Is Out There: Brazilian UFO Selfie, Mystery Laser Weapon, and the Island That's Alive",19:32,20:33,History · S06E11 · Did a UFO photobomb a man's selfie? Laser beams are seen shooting on a military base - is this some new sort of weapon? Are there islands in Indonesia that are actually alive?
-13 HGTV,Love It or List It: Location Locked,17:00,18:00,HGTV · S21E09
-13 HGTV,Extreme Buyers Club: Peaceful Places and Country Spaces,18:00,19:00,HGTV · S01E05
-14 DISC,Homestead Rescue: Intervention: Harsh Reality,17:00,19:01,"Discovery · S01E05 · A worried sister calls the Raneys to save an Arizona family chasing social media clout instead of survival. In the brutal summer heat, they gamble on a disease-ridden, abandoned bu"
-15 HBO,Hard Knocks: Training Camp with the Seattle Seahawks - #3,18:00,19:00,HBO · S21E03
-16 PBS,Amanpour & Co.,20:00,21:00,PBS · S2026E164
+02 JMO TV,Game Replays,00:00,24:00,"Full-game replays from the library, in order."
+03 ABC,"Good Morning America: Malachi Barton, Liamani Segura, Jon Favreau, Mike Gunton",04:00,06:00,"ABC · S2026E165 · Actors Malachi Barton and Liamani Segura (""Camp Rock 3""); executive producers Jon Favreau and Mike Gunton (""Lion""); Deals & Steals with ABC e-commerce editor Tory Johnson ."
+03 ABC,"GMA3: Hudson Stone, Lumi Pollack, Casey Trotter",10:00,11:00,"ABC · S06E236 · Actors Hudson Stone , Lumi Pollack and Casey Trotter (""Camp Rock 3""); ABC Secret Savings with ABC News' Will Ganss ; Deals & Steals with ABC e-commerce editor Tory Johnson ."
+03 ABC,General Hospital: Ep. #16027,11:00,12:00,ABC · S2026E162
+03 ABC,ABC World News Tonight with David Muir,15:30,16:00,ABC · S2026E227
+03 ABC,Who Wants to Be a Millionaire: In The Hot Seat: Paul Scheer & Rob Huebel / Awkwafina & Paul Feig,17:00,18:00,"ABC · S2026E05 · Comedians Paul Scheer and Rob Huebel team up, followed by actress and rapper Awkwafina and director Paul Feig."
+03 ABC,"Jimmy Kimmel Live: Charlie Day, Janelle James, Bella Brown",20:35,21:35,"ABC · S2026E100 · 1. Charlie Day (""It's Always Sunny in Philadelphia""). 2. Janelle James (""Abbott Elementary""). 3. Bella Brown sits in with The Cletones."
+03 ABC,ABC World News Now,23:00,24:00,ABC · S2026E163
+04 CBS,"CBS Mornings: Julian Shapiro Barnum, Isla Fisher",04:00,06:00,"CBS · S2026E165 · Julian Shapiro Barnum , creator and internet host. Isla Fisher , actor in ""Spa Weekend."""
+04 CBS,The Young and the Restless: Ep. #13445,09:30,10:30,CBS · S2026E161
+04 CBS,The Bold and the Beautiful: Ep. #9846,10:30,11:00,CBS · S2026E162
+04 CBS,Beyond the Gates,11:00,12:00,CBS · S2026E151 · Nicole's plan saves the night for Noah; Dani and Andre color outside the lines; Jacob enlists Grayson and Ashley to surprise Naomi; Vernon's plans for Anita get interrupted.
+04 CBS,CBS Evening News,15:30,16:00,CBS · S2026E165
+04 CBS,Big Brother,17:00,18:30,CBS · S28E18
+05 NBC,Today: Madelyn Cine,04:00,06:00,"NBC · S2026E165 · Madelyn Cine on ""Outer Banks."" Shop Today Hair Awards with Adrianna Brach. ""Spooky Summer"" Michael's Ultimate Halloween with Chassie Post."
+05 NBC,"Today 3rd Hour: Madelyn Cline, Madison Bailey, Carlacia Grant, Sarah Pidgeon",06:00,07:00,"NBC · S2026E164 · Summer Checklist: Late Summer Skin Health with Dr. Marnie Nussbaum. Madelyn Cline, Madison Bailey and Carlacia Grant on ""Outer Banks."" Catching up with Sarah Pidgeon. Apartment The"
+05 NBC,TODAY with Jenna & Sheinelle: Charlamagne Tha God,07:00,08:00,NBC · S01E157 · Charlamagne Tha God Joins the Chat. Wellness Week: Gadgets with Sarah Eggenberger. Travel Trends with Mark Ellwood. Officially Obsessed: Sheinelle's Picks.
+05 NBC,NBC Nightly News: Aug 19 Wed,15:30,16:00,NBC · S2026E212
+05 NBC,America's Got Talent: Quarterfinals 1 Results,17:00,18:00,NBC · S21E13 · One act advances straight to the finals with last night's Golden Buzzer; America's votes reveal which three acts from the previous night's show will move on and compete in the semi
+05 NBC,"The Tonight Show Starring Jimmy Fallon: Fred Armisen, Michelle Monaghan, Rivers Cuomo, Patrick Wilson, Weezer",20:35,21:35,"NBC · S2026E101 · Guest includes Fred Armisen, Michelle Monaghan, Rivers Cuomo, Patrick Wilson, and musical performance by Weezer."
+06 FOX,MasterChef: The Wall,17:00,18:02,"FOX · S16E14 · Separated by an eight-foot barrier, the home cooks must partner up and rely solely on communication to create identical dishes; a double elimination."
+06 FOX,Nation's Dumbest: Study Buddy Day,18:02,19:00,FOX · S01E06 · Jack pairs the contestants into teams to give them a boost.
+08 CNN,CNN This Morning,03:00,04:00,CNN · S2026E165
+08 CNN,CNN News Central,04:00,07:00,CNN · S2026E165
+08 CNN,The Situation Room,07:00,09:00,CNN · S2026E165
+08 CNN,Inside Politics,09:00,10:00,CNN · S2026E164
+08 CNN,CNN News Central (PM),10:00,13:00,CNN · S2026E165
+08 CNN,The Arena with Kasie Hunt,13:00,14:00,CNN · S2026E165
+08 CNN,The Lead with Jake Tapper,14:00,16:00,CNN · S2026E164
+08 CNN,Erin Burnett OutFront,16:00,17:00,CNN · S2026E164
+08 CNN,Anderson Cooper 360°,17:00,18:00,CNN · S2026E114
+08 CNN,The Source with Kaitlan Collins,18:00,19:00,CNN · S2026E155
+08 CNN,CNN NewsNight with Abby Phillip,19:00,20:00,CNN · S2026E159
+08 CNN,The Story Is with Elex Michaelson,21:00,23:00,CNN · S2026E161
+09 CNBC,Morning Call,02:00,03:00,CNBC · S2026E108
+09 CNBC,Squawk Box,03:00,06:00,CNBC · S2026E165
+09 CNBC,Squawk on the Street,06:00,08:00,CNBC · S2026E164
+09 CNBC,Fast Money Halftime Report,09:00,10:00,CNBC · S2026E164
+09 CNBC,The Exchange,10:00,11:00,CNBC · S2026E164
+09 CNBC,Power Lunch,11:00,12:00,CNBC · S2026E164
+09 CNBC,Closing Bell,12:00,13:00,CNBC · S2026E164
+09 CNBC,Closing Bell: Overtime,13:00,14:00,CNBC · S2026E164
+09 CNBC,Fast Money,14:00,15:00,CNBC · S2026E164
+09 CNBC,Mad Money,15:00,16:00,CNBC · S2026E164
+10 ESPN,First Take,07:00,09:00,ESPN · S20E231
+10 ESPN,E:60: L1V1NG ON: The Michael Cammarata Story,18:00,18:30,"ESPN · S18E16 · ESPN E60 celebrates the life and legacy of Michael Cammarata, the only player whose number has been retired at the LLWS and the youngest member of the Fire Department of the City o"
+11 FOOD,Guy's Grocery Games: GGG Callouts,18:00,19:00,"Food Network · S42E11 · Guy Fieri invites two of GGG's winningest chefs to call out the all-star chefs who they believe played a part in their unexpected loss for a shot at winning $10,000. First, Laura F"
+11 FOOD,Kitchen Chaos: Go Big or Go Home,19:00,19:30,"Food Network · S01E10 · Regional specialties, massive food creations, and sushi triumphs and blunders take center stage as chefs Damaris Phillips, Joe Isidori, and Arnold Myint react with hilarious commen"
+12 HIST,Alone: No Safe Haven,18:00,19:34,"History · S13E10 · As brutal cold and snow pummel the Arctic, one survivalist makes a grave mistake with a key piece of gear. Meanwhile as the daylight rapidly fades, the participants are forced to r"
+12 HIST,Forged in Fire: Best of the Judges,19:34,20:34,History · S11E08
+13 HGTV,Renovation Resort Showdown: Season Finale,18:00,19:00,HGTV · S03E08
+13 HGTV,"Worst Yard on the Block: Kids First, Yard Last",19:00,19:30,HGTV · S01E11
+13 HGTV,Worst Yard on the Block: The Anti-Lawn Makeover,19:00,19:30,HGTV · S01E12
+14 DISC,Expedition X: Robin Hood's Ghosts,18:00,19:00,Discovery · S12E01
+14 DISC,How to Catch a Dirtbag: The Tip Jar Bandit,19:00,20:00,"Discovery · S01E03 · Tizzy investigates complaints of a serial tip jar thief. A woman goes on a tirade in a parking lot, and the police sort out a cyclist's accusations against a young motorist."
+16 PBS,Amanpour & Co.,20:00,21:00,PBS · S2026E165
