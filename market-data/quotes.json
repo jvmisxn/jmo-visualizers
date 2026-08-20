@@ -1,6 +1,6 @@
 {
   "provider": "finnhub",
-  "generatedAt": 1787256866936,
+  "generatedAt": 1787257746567,
   "quotes": [
     {
       "symbol": "SPY",
@@ -17,9 +17,9 @@
       "providerSymbol": "QQQ",
       "name": "Nasdaq 100 ETF",
       "group": "index",
-      "price": 710.91,
-      "change": -5.17,
-      "changePercent": -0.722,
+      "price": 710.93,
+      "change": -5.15,
+      "changePercent": -0.7192,
       "providerTime": 1787256000000
     },
     {
@@ -87,10 +87,10 @@
       "providerSymbol": "BINANCE:BTCUSDT",
       "name": "Bitcoin",
       "group": "watch",
-      "price": 72677.59,
-      "change": 3980.17,
-      "changePercent": 5.7938,
-      "providerTime": 1787256856000
+      "price": 72854,
+      "change": 4170.24,
+      "changePercent": 6.0717,
+      "providerTime": 1787257737000
     }
   ]
 }
