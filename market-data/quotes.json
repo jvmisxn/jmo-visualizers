@@ -1,6 +1,6 @@
 {
   "provider": "finnhub",
-  "generatedAt": 1787343107475,
+  "generatedAt": 1787343921337,
   "quotes": [
     {
       "symbol": "SPY",
@@ -57,9 +57,9 @@
       "providerSymbol": "NVDA",
       "name": "NVIDIA",
       "group": "watch",
-      "price": 214.748,
-      "change": -2.102,
-      "changePercent": -0.9693,
+      "price": 214.72,
+      "change": -2.13,
+      "changePercent": -0.9822,
       "providerTime": 1787342400000
     },
     {
@@ -87,10 +87,10 @@
       "providerSymbol": "BINANCE:BTCUSDT",
       "name": "Bitcoin",
       "group": "watch",
-      "price": 77236,
-      "change": 4481.11,
-      "changePercent": 6.1592,
-      "providerTime": 1787343106000
+      "price": 77521.99,
+      "change": 4728.55,
+      "changePercent": 6.4958,
+      "providerTime": 1787343920000
     }
   ]
 }
