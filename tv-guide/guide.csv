@@ -5,50 +5,51 @@
 # Columns: channel,title,start,end,description. Times are 24h HH:MM and repeat daily.
 channel,title,start,end,description
 02 JMO TV,Game Replays,00:00,24:00,"Full-game replays from the library, in order."
-03 ABC,Good Morning America: GMA Game Day: Countdown to the Superbowl – Houston Texas,04:00,06:00,"ABC · S2026E166 · GMA Game Day: Countdown to the Superbowl – Houston Texas; Viral Food Trend: Frozen Coffee with ""GMA"" lifestyle contributor Lori Bergamotto ; Deals & Steals with ABC e-commerce edit"
-03 ABC,"GMA3: Steve Way, Michael Grynbaum",10:00,11:00,"ABC · S06E237 · Actor Steve Way (""Furious""); journalist Michael Grynbaum (""Empire of the Elite""); GMA Game Day: Countdown to the Superbowl – Houston Texas; Deals & Steals with ABC e-commerce edito"
-03 ABC,General Hospital: Ep. #16028,11:00,12:00,ABC · S2026E163
-03 ABC,ABC World News Tonight with David Muir,15:30,16:00,ABC · S2026E228
-03 ABC,Celebrity Family Feud: Bow Wow vs. Rickey Smiley and Steve Aoki vs. Joel Kim Booster,17:00,18:01,"ABC · S12E07 · Hosted by Steve Harvey, rapper and actor Bow Wow and comedian and television personality Rickey Smiley compete, followed by DJ and producer Steve Aoki and actor-comedian Joel Kim B"
-03 ABC,Press Your Luck: The Biggest Big Banks,18:00,19:00,ABC · S07E07
-03 ABC,"Jimmy Kimmel Live: Megan Mullally, Nick Offerman, Shawn Hatosy, Sydney James Harcourt, Bella Brown",20:35,21:35,"ABC · S2026E101 · 1. Megan Mullally and Nick Offerman. 2. Shawn Hatosy (""The Pitt""). 3. Musical Guest Sydney James Harcourt (""Cats: The Jellicle Ball""). 4. Bella Brown sits in with The Cletones."
-03 ABC,ABC World News Now,23:00,24:00,ABC · S2026E164
-04 CBS,"CBS Mornings: Aug 20, 2026",04:00,06:00,CBS · S2026E166 · TBD.
-04 CBS,The Young and the Restless: Ep. #13446,09:30,10:30,CBS · S2026E162
-04 CBS,The Bold and the Beautiful: Ep. #9847,10:30,11:00,CBS · S2026E163
-04 CBS,Beyond the Gates,11:00,12:00,CBS · S2026E152 · Leslie's forced to reckon with her past in order to move on with her future; Bill and Ted bond over their shared history; an unexpected reaction causes Nicole to self-examine in fr
-04 CBS,CBS Evening News,15:30,16:00,CBS · S2026E166
-04 CBS,Big Brother,17:00,18:00,CBS · S28E19
-05 NBC,Today: Raye,04:00,06:00,NBC · S2026E166 · Today's Consumer: Making the Most of Hot New Cash Back Options. Citi Concert Series: Raye.
-05 NBC,"Today 3rd Hour: Rhea Seehorn, Chef Daniel Boulud, Raye",06:00,07:00,"NBC · S2026E165 · Today's Checklist: How to Troubleshoot Travel Tummy with Dr. Trisha Pasricha. Catching up with Rhea Seehorn. Today, Food: Al's Birthday Meal with Daniel Boulud. Citi Concert Series"
-05 NBC,"TODAY with Jenna & Sheinelle: Bunnie XO, Chef Robert Liberato, Raye",07:00,08:00,"NBC · S01E158 · The Feed with Arianna Davis Santana. Bunnie XO on ""Dumb Blonde"" Podcast. Today, Food: Wagyu Steak with Robert Liberato. Shop Today Hair Awards with Adrianna Brach. Performance by R"
-05 NBC,NBC Nightly News: Aug 20 Thur,15:30,16:00,NBC · S2026E213
-05 NBC,"The Tonight Show Starring Jimmy Fallon: Michelle Pfeiffer, Rhea Seehorn, Dexter and The Moonrocks",20:35,21:35,"NBC · S2026E102 · Guest includes Michelle Pfeiffer, Rhea Seehorn, and a musical performance by Dexter and The Moonrocks."
-08 CNN,CNN This Morning,03:00,04:00,CNN · S2026E166
-08 CNN,CNN News Central,04:00,07:00,CNN · S2026E166
-08 CNN,The Situation Room,07:00,09:00,CNN · S2026E166
-08 CNN,Inside Politics,09:00,10:00,CNN · S2026E165
-08 CNN,CNN News Central (PM),10:00,13:00,CNN · S2026E166
-08 CNN,The Arena with Kasie Hunt,13:00,14:00,CNN · S2026E166
-08 CNN,The Lead with Jake Tapper,14:00,16:00,CNN · S2026E165
-08 CNN,Erin Burnett OutFront,16:00,17:00,CNN · S2026E165
-08 CNN,Anderson Cooper 360°,17:00,18:00,CNN · S2026E115
-08 CNN,The Source with Kaitlan Collins,18:00,19:00,CNN · S2026E156
-08 CNN,CNN NewsNight with Abby Phillip,19:00,20:00,CNN · S2026E160
-08 CNN,The Story Is with Elex Michaelson,21:00,23:00,CNN · S2026E162
-09 CNBC,Morning Call,02:00,03:00,CNBC · S2026E109
-09 CNBC,Squawk Box,03:00,06:00,CNBC · S2026E166
-09 CNBC,Squawk on the Street,06:00,08:00,CNBC · S2026E165
-09 CNBC,Fast Money Halftime Report,09:00,10:00,CNBC · S2026E165
-09 CNBC,The Exchange,10:00,11:00,CNBC · S2026E165
-09 CNBC,Power Lunch,11:00,12:00,CNBC · S2026E165
-09 CNBC,Closing Bell,12:00,13:00,CNBC · S2026E165
-09 CNBC,Closing Bell: Overtime,13:00,14:00,CNBC · S2026E165
-09 CNBC,Fast Money,14:00,15:00,CNBC · S2026E165
-09 CNBC,Mad Money,15:00,16:00,CNBC · S2026E165
-10 ESPN,Monday Night Countdown: 2026 Preseason Show,16:00,17:00,"ESPN · With host Scott Van Pelt and analysts Marcus Spears, Ryan Clark, Jason Kelce and NFL Insider Adam Schefter. The crew reviews pre-season games and looks ahead to the TNF matchup whi"
-11 FOOD,Restaurant Impossible: Last Call: A Spicy Affair,17:00,18:00,Food Network · S01E05 · The owner of an award-winning Indian restaurant is afraid to face the truth of a silent dining room and mounting bills. Jen Agg and Aarón Sánchez help him come clean to his wife an
-12 HIST,Secrets Declassified with David Duchovny: Ingenious Disguises,18:00,19:03,"History · S02E20 · Some disguises hide an individual, others conceal an entire operation. A CIA vaccination campaign masks a global manhunt for the world's most wanted terrorist. Sometimes the safest"
-12 HIST,Engineering From Above: For the Gods,19:03,20:05,"History · S01E02 · Revealed from above; an ancient temple engineered to survive the ravages of time; an iconic cathedral rising from the heart of Barcelona; and a remote, cliffside shrine that seemin"
-15 HBO,Monsters of God: Smuggler's Inn,18:00,18:57,HBO · S01E03 · Ray's son Mike Van Nostrand attempts to legitimize and capitalize on the family business by building a massive import and export empire that turns reptiles into a booming global co
-16 PBS,Amanpour & Co.,20:00,21:00,PBS · S2026E166
+03 ABC,Good Morning America: Jack Carr,04:00,06:00,"ABC · S2026E167 · Book recommendations with author Jack Carr ; 75 Days: Fergus Farrell Walks Across the Country with ABC News' Will Reeve ; The Right Stuff series with ""GMA"" lifestyle contributor Lo"
+03 ABC,GMA3: Jack Carr,10:00,11:00,"ABC · S06E238 · Book recommendations with author Jack Carr ; 75 Days: Fergus Farrell Walks Across the Country with ABC News' Will Reeve ; The Right Stuff series with ""GMA"" lifestyle contributor Lo"
+03 ABC,General Hospital: Ep. #16029,11:00,12:00,ABC · S2026E164
+03 ABC,ABC World News Tonight with David Muir,15:30,16:00,ABC · S2026E229
+03 ABC,ABC World News Now,23:00,24:00,ABC · S2026E165
+04 CBS,CBS Mornings: Kingston Kharif,04:00,06:00,"CBS · S2026E167 · Kingston Kharif , musician and songwriter."
+04 CBS,The Young and the Restless: Ep. #13447,09:30,10:30,CBS · S2026E163
+04 CBS,The Bold and the Beautiful: Ep. #9848,10:30,11:00,CBS · S2026E164
+04 CBS,Beyond the Gates,11:00,12:00,CBS · S2026E153 · Chelsea is haunted by unresolved trauma while her father reaches his breaking point; Dani locks horns with Hayley; Randy tails Heather; Madison gets conflicting information from tw
+04 CBS,CBS Evening News,15:30,16:00,CBS · S2026E167
+05 NBC,"Today: Weezer, Chef Michael Vignola",04:00,06:00,"NBC · S2026E167 · Premier League Kickoff. Sea of Galilee Conservation Effort. Performance by Weezer. Today, Food: Coffee Crusted Pork Chops with Michael Vignola."
+05 NBC,"Today 3rd Hour: Nicole Williams English, Weezer",06:00,07:00,NBC · S2026E166 · Today's Checklist: Cortisol with Dr. Natalie Azar. Flip Phones are Back. Catching up with Nicole Williams English. Shop Today Hair Awards with Adrianna Brach. Performance by Weezer
+05 NBC,"TODAY with Jenna & Sheinelle: Hoda Kotb, Morgan Riddle, Meredith Shumway",07:00,08:00,NBC · S01E159 · Catching up with Hoda Kotb. U.S. Open Spectator Style with Morgan Riddle. Weekend Watchlist with Chris Witherspoon. Wellness Week: Formula x Meredith Workout with Meredith Shumway.
+05 NBC,NBC Nightly News: Aug 21 Fri,15:30,16:00,NBC · S2026E214
+07 CW,Totally Funny Animals: I Scream You Scream,18:00,18:30,The CW · S02E17 · A comedy clip show featuring caught-on-camera videos that highlight the outrageous and wacky world of animals.
+07 CW,Totally Funny Animals: Swing and a Miss,18:30,19:00,The CW · S02E18 · A comedy clip show featuring caught-on-camera videos that highlight the outrageous and wacky world of animals.
+08 CNN,CNN This Morning,03:00,04:00,CNN · S2026E167
+08 CNN,CNN News Central,04:00,07:00,CNN · S2026E167
+08 CNN,The Situation Room,07:00,09:00,CNN · S2026E167
+08 CNN,Inside Politics,09:00,10:00,CNN · S2026E166
+08 CNN,CNN News Central (PM),10:00,13:00,CNN · S2026E167
+08 CNN,The Arena with Kasie Hunt,13:00,14:00,CNN · S2026E167
+08 CNN,The Lead with Jake Tapper,14:00,16:00,CNN · S2026E166
+08 CNN,Erin Burnett OutFront,16:00,17:00,CNN · S2026E166
+08 CNN,Anderson Cooper 360°,17:00,18:00,CNN · S2026E116
+08 CNN,The Source with Kaitlan Collins,18:00,19:00,CNN · S2026E157
+08 CNN,CNN NewsNight with Abby Phillip,19:00,20:00,CNN · S2026E161
+08 CNN,The Story Is with Elex Michaelson,21:00,23:00,CNN · S2026E163
+09 CNBC,Morning Call,02:00,03:00,CNBC · S2026E110
+09 CNBC,Squawk Box,03:00,06:00,CNBC · S2026E167
+09 CNBC,Squawk on the Street,06:00,08:00,CNBC · S2026E166
+09 CNBC,Fast Money Halftime Report,09:00,10:00,CNBC · S2026E166
+09 CNBC,The Exchange,10:00,11:00,CNBC · S2026E166
+09 CNBC,Power Lunch,11:00,12:00,CNBC · S2026E166
+09 CNBC,Closing Bell,12:00,13:00,CNBC · S2026E166
+09 CNBC,Closing Bell: Overtime,13:00,14:00,CNBC · S2026E166
+09 CNBC,Fast Money,14:00,15:00,CNBC · S2026E166
+09 CNBC,Mad Money,15:00,16:00,CNBC · S2026E166
+11 FOOD,"Diners, Drive-Ins and Dives: Smoke, Seafood, and Shawarma",18:00,18:30,Food Network · S2026E15
+12 HIST,The UnXplained: Buried Mysteries,18:00,19:03,"History · S08E17 · Across the deserts of North Africa and the Near East entire armies, cities, and cultures have vanished beneath shifting sands. Could the desert still be hiding lost chapters from t"
+13 HGTV,My Lottery Dream Home: Cathy's Millions: Snowbirder in Chief,18:00,18:30,HGTV · S19E14
+13 HGTV,Roast My Rental: TBA,19:00,19:30,HGTV · S01E05
+14 DISC,Deadliest Catch: Curse of the Hybrids,17:00,18:00,"Discovery · S22E14 · Captains Sig & Sophia locate hybrid crab, hitting the jackpot -- but filling their tanks creates an imbalance, putting the Northwestern on the brink of capsize. After OJ receives t"
+15 HBO,"Real Time with Bill Maher: Hunter Biden, Jeremy Peters, Dana Bash",19:03,20:03,"HBO · S24E24 · This week features a one-on-one interview with Hunter Biden , contemporary American artist, author, and recovery advocate. This week's panel discussion includes Jeremy Peters , nat"
+16 PBS,Washington Week with The Atlantic,17:00,17:30,PBS · S2026E34
+16 PBS,Firing Line with Margaret Hoover,17:30,18:00,PBS · S2026E33
+16 PBS,Great Performances at the Met: Eugene Onegin,18:00,21:00,PBS · S2026E02
+16 PBS,Amanpour & Co.,20:00,21:00,PBS · S2026E167
