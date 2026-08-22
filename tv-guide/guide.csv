@@ -5,51 +5,10 @@
 # Columns: channel,title,start,end,description. Times are 24h HH:MM and repeat daily.
 channel,title,start,end,description
 02 JMO TV,Game Replays,00:00,24:00,"Full-game replays from the library, in order."
-03 ABC,Good Morning America: Jack Carr,04:00,06:00,"ABC · S2026E167 · Book recommendations with author Jack Carr ; 75 Days: Fergus Farrell Walks Across the Country with ABC News' Will Reeve ; The Right Stuff series with ""GMA"" lifestyle contributor Lo"
-03 ABC,GMA3: Jack Carr,10:00,11:00,"ABC · S06E238 · Book recommendations with author Jack Carr ; 75 Days: Fergus Farrell Walks Across the Country with ABC News' Will Reeve ; The Right Stuff series with ""GMA"" lifestyle contributor Lo"
-03 ABC,General Hospital: Ep. #16029,11:00,12:00,ABC · S2026E164
-03 ABC,ABC World News Tonight with David Muir,15:30,16:00,ABC · S2026E229
-03 ABC,ABC World News Now,23:00,24:00,ABC · S2026E165
-04 CBS,CBS Mornings: Kingston Kharif,04:00,06:00,"CBS · S2026E167 · Kingston Kharif , musician and songwriter."
-04 CBS,The Young and the Restless: Ep. #13447,09:30,10:30,CBS · S2026E163
-04 CBS,The Bold and the Beautiful: Ep. #9848,10:30,11:00,CBS · S2026E164
-04 CBS,Beyond the Gates,11:00,12:00,CBS · S2026E153 · Chelsea is haunted by unresolved trauma while her father reaches his breaking point; Dani locks horns with Hayley; Randy tails Heather; Madison gets conflicting information from tw
-04 CBS,CBS Evening News,15:30,16:00,CBS · S2026E167
-05 NBC,"Today: Weezer, Chef Michael Vignola",04:00,06:00,"NBC · S2026E167 · Premier League Kickoff. Sea of Galilee Conservation Effort. Performance by Weezer. Today, Food: Coffee Crusted Pork Chops with Michael Vignola."
-05 NBC,"Today 3rd Hour: Nicole Williams English, Weezer",06:00,07:00,NBC · S2026E166 · Today's Checklist: Cortisol with Dr. Natalie Azar. Flip Phones are Back. Catching up with Nicole Williams English. Shop Today Hair Awards with Adrianna Brach. Performance by Weezer
-05 NBC,"TODAY with Jenna & Sheinelle: Hoda Kotb, Morgan Riddle, Meredith Shumway",07:00,08:00,NBC · S01E159 · Catching up with Hoda Kotb. U.S. Open Spectator Style with Morgan Riddle. Weekend Watchlist with Chris Witherspoon. Wellness Week: Formula x Meredith Workout with Meredith Shumway.
-05 NBC,NBC Nightly News: Aug 21 Fri,15:30,16:00,NBC · S2026E214
-07 CW,Totally Funny Animals: I Scream You Scream,18:00,18:30,The CW · S02E17 · A comedy clip show featuring caught-on-camera videos that highlight the outrageous and wacky world of animals.
-07 CW,Totally Funny Animals: Swing and a Miss,18:30,19:00,The CW · S02E18 · A comedy clip show featuring caught-on-camera videos that highlight the outrageous and wacky world of animals.
-08 CNN,CNN This Morning,03:00,04:00,CNN · S2026E167
-08 CNN,CNN News Central,04:00,07:00,CNN · S2026E167
-08 CNN,The Situation Room,07:00,09:00,CNN · S2026E167
-08 CNN,Inside Politics,09:00,10:00,CNN · S2026E166
-08 CNN,CNN News Central (PM),10:00,13:00,CNN · S2026E167
-08 CNN,The Arena with Kasie Hunt,13:00,14:00,CNN · S2026E167
-08 CNN,The Lead with Jake Tapper,14:00,16:00,CNN · S2026E166
-08 CNN,Erin Burnett OutFront,16:00,17:00,CNN · S2026E166
-08 CNN,Anderson Cooper 360°,17:00,18:00,CNN · S2026E116
-08 CNN,The Source with Kaitlan Collins,18:00,19:00,CNN · S2026E157
-08 CNN,CNN NewsNight with Abby Phillip,19:00,20:00,CNN · S2026E161
-08 CNN,The Story Is with Elex Michaelson,21:00,23:00,CNN · S2026E163
-09 CNBC,Morning Call,02:00,03:00,CNBC · S2026E110
-09 CNBC,Squawk Box,03:00,06:00,CNBC · S2026E167
-09 CNBC,Squawk on the Street,06:00,08:00,CNBC · S2026E166
-09 CNBC,Fast Money Halftime Report,09:00,10:00,CNBC · S2026E166
-09 CNBC,The Exchange,10:00,11:00,CNBC · S2026E166
-09 CNBC,Power Lunch,11:00,12:00,CNBC · S2026E166
-09 CNBC,Closing Bell,12:00,13:00,CNBC · S2026E166
-09 CNBC,Closing Bell: Overtime,13:00,14:00,CNBC · S2026E166
-09 CNBC,Fast Money,14:00,15:00,CNBC · S2026E166
-09 CNBC,Mad Money,15:00,16:00,CNBC · S2026E166
-11 FOOD,"Diners, Drive-Ins and Dives: Smoke, Seafood, and Shawarma",18:00,18:30,Food Network · S2026E15
-12 HIST,The UnXplained: Buried Mysteries,18:00,19:03,"History · S08E17 · Across the deserts of North Africa and the Near East entire armies, cities, and cultures have vanished beneath shifting sands. Could the desert still be hiding lost chapters from t"
-13 HGTV,My Lottery Dream Home: Cathy's Millions: Snowbirder in Chief,18:00,18:30,HGTV · S19E14
-13 HGTV,Roast My Rental: TBA,19:00,19:30,HGTV · S01E05
-14 DISC,Deadliest Catch: Curse of the Hybrids,17:00,18:00,"Discovery · S22E14 · Captains Sig & Sophia locate hybrid crab, hitting the jackpot -- but filling their tanks creates an imbalance, putting the Northwestern on the brink of capsize. After OJ receives t"
-15 HBO,"Real Time with Bill Maher: Hunter Biden, Jeremy Peters, Dana Bash",19:03,20:03,"HBO · S24E24 · This week features a one-on-one interview with Hunter Biden , contemporary American artist, author, and recovery advocate. This week's panel discussion includes Jeremy Peters , nat"
-16 PBS,Washington Week with The Atlantic,17:00,17:30,PBS · S2026E34
-16 PBS,Firing Line with Margaret Hoover,17:30,18:00,PBS · S2026E33
-16 PBS,Great Performances at the Met: Eugene Onegin,18:00,21:00,PBS · S2026E02
-16 PBS,Amanpour & Co.,20:00,21:00,PBS · S2026E167
+03 ABC,"Good Morning America: Weekend Edition: Naima Coster, Dr. Sonia Lewis",04:00,05:00,"ABC · S2026E67 · ""GMA"" August Book Club pick author Naima Coster (""Take What You Can""); Student Loan Payoff Strategies with Dr. Sonia Lewis ; ABC Secret Savings; Deals & Steals with ABC e-commerce "
+04 CBS,"CBS Saturday Morning: Grace Potter, Philippe Massoud, Jenny Simpson",04:00,06:00,"CBS · S03E150 · Saturday Sessions: Grace Potter . The Dish: Philippe Massoud . Jenny Simpson , Olympic runner."
+05 NBC,Saturday Today,04:00,06:00,NBC · S2026E34
+05 NBC,NBC Nightly News: Aug 22 Sat,15:30,16:00,NBC · S2026E215
+08 CNN,Smerconish,06:00,07:00,CNN · S2026E34 · Michael Smerconish tackles weekly American political and news stories from one perspective...his.
+16 PBS,Cyberchase: Take it Away,14:00,14:30,PBS · S16E06
+16 PBS,Cyberchase: Weigh to Go,14:00,14:30,PBS · S16E07
