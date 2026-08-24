@@ -5,24 +5,54 @@
 # Columns: channel,title,start,end,description. Times are 24h HH:MM and repeat daily.
 channel,title,start,end,description
 02 JMO TV,Game Replays,00:00,24:00,"Full-game replays from the library, in order."
-03 ABC,"Good Morning America: Weekend Edition: Aug 23, 2026",04:00,05:00,ABC · S2026E68
-03 ABC,"This Week: Aug 23, 2026",07:00,08:00,ABC · S2026E34
-04 CBS,Face the Nation: 8/23 -,07:30,08:30,CBS · S2026E34
-04 CBS,Big Brother: Unlocked,17:00,18:00,CBS · S02E04
-04 CBS,Big Brother,18:00,19:00,CBS · S28E20
-05 NBC,"Sunday TODAY with Willie Geist: Aug 23, 2026",05:00,06:00,NBC · S2026E30
-05 NBC,"Meet the Press: Sen. Chris Van Hollen, Sen. Tim Scott",06:00,07:00,NBC · S2026E30
-05 NBC,NBC Sunday Night Baseball: San Francisco Giants at Boston Red Sox,12:20,15:00,"NBC · S01E23 · Four-time All-Star first baseman Willson Contreras and the Boston Red Sox host the San Francisco Giants and three-time All-Star third baseman Rafael Devers , who returns to Fenway "
-08 CNN,"State of the Union with Jake Tapper and Dana Bash: Aug 23, 2026",06:00,07:00,CNN · S2026E34
-08 CNN,Fareed Zakaria GPS,07:00,08:00,"CNN · S2026E34 · Journalist and author Fareed Zakaria hosts this in-depth look at the major global developments of the week (the title's ""GPS"" stands for ""Global Public Square""), with an emphasis o"
-08 CNN,Decades in Sports: 2000s,18:00,19:00,"CNN · S01E05 · National tragedy, historic comebacks and grand slams define the 2000s in sports. Tiger Woods in golf, the Williams sisters in tennis, and a shakeup of one of the greatest baseball "
-11 FOOD,The Great Food Truck Race: Sweet & Savory: Dishing It Out at Dollywood,18:00,19:00,Food Network · S19E06
-12 HIST,Hazardous History with Henry Winkler: School Dazed,18:00,19:03,History · S02E18 · These are the classroom customs and schoolyard rituals that generations of students accepted without a second thought… for better or worse
-12 HIST,The Mega-Brands That Built America: Racing to the Top,19:03,20:05,"History · S04E04 · A down-on-his-luck mechanic transforms outlaw moonshine racing into one of America's biggest spectator sports, overcoming powerful rivals, deadly setbacks, and financial crises to "
-13 HGTV,Maine Cabin Masters: All Inn: Welcome Inn,18:00,19:00,"HGTV · S01E06 · The team must finish turning the horse barn into a venue space and outdoor spaces into guest-friendly patios, all while getting the kitchen ready for service."
-14 DISC,Destination Dive: Blue Waters of Islamorada,05:00,05:30,Discovery · S03E02
-14 DISC,RV There Yet?: Campfire Cuts,05:30,06:00,Discovery · S05E06
-14 DISC,Naked and Afraid: Shipwrecked: Typhoon Warning,17:00,19:00,"Discovery · S01E04 · Stung by Patrick's criticism, Allison gathers debris to craft an improvised fishing net. A tropical storm pounds all four camps. Mandy and Adam must abandon their battered shelter "
-14 DISC,In the Eye of the Storm: Jamaica Category 5,19:00,20:00,Discovery · S04E08
-15 HBO,Lanterns: Trust Fall,18:00,19:00,HBO · S01E02
-15 HBO,Last Week Tonight with John Oliver: TBA,20:00,20:41,HBO · S13E22
+03 ABC,"Good Morning America: Josh Brolin, Guy Pearce, Margaret Qualley",04:00,06:00,"ABC · S2026E168 · Actors Josh Brolin , Guy Pearce and Margaret Qualley discuss ""The Dog Stars"" with ABC News' James Longman ; U.S. Open Cooking with chef Robbie Felice ; ABC Secret Savings with ""GMA"
+03 ABC,"GMA3: Josh Brolin, Guy Pearce, Margaret Qualley",10:00,11:00,"ABC · S06E239 · Actors Josh Brolin , Guy Pearce and Margaret Qualley discuss ""The Dog Stars"" with ABC News' James Longman ; U.S. Open Cooking with chef Robbie Felice ; ABC Secret Savings with ""GMA"
+03 ABC,General Hospital: Ep. #16030,11:00,12:00,ABC · S2026E165
+03 ABC,ABC World News Tonight with David Muir,15:30,16:00,ABC · S2026E232
+03 ABC,Dancing with the Stars: The Next Pro: Paired with the Pros: Semi-Finals with Kym Johnson,17:00,18:00,"ABC · S01E07 · The final four team up with ""Dancing with the Stars"" pros Rylee Arnold, Gleb Savchenko, Jan Ravnik and Witney Carson for two semifinal rounds, competing for a place in the finale. "
+03 ABC,"Jimmy Kimmel Live: Glen Powell, Jay Shetty, Sara Niemietz",20:35,21:35,"ABC · S2026E102 · 1. Glen Powell (""Chad Powers""). 2. Jay Shetty (""On Purpose with Jay Shetty""). 3. Sara Niemietz sits in with The Cletones."
+03 ABC,ABC World News Now,23:00,24:00,ABC · S2026E166
+04 CBS,"CBS Mornings: Sen. Ted Cruz, Jack Zhang, Emmy Zhang, Levi Zhang",04:00,06:00,"CBS · S2026E168 · U.S. Senator, Ted Cruz (R-TX) and author of Going Further: The Incomparable Clarence Thomas. Dr. Sasha Hamdani , author of Too Sensitive: Rejection, Resilience, and the Science of "
+04 CBS,The Young and the Restless: Ep. #13448,09:30,10:30,CBS · S2026E164
+04 CBS,The Bold and the Beautiful: Ep. #9849,10:30,11:00,CBS · S2026E165
+04 CBS,Beyond the Gates,11:00,12:00,CBS · S2026E154 · A mystery fuels old fears for Chelsea; Kat is a source of comfort; Leslie gets the cold shoulder; Anita and Vernon put Dani in the hot seat; Ashley gives Hayley what she wants.
+04 CBS,CBS Evening News,15:30,16:00,CBS · S2026E168
+05 NBC,Today: Best of Amazing Women,04:00,06:00,NBC · S2026E168 · Back to School TODAY: Thomas A. Edison High School. TODAY's Consumer: Booming Business of Men's Beauty. Consumer Confidential: Tech Safety Settings. The Upside: Shred.Co Skateboard
+05 NBC,Today 3rd Hour: Jonathan Pryce,06:00,07:00,NBC · S2026E167 · Actor Jonathan Pryce; shopping expert Bahar Takhtehchian; life lessons with Rabbi Rachel Ain.
+05 NBC,"TODAY with Jenna & Sheinelle: Eva Longoria, Ariana Debose",07:00,08:00,NBC · S01E160 · Actress Eva Longoria; actress Ariana Debose; psychotherapist Esther Perel; wellness at any age with Denise and Katie Austin.
+05 NBC,NBC Nightly News: Aug 24 Mon,15:30,16:00,NBC · S2026E217
+05 NBC,American Ninja Warrior: National Finals 3,17:00,19:00,NBC · S18E12 · The competition continues on the third night of the National Finals. The remaining ninjas from across the country face off in a series of races with the hopes of being crowned cham
+05 NBC,The Wall: Ellie and Nick,19:00,20:00,"NBC · S06E09 · In celebration of the 100th episode, Ellie, a dance teacher from Arkansas, honored her late grandfather by baking 600 pies and raising more than $20,000 for the Make-A-Wish Foundat"
+06 FOX,Beat Shazam: Shazam Bowl!,17:00,18:00,"FOX · S08E05 · Three teams of NFL super-fans are in a musical grudge match between the Buffalo Bills, the Philadelphia Eagles, and the Dallas Cowboys!"
+06 FOX,Beat Shazam: Shazam and Chill!,18:00,19:00,FOX · S08E06 · Three couples compete for the ultimate romantic prize.
+07 CW,All American: Best Friends,17:00,18:00,"The CW · S08E08 · A very pregnant Olivia surprises Layla with a visit just when Layla needs her the most. As Tori turns to Layla and Olivia for relationship help, they relive the best, the worst and"
+08 CNN,CNN This Morning,03:00,04:00,CNN · S2026E168
+08 CNN,CNN News Central,04:00,07:00,CNN · S2026E168
+08 CNN,The Situation Room,07:00,09:00,CNN · S2026E168
+08 CNN,Inside Politics,09:00,10:00,CNN · S2026E167
+08 CNN,CNN News Central (PM),10:00,13:00,CNN · S2026E168
+08 CNN,The Arena with Kasie Hunt,13:00,14:00,CNN · S2026E168
+08 CNN,The Lead with Jake Tapper,14:00,16:00,CNN · S2026E167
+08 CNN,Erin Burnett OutFront,16:00,17:00,CNN · S2026E167
+08 CNN,Anderson Cooper 360°,17:00,18:00,CNN · S2026E117
+08 CNN,The Source with Kaitlan Collins,18:00,19:00,CNN · S2026E158
+08 CNN,CNN NewsNight with Abby Phillip,19:00,20:00,CNN · S2026E162
+08 CNN,The Story Is with Elex Michaelson,21:00,23:00,CNN · S2026E164
+09 CNBC,Morning Call,02:00,03:00,CNBC · S2026E111
+09 CNBC,Squawk Box,03:00,06:00,CNBC · S2026E168
+09 CNBC,Squawk on the Street,06:00,08:00,CNBC · S2026E167
+09 CNBC,Fast Money Halftime Report,09:00,10:00,CNBC · S2026E167
+09 CNBC,The Exchange,10:00,11:00,CNBC · S2026E167
+09 CNBC,Power Lunch,11:00,12:00,CNBC · S2026E167
+09 CNBC,Closing Bell,12:00,13:00,CNBC · S2026E167
+09 CNBC,Closing Bell: Overtime,13:00,14:00,CNBC · S2026E167
+09 CNBC,Fast Money,14:00,15:00,CNBC · S2026E167
+09 CNBC,Mad Money,15:00,16:00,CNBC · S2026E167
+10 ESPN,First Take,07:00,09:00,ESPN · S20E232
+12 HIST,History's Greatest Mysteries: Lost Civil War Gold,18:00,19:03,"History · S07E18 · In the final days of the Civil War, Confederate leaders fled south, rumored to be carrying the Confederate treasury worth an estimated $13 million in today's money. But when Jeffer"
+13 HGTV,Ugliest House in America: The Ultimate Ugly Renovation,18:00,19:00,HGTV · S08E06
+13 HGTV,Crashers,19:00,20:00,HGTV · S01E12
+14 DISC,Contraband: Seized at the Border: Boomers Behaving Badly,17:00,18:00,Discovery · S09E09
+14 DISC,120 Hours Behind Bars: Flagler County Jail,18:00,19:00,Discovery · S02E06
+16 PBS,POV: How to Build a Library,19:00,20:00,PBS · S39E04
+16 PBS,Amanpour & Co.,20:00,21:00,PBS · S2026E168
