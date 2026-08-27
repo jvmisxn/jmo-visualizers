@@ -5,53 +5,48 @@
 # Columns: channel,title,start,end,description. Times are 24h HH:MM and repeat daily.
 channel,title,start,end,description
 02 JMO TV,Game Replays,00:00,24:00,"Full-game replays from the library, in order."
-03 ABC,Good Morning America: Jason Stacy,04:00,06:00,"ABC · S2026E170 · Fitness coach Jason Stacy (""The Pressure Code""); recipe developer Jamie Milne ; ABC Secret Savings with ""GMA"" lifestyle contributor Lori Bergamotto ."
-03 ABC,"GMA3: Dr. Sasha Hamdani, Jamie Milne",10:00,11:00,"ABC · S06E241 · Dr. Sasha Hamdani (""Too Sensitive: Rejection, Resilience, and the Science of Feeling Deeply""); recipe developer Jamie Milne ; ABC Secret Savings with ""GMA"" lifestyle contributor Lo"
-03 ABC,General Hospital: Ep. #16032,11:00,12:00,ABC · S2026E167
-03 ABC,ABC World News Tonight with David Muir,15:30,16:00,ABC · S2026E234
-03 ABC,Jeopardy! Masters: Quarterfinals 3 & 4,17:00,18:00,"ABC · S04E02 · Hosted by Ken Jennings, top-ranked contestants compete for the $500,000 grand prize in quarterfinal games three and four, featuring Victoria Groce, Andrew He, Long Nguyen, Paolo Pa"
-03 ABC,"Jimmy Kimmel Live: Nathan Fillion, Juicy J, Project Pat, Lecrae, Sara Niemietz",20:35,21:35,"ABC · S2026E104 · 1. Nathan Fillion (""Lanterns"" and ""The Rookie""). 2. Juicy J and Project Pat (""Dem Goats""). 3. Musical Guests Juicy J and Project Pat featuring Lecrae. 4. Sara Niemietz sits in with"
-03 ABC,ABC World News Now,23:00,24:00,ABC · S2026E168
-04 CBS,"CBS Mornings: Christian Siriano, Chef David Burke",04:00,06:00,"CBS · S2026E170 · CBS DEALS : Christian Siriano , fashion designer. David Burke , chef."
-04 CBS,The Young and the Restless: Ep. #13450,09:30,10:30,CBS · S2026E166
-04 CBS,The Bold and the Beautiful: Ep. #9851,10:30,11:00,CBS · S2026E167
-04 CBS,Beyond the Gates,11:00,12:00,CBS · S2026E156 · Dani's hunt for answers is cut short; Mona hustles Joey; Carlton has an unexpected run-in; Ted has heavy words for Nicole; Heather lashes out.
-04 CBS,CBS Evening News,15:30,16:00,CBS · S2026E170
-04 CBS,Big Brother,17:00,18:30,CBS · S28E21
-05 NBC,"Today: Aug 26, 2026",04:00,06:00,NBC · S2026E170 · The rising popularity of estate sales; Steals and Deals with Jill Martin; American Cornhole League's Colin Hodet; Today Food with Ed Brown.
-05 NBC,"Today 3rd Hour: John McEnroe, Patrick McEnroe",06:00,07:00,NBC · S2026E169 · U.S. Open lookahead with John and Patrick McEnroe; how to organize for the new school year with Brandi Milloy; creating floral gifts with Christina Stembel.
-05 NBC,"TODAY with Jenna & Sheinelle: Aug 26, 2026",07:00,08:00,"NBC · S01E162 · Inspirational stories; spotlighting ""Georgia Hair Solutions""; TikTok star Mr. Lindsay."
-05 NBC,NBC Nightly News: Aug 26 Wed,15:30,16:00,NBC · S2026E219
-05 NBC,America's Got Talent: Quarterfinals 2 Results,17:00,18:00,NBC · S21E15 · One act advances straight to the finals with last night's Golden Buzzer; America's votes reveal which three acts from the second night of quarterfinals will move on and compete in 
-06 FOX,MasterChef: Restaurant Takeover,17:00,18:02,"FOX · S16E15 · Tonight, the Top 6 home cooks are split into teams to put their skills to the ultimate test and take over Cluny Bistro for a packed dinner service in the Restaurant Takeover challe"
-06 FOX,Nation's Dumbest: The Science Fair,18:02,19:00,"FOX · S01E07 · Bonds are tested as the remaining five celebrities battle science, and each other, with explosive results."
-08 CNN,CNN This Morning,03:00,04:00,CNN · S2026E170
-08 CNN,CNN News Central,04:00,07:00,CNN · S2026E170
-08 CNN,The Situation Room,07:00,09:00,CNN · S2026E170
-08 CNN,Inside Politics,09:00,10:00,CNN · S2026E169
-08 CNN,CNN News Central (PM),10:00,13:00,CNN · S2026E170
-08 CNN,The Arena with Kasie Hunt,13:00,14:00,CNN · S2026E170
-08 CNN,The Lead with Jake Tapper,14:00,16:00,CNN · S2026E169
-08 CNN,Erin Burnett OutFront,16:00,17:00,CNN · S2026E169
-08 CNN,Anderson Cooper 360°,17:00,18:00,CNN · S2026E119
-08 CNN,The Source with Kaitlan Collins,18:00,19:00,CNN · S2026E160
-08 CNN,CNN NewsNight with Abby Phillip,19:00,20:00,CNN · S2026E164
-08 CNN,The Story Is with Elex Michaelson,21:00,23:00,CNN · S2026E166
-09 CNBC,Morning Call,02:00,03:00,CNBC · S2026E113
-09 CNBC,Squawk Box,03:00,06:00,CNBC · S2026E170
-09 CNBC,Squawk on the Street,06:00,08:00,CNBC · S2026E169
-09 CNBC,Fast Money Halftime Report,09:00,10:00,CNBC · S2026E169
-09 CNBC,The Exchange,10:00,11:00,CNBC · S2026E169
-09 CNBC,Power Lunch,11:00,12:00,CNBC · S2026E169
-09 CNBC,Closing Bell,12:00,13:00,CNBC · S2026E169
-09 CNBC,Closing Bell: Overtime,13:00,14:00,CNBC · S2026E169
-09 CNBC,Fast Money,14:00,15:00,CNBC · S2026E169
-09 CNBC,Mad Money,15:00,16:00,CNBC · S2026E169
-10 ESPN,College Football Countdown: Week 0,07:00,09:00,"ESPN · S21E01 · A look at the day's college football action, featuring news, highlights and game previews."
-10 ESPN,First Take,07:00,09:00,ESPN · S20E234
-11 FOOD,Guy's Grocery Games: Throwback Throwdown,18:00,19:00,"Food Network · S42E12 · The winners of GGG's first three episodes return for a throwback throwdown featuring the toughest games from Season One. First, Guy Fieri challenges the OG chefs to make a baller b"
-12 HIST,Alone: Fire and Famine,18:00,19:34,"History · S13E11 · As the brutal Arctic winter deepens, a devastating mistake leaves one survivalist racing to save their shelter from going up in smoke. Meanwhile, a brazen bear raid on a critical f"
-13 HGTV,Totally ‘90s House: TBA,18:00,18:30,"HGTV · S01E01 · During the extended premiere episode, Jaleel will welcome the two teams of fellow television icons and send them on a quest to find America's epic ‘90s-retro properties. The boldfa"
-14 DISC,Expedition X: Secrets of Sherwood Forest,18:00,19:00,Discovery · S12E02
-14 DISC,How to Catch a Dirtbag: The Mystery Pistol Packer,19:00,20:00,"Discovery · S01E04 · Tizzy tries to identify a man filmed pulling a gun on young skateboarders. A road rager who reportedly used his coffee cup as a weapon is identified by his tattoos, and an angry co"
-16 PBS,Amanpour & Co.,20:00,21:00,PBS · S2026E170
+03 ABC,"Good Morning America: Jack Innanen, Malik Elassal, Lucy Freyer, Owen Thiele",04:00,06:00,"ABC · S2026E171 · Actors Jack Innanen , Malik Elassal , Lucy Freyer and Owen Thiele (""Adults""); a performance from the cast of Broadway's ""Schmigadoon!""; summer cookout with chef Danny Grant; ABC Se"
+03 ABC,"GMA3: Jack Innanen, Malik Elassal, Lucy Freyer, Owen Thiele, Chef Danny Grant",10:00,11:00,"ABC · S06E242 · Actors Jack Innanen , Malik Elassal , Lucy Freyer and Owen Thiele (""Adults""); summer cookout with chef Danny Grant ; ABC Secret Savings with ""GMA"" lifestyle contributor Lori Bergam"
+03 ABC,General Hospital: Ep. #16033,11:00,12:00,ABC · S2026E168
+03 ABC,ABC World News Tonight with David Muir,15:30,16:00,ABC · S2026E235
+03 ABC,Jeopardy! Masters: Quarterfinals 5 & 6,17:00,18:00,"ABC · S04E03 · Hosted by Ken Jennings, top-ranked contestants compete for the $500,000 grand prize in quarterfinal games five and six, featuring Victoria Groce, Andrew He, Long Nguyen, Paolo Pasc"
+03 ABC,"Jimmy Kimmel Live: Leslie Mann, Bert Kreischer, Sara Niemietz",20:35,21:35,"ABC · S2026E105 · 1. Leslie Mann (""Spa Weekend""). 2. Bert Kreischer (""Bert Kreischer's Fully Loaded At Sea 2026""). 3. Sara Niemietz sits in with The Cletones."
+03 ABC,ABC World News Now,23:00,24:00,ABC · S2026E169
+04 CBS,CBS Mornings: Alex Warren,04:00,06:00,"CBS · S2026E171 · Alex Warren , singer-songwriter and YouTuber."
+04 CBS,The Young and the Restless: Ep. #13451,09:30,10:30,CBS · S2026E167
+04 CBS,The Bold and the Beautiful: Ep. #9852,10:30,11:00,CBS · S2026E168
+04 CBS,Beyond the Gates,11:00,12:00,CBS · S2026E157 · Bill has a proposition for Naomi; Tomas leans on Eva; Nicole and Kat clash; Izaiah confides in Jacob; Ted hides the truth about Andre.
+04 CBS,CBS Evening News,15:30,16:00,CBS · S2026E171
+04 CBS,Big Brother,17:00,18:30,CBS · S28E22 · The historic night will feature surprise appearances from former Houseguests determined by interactive fan votes and kick off the biggest twist of the summer. The episode will look
+05 NBC,"Today: Joel Edgerton, Jennifer Connelly",04:00,06:00,"NBC · S2026E171 · Actors Joel Edgerton and Jennifer Connelly (""Dark Matter""); style expert Melissa Garcia; Today Food with Bobby Flay."
+05 NBC,Today 3rd Hour: Leanne Morgan,06:00,07:00,NBC · S2026E170 · Disaster-proofing one's home; comic Leanne Morgan; style expert Melissa Garcia; life lessons with Dr. Sue Varma.
+05 NBC,"TODAY with Jenna & Sheinelle: Aug 27, 2027",07:00,08:00,NBC · S01E163 · Best of musical guests; singer-songwriter Kelsea Ballerini; singer-songwriter Anderson .Paak; actor Hugh Jackman; singer-songwriter Shania Twain.
+05 NBC,NBC Nightly News: Aug 27 Thur,15:30,16:00,NBC · S2026E220
+07 CW,Miss USA Pageant: 2026 Miss USA Pageant: 75th Diamond Celebration,17:00,20:00,The CW · S2026E06
+08 CNN,CNN This Morning,03:00,04:00,CNN · S2026E171
+08 CNN,CNN News Central,04:00,07:00,CNN · S2026E171
+08 CNN,The Situation Room,07:00,09:00,CNN · S2026E171
+08 CNN,Inside Politics,09:00,10:00,CNN · S2026E170
+08 CNN,CNN News Central (PM),10:00,13:00,CNN · S2026E171
+08 CNN,The Arena with Kasie Hunt,13:00,14:00,CNN · S2026E171
+08 CNN,The Lead with Jake Tapper,14:00,16:00,CNN · S2026E170
+08 CNN,Erin Burnett OutFront,16:00,17:00,CNN · S2026E170
+08 CNN,Anderson Cooper 360°,17:00,18:00,CNN · S2026E120
+08 CNN,The Source with Kaitlan Collins,18:00,19:00,CNN · S2026E161
+08 CNN,CNN NewsNight with Abby Phillip,19:00,20:00,CNN · S2026E165
+08 CNN,The Story Is with Elex Michaelson,21:00,23:00,CNN · S2026E167
+09 CNBC,Morning Call,02:00,03:00,CNBC · S2026E114
+09 CNBC,Squawk Box,03:00,06:00,CNBC · S2026E171
+09 CNBC,Squawk on the Street,06:00,08:00,CNBC · S2026E170
+09 CNBC,Fast Money Halftime Report,09:00,10:00,CNBC · S2026E170
+09 CNBC,The Exchange,10:00,11:00,CNBC · S2026E170
+09 CNBC,Power Lunch,11:00,12:00,CNBC · S2026E170
+09 CNBC,Closing Bell,12:00,13:00,CNBC · S2026E170
+09 CNBC,Closing Bell: Overtime,13:00,14:00,CNBC · S2026E170
+09 CNBC,Fast Money,14:00,15:00,CNBC · S2026E170
+09 CNBC,Mad Money,15:00,16:00,CNBC · S2026E170
+10 ESPN,First Take,07:00,09:00,ESPN · S20E235
+11 FOOD,Restaurant Impossible: Last Call: Taste of Peru,17:00,18:00,Food Network · S01E06 · A passionate Peruvian father is clinging to old-country recipes and control of his collapsing business while keeping his two sons in the dark. Jen Agg and Aarón Sánchez give the to
+12 HIST,Engineering From Above: Superstars,19:03,20:05,History · S01E03 · Revealed from above; The Pantheon - one of ancient Rome's most enduring and enigmatic feats of engineering; in Panama – a continent crossing canal that almost never was.
+15 HBO,Monsters of God: Operation Chameleon,18:00,19:00,"HBO · S01E04 · Fresh out of prison, Tommy Crutchfield re-emerges during a new era of high-end, ostensibly legal reptile dealing – the breeding of genetically modified rare animals that can comman"
+16 PBS,Amanpour & Co.,20:00,21:00,PBS · S2026E171
