@@ -5,55 +5,12 @@
 # Columns: channel,title,start,end,description. Times are 24h HH:MM and repeat daily.
 channel,title,start,end,description
 02 JMO TV,Game Replays,00:00,24:00,"Full-game replays from the library, in order."
-03 ABC,Good Morning America: Sheryl Crow,04:00,06:00,"ABC · S2026E172 · ""GMA"" Summer Concert series featuring a performance from Sheryl Crow ; GMA Game Day: Countdown to the Superbowl – Miami Dolphins; The Right Stuff series with ""GMA"" lifestyle contri"
-03 ABC,GMA3: Sheryl Crow,10:00,11:00,"ABC · S06E243 · Singer-songwriter Sheryl Crow ; GMA Game Day: Countdown to the Superbowl – Miami Dolphins; The Right Stuff series with ""GMA"" lifestyle contributor Lori Bergamotto ."
-03 ABC,General Hospital: Ep. #16034,11:00,12:00,ABC · S2026E169
-03 ABC,ABC World News Tonight with David Muir,15:30,16:00,ABC · S2026E236
-03 ABC,Jeopardy! Masters: Quarterfinals 7 & 8,17:00,18:00,"ABC · S04E04 · Hosted by Ken Jennings, top-ranked contestants compete for the $500,000 grand prize in quarterfinal games seven and eight, featuring Victoria Groce, Andrew He, Long Nguyen, Paolo P"
-03 ABC,ABC World News Now,23:00,24:00,ABC · S2026E170
-04 CBS,"CBS Mornings: Aug 28, 2026",04:00,06:00,CBS · S2026E172 · TBD.
-04 CBS,The Young and the Restless: Ep. #13452,09:30,10:30,CBS · S2026E168
-04 CBS,The Bold and the Beautiful: Ep. #9853,10:30,11:00,CBS · S2026E169
-04 CBS,Beyond the Gates,11:00,12:00,CBS · S2026E158 · Anita wavers on a big opportunity; Vernon jumps into crisis mode; Hayley hassles Naomi while hustling Bill; Smitty unwittingly incites anxiety for Chelsea and Kat; Elon has disturb
-04 CBS,CBS Evening News,15:30,16:00,CBS · S2026E172
-05 NBC,Today: Bebe Rexha,04:00,06:00,"NBC · S2026E172 · Citi Concert Series: Bebe Rexha. TODAY's Checklist: What Your Food Cravings Really Mean with Joy Bauer. Best of Fashion and Beauty. RuPaul and ""Stop! That! Train!"" Queens."
-05 NBC,Today 3rd Hour: Bebe Rexha,06:00,07:00,NBC · S2026E171 · What one's food cravings really mean with Joy Bauer; summer entertaining with Darcy Miller; Bebe Rexha performs.
-05 NBC,"TODAY with Jenna & Sheinelle: Aug 28, 2026",07:00,08:00,"NBC · S01E164 · Best of fashion and beauty; RuPaul and ""Stop! That! Train!"" queens; pop-up makeover with Chris Appleton and Jenna Lyons; fashion face-off with La La Anthony; new beauty gadgets wit"
-05 NBC,NBC Nightly News: Aug 28 Fri,15:30,16:00,NBC · S2026E221
-08 CNN,CNN This Morning,03:00,04:00,CNN · S2026E172
-08 CNN,CNN News Central,04:00,07:00,CNN · S2026E172
-08 CNN,The Situation Room,07:00,09:00,CNN · S2026E172
-08 CNN,Inside Politics,09:00,10:00,CNN · S2026E171
-08 CNN,CNN News Central (PM),10:00,13:00,CNN · S2026E172
-08 CNN,The Arena with Kasie Hunt,13:00,14:00,CNN · S2026E172
-08 CNN,The Lead with Jake Tapper,14:00,16:00,CNN · S2026E171
-08 CNN,Erin Burnett OutFront,16:00,17:00,CNN · S2026E171
-08 CNN,Anderson Cooper 360°,17:00,18:00,CNN · S2026E121
-08 CNN,The Source with Kaitlan Collins,18:00,19:00,CNN · S2026E162
-08 CNN,CNN NewsNight with Abby Phillip,19:00,20:00,CNN · S2026E166
-08 CNN,The Story Is with Elex Michaelson,21:00,23:00,CNN · S2026E168
-09 CNBC,Morning Call,02:00,03:00,CNBC · S2026E115
-09 CNBC,Squawk Box,03:00,06:00,CNBC · S2026E172
-09 CNBC,Squawk on the Street,06:00,08:00,CNBC · S2026E171
-09 CNBC,Fast Money Halftime Report,09:00,10:00,CNBC · S2026E171
-09 CNBC,The Exchange,10:00,11:00,CNBC · S2026E171
-09 CNBC,Power Lunch,11:00,12:00,CNBC · S2026E171
-09 CNBC,Closing Bell,12:00,13:00,CNBC · S2026E171
-09 CNBC,Closing Bell: Overtime,13:00,14:00,CNBC · S2026E171
-09 CNBC,Fast Money,14:00,15:00,CNBC · S2026E171
-09 CNBC,Mad Money,15:00,16:00,CNBC · S2026E171
-10 ESPN,First Take,07:00,09:00,ESPN · S20E235
-10 ESPN,NFL Live,13:00,14:00,"ESPN · S28E92 · Host Laura Rutledge takes the helm of this weekday show featuring the likes of Marcus Spears, Dan Orlovsky, Ryan Clark, Mina Kimes, and Adam Schefter, who offer the latest news and"
-10 ESPN,NFL Live,13:00,14:00,"ESPN · S28E104 · Host Laura Rutledge takes the helm of this weekday show featuring the likes of Marcus Spears, Dan Orlovsky, Ryan Clark, Mina Kimes, and Adam Schefter, who offer the latest news and"
-10 ESPN,Pardon the Interruption: Aug 28 Fri,14:30,15:00,ESPN · S2026E143
-11 FOOD,Kitchen Chaos: A Slice of Chaos,11:00,11:30,"Food Network · S01E12 · Knife skills are put to the test, rookie home cooks learn lessons the hard way, and international street food steals the spotlight in another lineup of outrageous viral food moment"
-11 FOOD,Kitchen Chaos: Flaming Fiascoes and Hotshot Hot Dogs,11:30,12:00,"Food Network · S01E13 · Robots attempt to cook, hot dogs get outrageous, and cookouts burst into chaos as chefs Esther Choi, Joe Sasto, and Kalen Allen share hilarious commentary and culinary insight alon"
-12 HIST,The UnXplained: Human Anomalies,18:00,19:03,"History · S08E18 · Across the world, rare medical disorders and extraordinary capabilities reveal how little we truly understand about the human body. Are these evidence that the human body is capabl"
-13 HGTV,My Lottery Dream Home: Sue's Central Florida Dream,18:00,18:30,HGTV · S19E15
-13 HGTV,Zillow Gone Wild: Strap In for Fun,18:30,19:00,HGTV · S03E16
-14 DISC,Deadliest Catch: Aleutian Solution,17:00,18:01,"Discovery · S22E15 · Sig's crew races to jettison pots and repair a flooding compartment below deck. Rick radios Johnathan to help hide his honey hole, but when Jake spots the Time Bandit's unusual mov"
-15 HBO,"Real Time with Bill Maher: Michael S. Roth, Molly Jong-Fast, Rep. Byron Donalds",19:00,20:00,"HBO · S24E25 · This week features a one-on-one interview with Michael S. Roth , president of Wesleyan University and author of ""The Student: A Short History."" This week's panel discussion include"
-16 PBS,Washington Week with The Atlantic,17:00,17:30,PBS · S2026E35
-16 PBS,Firing Line with Margaret Hoover,17:30,18:00,PBS · S2026E34
-16 PBS,Great Performances: Vienna Philharmonic Summer Night Concert 2026,18:00,19:00,PBS · S52E23
-16 PBS,Amanpour & Co.,20:00,21:00,PBS · S2026E172
+03 ABC,"Good Morning America: Weekend Edition: Lale Arikoglu, Dr. Cindra Kamphoff, Brian Theis",04:00,05:00,ABC · S2026E69 · Condé Nast Traveler articles director Lale Arikoglu ; Dr. Cindra Kamphoff shares tips for raising confident children; recipe developer Brian Theis ; ABC Secret Savings.
+03 ABC,MEAC/SWAC Challenge Kickoff: Alabama A&M Bulldogs vs. Howard Bison,16:30,20:00,ABC · S2026E01 · Live from Center Parc Stadium (Atlanta).
+04 CBS,"CBS Saturday Morning: Maggie Rose, Val Cantu, Dr. Sasha Hamdani",04:00,06:00,"CBS · S03E151 · Saturday Sessions: Maggie Rose . The Dish: Val Cantu , Californios. Sarah Gelman , Amazon Books editorial director. Dr. Sasha Hamdani , author of Too Sensitive: Rejection, Resilien"
+05 NBC,Saturday Today,04:00,06:00,NBC · S2026E35
+08 CNN,Smerconish,06:00,07:00,CNN · S2026E35 · Michael Smerconish tackles weekly American political and news stories from one perspective...his.
+10 ESPN,College Football Countdown: Week 0,07:00,09:00,"ESPN · S21E01 · A look at the day's college football action, featuring news, highlights and game previews."
+10 ESPN,Aer Lingus College Football Classic Ireland: University of North Carolina (UNC) vs. Texas Christian University (TCU),09:00,12:30,"ESPN · S2026E01 · Live from Aviva Stadium in Dublin, Ireland. The 2026 Aer Lingus College Football Classic will be just the fifth time TCU and North Carolina football teams compete against each othe"
+10 ESPN,FCS Kickoff: East Texas A&M Lion vs. Mercer Bears,16:00,19:30,"ESPN · S2026E01 · Live from Five Star Stadium in Macon, Ga."
+11 FOOD,Cook Like an Italian With Gabe Bertaccini: Seafood Feast,09:00,09:30,Food Network · S01E02
