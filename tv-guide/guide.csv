@@ -5,12 +5,25 @@
 # Columns: channel,title,start,end,description. Times are 24h HH:MM and repeat daily.
 channel,title,start,end,description
 02 JMO TV,Game Replays,00:00,24:00,"Full-game replays from the library, in order."
-03 ABC,"Good Morning America: Weekend Edition: Lale Arikoglu, Dr. Cindra Kamphoff, Brian Theis",04:00,05:00,ABC · S2026E69 · Condé Nast Traveler articles director Lale Arikoglu ; Dr. Cindra Kamphoff shares tips for raising confident children; recipe developer Brian Theis ; ABC Secret Savings.
-03 ABC,MEAC/SWAC Challenge Kickoff: Alabama A&M Bulldogs vs. Howard Bison,16:30,20:00,ABC · S2026E01 · Live from Center Parc Stadium (Atlanta).
-04 CBS,"CBS Saturday Morning: Maggie Rose, Val Cantu, Dr. Sasha Hamdani",04:00,06:00,"CBS · S03E151 · Saturday Sessions: Maggie Rose . The Dish: Val Cantu , Californios. Sarah Gelman , Amazon Books editorial director. Dr. Sasha Hamdani , author of Too Sensitive: Rejection, Resilien"
-05 NBC,Saturday Today,04:00,06:00,NBC · S2026E35
-08 CNN,Smerconish,06:00,07:00,CNN · S2026E35 · Michael Smerconish tackles weekly American political and news stories from one perspective...his.
-10 ESPN,College Football Countdown: Week 0,07:00,09:00,"ESPN · S21E01 · A look at the day's college football action, featuring news, highlights and game previews."
-10 ESPN,Aer Lingus College Football Classic Ireland: University of North Carolina (UNC) vs. Texas Christian University (TCU),09:00,12:30,"ESPN · S2026E01 · Live from Aviva Stadium in Dublin, Ireland. The 2026 Aer Lingus College Football Classic will be just the fifth time TCU and North Carolina football teams compete against each othe"
-10 ESPN,FCS Kickoff: East Texas A&M Lion vs. Mercer Bears,16:00,19:30,"ESPN · S2026E01 · Live from Five Star Stadium in Macon, Ga."
-11 FOOD,Cook Like an Italian With Gabe Bertaccini: Seafood Feast,09:00,09:30,Food Network · S01E02
+03 ABC,"Good Morning America: Weekend Edition: Aug 30, 2026",04:00,05:00,ABC · S2026E70
+03 ABC,"This Week: Aug 30, 2026",07:00,08:00,ABC · S2026E35
+03 ABC,Little League Baseball World Series: 2026 World Series Championship Game:,12:00,14:00,ABC · S2026E01
+04 CBS,Face the Nation: 8/30 -,07:30,08:30,CBS · S2026E35
+04 CBS,Big Brother,18:00,19:00,CBS · S28E23
+05 NBC,Sunday TODAY with Willie Geist: Megan Moroney,05:00,06:00,NBC · S2026E31
+05 NBC,"Meet the Press: Sen. Ted Cruz, Rep. James Clyburn",06:00,07:00,NBC · S2026E31
+05 NBC,NBC Nightly News: Aug 30 Sun,15:30,16:00,NBC · S2026E222
+05 NBC,NBC Sunday Night Baseball: Cincinnati Reds at Chicago Cubs,16:20,19:00,NBC · S01E24 · Two-time All-Star centerfielder Pete Crow-Armstrong and the NL Wild Card-leading Chicago Cubs host MLB RBI leader Sal Stewart and the division rival Cincinnati Reds at Wrigley Fiel
+07 CW,WWE NXT Premium Live Events: Heatwave,12:00,15:00,"The CW · S2026E04 · Tony D'Angelo will defend the NXT Championship in a must-see Fatal 4-Way Match. Three of NXT's newest Superstars will get a title opportunity as Cruz Montana, Grayson Waller and Zi"
+08 CNN,"State of the Union with Jake Tapper and Dana Bash: Aug 30, 2026",06:00,07:00,CNN · S2026E35
+08 CNN,Fareed Zakaria GPS,07:00,08:00,"CNN · S2026E35 · Journalist and author Fareed Zakaria hosts this in-depth look at the major global developments of the week (the title's ""GPS"" stands for ""Global Public Square""), with an emphasis o"
+08 CNN,The Whole Story with Anderson Cooper: The End of the World as We Know It,17:00,18:00,CNN · S04E11
+08 CNN,Decades in Sports: 2010s to Present,18:00,19:00,"CNN · S01E06 · Huge names emerge in sports in the 2010s, including LeBron James, Simone Biles, and Steph Curry. As social media revolutionizes fan engagement, direct interaction and sports bettin"
+11 FOOD,The Great Food Truck Race: Sweet & Savory: The Great Kentucky Cook-Off,18:00,19:00,Food Network · S19E07
+12 HIST,Hazardous History with Henry Winkler: Horrible Hygiene,18:00,19:03,"History · S02E19 · These are the everyday habits, grooming rituals, and routine remedies that promised to keep us fresh… but often went afoul. It's a headshaking, eye-opening trip back to the hygiene"
+12 HIST,The Mega-Brands That Built America: The Underwear Boom,19:03,20:05,"History · S04E05 · P.H. Hanes sparks a revolution in American underwear, but rivals answer with breakthrough designs, bold branding, and a wartime windfall—transforming an unmentionable necessity int"
+14 DISC,Destination Dive: Discover the Blue Waters of Marathon,05:00,05:30,Discovery · S03E03
+14 DISC,"RV There Yet?: Breaux Bridge, LA",05:30,06:00,Discovery · S05E07
+14 DISC,Naked and Afraid: Shipwrecked: Smoke Signals and Fire Fights,17:00,19:00,"Discovery · S01E05 · Spotting smoke on a distant shore, a team pushes to find another camp. The jungle trek has Mandy at her breaking point. Dani and Jarrell's clashing survival styles spark a blowout "
+14 DISC,In the Eye of the Storm: The Texas Flood,19:00,20:00,Discovery · S04E09
+15 HBO,Lanterns: OutKast,18:00,19:00,HBO · S01E03
