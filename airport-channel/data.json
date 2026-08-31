@@ -1,6 +1,6 @@
 {
   "provider": "FAA NAS Status + NOAA AviationWeather",
-  "generatedAt": 1788152384442,
+  "generatedAt": 1788153658980,
   "airport": {
     "icao": "KSEA",
     "iata": "SEA",
@@ -15,9 +15,9 @@
     "ceiling": "UNL",
     "category": "VFR"
   },
-  "taf": "TAF KSEA 310306Z 3103/0106 35007KT P6SM FEW070 SCT200 FM310600 02006KT P6SM SCT100 SCT250 FM311500 01005KT 6SM BR VCFG FEW007 SCT250 FM311700 35009KT P6SM SCT250 FM010300 34006KT P6SM SCT250",
+  "taf": "TAF KSEA 310520Z 3106/0112 02011KT P6SM FEW100 FEW200 FM311500 01006KT P6SM FEW007 SCT250 FM311700 35009KT P6SM SCT250 FM010300 34006KT P6SM SCT250",
   "faa": {
-    "updateTime": "Mon Aug 31 04:58:45 2026 GMT",
+    "updateTime": "Mon Aug 31 05:20:44 2026 GMT",
     "events": [],
     "available": true
   }
