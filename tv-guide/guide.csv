@@ -5,54 +5,46 @@
 # Columns: channel,title,start,end,description. Times are 24h HH:MM and repeat daily.
 channel,title,start,end,description
 02 JMO TV,Game Replays,00:00,24:00,"Full-game replays from the library, in order."
-03 ABC,"Good Morning America: ""Dancing with the Stars"" Season 35 Cast Reveal",04:00,06:00,"ABC · S2026E175 · ""Dancing with the Stars"" season 35 cast reveal."
-03 ABC,"GMA3: ""Dancing with the Stars"" Season 35 Cast Reveal",10:00,11:00,"ABC · S06E246 · ""Dancing with the Stars"" season 35 cast reveal; ABC Secret Savings with ABC News' Will Ganss ."
-03 ABC,General Hospital: Ep. #16037,11:00,12:00,ABC · S2026E172
-03 ABC,ABC World News Tonight with David Muir,15:30,16:00,ABC · S2026E241
-03 ABC,Jeopardy! Masters: Quarterfinals 11 & 12,17:00,18:00,"ABC · S04E06 · Hosted by Ken Jennings, top-ranked contestants compete for the $500,000 grand prize in quarterfinal games 11 and 12, featuring Victoria Groce, Andrew He, Long Nguyen, Paolo Pasco, "
-03 ABC,ABC World News Now,23:00,24:00,ABC · S2026E173
-04 CBS,CBS Mornings: Adria Arjona,04:00,06:00,"CBS · S2026E175 · Adria Arjona , actor in ""Onslaught."""
-04 CBS,The Young and the Restless: Ep. #13455,09:30,10:30,CBS · S2026E171
-04 CBS,The Bold and the Beautiful: Ep. #9856,10:30,11:00,CBS · S2026E172
-04 CBS,Beyond the Gates,11:00,12:00,CBS · S2026E161 · Vernon supports Anita as she faces the music; Leslie gets an intriguing proposition; Smitty's suspicions spiral; Joey comforts Vanessa; Deanna is haunted by grief; one couple final
-04 CBS,CBS Evening News,15:30,16:00,CBS · S2026E175
-04 CBS,Big Brother,17:00,19:00,CBS · S28E24
-05 NBC,"Today: Tom Hiddleston, Hayley Atwell, Sara Bareilles",04:00,06:00,"NBC · S2026E175 · 100 Days to NBC 100: NBC Sports Covers Some of the Biggest Moments in History. Tom Hiddleston and Hayley Atwell on ""Much to do About Nothing."" Today, Bestsellers: September Bestsel"
-05 NBC,"Today 3rd Hour: Priya Parker, Maria Koutsogiannis",06:00,07:00,NBC · S2026E174 · Today's Checklist: Social Media Medicine Trends with Dr. Akshay Syal. Food for Thought: The U.S. Open's Popular Honey Deuce Drink. Crafting Corner: Grandma Core with Shannon Dohert
-05 NBC,TODAY with Jenna & Sheinelle: Best of Great Conversations,07:00,08:00,"NBC · S01E167 · Best of Great Conversations. The Internet's Divided with Arianna Davis Santana. Catching up with Halle Berry. Brené Brown & Adam Grant on ""The Curiosity Shop."" ""Start with Yourself"
-05 NBC,NBC Nightly News: Sept 2 Wed,15:30,16:00,NBC · S2026E225
-05 NBC,America's Got Talent: Quarterfinals 3 Results,17:00,18:00,NBC · S21E17 · One act advances straight to the finals with last night's Golden Buzzer; America's votes reveal which three acts from the third night of quarterfinals will move on and compete in t
-06 FOX,MasterChef: Keeping Up With Gordon and Tiffany,17:00,18:00,"FOX · S16E16 · Tonight, the top five home cooks battle for a place in the finale by keeping up with Chefs Gordon Ramsay and Tiffany Derry as they recreate their signature dishes in real time. Fal"
-06 FOX,Nation's Dumbest: Not A Clue,18:02,19:00,"FOX · S01E08 · As the final four inch closer to winning the Nation's Dumbest trophy, the dumb answers continue, and the celebrities wonder whether it was actually a good idea to come on this show"
-08 CNN,CNN This Morning,03:00,04:00,CNN · S2026E175
-08 CNN,CNN News Central,04:00,07:00,CNN · S2026E175
-08 CNN,The Situation Room,07:00,09:00,CNN · S2026E175
-08 CNN,Inside Politics,09:00,10:00,CNN · S2026E174
-08 CNN,CNN News Central (PM),10:00,13:00,CNN · S2026E175
-08 CNN,The Arena with Kasie Hunt,13:00,14:00,CNN · S2026E175
-08 CNN,The Lead with Jake Tapper,14:00,16:00,CNN · S2026E174
-08 CNN,Erin Burnett OutFront,16:00,17:00,CNN · S2026E174
-08 CNN,Anderson Cooper 360°,17:00,18:00,CNN · S2026E124
-08 CNN,The Source with Kaitlan Collins,18:00,19:00,CNN · S2026E165
-08 CNN,CNN NewsNight with Abby Phillip,19:00,20:00,CNN · S2026E169
-08 CNN,The Story Is with Elex Michaelson,21:00,23:00,CNN · S2026E171
-09 CNBC,Morning Call,02:00,03:00,CNBC · S2026E118
-09 CNBC,Squawk Box,03:00,06:00,CNBC · S2026E175
-09 CNBC,Squawk on the Street,06:00,08:00,CNBC · S2026E174
-09 CNBC,Fast Money Halftime Report,09:00,10:00,CNBC · S2026E174
-09 CNBC,The Exchange,10:00,11:00,CNBC · S2026E174
-09 CNBC,Power Lunch,11:00,12:00,CNBC · S2026E174
-09 CNBC,Closing Bell,12:00,13:00,CNBC · S2026E174
-09 CNBC,Closing Bell: Overtime,13:00,14:00,CNBC · S2026E174
-09 CNBC,Fast Money,14:00,15:00,CNBC · S2026E174
-09 CNBC,Mad Money,15:00,16:00,CNBC · S2026E174
-10 ESPN,First Take,07:00,08:30,ESPN · S20E238
-10 ESPN,Pardon the Interruption: Sep 2 Wed,14:30,15:00,ESPN · S2026E146
-11 FOOD,Guy's Grocery Games: Food Fanatic Teams,18:00,19:00,"Food Network · S42E13 · Guy Fieri invites three unforgettable foodies with big online followings to team up with their favorite all-star chefs in a high-energy Flavortown competition. First, the teams mus"
-12 HIST,Alone: Subzero,18:00,19:34,"History · S13E12 · As the Arctic cold pushes the final three survivalists to the brink, a series of critical medical checks threatens to end their journeys just short of the finish line. Battling the"
-12 HIST,Pawn Stars: Best Of: Weapons of Mass Negotiation,19:34,20:33,"History · S06E06 · From a missing Civil War rifle to an 18th-century howitzer, Rick and the guys negotiate over five centuries of deadly history."
-13 HGTV,Totally ‘90s House,18:00,19:00,HGTV · S01E02
-13 HGTV,Botched Homes: Ruined Retreat,19:00,20:00,"HGTV · S01E01 · In the premiere episode, Charlie and his team will overhaul a DIY kitchen with no running hot water, exposed electrical wiring held together by a stuffed snake and other bizarre de"
-14 DISC,Expedition X: Curse of the Skinwalkers,18:00,19:00,Discovery · S12E03
-14 DISC,How to Catch a Dirtbag: The Nightmare Neighbor,19:01,20:02,"Discovery · S01E05 · Tizzy sparks an internet movement to end a woman's racially charged harassment of her neighbors. A parking lot guard is targeted by an angry driver, and a disgruntled customer wrec"
-16 PBS,Amanpour & Co.,20:00,21:00,PBS · S2026E175
+03 ABC,"Good Morning America: Glen Powell, Steve Zahn, MrBeast, James Patterson, Gail Bean, Asante Blackk",04:00,06:00,"ABC · S2026E176 · Actors Glen Powell and Steve Zahn (""Chad Powers""); internet personality MrBeast and author James Patterson (""The Most Dangerous Games""); actors Gail Bean and Asante Blackk (""The Dr"
+03 ABC,"GMA3: Steve Zahn, Frankie Rodriguez, Gail Bean, Asante Blackk, Chef Carla Lalli",10:00,11:00,"ABC · S06E247 · Actors Steve Zahn and Frankie Rodriguez (""Chad Powers""); actors Gail Bean and Asante Blackk (""The Drop: A Snowfall Saga""); chef Carla Lalli (""Food is a Feeling: Recipes & Stories, "
+03 ABC,General Hospital: Ep. #16038,11:00,12:00,ABC · S2026E173
+03 ABC,ABC World News Tonight with David Muir,15:30,16:00,ABC · S2026E242
+03 ABC,Jeopardy! Masters: Semifinals 1 & 2,17:00,18:00,ABC · S04E07
+03 ABC,ABC World News Now,23:00,24:00,ABC · S2026E174
+04 CBS,"CBS Mornings: Eric Goode, Jeremy McBride, Daniel Lubetzky",04:00,06:00,"CBS · S2026E176 · Director Eric Goode and executive producer Jeremy McBride of ""Monsters of God."" Daniel Lubetzky , KIND Snacks founder and host of ""Build or Break."""
+04 CBS,The Young and the Restless: Ep. #13456,09:30,10:30,CBS · S2026E172
+04 CBS,The Bold and the Beautiful: Ep. #9857,10:30,11:00,CBS · S2026E173
+04 CBS,Beyond the Gates,11:00,12:00,CBS · S2026E162 · Bill has an unwelcome visitor; Smitty needs Nicole's expertise; Joey's pestered by his past decisions; Heather connects with June; Ted does damage control; Ashley leans on Naomi; E
+04 CBS,CBS Evening News,15:30,16:00,CBS · S2026E176
+04 CBS,Big Brother,17:00,18:00,CBS · S28E25
+05 NBC,Today: Carly Pearce,04:00,06:00,NBC · S2026E176 · Inside the Game: Fantasy Football Punishments Gone Viral. Legacy of the Southwest Pilots Program and a New Generation of Pilots. Fresh for Fall. Performance by Carly Pearce.
+05 NBC,"Today 3rd Hour: Adria Arjona, Nadav Greenberg",06:00,07:00,NBC · S2026E175 · Today's Checklist: Napping Doze and Dont's with Dr. Saema Tahir. Catching up with Adria Arjona. What to Read with Victoria Aveyard. Start TODAY: September Plan: Healthy Aging Month
+05 NBC,TODAY with Jenna & Sheinelle: Best of Fun & Games,07:00,08:00,"NBC · S01E168 · Best of Fun & Games. ""Queen of Quips"" with Michelle Buteau. Catching up with Marcello Hernández and his mom, Isabel. Jenna & Sheinelle Try ""Purlates."" ""Beat the Box"" with Casey Wil"
+05 NBC,NBC Nightly News: Sept 3 Thur,15:30,16:00,NBC · S2026E226
+08 CNN,CNN This Morning,03:00,04:00,CNN · S2026E176
+08 CNN,CNN News Central,04:00,07:00,CNN · S2026E176
+08 CNN,The Situation Room,07:00,09:00,CNN · S2026E176
+08 CNN,Inside Politics,09:00,10:00,CNN · S2026E175
+08 CNN,CNN News Central (PM),10:00,13:00,CNN · S2026E176
+08 CNN,The Arena with Kasie Hunt,13:00,14:00,CNN · S2026E176
+08 CNN,The Lead with Jake Tapper,14:00,16:00,CNN · S2026E175
+08 CNN,Anderson Cooper 360°,17:00,18:00,CNN · S2026E125
+08 CNN,The Source with Kaitlan Collins,18:00,19:00,CNN · S2026E166
+08 CNN,CNN NewsNight with Abby Phillip,19:00,20:00,CNN · S2026E170
+08 CNN,The Story Is with Elex Michaelson,21:00,23:00,CNN · S2026E172
+09 CNBC,Morning Call,02:00,03:00,CNBC · S2026E119
+09 CNBC,Squawk Box,03:00,06:00,CNBC · S2026E176
+09 CNBC,Squawk on the Street,06:00,08:00,CNBC · S2026E175
+09 CNBC,Fast Money Halftime Report,09:00,10:00,CNBC · S2026E175
+09 CNBC,The Exchange,10:00,11:00,CNBC · S2026E175
+09 CNBC,Power Lunch,11:00,12:00,CNBC · S2026E175
+09 CNBC,Closing Bell,12:00,13:00,CNBC · S2026E175
+09 CNBC,Closing Bell: Overtime,13:00,14:00,CNBC · S2026E175
+09 CNBC,Fast Money,14:00,15:00,CNBC · S2026E175
+09 CNBC,Mad Money,15:00,16:00,CNBC · S2026E175
+10 ESPN,First Take,07:00,08:30,ESPN · S20E239
+10 ESPN,Pardon the Interruption: Sep 3 Thu,14:30,15:00,ESPN · S2026E147
+10 ESPN,College Football Countdown: Week 1,16:00,18:00,"ESPN · S21E02 · A look at the day's college football action, featuring news, highlights and game previews."
+12 HIST,Engineering From Above: Record Breakers,19:03,20:05,History · S01E04 · Revealed from above; a massive bridge spanning a gigantic gorge in France; a record breaking outdoor elevator in China; and the world's longest tunnel carving its way deep beneath 
+15 HBO,Monsters of God: Head of the Snake,18:00,19:00,"HBO · S01E05 · Malaysian kingpin Anson Wong emerges as the shadowy force at the center of the global reptile trade, operating an elusive international network. As U.S. Fish and Wildlife Service a"
+16 PBS,Amanpour & Co.,20:00,21:00,PBS · S2026E176
