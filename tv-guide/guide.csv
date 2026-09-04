@@ -5,46 +5,46 @@
 # Columns: channel,title,start,end,description. Times are 24h HH:MM and repeat daily.
 channel,title,start,end,description
 02 JMO TV,Game Replays,00:00,24:00,"Full-game replays from the library, in order."
-03 ABC,"Good Morning America: Glen Powell, Steve Zahn, MrBeast, James Patterson, Gail Bean, Asante Blackk",04:00,06:00,"ABC · S2026E176 · Actors Glen Powell and Steve Zahn (""Chad Powers""); internet personality MrBeast and author James Patterson (""The Most Dangerous Games""); actors Gail Bean and Asante Blackk (""The Dr"
-03 ABC,"GMA3: Steve Zahn, Frankie Rodriguez, Gail Bean, Asante Blackk, Chef Carla Lalli",10:00,11:00,"ABC · S06E247 · Actors Steve Zahn and Frankie Rodriguez (""Chad Powers""); actors Gail Bean and Asante Blackk (""The Drop: A Snowfall Saga""); chef Carla Lalli (""Food is a Feeling: Recipes & Stories, "
-03 ABC,General Hospital: Ep. #16038,11:00,12:00,ABC · S2026E173
-03 ABC,ABC World News Tonight with David Muir,15:30,16:00,ABC · S2026E242
-03 ABC,Jeopardy! Masters: Semifinals 1 & 2,17:00,18:00,ABC · S04E07
-03 ABC,ABC World News Now,23:00,24:00,ABC · S2026E174
-04 CBS,"CBS Mornings: Eric Goode, Jeremy McBride, Daniel Lubetzky",04:00,06:00,"CBS · S2026E176 · Director Eric Goode and executive producer Jeremy McBride of ""Monsters of God."" Daniel Lubetzky , KIND Snacks founder and host of ""Build or Break."""
-04 CBS,The Young and the Restless: Ep. #13456,09:30,10:30,CBS · S2026E172
-04 CBS,The Bold and the Beautiful: Ep. #9857,10:30,11:00,CBS · S2026E173
-04 CBS,Beyond the Gates,11:00,12:00,CBS · S2026E162 · Bill has an unwelcome visitor; Smitty needs Nicole's expertise; Joey's pestered by his past decisions; Heather connects with June; Ted does damage control; Ashley leans on Naomi; E
-04 CBS,CBS Evening News,15:30,16:00,CBS · S2026E176
-04 CBS,Big Brother,17:00,18:00,CBS · S28E25
-05 NBC,Today: Carly Pearce,04:00,06:00,NBC · S2026E176 · Inside the Game: Fantasy Football Punishments Gone Viral. Legacy of the Southwest Pilots Program and a New Generation of Pilots. Fresh for Fall. Performance by Carly Pearce.
-05 NBC,"Today 3rd Hour: Adria Arjona, Nadav Greenberg",06:00,07:00,NBC · S2026E175 · Today's Checklist: Napping Doze and Dont's with Dr. Saema Tahir. Catching up with Adria Arjona. What to Read with Victoria Aveyard. Start TODAY: September Plan: Healthy Aging Month
-05 NBC,TODAY with Jenna & Sheinelle: Best of Fun & Games,07:00,08:00,"NBC · S01E168 · Best of Fun & Games. ""Queen of Quips"" with Michelle Buteau. Catching up with Marcello Hernández and his mom, Isabel. Jenna & Sheinelle Try ""Purlates."" ""Beat the Box"" with Casey Wil"
-05 NBC,NBC Nightly News: Sept 3 Thur,15:30,16:00,NBC · S2026E226
-08 CNN,CNN This Morning,03:00,04:00,CNN · S2026E176
-08 CNN,CNN News Central,04:00,07:00,CNN · S2026E176
-08 CNN,The Situation Room,07:00,09:00,CNN · S2026E176
-08 CNN,Inside Politics,09:00,10:00,CNN · S2026E175
-08 CNN,CNN News Central (PM),10:00,13:00,CNN · S2026E176
-08 CNN,The Arena with Kasie Hunt,13:00,14:00,CNN · S2026E176
-08 CNN,The Lead with Jake Tapper,14:00,16:00,CNN · S2026E175
-08 CNN,Anderson Cooper 360°,17:00,18:00,CNN · S2026E125
-08 CNN,The Source with Kaitlan Collins,18:00,19:00,CNN · S2026E166
-08 CNN,CNN NewsNight with Abby Phillip,19:00,20:00,CNN · S2026E170
-08 CNN,The Story Is with Elex Michaelson,21:00,23:00,CNN · S2026E172
-09 CNBC,Morning Call,02:00,03:00,CNBC · S2026E119
-09 CNBC,Squawk Box,03:00,06:00,CNBC · S2026E176
-09 CNBC,Squawk on the Street,06:00,08:00,CNBC · S2026E175
-09 CNBC,Fast Money Halftime Report,09:00,10:00,CNBC · S2026E175
-09 CNBC,The Exchange,10:00,11:00,CNBC · S2026E175
-09 CNBC,Power Lunch,11:00,12:00,CNBC · S2026E175
-09 CNBC,Closing Bell,12:00,13:00,CNBC · S2026E175
-09 CNBC,Closing Bell: Overtime,13:00,14:00,CNBC · S2026E175
-09 CNBC,Fast Money,14:00,15:00,CNBC · S2026E175
-09 CNBC,Mad Money,15:00,16:00,CNBC · S2026E175
-10 ESPN,First Take,07:00,08:30,ESPN · S20E239
-10 ESPN,Pardon the Interruption: Sep 3 Thu,14:30,15:00,ESPN · S2026E147
-10 ESPN,College Football Countdown: Week 1,16:00,18:00,"ESPN · S21E02 · A look at the day's college football action, featuring news, highlights and game previews."
-12 HIST,Engineering From Above: Record Breakers,19:03,20:05,History · S01E04 · Revealed from above; a massive bridge spanning a gigantic gorge in France; a record breaking outdoor elevator in China; and the world's longest tunnel carving its way deep beneath 
-15 HBO,Monsters of God: Head of the Snake,18:00,19:00,"HBO · S01E05 · Malaysian kingpin Anson Wong emerges as the shadowy force at the center of the global reptile trade, operating an elusive international network. As U.S. Fish and Wildlife Service a"
-16 PBS,Amanpour & Co.,20:00,21:00,PBS · S2026E176
+03 ABC,Good Morning America: GMA Game Day: Countdown to the Superbowl – Carolina Panthers,04:00,06:00,"ABC · S2026E177 · Media personality Whitney Leavitt (""The Secret Lives of Mormon Wives""); GMA Game Day: Countdown to the Superbowl – Carolina Panthers; Deals & Steals with ABC e-commerce editor Tory"
+03 ABC,GMA3: GMA Game Day: Countdown to the Superbowl – Carolina Panthers,10:00,11:00,"ABC · S06E248 · GMA Game Day: Countdown to the Superbowl – Carolina Panthers; Deals & Steals with ABC e-commerce editor Tory Johnson ; ""GMA"" Health Alert with ABC News medical correspondent Dr. Da"
+03 ABC,General Hospital: Ep. #16039,11:00,12:00,ABC · S2026E174
+03 ABC,ABC World News Tonight with David Muir,15:30,16:00,ABC · S2026E243
+03 ABC,Jeopardy! Masters: Semifinals 3 & 4,17:00,18:00,"ABC · S04E08 · Hosted by Ken Jennings, top-ranked contestants compete for the $500,000 grand prize in semifinal games three and four, featuring Victoria Groce, Andrew He, Paolo Pasco and Yogesh R"
+03 ABC,ABC World News Now,23:00,24:00,ABC · S2026E175
+04 CBS,"CBS Mornings: Mark Wahlberg, Yahya Abdul-Mateen II, Dr. Suzanne Garfinkle-Crowell",04:00,06:00,"CBS · S2026E177 · Mark Wahlberg and Yahya Abdul-Mateen II ,co-stars in ""By Any Means."" Dr. Suzanne Garfinkle-Crowell , psychiatrist and author of Girlhood, Translated: Understanding Young Women in t"
+04 CBS,The Young and the Restless: Ep. #13457,09:30,10:30,CBS · S2026E173
+04 CBS,The Bold and the Beautiful: Ep. #9858,10:30,11:00,CBS · S2026E174
+04 CBS,Beyond the Gates,11:00,12:00,CBS · S2026E163 · Andre unpacks paranoia; Bill stuns Hayley; Heather has a heated stand-off; Vanessa and Deanna discover something from before Doug's death; Randy attempts to execute Joey's orders; 
+04 CBS,CBS Evening News,15:30,16:00,CBS · S2026E177
+04 CBS,Big Brother: Unlocked,17:00,18:00,CBS · S02E05
+05 NBC,Today: Riley Green,04:00,06:00,NBC · S2026E177 · Inside the Game: Behind the Scenes of the Making of a Mascot at University of Texas. Citi Concert Series: Riley Green.
+05 NBC,"Today 3rd Hour: Mr. T, Riley Green",06:00,07:00,NBC · S2026E176 · Today's Checklist: Latest with Prostate Cancer with Dr. Cedrek McFadden. Catching up with Mr. T. Shop Today Savings: Labor Day Deals with Melissa Garcia. Citi Concert Series: Riley
+05 NBC,TODAY with Jenna & Sheinelle: Best of Food,07:00,08:00,NBC · S01E169 · Best of Food. Pizza with Stanley Tucci. Family Recipes with Marco Calvani. Veteran Cooks For Fellow Service Members. BBQ Chicken with Melba Wilson. 5-to-1 Grocery Method with Will 
+05 NBC,NBC Nightly News: Sept 4 Fri,15:30,16:00,NBC · S2026E227
+07 CW,Totally Funny Animals: Monkey Business,18:00,18:30,The CW · S02E19 · A comedy clip show featuring caught-on-camera videos that highlight the outrageous and wacky world of animals.
+07 CW,Totally Funny Animals: Pampered Pets,18:30,19:00,The CW · S02E20 · A comedy clip show featuring caught-on-camera videos that highlight the outrageous and wacky world of animals.
+08 CNN,The Arena with Kasie Hunt,13:00,14:00,CNN · S2026E177
+08 CNN,Anderson Cooper 360°,17:00,18:00,CNN · S2026E126
+08 CNN,The Source with Kaitlan Collins,18:00,19:00,CNN · S2026E167
+08 CNN,CNN NewsNight with Abby Phillip,19:00,20:00,CNN · S2026E171
+08 CNN,The Story Is with Elex Michaelson,21:00,23:00,CNN · S2026E173
+09 CNBC,Morning Call,02:00,03:00,CNBC · S2026E120
+09 CNBC,Squawk Box,03:00,06:00,CNBC · S2026E177
+09 CNBC,Squawk on the Street,06:00,08:00,CNBC · S2026E176
+09 CNBC,Fast Money Halftime Report,09:00,10:00,CNBC · S2026E176
+09 CNBC,The Exchange,10:00,11:00,CNBC · S2026E176
+09 CNBC,Power Lunch,11:00,12:00,CNBC · S2026E176
+09 CNBC,Closing Bell,12:00,13:00,CNBC · S2026E176
+09 CNBC,Closing Bell: Overtime,13:00,14:00,CNBC · S2026E176
+09 CNBC,Fast Money,14:00,15:00,CNBC · S2026E176
+09 CNBC,Mad Money,15:00,16:00,CNBC · S2026E176
+10 ESPN,First Take,07:00,08:30,ESPN · S20E240
+10 ESPN,Pardon the Interruption: Sep 4 Fri,14:30,15:00,ESPN · S2026E148
+10 ESPN,College Football Countdown: Week 2A,17:00,18:00,"ESPN · S21E03 · A look at the day's college football action, featuring news, highlights and game previews."
+11 FOOD,Triple D Nation: Triple D Nation: A World of Flavortown,18:00,18:30,Food Network · S08E07
+13 HGTV,Roast My Rental: Beach House Blues,19:00,19:30,"HGTV · S01E07 · Leslie and Jasmine take on a beach house that's more regret than retreat in Redondo Beach, California. Jasmine needs to navigate tacky furniture and overall neglect to salvage this"
+14 DISC,Deadliest Catch: Contagion,17:00,18:01,"Discovery · S22E16 · As Jake sets gear in heavy seas, a painful skin infection spreads among the Cornelia Marie crew. Sig cleverly sets in a ""col"" between two storms, but pays a price when he returns t"
+16 PBS,Washington Week with The Atlantic,17:00,17:30,PBS · S2026E36
+16 PBS,Firing Line with Margaret Hoover,17:30,18:00,PBS · S2026E35
+16 PBS,Austin City Limits: Carlos Vives y La Provincia,19:00,20:00,PBS · S52E01
+16 PBS,Amanpour & Co.,20:00,21:00,PBS · S2026E177
