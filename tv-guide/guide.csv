@@ -5,46 +5,15 @@
 # Columns: channel,title,start,end,description. Times are 24h HH:MM and repeat daily.
 channel,title,start,end,description
 02 JMO TV,Game Replays,00:00,24:00,"Full-game replays from the library, in order."
-03 ABC,Good Morning America: GMA Game Day: Countdown to the Superbowl – Carolina Panthers,04:00,06:00,"ABC · S2026E177 · Media personality Whitney Leavitt (""The Secret Lives of Mormon Wives""); GMA Game Day: Countdown to the Superbowl – Carolina Panthers; Deals & Steals with ABC e-commerce editor Tory"
-03 ABC,GMA3: GMA Game Day: Countdown to the Superbowl – Carolina Panthers,10:00,11:00,"ABC · S06E248 · GMA Game Day: Countdown to the Superbowl – Carolina Panthers; Deals & Steals with ABC e-commerce editor Tory Johnson ; ""GMA"" Health Alert with ABC News medical correspondent Dr. Da"
-03 ABC,General Hospital: Ep. #16039,11:00,12:00,ABC · S2026E174
-03 ABC,ABC World News Tonight with David Muir,15:30,16:00,ABC · S2026E243
-03 ABC,Jeopardy! Masters: Semifinals 3 & 4,17:00,18:00,"ABC · S04E08 · Hosted by Ken Jennings, top-ranked contestants compete for the $500,000 grand prize in semifinal games three and four, featuring Victoria Groce, Andrew He, Paolo Pasco and Yogesh R"
-03 ABC,ABC World News Now,23:00,24:00,ABC · S2026E175
-04 CBS,"CBS Mornings: Mark Wahlberg, Yahya Abdul-Mateen II, Dr. Suzanne Garfinkle-Crowell",04:00,06:00,"CBS · S2026E177 · Mark Wahlberg and Yahya Abdul-Mateen II ,co-stars in ""By Any Means."" Dr. Suzanne Garfinkle-Crowell , psychiatrist and author of Girlhood, Translated: Understanding Young Women in t"
-04 CBS,The Young and the Restless: Ep. #13457,09:30,10:30,CBS · S2026E173
-04 CBS,The Bold and the Beautiful: Ep. #9858,10:30,11:00,CBS · S2026E174
-04 CBS,Beyond the Gates,11:00,12:00,CBS · S2026E163 · Andre unpacks paranoia; Bill stuns Hayley; Heather has a heated stand-off; Vanessa and Deanna discover something from before Doug's death; Randy attempts to execute Joey's orders; 
-04 CBS,CBS Evening News,15:30,16:00,CBS · S2026E177
-04 CBS,Big Brother: Unlocked,17:00,18:00,CBS · S02E05
-05 NBC,Today: Riley Green,04:00,06:00,NBC · S2026E177 · Inside the Game: Behind the Scenes of the Making of a Mascot at University of Texas. Citi Concert Series: Riley Green.
-05 NBC,"Today 3rd Hour: Mr. T, Riley Green",06:00,07:00,NBC · S2026E176 · Today's Checklist: Latest with Prostate Cancer with Dr. Cedrek McFadden. Catching up with Mr. T. Shop Today Savings: Labor Day Deals with Melissa Garcia. Citi Concert Series: Riley
-05 NBC,TODAY with Jenna & Sheinelle: Best of Food,07:00,08:00,NBC · S01E169 · Best of Food. Pizza with Stanley Tucci. Family Recipes with Marco Calvani. Veteran Cooks For Fellow Service Members. BBQ Chicken with Melba Wilson. 5-to-1 Grocery Method with Will 
-05 NBC,NBC Nightly News: Sept 4 Fri,15:30,16:00,NBC · S2026E227
-07 CW,Totally Funny Animals: Monkey Business,18:00,18:30,The CW · S02E19 · A comedy clip show featuring caught-on-camera videos that highlight the outrageous and wacky world of animals.
-07 CW,Totally Funny Animals: Pampered Pets,18:30,19:00,The CW · S02E20 · A comedy clip show featuring caught-on-camera videos that highlight the outrageous and wacky world of animals.
-08 CNN,The Arena with Kasie Hunt,13:00,14:00,CNN · S2026E177
-08 CNN,Anderson Cooper 360°,17:00,18:00,CNN · S2026E126
-08 CNN,The Source with Kaitlan Collins,18:00,19:00,CNN · S2026E167
-08 CNN,CNN NewsNight with Abby Phillip,19:00,20:00,CNN · S2026E171
-08 CNN,The Story Is with Elex Michaelson,21:00,23:00,CNN · S2026E173
-09 CNBC,Morning Call,02:00,03:00,CNBC · S2026E120
-09 CNBC,Squawk Box,03:00,06:00,CNBC · S2026E177
-09 CNBC,Squawk on the Street,06:00,08:00,CNBC · S2026E176
-09 CNBC,Fast Money Halftime Report,09:00,10:00,CNBC · S2026E176
-09 CNBC,The Exchange,10:00,11:00,CNBC · S2026E176
-09 CNBC,Power Lunch,11:00,12:00,CNBC · S2026E176
-09 CNBC,Closing Bell,12:00,13:00,CNBC · S2026E176
-09 CNBC,Closing Bell: Overtime,13:00,14:00,CNBC · S2026E176
-09 CNBC,Fast Money,14:00,15:00,CNBC · S2026E176
-09 CNBC,Mad Money,15:00,16:00,CNBC · S2026E176
-10 ESPN,First Take,07:00,08:30,ESPN · S20E240
-10 ESPN,Pardon the Interruption: Sep 4 Fri,14:30,15:00,ESPN · S2026E148
-10 ESPN,College Football Countdown: Week 2A,17:00,18:00,"ESPN · S21E03 · A look at the day's college football action, featuring news, highlights and game previews."
-11 FOOD,Triple D Nation: Triple D Nation: A World of Flavortown,18:00,18:30,Food Network · S08E07
-13 HGTV,Roast My Rental: Beach House Blues,19:00,19:30,"HGTV · S01E07 · Leslie and Jasmine take on a beach house that's more regret than retreat in Redondo Beach, California. Jasmine needs to navigate tacky furniture and overall neglect to salvage this"
-14 DISC,Deadliest Catch: Contagion,17:00,18:01,"Discovery · S22E16 · As Jake sets gear in heavy seas, a painful skin infection spreads among the Cornelia Marie crew. Sig cleverly sets in a ""col"" between two storms, but pays a price when he returns t"
-16 PBS,Washington Week with The Atlantic,17:00,17:30,PBS · S2026E36
-16 PBS,Firing Line with Margaret Hoover,17:30,18:00,PBS · S2026E35
-16 PBS,Austin City Limits: Carlos Vives y La Provincia,19:00,20:00,PBS · S52E01
-16 PBS,Amanpour & Co.,20:00,21:00,PBS · S2026E177
+03 ABC,Good Morning America: Weekend Edition: ABC Secret Savings September Special,04:00,05:00,ABC · S2026E71 · ABC Secret Savings September special.
+03 ABC,Aflac Kickoff Game: Baylor Bears vs. Auburn Tigers,12:30,16:00,"ABC · S2026E01 · Live from Pat Dye Field at Jordan–Hare Stadium in Auburn, Alabama."
+04 CBS,"CBS Saturday Morning: Mary Mazzio, Linda Lindquist, Henry Laporte, Improvement Movement",04:00,06:00,"CBS · S03E152 · Saturday Sessions: Improvement Movement . The Dish: Henry Laporte , Salt Hank's. Mary Mazzio , director, and Linda Lindquist , subject of ""Mighty Mary."""
+04 CBS,College Football Today: Week 1,11:30,12:00,"CBS · S30E01 · College gridiron highlights, analysis and previews. Adam Zucker hosts with Rick Neuheisel, Brian Jones and Aaron Taylor."
+05 NBC,Saturday Today,04:00,06:00,NBC · S2026E36
+05 NBC,NBC Nightly News: Sept 5 Sat,15:30,16:00,NBC · S2026E228
+05 NBC,"B1G College Countdown: From Ann Arbor, MI",16:00,16:30,"NBC · S04E01 · Host Ahmed Fareed in studio alongside analyst Joshua Perry, and college football insider Nicole Auerbach, with analyst Chris Simms. At the game site host Jordan Cornette alongside "
+05 NBC,Big Ten Saturday Night: Western Michigan Broncos at Michigan Wolverines,16:30,20:00,"NBC · S04E01 · Live from Michigan Stadium in Ann Arbor, Michigan."
+06 FOX,"Big Noon Kickoff: From Bloomington, IN",07:00,09:00,"FOX · S08E01 · Rob Stone anchors the desk which includes college football legends Mark Ingram II, Matt Leinart, Brady Quinn, and three-time national champion coach Urban Meyer. Chris ‘The Bear' F"
+08 CNN,Smerconish,06:00,07:00,CNN · S2026E36 · Michael Smerconish tackles weekly American political and news stories from one perspective...his.
+10 ESPN,"College GameDay: From Baton Rouge, LA",06:00,09:00,"ESPN · S42E03 · College GameDay Built by The Home Depot will kick off its 40th season with a milestone event – its 500th show on the road – from Baton Rouge, La. ahead of LSU's marquee Week 1 matc"
+11 FOOD,Cook Like an Italian With Gabe Bertaccini: Pasta Dinner,09:00,09:30,"Food Network · S01E03 · Chef Gabe Bertaccini takes our tastebuds from Tuscany to Sicily. He starts with Pici all'Aglione, a thick, hand-rolled pasta, and the sauce is all about aglione, a special sweet ga"
