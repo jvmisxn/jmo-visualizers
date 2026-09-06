@@ -5,15 +5,22 @@
 # Columns: channel,title,start,end,description. Times are 24h HH:MM and repeat daily.
 channel,title,start,end,description
 02 JMO TV,Game Replays,00:00,24:00,"Full-game replays from the library, in order."
-03 ABC,Good Morning America: Weekend Edition: ABC Secret Savings September Special,04:00,05:00,ABC · S2026E71 · ABC Secret Savings September special.
-03 ABC,Aflac Kickoff Game: Baylor Bears vs. Auburn Tigers,12:30,16:00,"ABC · S2026E01 · Live from Pat Dye Field at Jordan–Hare Stadium in Auburn, Alabama."
-04 CBS,"CBS Saturday Morning: Mary Mazzio, Linda Lindquist, Henry Laporte, Improvement Movement",04:00,06:00,"CBS · S03E152 · Saturday Sessions: Improvement Movement . The Dish: Henry Laporte , Salt Hank's. Mary Mazzio , director, and Linda Lindquist , subject of ""Mighty Mary."""
-04 CBS,College Football Today: Week 1,11:30,12:00,"CBS · S30E01 · College gridiron highlights, analysis and previews. Adam Zucker hosts with Rick Neuheisel, Brian Jones and Aaron Taylor."
-05 NBC,Saturday Today,04:00,06:00,NBC · S2026E36
-05 NBC,NBC Nightly News: Sept 5 Sat,15:30,16:00,NBC · S2026E228
-05 NBC,"B1G College Countdown: From Ann Arbor, MI",16:00,16:30,"NBC · S04E01 · Host Ahmed Fareed in studio alongside analyst Joshua Perry, and college football insider Nicole Auerbach, with analyst Chris Simms. At the game site host Jordan Cornette alongside "
-05 NBC,Big Ten Saturday Night: Western Michigan Broncos at Michigan Wolverines,16:30,20:00,"NBC · S04E01 · Live from Michigan Stadium in Ann Arbor, Michigan."
-06 FOX,"Big Noon Kickoff: From Bloomington, IN",07:00,09:00,"FOX · S08E01 · Rob Stone anchors the desk which includes college football legends Mark Ingram II, Matt Leinart, Brady Quinn, and three-time national champion coach Urban Meyer. Chris ‘The Bear' F"
-08 CNN,Smerconish,06:00,07:00,CNN · S2026E36 · Michael Smerconish tackles weekly American political and news stories from one perspective...his.
-10 ESPN,"College GameDay: From Baton Rouge, LA",06:00,09:00,"ESPN · S42E03 · College GameDay Built by The Home Depot will kick off its 40th season with a milestone event – its 500th show on the road – from Baton Rouge, La. ahead of LSU's marquee Week 1 matc"
-11 FOOD,Cook Like an Italian With Gabe Bertaccini: Pasta Dinner,09:00,09:30,"Food Network · S01E03 · Chef Gabe Bertaccini takes our tastebuds from Tuscany to Sicily. He starts with Pici all'Aglione, a thick, hand-rolled pasta, and the sauce is all about aglione, a special sweet ga"
+03 ABC,"Good Morning America: Weekend Edition: Sep 6, 2026",04:00,05:00,ABC · S2026E72
+03 ABC,"This Week: Sep 6, 2026",07:00,08:00,ABC · S2026E36
+04 CBS,CBS News Sunday Morning: Robert De Niro,06:00,07:30,"CBS · S2026E35 · AMERICA REMEMBERS – Lee Cowan visits three communities forever changed by the terrorist attacks on 9/11, where the act of remembering goes hand in hand with healing. AMERICA REMEMB"
+04 CBS,Face the Nation: 9/6 -,07:30,08:30,CBS · S2026E36
+04 CBS,Big Brother,17:00,18:00,CBS · S28E26
+05 NBC,Sunday TODAY with Willie Geist: Megan Moroney,05:00,06:00,NBC · S2026E32
+05 NBC,"Meet the Press: Sen. John Kennedy, Rep. Jamie Raskin",06:00,07:00,NBC · S2026E32
+05 NBC,NBC Sunday Night Baseball: Atlanta Braves at Philadelphia Phillies,10:30,13:10,NBC · S01E25
+08 CNN,"State of the Union with Jake Tapper and Dana Bash: Sep 6, 2026",06:00,07:00,CNN · S2026E36
+10 ESPN,Orange Blossom Classic: South Carolina State Bulldogs vs. Florida A&M Rattlers,12:00,15:30,"ESPN · S2026E01 · Live from Hard Rock Stadium in Miami Gardens, Florida."
+11 FOOD,The Great Food Truck Race: Sweet & Savory: The Legends of Louisville,18:00,19:00,Food Network · S19E08
+12 HIST,Hazardous History with Henry Winkler: Surviving the '70s,18:00,19:03,History · S02E20 · Remember when growing up in the '70s meant embracing the risk as much as the fun? From launching our bikes off homemade ramps and braving amusement park rides held together by only
+12 HIST,The Mega-Brands That Built America: Rise of the Personal Computer,19:03,20:05,"History · S04E06 · A pair of garage tinkerers, a copier company's secret lab, and a college-dropout programmer spark a decades-long battle for the future of computing — shrinking the computer from a "
+14 DISC,Destination Dive: Hidden Dive Treasures of the Lower Keys,05:00,05:30,Discovery · S03E04
+14 DISC,"RV There Yet?: Billings, MT",05:30,06:00,Discovery · S05E08
+14 DISC,Naked and Afraid: Shipwrecked: Spewing and Stinging Venom,17:00,19:01,"Discovery · S01E06 · Dani and Jarrell's heated fight splinters their camp, forcing Jamie to pick sides. A dangerous hunt leads to a shocking food win in another camp. As teams merge, dynamics begin to "
+14 DISC,In the Eye of the Storm: Great Lakes Monster,19:00,20:00,Discovery · S04E10
+15 HBO,Lanterns: The Weenie,18:00,18:56,HBO · S01E04
+16 PBS,Marble Hall Murders,18:00,19:00,"PBS · S01E01 · Back in London, Susan Ryeland is once again corralled into the world of Atticus Pünd as he investigates a mystery in Corfu."
