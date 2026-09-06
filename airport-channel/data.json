@@ -1,6 +1,6 @@
 {
   "provider": "FAA NAS Status + NOAA AviationWeather",
-  "generatedAt": 1788683617095,
+  "generatedAt": 1788684147916,
   "airport": {
     "icao": "KSEA",
     "iata": "SEA",
@@ -17,7 +17,7 @@
   },
   "taf": "TAF KSEA 060520Z 0606/0712 01008KT P6SM SCT100 FM060900 04006KT P6SM SCT100 BKN250 FM061400 01004KT P6SM BKN250 FM061900 33007KT P6SM BKN200 FM062300 31010KT P6SM SKC",
   "faa": {
-    "updateTime": "Sun Sep 6 08:33:20 2026 GMT",
+    "updateTime": "Sun Sep 6 08:41:40 2026 GMT",
     "events": [],
     "available": true
   }
