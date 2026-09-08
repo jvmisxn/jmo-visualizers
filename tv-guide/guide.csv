@@ -5,34 +5,48 @@
 # Columns: channel,title,start,end,description. Times are 24h HH:MM and repeat daily.
 channel,title,start,end,description
 02 JMO TV,Game Replays,00:00,24:00,"Full-game replays from the library, in order."
-03 ABC,Good Morning America: Miss America 2027,04:00,06:00,"ABC · S2026E178 · Newly crowned Miss America 2027; ""Dancing with the Stars"" preview; Brian Kelly (""The Points Guy""); Labor Day Blowout Deals & Steals with ABC e-commerce editor Tory Johnson ."
-03 ABC,GMA3: Labor Day Blowout Deals & Steals,10:00,11:00,ABC · S06E249 · Labor Day Blowout Deals & Steals with ABC e-commerce editor Tory Johnson
-04 CBS,CBS Mornings: Lindsay Crouse,04:00,06:00,"CBS · S2026E178 · Lindsay Crouse , author of The Case for Quitting. New instalment of ""Beg-Knows America."""
-04 CBS,The Young and the Restless: Ep. #13458,09:30,10:30,CBS · S2026E174
-04 CBS,The Bold and the Beautiful: Ep. #9859,10:30,11:00,CBS · S2026E175
-04 CBS,CBS Evening News,15:30,16:00,CBS · S2026E178
-05 NBC,"Today: Katie Linendoll, Dominique Charles",04:00,06:00,"NBC · S2026E178 · Twenty-Something Going Viral for Becoming Grandmother's Caregiver. Shop Today Savings: Labor Day Deals with Julie Ricevuto. Back to School Apps with Katie Linendoll. Today, Home: E"
-05 NBC,Today 3rd Hour: Chef Gesine Bullock-Prado,06:00,07:00,NBC · S2026E177 · America 250: Craig Flies High in an F-18. First Look: Jim Henson's Creature Shop. By the Book: LA's Romance Bookstore on Wheels. Chefs on the Spectrum Helps Adults with Autism. The
-05 NBC,TODAY with Jenna & Sheinelle: Best of Funny Guests,07:00,08:00,"NBC · S01E170 · Best of funny guests; ""Putt or Dare"" game with the cast of ""The Hawk""; actor Colin Jost; actress Leslie Jones; ""Mind Meld"" game with Jason Biggs."
-05 NBC,NBC Nightly News: Sept 7 Mon,15:30,16:00,NBC · S2026E229
-05 NBC,NBC Sunday Night Baseball: St. Louis Cardinals at San Francisco Giants,17:20,20:00,NBC · S01E27
-06 FOX,Beat Shazam: I Need A Hero!,17:00,18:00,"FOX · S08E11 · The U.S. Navy, the Coast Guard, and E.R. Nurses face off in a heroic battle."
-06 FOX,Beat Shazam: Beat Shazam's 100th Episode!,18:00,19:00,"FOX · S08E12 · In eight seasons with over $16 million dollars already won, find out who will keep the celebration going and take home another massive payday."
-07 CW,All American: All That I Got Is You,17:00,18:00,The CW · S08E10 · Cassius is forced to choose between his immediate family and the Bakers as the showcase and the Baker family crisis build to new levels. Coop sets out on a mission to find an m.i.a
-08 CNN,The Whole Story with Anderson Cooper: Nepal's Deadly Floods,18:00,19:00,CNN · S04E12
-09 CNBC,Morning Call,02:00,03:00,CNBC · S2026E121
-09 CNBC,Squawk Box,03:00,06:00,CNBC · S2026E178
-09 CNBC,Squawk on the Street,06:00,08:00,CNBC · S2026E177
-09 CNBC,Fast Money Halftime Report,09:00,10:00,CNBC · S2026E177
-09 CNBC,The Exchange,10:00,11:00,CNBC · S2026E177
-09 CNBC,Power Lunch,11:00,12:00,CNBC · S2026E177
-09 CNBC,Closing Bell,12:00,13:00,CNBC · S2026E177
-09 CNBC,Closing Bell: Overtime,13:00,14:00,CNBC · S2026E177
-09 CNBC,Fast Money,14:00,15:00,CNBC · S2026E177
-09 CNBC,Mad Money,15:00,16:00,CNBC · S2026E177
-10 ESPN,First Take,07:00,08:00,ESPN · S20E241
-10 ESPN,College Football Countdown: Week 2B,16:00,17:00,"ESPN · S21E04 · A look at the day's college football action, featuring news, highlights and game previews."
-12 HIST,History's Greatest Mysteries: The Hunt for Osama bin Laden: Case Closed,18:00,19:00,"History · S07E20 · On Sept. 11, 2001, coordinated terrorist attacks change America; mastermind Osama bin Laden threatens further violence, prompting a global manhunt by U.S. intelligence forces; near"
-14 DISC,Contraband: Seized at the Border: Super-load Sunday,17:00,18:00,Discovery · S09E10
-14 DISC,120 Hours Behind Bars: San Joaquin County Jail,18:00,19:00,Discovery · S02E08
-16 PBS,POV: Remake,19:00,20:00,PBS · S39E06
+03 ABC,"Good Morning America: Jaclyn Smith, Bowen Yang, Harlan Coben",04:00,06:00,"ABC · S2026E179 · Author Jaclyn Smith (""I Once Knew a Guy Named Charlie: A Memoir""); actor Bowen Yang (Broadway's ""Oh, Mary!""); author Harlan Coben (""Plot Twist: A Memoir of a Writing Life""); chef C"
+03 ABC,The View: Season 30 Premiere,08:00,09:00,"ABC · S30E01 · Season 30 premiere of ""The View"" with Whoopi Goldberg, Joy Behar, Sunny Hostin, Sara Haines, Alyssa Farah Griffin and Ana Navarro."
+03 ABC,"GMA3: Jaclyn Smith, Chef Carla Hall",10:00,11:00,"ABC · S06E250 · Author Jaclyn Smith (""I Once Knew a Guy Named Charlie: A Memoir""); chef Carla Hall (""Carla Bakes"") ; Deals & Steals with ABC e-commerce editor Tory Johnson ."
+03 ABC,General Hospital: Ep. #16040,11:00,12:00,ABC · S2026E175
+03 ABC,ABC World News Tonight with David Muir,15:30,16:00,ABC · S2026E246
+03 ABC,Jeopardy! Masters: The Finals,17:00,18:00,ABC · S04E09
+03 ABC,"Jimmy Kimmel Live: Andrew Garfield, Joey King, Franky Perez",20:35,21:35,"ABC · S2026E106 · 1. Andrew Garfield (""The Uprising""). 2. Joey King (""Practical Magic 2""). 3. Franky Perez sits in with The Cletones."
+04 CBS,CBS Mornings: Dr. Siggie Cohen,04:00,06:00,"CBS · S2026E179 · Dr. Siggie Cohen , child development specialist and author of You Are the Parent."
+04 CBS,"The Price is Right: Tue, Sep 8, 2026",08:00,09:00,CBS · S2026E135
+04 CBS,The Young and the Restless: Ep. #13459,09:30,10:30,CBS · S2026E175
+04 CBS,The Bold and the Beautiful: Ep. #9860,10:30,11:00,CBS · S2026E176
+04 CBS,Beyond the Gates,11:00,12:00,CBS · S2026E164 · Anita confronts Leslie; Jacob is stuck between work and family; Naomi rides to Smitty's defense; Sabotage leaves Ted speechless; Shanice's brothers come to town.
+04 CBS,CBS Evening News,15:30,16:00,CBS · S2026E179
+05 NBC,"Today: Mike Tomlin, Sandra Bullock, Nicole Kidman",04:00,06:00,"NBC · S2026E179 · Inside the Game: Mike Tomlin From the Steelers to the Studio. Sandra Bullock and Nicole Kidman on ""Practical Magic 2."" Rebecca Blumenstein and Diana Kapp on ""The Last Free Women."" "
+05 NBC,"Today 3rd Hour: Laila Ali, Chef Beejhy Barhany",06:00,07:00,"NBC · S2026E178 · On the Money: ""The Forever Paycheck"" with Jean Chatzky. Buddy Up: Aerial Yoga. Laila Ali on ""A Spark of Greatness."" What to do with Your Summer Photos with Amy E. Goodman. Today, F"
+05 NBC,"TODAY with Jenna & Sheinelle: Sara Bareilles, Cast of ""Real Housewives of NYC""",07:00,08:00,"NBC · S01E171 · The Scoop with Zuri Hall; singer-songwriter Sara Bareilles; the ""Real Housewives of NYC""; a couple's fertility treatment journey."
+05 NBC,NBC Nightly News: Sept 8 Tue,15:30,16:00,NBC · S2026E230
+05 NBC,America's Got Talent: Quarterfinals 4,17:00,19:00,NBC · S21E18
+05 NBC,America's Got Talent: Quarterfinals 4 Results,19:00,20:00,NBC · S21E19
+05 NBC,"The Tonight Show Starring Jimmy Fallon: Sandra Bullock, Mike D",20:35,21:35,"NBC · S2026E103 · Guests include Sandra Bullock, Mike D and musical guest Mike D 5D."
+06 FOX,Kitchen Nightmares: Lyla's Family Restaurant Part 1,17:00,18:00,"FOX · S10E09 · Waleed sets out to achieve the American Dream with Lyla's Family Restaurant, but a sprawling menu, an overwhelmed kitchen, and a steady stream of dishes sent back have left the res"
+06 FOX,"Kitchen Nightmares: Lyla's Family Restaurant, Part 2",18:00,19:00,"FOX · S10E10 · Waleed sets out to achieve the American Dream with Lyla's Family Restaurant, but a sprawling menu, an overwhelmed kitchen, and a steady stream of dishes sent back have left the res"
+07 CW,WWE NXT: 36,17:00,19:00,The CW · S20E36
+08 CNN,Anderson Cooper 360°,17:00,18:00,CNN · S2026E127
+08 CNN,The Source with Kaitlan Collins,18:00,19:00,CNN · S2026E167
+08 CNN,CNN NewsNight with Abby Phillip,19:00,20:00,CNN · S2026E173
+08 CNN,The Story Is with Elex Michaelson,21:00,23:00,CNN · S2026E174
+09 CNBC,Morning Call,02:00,03:00,CNBC · S2026E122
+09 CNBC,Squawk Box,03:00,06:00,CNBC · S2026E179
+09 CNBC,Squawk on the Street,06:00,08:00,CNBC · S2026E178
+09 CNBC,Fast Money Halftime Report,09:00,10:00,CNBC · S2026E178
+09 CNBC,The Exchange,10:00,11:00,CNBC · S2026E178
+09 CNBC,Power Lunch,11:00,12:00,CNBC · S2026E178
+09 CNBC,Closing Bell,12:00,13:00,CNBC · S2026E178
+09 CNBC,Closing Bell: Overtime,13:00,14:00,CNBC · S2026E178
+09 CNBC,Fast Money,14:00,15:00,CNBC · S2026E178
+09 CNBC,Mad Money,15:00,16:00,CNBC · S2026E178
+10 ESPN,First Take,07:00,08:30,ESPN · S20E242
+10 ESPN,Pardon the Interruption: Sep 8 Tue,14:30,15:00,ESPN · S2026E149
+11 FOOD,Bobby's Triple Threat: Titans vs Competition Legend,17:00,18:00,Food Network · S05E03
+11 FOOD,Bobby Flay's The Line: Fariyal Abdullahi: Hav & Mar,18:00,19:00,"Food Network · S01E01 · In the series premiere, Marcus Samuelsson surprises Bobby by joining his restaurant Hav & Mar's Executive Chef Fariyal Abdullahi and her line to go up against Bobby's home team in "
+12 HIST,"The Proof Is Out There: Hellfire vs. UFO, Amityville Ghost, and Mall World",18:00,19:03,History · S06E16 · A Congressional hearing is rocked by the release of a video showing a missile striking a UAP. Is a famous photograph from the Amityville Horror house evidence of a ghost? Why do th
+12 HIST,"The Proof Is Out There: First UFO Film, Alien Mummy, and Miracle Plane Crash Survivor",19:03,20:05,History · S06E17 · Did the world's first UFO film actually show a genuine flying saucer? Could a mysterious mummy discovered in Peru really be an alien? How did the sole survivor walk away from the d
+13 HGTV,Love It or List It: A Fixable Problem?,17:00,18:00,HGTV · S21E12
+13 HGTV,Extreme Buyers Club: Family Spirits and Future Dreams,18:00,19:00,"HGTV · S01E08 · Noel takes on a psychic medium and her husband who are struggling to leave a home deeply tied to their family's history. Also, a couple looks for a property that supports homeschoo"
