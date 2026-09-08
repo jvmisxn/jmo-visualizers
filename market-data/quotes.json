@@ -1,15 +1,15 @@
 {
   "provider": "finnhub",
-  "generatedAt": 1788897637726,
+  "generatedAt": 1788898748878,
   "quotes": [
     {
       "symbol": "SPY",
       "providerSymbol": "SPY",
       "name": "S&P 500 ETF",
       "group": "index",
-      "price": 766.08,
-      "change": -4.11,
-      "changePercent": -0.5336,
+      "price": 765.96,
+      "change": -4.23,
+      "changePercent": -0.5492,
       "providerTime": 1788897600000
     },
     {
@@ -37,9 +37,9 @@
       "providerSymbol": "IWM",
       "name": "Russell 2000 ETF",
       "group": "index",
-      "price": 294.69,
-      "change": -1.32,
-      "changePercent": -0.4459,
+      "price": 294.67,
+      "change": -1.34,
+      "changePercent": -0.4527,
       "providerTime": 1788897600000
     },
     {
@@ -47,9 +47,9 @@
       "providerSymbol": "AAPL",
       "name": "Apple",
       "group": "watch",
-      "price": 316.36,
-      "change": -3.61,
-      "changePercent": -1.1282,
+      "price": 316.22,
+      "change": -3.75,
+      "changePercent": -1.172,
       "providerTime": 1788897600000
     },
     {
@@ -67,9 +67,9 @@
       "providerSymbol": "MSFT",
       "name": "Microsoft",
       "group": "watch",
-      "price": 493.87,
-      "change": -5.83,
-      "changePercent": -1.1667,
+      "price": 493.95,
+      "change": -5.75,
+      "changePercent": -1.1507,
       "providerTime": 1788897600000
     },
     {
@@ -77,9 +77,9 @@
       "providerSymbol": "TSLA",
       "name": "Tesla",
       "group": "watch",
-      "price": 368.17,
-      "change": 14.09,
-      "changePercent": 3.9793,
+      "price": 368.16,
+      "change": 14.08,
+      "changePercent": 3.9765,
       "providerTime": 1788897600000
     },
     {
@@ -87,10 +87,10 @@
       "providerSymbol": "BINANCE:BTCUSDT",
       "name": "Bitcoin",
       "group": "watch",
-      "price": 78442.01,
-      "change": -927.99,
-      "changePercent": -1.1692,
-      "providerTime": 1788897631000
+      "price": 78530,
+      "change": -729.51,
+      "changePercent": -0.9204,
+      "providerTime": 1788898747000
     }
   ]
 }
