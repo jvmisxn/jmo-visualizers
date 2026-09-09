@@ -5,48 +5,48 @@
 # Columns: channel,title,start,end,description. Times are 24h HH:MM and repeat daily.
 channel,title,start,end,description
 02 JMO TV,Game Replays,00:00,24:00,"Full-game replays from the library, in order."
-03 ABC,"Good Morning America: Jaclyn Smith, Bowen Yang, Harlan Coben",04:00,06:00,"ABC · S2026E179 · Author Jaclyn Smith (""I Once Knew a Guy Named Charlie: A Memoir""); actor Bowen Yang (Broadway's ""Oh, Mary!""); author Harlan Coben (""Plot Twist: A Memoir of a Writing Life""); chef C"
-03 ABC,The View: Season 30 Premiere,08:00,09:00,"ABC · S30E01 · Season 30 premiere of ""The View"" with Whoopi Goldberg, Joy Behar, Sunny Hostin, Sara Haines, Alyssa Farah Griffin and Ana Navarro."
-03 ABC,"GMA3: Jaclyn Smith, Chef Carla Hall",10:00,11:00,"ABC · S06E250 · Author Jaclyn Smith (""I Once Knew a Guy Named Charlie: A Memoir""); chef Carla Hall (""Carla Bakes"") ; Deals & Steals with ABC e-commerce editor Tory Johnson ."
-03 ABC,General Hospital: Ep. #16040,11:00,12:00,ABC · S2026E175
-03 ABC,ABC World News Tonight with David Muir,15:30,16:00,ABC · S2026E246
-03 ABC,Jeopardy! Masters: The Finals,17:00,18:00,ABC · S04E09
-03 ABC,"Jimmy Kimmel Live: Andrew Garfield, Joey King, Franky Perez",20:35,21:35,"ABC · S2026E106 · 1. Andrew Garfield (""The Uprising""). 2. Joey King (""Practical Magic 2""). 3. Franky Perez sits in with The Cletones."
-04 CBS,CBS Mornings: Dr. Siggie Cohen,04:00,06:00,"CBS · S2026E179 · Dr. Siggie Cohen , child development specialist and author of You Are the Parent."
-04 CBS,"The Price is Right: Tue, Sep 8, 2026",08:00,09:00,CBS · S2026E135
-04 CBS,The Young and the Restless: Ep. #13459,09:30,10:30,CBS · S2026E175
-04 CBS,The Bold and the Beautiful: Ep. #9860,10:30,11:00,CBS · S2026E176
-04 CBS,Beyond the Gates,11:00,12:00,CBS · S2026E164 · Anita confronts Leslie; Jacob is stuck between work and family; Naomi rides to Smitty's defense; Sabotage leaves Ted speechless; Shanice's brothers come to town.
-04 CBS,CBS Evening News,15:30,16:00,CBS · S2026E179
-05 NBC,"Today: Mike Tomlin, Sandra Bullock, Nicole Kidman",04:00,06:00,"NBC · S2026E179 · Inside the Game: Mike Tomlin From the Steelers to the Studio. Sandra Bullock and Nicole Kidman on ""Practical Magic 2."" Rebecca Blumenstein and Diana Kapp on ""The Last Free Women."" "
-05 NBC,"Today 3rd Hour: Laila Ali, Chef Beejhy Barhany",06:00,07:00,"NBC · S2026E178 · On the Money: ""The Forever Paycheck"" with Jean Chatzky. Buddy Up: Aerial Yoga. Laila Ali on ""A Spark of Greatness."" What to do with Your Summer Photos with Amy E. Goodman. Today, F"
-05 NBC,"TODAY with Jenna & Sheinelle: Sara Bareilles, Cast of ""Real Housewives of NYC""",07:00,08:00,"NBC · S01E171 · The Scoop with Zuri Hall; singer-songwriter Sara Bareilles; the ""Real Housewives of NYC""; a couple's fertility treatment journey."
-05 NBC,NBC Nightly News: Sept 8 Tue,15:30,16:00,NBC · S2026E230
-05 NBC,America's Got Talent: Quarterfinals 4,17:00,19:00,NBC · S21E18
-05 NBC,America's Got Talent: Quarterfinals 4 Results,19:00,20:00,NBC · S21E19
-05 NBC,"The Tonight Show Starring Jimmy Fallon: Sandra Bullock, Mike D",20:35,21:35,"NBC · S2026E103 · Guests include Sandra Bullock, Mike D and musical guest Mike D 5D."
-06 FOX,Kitchen Nightmares: Lyla's Family Restaurant Part 1,17:00,18:00,"FOX · S10E09 · Waleed sets out to achieve the American Dream with Lyla's Family Restaurant, but a sprawling menu, an overwhelmed kitchen, and a steady stream of dishes sent back have left the res"
-06 FOX,"Kitchen Nightmares: Lyla's Family Restaurant, Part 2",18:00,19:00,"FOX · S10E10 · Waleed sets out to achieve the American Dream with Lyla's Family Restaurant, but a sprawling menu, an overwhelmed kitchen, and a steady stream of dishes sent back have left the res"
-07 CW,WWE NXT: 36,17:00,19:00,The CW · S20E36
-08 CNN,Anderson Cooper 360°,17:00,18:00,CNN · S2026E127
-08 CNN,The Source with Kaitlan Collins,18:00,19:00,CNN · S2026E167
-08 CNN,CNN NewsNight with Abby Phillip,19:00,20:00,CNN · S2026E173
-08 CNN,The Story Is with Elex Michaelson,21:00,23:00,CNN · S2026E174
-09 CNBC,Morning Call,02:00,03:00,CNBC · S2026E122
-09 CNBC,Squawk Box,03:00,06:00,CNBC · S2026E179
-09 CNBC,Squawk on the Street,06:00,08:00,CNBC · S2026E178
-09 CNBC,Fast Money Halftime Report,09:00,10:00,CNBC · S2026E178
-09 CNBC,The Exchange,10:00,11:00,CNBC · S2026E178
-09 CNBC,Power Lunch,11:00,12:00,CNBC · S2026E178
-09 CNBC,Closing Bell,12:00,13:00,CNBC · S2026E178
-09 CNBC,Closing Bell: Overtime,13:00,14:00,CNBC · S2026E178
-09 CNBC,Fast Money,14:00,15:00,CNBC · S2026E178
-09 CNBC,Mad Money,15:00,16:00,CNBC · S2026E178
-10 ESPN,First Take,07:00,08:30,ESPN · S20E242
-10 ESPN,Pardon the Interruption: Sep 8 Tue,14:30,15:00,ESPN · S2026E149
-11 FOOD,Bobby's Triple Threat: Titans vs Competition Legend,17:00,18:00,Food Network · S05E03
-11 FOOD,Bobby Flay's The Line: Fariyal Abdullahi: Hav & Mar,18:00,19:00,"Food Network · S01E01 · In the series premiere, Marcus Samuelsson surprises Bobby by joining his restaurant Hav & Mar's Executive Chef Fariyal Abdullahi and her line to go up against Bobby's home team in "
-12 HIST,"The Proof Is Out There: Hellfire vs. UFO, Amityville Ghost, and Mall World",18:00,19:03,History · S06E16 · A Congressional hearing is rocked by the release of a video showing a missile striking a UAP. Is a famous photograph from the Amityville Horror house evidence of a ghost? Why do th
-12 HIST,"The Proof Is Out There: First UFO Film, Alien Mummy, and Miracle Plane Crash Survivor",19:03,20:05,History · S06E17 · Did the world's first UFO film actually show a genuine flying saucer? Could a mysterious mummy discovered in Peru really be an alien? How did the sole survivor walk away from the d
-13 HGTV,Love It or List It: A Fixable Problem?,17:00,18:00,HGTV · S21E12
-13 HGTV,Extreme Buyers Club: Family Spirits and Future Dreams,18:00,19:00,"HGTV · S01E08 · Noel takes on a psychic medium and her husband who are struggling to leave a home deeply tied to their family's history. Also, a couple looks for a property that supports homeschoo"
+03 ABC,Good Morning America: GMA Game Day: Countdown to the Super Bowl with - Las Vegas Raiders,04:00,06:00,"ABC · S2026E180 · Actress Sherri Shepherd (""Angel in the Rubble""); ""GMA"" Game Day: Countdown to the Super Bowl with Las Vegas Raiders ; MLB Hall of Famer Dave Winfield (""Touching All the Bases""); De"
+03 ABC,"The View: Sen. Ted Cruz, Lizzo",08:00,09:00,"ABC · S30E02 · Sen. Ted Cruz (R-Texas) (author, ""Going Further: The Incomparable Clarence Thomas""); Lizzo (author, ""Lil Lizzo Meets Sasha B. Flootin'"")"
+03 ABC,"GMA3: Sherri Shepherd, Dondre Whitfield",10:00,11:00,"ABC · S06E251 · Actors Sherri Shepherd and Dondre Whitfield (""Angel in the Rubble""); ""GMA"" Game Day: Countdown to the Super Bowl with Las Vegas Raiders; Deals & Steals with ABC e-commerce editor T"
+03 ABC,General Hospital: Ep. #16041,11:00,12:00,ABC · S2026E176
+03 ABC,ABC World News Tonight with David Muir,15:30,16:00,ABC · S2026E247
+03 ABC,"Jimmy Kimmel Live: Mariska Hargitay, Kaia Gerber, Franky Perez",20:35,21:35,"ABC · S2026E107 · 1. Mariska Hargitay (""78th Primetime EmmyⓇ Awards""). 2. Kaia Gerber (""The Shards""). 3. Franky Perez sits in with The Cletones."
+04 CBS,"CBS Mornings: Robert De Niro, Jane Rosenthal, Lauren Sherman",04:00,06:00,"CBS · S2026E180 · Robert De Niro and Jane Rosenthal , co-founders of Tribeca Festival. Lauren Sherman , fashion journalist and writer."
+04 CBS,"The Price is Right: Wed, Sep 9, 2026",08:00,09:00,CBS · S2026E136
+04 CBS,The Young and the Restless: Ep. #13460,09:30,10:30,CBS · S2026E176
+04 CBS,The Bold and the Beautiful: Ep. #9861,10:30,11:00,CBS · S2026E177
+04 CBS,Beyond the Gates,11:00,12:00,CBS · S2026E165 · Nicole and Heather have a tense encounter; Naomi strategizes with Kat and Chelsea; Jacob puts Elon in check; Joey finds common ground with a surprise visitor; Vanessa has an unveil
+04 CBS,CBS Evening News,15:30,16:00,CBS · S2026E180
+04 CBS,Big Brother,17:00,18:30,CBS · S28E27
+05 NBC,"Today: Gal Gadot, Joey King, Maisie Williams, Elizabeth Heiskell",04:00,06:00,"NBC · S2026E180 · Inside the Game: NFL on NBC Launch. Today's Consumer: Money Tips For the Sandwich Generation. Gal Gadot on""The Runner.""Joey King and Maisie Williams on""Practical Magic 2."" Today, F"
+05 NBC,"Today 3rd Hour: Liam Neeson, Zachary Levi, Kaya Scodelario, Maitreyi Ramakrishnan, Hasan Minhaj",06:00,07:00,"NBC · S2026E179 · Today's Checklist: Back to School & Work Routine Health Reset with Dr. Natalie Azar. Liam Neeson and Zachary Levi on ""The Fix."" Catching up with Kaya Scodelario, She Made It: Feel "
+05 NBC,"TODAY with Jenna & Sheinelle: Naomi Watts, Shyne",07:00,08:00,NBC · S02E02 · Actress Naomi Watts; style expert Lilliana Vazquez; rapper Shyne; Today Food.
+05 NBC,NBC Nightly News: Sept 9 Wed,15:30,16:00,NBC · S2026E231
+05 NBC,Football Night in America: Week 1A,16:00,17:15,"NBC · S21E01 · Live from Lumen Field in Seattle, Washington host Maria Taylor, Hall of Fame head coach Tony Dungy, former NFL head coach Jason Garrett, former NFL quarterback Chris Simms and NFL "
+05 NBC,NBC Sunday Night Football: New England Patriots at Seattle Seahawks,17:20,20:50,"NBC · S2026E01 · Live from Lumen Field in Seattle, Washington. NFL Kickoff '26 as Drake Maye and the New England Patriots visit Sam Darnold and the champion Seattle Seahawks in a Super Bowl LX rema"
+05 NBC,"The Tonight Show Starring Jimmy Fallon: Matthew McConaughey, Alix Earle, Riley Green",20:35,21:35,"NBC · S2026E104 · Guests include Matthew McConaughey, Alix Earle and musical guest Riley Green."
+06 FOX,MasterChef: Finale Part 1,17:00,18:00,"FOX · S16E17 · The top three home cooks face their biggest challenge yet in the MasterChef Grand Finale. With friends, family, and a packed audience cheering them on, and the judges watching ever"
+06 FOX,Nation's Dumbest: Family Teacher Conference,18:02,19:00,FOX · S01E09 · It's the most embarrassing day of the school year! The celebrities' family members come to witness their loved ones' intellectual demise. Can they save them from themselves?
+08 CNN,Anderson Cooper 360°,17:00,18:00,CNN · S2026E128
+08 CNN,The Source with Kaitlan Collins,18:00,19:00,CNN · S2026E168
+08 CNN,CNN NewsNight with Abby Phillip,19:00,20:00,CNN · S2026E174
+08 CNN,The Story Is with Elex Michaelson,21:00,23:00,CNN · S2026E176
+09 CNBC,Morning Call,02:00,03:00,CNBC · S2026E123
+09 CNBC,Squawk Box,03:00,06:00,CNBC · S2026E180
+09 CNBC,Squawk on the Street,06:00,08:00,CNBC · S2026E179
+09 CNBC,Fast Money Halftime Report,09:00,10:00,CNBC · S2026E179
+09 CNBC,The Exchange,10:00,11:00,CNBC · S2026E179
+09 CNBC,Power Lunch,11:00,12:00,CNBC · S2026E179
+09 CNBC,Closing Bell,12:00,13:00,CNBC · S2026E179
+09 CNBC,Closing Bell: Overtime,13:00,14:00,CNBC · S2026E179
+09 CNBC,Fast Money,14:00,15:00,CNBC · S2026E179
+09 CNBC,Mad Money,15:00,16:00,CNBC · S2026E179
+10 ESPN,First Take,07:00,08:30,ESPN · S20E243
+10 ESPN,Pardon the Interruption: Sep 9 Wed,14:30,15:00,ESPN · S2026E150
+11 FOOD,"Guy's Grocery Games: One Chicken, Two Meals",18:00,19:00,"Food Network · S42E14 · Guy Fieri invites three GGG newcomers to spread their wings to make two rounds of dishes using a single chicken. First, the chefs must shop for a fried chicken dish without breakin"
+12 HIST,Alone: Worlds Apart,18:00,19:34,"History · S13E13 · As the Arctic plunges into near-total darkness, the final survivalists must summon every ounce of mental strength to endure the crushing isolation of the approaching polar night. I"
+12 HIST,Pawn Stars: Best Of: High End in Sin City,19:34,20:33,"History · S06E07 · It's the Lap of Luxury, Pawn Stars style! Join the crew as they appraise the best that money can buy. Fan favorite Davey Deals brings the bling!"
+13 HGTV,Totally ‘90s House,18:00,19:00,HGTV · S01E03
+13 HGTV,Botched Homes: Too Many Cooks,19:00,20:00,HGTV · S01E02
+14 DISC,Expedition X: Ghosts of Guam,18:00,19:00,Discovery · S12E04
+14 DISC,How to Catch a Dirtbag: The Bumper Sticker Brawl,19:01,20:02,"Discovery · S01E06 · Tizzy investigates an assault triggered by a bumper sticker. A judge dishes out justice for an attack on a fast food worker, and a couple of road rage incidents have Tizzy fired up"
