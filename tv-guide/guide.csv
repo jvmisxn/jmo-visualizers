@@ -5,48 +5,40 @@
 # Columns: channel,title,start,end,description. Times are 24h HH:MM and repeat daily.
 channel,title,start,end,description
 02 JMO TV,Game Replays,00:00,24:00,"Full-game replays from the library, in order."
-03 ABC,Good Morning America: GMA Game Day: Countdown to the Super Bowl with - Las Vegas Raiders,04:00,06:00,"ABC · S2026E180 · Actress Sherri Shepherd (""Angel in the Rubble""); ""GMA"" Game Day: Countdown to the Super Bowl with Las Vegas Raiders ; MLB Hall of Famer Dave Winfield (""Touching All the Bases""); De"
-03 ABC,"The View: Sen. Ted Cruz, Lizzo",08:00,09:00,"ABC · S30E02 · Sen. Ted Cruz (R-Texas) (author, ""Going Further: The Incomparable Clarence Thomas""); Lizzo (author, ""Lil Lizzo Meets Sasha B. Flootin'"")"
-03 ABC,"GMA3: Sherri Shepherd, Dondre Whitfield",10:00,11:00,"ABC · S06E251 · Actors Sherri Shepherd and Dondre Whitfield (""Angel in the Rubble""); ""GMA"" Game Day: Countdown to the Super Bowl with Las Vegas Raiders; Deals & Steals with ABC e-commerce editor T"
-03 ABC,General Hospital: Ep. #16041,11:00,12:00,ABC · S2026E176
-03 ABC,ABC World News Tonight with David Muir,15:30,16:00,ABC · S2026E247
-03 ABC,"Jimmy Kimmel Live: Mariska Hargitay, Kaia Gerber, Franky Perez",20:35,21:35,"ABC · S2026E107 · 1. Mariska Hargitay (""78th Primetime EmmyⓇ Awards""). 2. Kaia Gerber (""The Shards""). 3. Franky Perez sits in with The Cletones."
-04 CBS,"CBS Mornings: Robert De Niro, Jane Rosenthal, Lauren Sherman",04:00,06:00,"CBS · S2026E180 · Robert De Niro and Jane Rosenthal , co-founders of Tribeca Festival. Lauren Sherman , fashion journalist and writer."
-04 CBS,"The Price is Right: Wed, Sep 9, 2026",08:00,09:00,CBS · S2026E136
-04 CBS,The Young and the Restless: Ep. #13460,09:30,10:30,CBS · S2026E176
-04 CBS,The Bold and the Beautiful: Ep. #9861,10:30,11:00,CBS · S2026E177
-04 CBS,Beyond the Gates,11:00,12:00,CBS · S2026E165 · Nicole and Heather have a tense encounter; Naomi strategizes with Kat and Chelsea; Jacob puts Elon in check; Joey finds common ground with a surprise visitor; Vanessa has an unveil
-04 CBS,CBS Evening News,15:30,16:00,CBS · S2026E180
-04 CBS,Big Brother,17:00,18:30,CBS · S28E27
-05 NBC,"Today: Gal Gadot, Joey King, Maisie Williams, Elizabeth Heiskell",04:00,06:00,"NBC · S2026E180 · Inside the Game: NFL on NBC Launch. Today's Consumer: Money Tips For the Sandwich Generation. Gal Gadot on""The Runner.""Joey King and Maisie Williams on""Practical Magic 2."" Today, F"
-05 NBC,"Today 3rd Hour: Liam Neeson, Zachary Levi, Kaya Scodelario, Maitreyi Ramakrishnan, Hasan Minhaj",06:00,07:00,"NBC · S2026E179 · Today's Checklist: Back to School & Work Routine Health Reset with Dr. Natalie Azar. Liam Neeson and Zachary Levi on ""The Fix."" Catching up with Kaya Scodelario, She Made It: Feel "
-05 NBC,"TODAY with Jenna & Sheinelle: Naomi Watts, Shyne",07:00,08:00,NBC · S02E02 · Actress Naomi Watts; style expert Lilliana Vazquez; rapper Shyne; Today Food.
-05 NBC,NBC Nightly News: Sept 9 Wed,15:30,16:00,NBC · S2026E231
-05 NBC,Football Night in America: Week 1A,16:00,17:15,"NBC · S21E01 · Live from Lumen Field in Seattle, Washington host Maria Taylor, Hall of Fame head coach Tony Dungy, former NFL head coach Jason Garrett, former NFL quarterback Chris Simms and NFL "
-05 NBC,NBC Sunday Night Football: New England Patriots at Seattle Seahawks,17:20,20:50,"NBC · S2026E01 · Live from Lumen Field in Seattle, Washington. NFL Kickoff '26 as Drake Maye and the New England Patriots visit Sam Darnold and the champion Seattle Seahawks in a Super Bowl LX rema"
-05 NBC,"The Tonight Show Starring Jimmy Fallon: Matthew McConaughey, Alix Earle, Riley Green",20:35,21:35,"NBC · S2026E104 · Guests include Matthew McConaughey, Alix Earle and musical guest Riley Green."
-06 FOX,MasterChef: Finale Part 1,17:00,18:00,"FOX · S16E17 · The top three home cooks face their biggest challenge yet in the MasterChef Grand Finale. With friends, family, and a packed audience cheering them on, and the judges watching ever"
-06 FOX,Nation's Dumbest: Family Teacher Conference,18:02,19:00,FOX · S01E09 · It's the most embarrassing day of the school year! The celebrities' family members come to witness their loved ones' intellectual demise. Can they save them from themselves?
-08 CNN,Anderson Cooper 360°,17:00,18:00,CNN · S2026E128
-08 CNN,The Source with Kaitlan Collins,18:00,19:00,CNN · S2026E168
-08 CNN,CNN NewsNight with Abby Phillip,19:00,20:00,CNN · S2026E174
-08 CNN,The Story Is with Elex Michaelson,21:00,23:00,CNN · S2026E176
-09 CNBC,Morning Call,02:00,03:00,CNBC · S2026E123
-09 CNBC,Squawk Box,03:00,06:00,CNBC · S2026E180
-09 CNBC,Squawk on the Street,06:00,08:00,CNBC · S2026E179
-09 CNBC,Fast Money Halftime Report,09:00,10:00,CNBC · S2026E179
-09 CNBC,The Exchange,10:00,11:00,CNBC · S2026E179
-09 CNBC,Power Lunch,11:00,12:00,CNBC · S2026E179
-09 CNBC,Closing Bell,12:00,13:00,CNBC · S2026E179
-09 CNBC,Closing Bell: Overtime,13:00,14:00,CNBC · S2026E179
-09 CNBC,Fast Money,14:00,15:00,CNBC · S2026E179
-09 CNBC,Mad Money,15:00,16:00,CNBC · S2026E179
-10 ESPN,First Take,07:00,08:30,ESPN · S20E243
-10 ESPN,Pardon the Interruption: Sep 9 Wed,14:30,15:00,ESPN · S2026E150
-11 FOOD,"Guy's Grocery Games: One Chicken, Two Meals",18:00,19:00,"Food Network · S42E14 · Guy Fieri invites three GGG newcomers to spread their wings to make two rounds of dishes using a single chicken. First, the chefs must shop for a fried chicken dish without breakin"
-12 HIST,Alone: Worlds Apart,18:00,19:34,"History · S13E13 · As the Arctic plunges into near-total darkness, the final survivalists must summon every ounce of mental strength to endure the crushing isolation of the approaching polar night. I"
-12 HIST,Pawn Stars: Best Of: High End in Sin City,19:34,20:33,"History · S06E07 · It's the Lap of Luxury, Pawn Stars style! Join the crew as they appraise the best that money can buy. Fan favorite Davey Deals brings the bling!"
-13 HGTV,Totally ‘90s House,18:00,19:00,HGTV · S01E03
-13 HGTV,Botched Homes: Too Many Cooks,19:00,20:00,HGTV · S01E02
-14 DISC,Expedition X: Ghosts of Guam,18:00,19:00,Discovery · S12E04
-14 DISC,How to Catch a Dirtbag: The Bumper Sticker Brawl,19:01,20:02,"Discovery · S01E06 · Tizzy investigates an assault triggered by a bumper sticker. A judge dishes out justice for an attack on a fast food worker, and a couple of road rage incidents have Tizzy fired up"
+03 ABC,"Good Morning America: Jaclyn Smith, Kate Jackson, Cheryl Ladd, Andrew Garfield",04:00,06:00,"ABC · S2026E181 · Actors Jaclyn Smith , Kate Jackson and Cheryl Ladd (""Charlie's Angels""); actor Andrew Garfield (""The Uprising""); fashion mogul Tommy Hilfiger talks fashion week with co-anchor Mich"
+03 ABC,The View: Andrew Garfield,08:00,09:00,"ABC · S30E03 · Andrew Garfield (actor, ""The Uprising"")."
+03 ABC,"GMA3: Jaclyn Smith, Kate Jackson, Cheryl Ladd, Jon Rohde",10:00,11:00,"ABC · S06E252 · Actors Jaclyn Smith , Kate Jackson and Cheryl Ladd (""Charlie's Angels""); author Jon Rohde (""Floating Mountains""); Deals & Steals with ABC e-commerce editor Tory Johnson ."
+03 ABC,General Hospital: Ep. #16042,11:00,12:00,ABC · S2026E177
+03 ABC,ABC World News Tonight with David Muir,15:30,16:00,ABC · S2026E248
+03 ABC,"Jimmy Kimmel Live: Gal Gadot, Franky Perez",20:35,21:35,"ABC · S2026E108 · 1. Gal Gadot (""The Runner""). 2. Franky Perez sits in with The Cletones."
+04 CBS,"CBS Mornings: Sandra Bullock, Lee Pace",04:00,06:00,"CBS · S2026E181 · Sandra Bullock and Lee Pace , actors in ""Practical Magic 2."" Elizabeth Miller, Jessica Trant and Frank Pellegrino , subjects of DAUGHTERS OF 9/11. Jim VandeHei and Mike Allen , co-"
+04 CBS,"The Price is Right: Thur, Sep 10, 2026",08:00,09:00,CBS · S2026E137
+04 CBS,The Young and the Restless: Ep. #13461,09:30,10:30,CBS · S2026E177
+04 CBS,The Bold and the Beautiful: Ep. #9862,10:30,11:00,CBS · S2026E178
+04 CBS,Beyond the Gates,11:00,12:00,"CBS · S2026E166 · Anita, Leslie, Eva and Vernon face the music together; Bill's daughter drops a major bombshell; Vanessa gets vulnerable with Izaiah; Deanna reaches her breaking point and makes a b"
+04 CBS,CBS Evening News,15:30,16:00,CBS · S2026E181
+04 CBS,Big Brother,17:00,18:00,CBS · S28E28
+05 NBC,"Today: Lee Pace, Michelle Kogan",04:00,06:00,"NBC · S2026E181 · Inside the Game: Australia NFL Game Preview. Today's Consumer: Hidden Camera Investigation into Food Temperature Safety. Lee Pace on ""Practical Magic 2."" Steals & Deals: Get Organi"
+05 NBC,"Today 3rd Hour: Xolo Maridueña, Domhnall Gleeson, Clodagh McKenna",06:00,07:00,"NBC · S2026E180 · Consumer Confidential: September Freebies. Healthy Moms Healthy Babies with Olivia Walton and Dr. Neel Shah. Xolo Maridueña on ""Practical Magic 2."" Catching up with Domhnall Gleeso"
+05 NBC,"TODAY with Jenna & Sheinelle: Cindy Crawford, Theo James, Sandra Bullock, Nicole Kidman",07:00,08:00,"NBC · S02E03 · Model Cindy Crawford; actor Theo James; actresses Sandra Bullock and Nicole Kidman (""Practical Magic 2"")."
+05 NBC,NBC Nightly News: Sept 10 Thur,15:30,16:00,NBC · S2026E232
+05 NBC,"The Tonight Show Starring Jimmy Fallon: Nicole Kidman, Domhnall Gleeson, Leon Bridges",20:35,21:35,"NBC · S2026E105 · Guest includes Nicole Kidman, Domhnall Gleeson, and musical guest Leon Bridges."
+08 CNN,Anderson Cooper 360°,17:00,18:00,CNN · S2026E129
+08 CNN,The Source with Kaitlan Collins,18:00,19:00,CNN · S2026E169
+08 CNN,CNN NewsNight with Abby Phillip,19:00,20:00,CNN · S2026E175
+08 CNN,The Story Is with Elex Michaelson,21:00,23:00,CNN · S2026E177
+09 CNBC,Morning Call,02:00,03:00,CNBC · S2026E124
+09 CNBC,Squawk Box,03:00,06:00,CNBC · S2026E181
+09 CNBC,Squawk on the Street,06:00,08:00,CNBC · S2026E180
+09 CNBC,Fast Money Halftime Report,09:00,10:00,CNBC · S2026E180
+09 CNBC,The Exchange,10:00,11:00,CNBC · S2026E180
+09 CNBC,Power Lunch,11:00,12:00,CNBC · S2026E180
+09 CNBC,Closing Bell,12:00,13:00,CNBC · S2026E180
+09 CNBC,Closing Bell: Overtime,13:00,14:00,CNBC · S2026E180
+09 CNBC,Fast Money,14:00,15:00,CNBC · S2026E180
+09 CNBC,Mad Money,15:00,16:00,CNBC · S2026E180
+10 ESPN,First Take,07:00,09:00,ESPN · S20E244
+10 ESPN,Big Day with Peter Schrager,11:00,12:00,ESPN · S01E01
+10 ESPN,NFL Live,13:00,14:00,"ESPN · S28E94 · Host Laura Rutledge takes the helm of this weekday show featuring the likes of Marcus Spears, Dan Orlovsky, Ryan Clark, Mina Kimes, and Adam Schefter, who offer the latest news and"
+10 ESPN,Pardon the Interruption: Sep 10 Thu,14:30,15:00,ESPN · S2026E151
+15 HBO,A Killer Story: Welcome to Topeka,18:00,19:00,"HBO · S01E01 · True crime enthusiasts Eileen and Keen Umbehr enlist veteran journalist Joe Sexton to delve into the case of Dana Chandler, who was arrested and convicted for the 2002 murders of h"
