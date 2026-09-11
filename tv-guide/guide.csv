@@ -5,40 +5,43 @@
 # Columns: channel,title,start,end,description. Times are 24h HH:MM and repeat daily.
 channel,title,start,end,description
 02 JMO TV,Game Replays,00:00,24:00,"Full-game replays from the library, in order."
-03 ABC,"Good Morning America: Jaclyn Smith, Kate Jackson, Cheryl Ladd, Andrew Garfield",04:00,06:00,"ABC · S2026E181 · Actors Jaclyn Smith , Kate Jackson and Cheryl Ladd (""Charlie's Angels""); actor Andrew Garfield (""The Uprising""); fashion mogul Tommy Hilfiger talks fashion week with co-anchor Mich"
-03 ABC,The View: Andrew Garfield,08:00,09:00,"ABC · S30E03 · Andrew Garfield (actor, ""The Uprising"")."
-03 ABC,"GMA3: Jaclyn Smith, Kate Jackson, Cheryl Ladd, Jon Rohde",10:00,11:00,"ABC · S06E252 · Actors Jaclyn Smith , Kate Jackson and Cheryl Ladd (""Charlie's Angels""); author Jon Rohde (""Floating Mountains""); Deals & Steals with ABC e-commerce editor Tory Johnson ."
-03 ABC,General Hospital: Ep. #16042,11:00,12:00,ABC · S2026E177
-03 ABC,ABC World News Tonight with David Muir,15:30,16:00,ABC · S2026E248
-03 ABC,"Jimmy Kimmel Live: Gal Gadot, Franky Perez",20:35,21:35,"ABC · S2026E108 · 1. Gal Gadot (""The Runner""). 2. Franky Perez sits in with The Cletones."
-04 CBS,"CBS Mornings: Sandra Bullock, Lee Pace",04:00,06:00,"CBS · S2026E181 · Sandra Bullock and Lee Pace , actors in ""Practical Magic 2."" Elizabeth Miller, Jessica Trant and Frank Pellegrino , subjects of DAUGHTERS OF 9/11. Jim VandeHei and Mike Allen , co-"
-04 CBS,"The Price is Right: Thur, Sep 10, 2026",08:00,09:00,CBS · S2026E137
-04 CBS,The Young and the Restless: Ep. #13461,09:30,10:30,CBS · S2026E177
-04 CBS,The Bold and the Beautiful: Ep. #9862,10:30,11:00,CBS · S2026E178
-04 CBS,Beyond the Gates,11:00,12:00,"CBS · S2026E166 · Anita, Leslie, Eva and Vernon face the music together; Bill's daughter drops a major bombshell; Vanessa gets vulnerable with Izaiah; Deanna reaches her breaking point and makes a b"
-04 CBS,CBS Evening News,15:30,16:00,CBS · S2026E181
-04 CBS,Big Brother,17:00,18:00,CBS · S28E28
-05 NBC,"Today: Lee Pace, Michelle Kogan",04:00,06:00,"NBC · S2026E181 · Inside the Game: Australia NFL Game Preview. Today's Consumer: Hidden Camera Investigation into Food Temperature Safety. Lee Pace on ""Practical Magic 2."" Steals & Deals: Get Organi"
-05 NBC,"Today 3rd Hour: Xolo Maridueña, Domhnall Gleeson, Clodagh McKenna",06:00,07:00,"NBC · S2026E180 · Consumer Confidential: September Freebies. Healthy Moms Healthy Babies with Olivia Walton and Dr. Neel Shah. Xolo Maridueña on ""Practical Magic 2."" Catching up with Domhnall Gleeso"
-05 NBC,"TODAY with Jenna & Sheinelle: Cindy Crawford, Theo James, Sandra Bullock, Nicole Kidman",07:00,08:00,"NBC · S02E03 · Model Cindy Crawford; actor Theo James; actresses Sandra Bullock and Nicole Kidman (""Practical Magic 2"")."
-05 NBC,NBC Nightly News: Sept 10 Thur,15:30,16:00,NBC · S2026E232
-05 NBC,"The Tonight Show Starring Jimmy Fallon: Nicole Kidman, Domhnall Gleeson, Leon Bridges",20:35,21:35,"NBC · S2026E105 · Guest includes Nicole Kidman, Domhnall Gleeson, and musical guest Leon Bridges."
-08 CNN,Anderson Cooper 360°,17:00,18:00,CNN · S2026E129
-08 CNN,The Source with Kaitlan Collins,18:00,19:00,CNN · S2026E169
-08 CNN,CNN NewsNight with Abby Phillip,19:00,20:00,CNN · S2026E175
-08 CNN,The Story Is with Elex Michaelson,21:00,23:00,CNN · S2026E177
-09 CNBC,Morning Call,02:00,03:00,CNBC · S2026E124
-09 CNBC,Squawk Box,03:00,06:00,CNBC · S2026E181
-09 CNBC,Squawk on the Street,06:00,08:00,CNBC · S2026E180
-09 CNBC,Fast Money Halftime Report,09:00,10:00,CNBC · S2026E180
-09 CNBC,The Exchange,10:00,11:00,CNBC · S2026E180
-09 CNBC,Power Lunch,11:00,12:00,CNBC · S2026E180
-09 CNBC,Closing Bell,12:00,13:00,CNBC · S2026E180
-09 CNBC,Closing Bell: Overtime,13:00,14:00,CNBC · S2026E180
-09 CNBC,Fast Money,14:00,15:00,CNBC · S2026E180
-09 CNBC,Mad Money,15:00,16:00,CNBC · S2026E180
-10 ESPN,First Take,07:00,09:00,ESPN · S20E244
-10 ESPN,Big Day with Peter Schrager,11:00,12:00,ESPN · S01E01
-10 ESPN,NFL Live,13:00,14:00,"ESPN · S28E94 · Host Laura Rutledge takes the helm of this weekday show featuring the likes of Marcus Spears, Dan Orlovsky, Ryan Clark, Mina Kimes, and Adam Schefter, who offer the latest news and"
-10 ESPN,Pardon the Interruption: Sep 10 Thu,14:30,15:00,ESPN · S2026E151
-15 HBO,A Killer Story: Welcome to Topeka,18:00,19:00,"HBO · S01E01 · True crime enthusiasts Eileen and Keen Umbehr enlist veteran journalist Joe Sexton to delve into the case of Dana Chandler, who was arrested and convicted for the 2002 murders of h"
+03 ABC,Good Morning America: Honoring the 25th Anniversary of the 9/11 Terrorist Attacks,04:00,06:00,"ABC · S2026E182 · A special edition of ""Good Morning America"" honoring the 25th anniversary of the 9/11 terrorist attacks; MLB Hall of Famer and Yankees legend Derek Jeter ; Broadway's "" The Lion Ki"
+03 ABC,"The View: Sherri Shepherd, Maisie Williams",08:00,09:00,"ABC · S30E04 · Sherri Shepherd (actor, ""Robin Roberts Presents: Angel in the Ruble""); Maisie Williams (actor, ""Practical Magic 2"")"
+03 ABC,GMA3: Honoring the 25th Anniversary of the 9/11 Terrorist Attacks,10:00,11:00,"ABC · S06E253 · A special edition of ""GMA3"" honoring the 25th anniversary of the 9/11 terrorist attacks."
+03 ABC,General Hospital: Ep. #16043,11:00,12:00,ABC · S2026E178
+03 ABC,ABC World News Tonight with David Muir,15:30,16:00,ABC · S2026E249
+03 ABC,ABC World News Now,23:00,24:00,ABC · S2026E180
+04 CBS,"CBS Mornings: Sep 11, 2026",04:00,06:00,"CBS · S2026E182 · Bill Cowher , analyst for THE NFL TODAY."
+04 CBS,"The Price is Right: Fri, Sep 11, 2026",08:00,09:00,CBS · S2026E138
+04 CBS,The Young and the Restless: Ep. #13462,09:30,10:30,CBS · S2026E178
+04 CBS,The Bold and the Beautiful: Ep. #9863,10:30,11:00,CBS · S2026E179
+04 CBS,Beyond the Gates,11:00,12:00,CBS · S2026E167 · Dani gets sneaky in Seoul while Andre concludes his mission; Bill interrogates Hayley; Chelsea and Madison find time for romance amid chaos; Tomas leans on Eva after an argument wi
+04 CBS,CBS Evening News,15:30,16:00,CBS · S2026E182
+05 NBC,Today: Marking the 25th Anniversary of 9/11,04:00,04:30,"NBC · S2026E182 · 9/11 25th Anniversary: The Birthday Roses of 9/11. 9/11 Hero to Posthumously Receive Presidential Medal of Freedom. 9/11 Anniversary: Katie Lee Beigel and Michael Lomonaco on ""The "
+05 NBC,"TODAY with Jenna & Sheinelle: Tyler Perry, Miku Martineau, Chef Katie Lee Biegel",07:00,08:00,"NBC · S02E04 · Woman Inspired to Teach After 9/11 Loss. Tyler Perry on ""Why Did I Get Married Again?"" Miku Martineau on ""Crew Girl."" Today Food with Katie Lee Biegel. Weekend Watchlist with Chris"
+05 NBC,NBC Nightly News: Sept 11 Fri,15:30,16:00,NBC · S2026E233
+05 NBC,Dateline NBC: Facing Ground Zero,19:00,20:00,NBC · S2026E23
+07 CW,Totally Funny Animals: Sitting Pretty,18:00,18:30,The CW · S02E21 · A comedy clip show featuring caught-on-camera videos that highlight the outrageous and wacky world of animals.
+07 CW,Totally Funny Animals: Rolling on the River,18:30,19:00,The CW · S02E22 · A comedy clip show featuring caught-on-camera videos that highlight the outrageous and wacky world of animals.
+08 CNN,Anderson Cooper 360°,17:00,18:00,CNN · S2026E130
+08 CNN,The Source with Kaitlan Collins,18:00,19:00,CNN · S2026E170
+08 CNN,CNN NewsNight with Abby Phillip,19:00,20:00,CNN · S2026E176
+08 CNN,The Story Is with Elex Michaelson,21:00,23:00,CNN · S2026E178
+09 CNBC,Morning Call,02:00,03:00,CNBC · S2026E125
+09 CNBC,Squawk Box,03:00,06:00,CNBC · S2026E182
+09 CNBC,Squawk on the Street,06:00,08:00,CNBC · S2026E181
+09 CNBC,Fast Money Halftime Report,09:00,10:00,CNBC · S2026E181
+09 CNBC,The Exchange,10:00,11:00,CNBC · S2026E181
+09 CNBC,Power Lunch,11:00,12:00,CNBC · S2026E181
+09 CNBC,Closing Bell,12:00,13:00,CNBC · S2026E181
+09 CNBC,Closing Bell: Overtime,13:00,14:00,CNBC · S2026E181
+09 CNBC,Fast Money,14:00,15:00,CNBC · S2026E181
+09 CNBC,Mad Money,15:00,16:00,CNBC · S2026E181
+10 ESPN,First Take,07:00,09:00,ESPN · S20E245
+11 FOOD,"Diners, Drive-Ins and Dives: Beef, Bowls, and Burritos",18:00,18:30,Food Network · S2026E16
+13 HGTV,"My Lottery Dream Home: Hey, Winchester: A Yummy Slice of Perfection",18:00,18:30,HGTV · S19E16
+13 HGTV,Roast My Rental: Star-Quality Studio,19:00,19:30,"HGTV · S01E08 · In Los Angeles, Leslie finds herself in a garage studio that's more crash pad than Hollywood glamour. With fake bamboo and old, bulky furnishings, this rental needs a head-to-toe r"
+14 DISC,Deadliest Catch: Raw Nerves,17:00,18:01,"Discovery · S22E17 · On the Time Bandit, Johnathan delegates dentistry duties when his brother Neal's dental implants fail far out to sea. Battling 25-foot waves, Keith leans heavily on his co-captain "
+15 HBO,"Real Time with Bill Maher: Terry Bradshaw, Max Brooks, Sarah Longwell",19:00,20:00,"HBO · S24E26 · This week features a one-on-one interview with Terry Bradshaw , four-time Super Bowl champion, NFL Hall of Famer, and author of ""Looking for Terry: A Memoir."" This week's panel dis"
+16 PBS,Washington Week with The Atlantic,17:00,17:30,PBS · S2026E37
+16 PBS,Firing Line with Margaret Hoover,17:30,18:00,PBS · S2026E36
