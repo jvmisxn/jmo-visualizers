@@ -5,43 +5,16 @@
 # Columns: channel,title,start,end,description. Times are 24h HH:MM and repeat daily.
 channel,title,start,end,description
 02 JMO TV,Game Replays,00:00,24:00,"Full-game replays from the library, in order."
-03 ABC,Good Morning America: Honoring the 25th Anniversary of the 9/11 Terrorist Attacks,04:00,06:00,"ABC · S2026E182 · A special edition of ""Good Morning America"" honoring the 25th anniversary of the 9/11 terrorist attacks; MLB Hall of Famer and Yankees legend Derek Jeter ; Broadway's "" The Lion Ki"
-03 ABC,"The View: Sherri Shepherd, Maisie Williams",08:00,09:00,"ABC · S30E04 · Sherri Shepherd (actor, ""Robin Roberts Presents: Angel in the Ruble""); Maisie Williams (actor, ""Practical Magic 2"")"
-03 ABC,GMA3: Honoring the 25th Anniversary of the 9/11 Terrorist Attacks,10:00,11:00,"ABC · S06E253 · A special edition of ""GMA3"" honoring the 25th anniversary of the 9/11 terrorist attacks."
-03 ABC,General Hospital: Ep. #16043,11:00,12:00,ABC · S2026E178
-03 ABC,ABC World News Tonight with David Muir,15:30,16:00,ABC · S2026E249
-03 ABC,ABC World News Now,23:00,24:00,ABC · S2026E180
-04 CBS,"CBS Mornings: Sep 11, 2026",04:00,06:00,"CBS · S2026E182 · Bill Cowher , analyst for THE NFL TODAY."
-04 CBS,"The Price is Right: Fri, Sep 11, 2026",08:00,09:00,CBS · S2026E138
-04 CBS,The Young and the Restless: Ep. #13462,09:30,10:30,CBS · S2026E178
-04 CBS,The Bold and the Beautiful: Ep. #9863,10:30,11:00,CBS · S2026E179
-04 CBS,Beyond the Gates,11:00,12:00,CBS · S2026E167 · Dani gets sneaky in Seoul while Andre concludes his mission; Bill interrogates Hayley; Chelsea and Madison find time for romance amid chaos; Tomas leans on Eva after an argument wi
-04 CBS,CBS Evening News,15:30,16:00,CBS · S2026E182
-05 NBC,Today: Marking the 25th Anniversary of 9/11,04:00,04:30,"NBC · S2026E182 · 9/11 25th Anniversary: The Birthday Roses of 9/11. 9/11 Hero to Posthumously Receive Presidential Medal of Freedom. 9/11 Anniversary: Katie Lee Beigel and Michael Lomonaco on ""The "
-05 NBC,"TODAY with Jenna & Sheinelle: Tyler Perry, Miku Martineau, Chef Katie Lee Biegel",07:00,08:00,"NBC · S02E04 · Woman Inspired to Teach After 9/11 Loss. Tyler Perry on ""Why Did I Get Married Again?"" Miku Martineau on ""Crew Girl."" Today Food with Katie Lee Biegel. Weekend Watchlist with Chris"
-05 NBC,NBC Nightly News: Sept 11 Fri,15:30,16:00,NBC · S2026E233
-05 NBC,Dateline NBC: Facing Ground Zero,19:00,20:00,NBC · S2026E23
-07 CW,Totally Funny Animals: Sitting Pretty,18:00,18:30,The CW · S02E21 · A comedy clip show featuring caught-on-camera videos that highlight the outrageous and wacky world of animals.
-07 CW,Totally Funny Animals: Rolling on the River,18:30,19:00,The CW · S02E22 · A comedy clip show featuring caught-on-camera videos that highlight the outrageous and wacky world of animals.
-08 CNN,Anderson Cooper 360°,17:00,18:00,CNN · S2026E130
-08 CNN,The Source with Kaitlan Collins,18:00,19:00,CNN · S2026E170
-08 CNN,CNN NewsNight with Abby Phillip,19:00,20:00,CNN · S2026E176
-08 CNN,The Story Is with Elex Michaelson,21:00,23:00,CNN · S2026E178
-09 CNBC,Morning Call,02:00,03:00,CNBC · S2026E125
-09 CNBC,Squawk Box,03:00,06:00,CNBC · S2026E182
-09 CNBC,Squawk on the Street,06:00,08:00,CNBC · S2026E181
-09 CNBC,Fast Money Halftime Report,09:00,10:00,CNBC · S2026E181
-09 CNBC,The Exchange,10:00,11:00,CNBC · S2026E181
-09 CNBC,Power Lunch,11:00,12:00,CNBC · S2026E181
-09 CNBC,Closing Bell,12:00,13:00,CNBC · S2026E181
-09 CNBC,Closing Bell: Overtime,13:00,14:00,CNBC · S2026E181
-09 CNBC,Fast Money,14:00,15:00,CNBC · S2026E181
-09 CNBC,Mad Money,15:00,16:00,CNBC · S2026E181
-10 ESPN,First Take,07:00,09:00,ESPN · S20E245
-11 FOOD,"Diners, Drive-Ins and Dives: Beef, Bowls, and Burritos",18:00,18:30,Food Network · S2026E16
-13 HGTV,"My Lottery Dream Home: Hey, Winchester: A Yummy Slice of Perfection",18:00,18:30,HGTV · S19E16
-13 HGTV,Roast My Rental: Star-Quality Studio,19:00,19:30,"HGTV · S01E08 · In Los Angeles, Leslie finds herself in a garage studio that's more crash pad than Hollywood glamour. With fake bamboo and old, bulky furnishings, this rental needs a head-to-toe r"
-14 DISC,Deadliest Catch: Raw Nerves,17:00,18:01,"Discovery · S22E17 · On the Time Bandit, Johnathan delegates dentistry duties when his brother Neal's dental implants fail far out to sea. Battling 25-foot waves, Keith leans heavily on his co-captain "
-15 HBO,"Real Time with Bill Maher: Terry Bradshaw, Max Brooks, Sarah Longwell",19:00,20:00,"HBO · S24E26 · This week features a one-on-one interview with Terry Bradshaw , four-time Super Bowl champion, NFL Hall of Famer, and author of ""Looking for Terry: A Memoir."" This week's panel dis"
-16 PBS,Washington Week with The Atlantic,17:00,17:30,PBS · S2026E37
-16 PBS,Firing Line with Margaret Hoover,17:30,18:00,PBS · S2026E36
+03 ABC,"Good Morning America: Weekend Edition: Sep 12, 2026",04:00,05:00,"ABC · S2026E73 · Parenting journalist Ericka Sóuter; ""GMA"" September Book Club pick author Chloe Benjamin (""Under Story""); Deals & Steals with ABC e-commerce editor Tory Johnson ."
+03 ABC,SEC on ABC: Alabama Crimson Tide at Kentucky Wildcats,12:30,16:00,"ABC · S03E01 · Live from Kroger Field in Lexington, Kentucky."
+04 CBS,"CBS Saturday Morning: Jason Scott, The High Heat, Chef Dale Talde, Henley Vaszquez",04:00,06:00,"CBS · S03E153 · Saturday Sessions: Jason Scott & The High Heat . The Dish: Dale Talde of Goosefeather. Henley Vaszquez , travel expert and co-founder of Fora."
+04 CBS,College Football Today: Week 2,12:00,12:30,"CBS · S30E02 · College gridiron highlights, analysis and previews. Adam Zucker hosts with Rick Neuheisel, Brian Jones and Aaron Taylor."
+05 NBC,Saturday Today,04:00,06:00,NBC · S2026E37
+05 NBC,"B1G College Countdown: From Iowa City, IA",16:00,16:30,"NBC · S04E02 · Host Ahmed Fareed in studio alongside analyst Joshua Perry, and college football insider Nicole Auerbach, with analyst Chris Simms. At the game site host Jordan Cornette alongside "
+05 NBC,Big Ten Saturday Night: Iowa State Cyclones at Iowa Hawkeyes,16:30,20:00,"NBC · S04E02 · Live from Kinnick Stadium in Iowa City, Iowa."
+06 FOX,"Big Noon Kickoff: From Ann Arbor, MI",07:00,09:00,"FOX · S08E02 · Rob Stone anchors the desk which includes college football legends Mark Ingram II, Matt Leinart, Brady Quinn, and three-time national champion coach Urban Meyer. Chris ‘The Bear' F"
+08 CNN,Smerconish,06:00,07:00,CNN · S2026E36 · Michael Smerconish tackles weekly American political and news stories from one perspective...his.
+08 CNN,"Have I Got News for You: Jon Lovett, Julia Ioffe",18:00,19:00,CNN · S05E01
+10 ESPN,"College GameDay: From Austin, TX",06:00,09:00,"ESPN · S42E04 · College GameDay Built by The Home Depot travels to Austin, Texas, for Week 2 of its 40th season, setting up live from the lawn of the LBJ Presidential Library at The University of "
+11 FOOD,Cook Like an Italian With Gabe Bertaccini: Chicken,09:00,09:30,"Food Network · S01E04 · Chef Gabe Bertaccini dives into the most loved food on any table: chicken. To start, Chicken al Mattone is a Tuscan classic where the chicken is pressed under a brick until the ski"
+16 PBS,Austin City Limits: ACL 12th Annual Hall of Fame Honors Brandi Carlile,20:00,21:00,PBS · S52E02
