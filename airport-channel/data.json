@@ -1,6 +1,6 @@
 {
   "provider": "FAA NAS Status + NOAA AviationWeather",
-  "generatedAt": 1789186501199,
+  "generatedAt": 1789187408287,
   "airport": {
     "icao": "KSEA",
     "iata": "SEA",
@@ -9,7 +9,7 @@
   "metar": null,
   "taf": null,
   "faa": {
-    "updateTime": "Sat Sep 12 04:14:35 2026 GMT",
+    "updateTime": "Sat Sep 12 04:29:04 2026 GMT",
     "events": [],
     "available": true
   }
