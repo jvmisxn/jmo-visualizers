@@ -5,16 +5,32 @@
 # Columns: channel,title,start,end,description. Times are 24h HH:MM and repeat daily.
 channel,title,start,end,description
 02 JMO TV,Game Replays,00:00,24:00,"Full-game replays from the library, in order."
-03 ABC,"Good Morning America: Weekend Edition: Sep 12, 2026",04:00,05:00,"ABC · S2026E73 · Parenting journalist Ericka Sóuter; ""GMA"" September Book Club pick author Chloe Benjamin (""Under Story""); Deals & Steals with ABC e-commerce editor Tory Johnson ."
-03 ABC,SEC on ABC: Alabama Crimson Tide at Kentucky Wildcats,12:30,16:00,"ABC · S03E01 · Live from Kroger Field in Lexington, Kentucky."
-04 CBS,"CBS Saturday Morning: Jason Scott, The High Heat, Chef Dale Talde, Henley Vaszquez",04:00,06:00,"CBS · S03E153 · Saturday Sessions: Jason Scott & The High Heat . The Dish: Dale Talde of Goosefeather. Henley Vaszquez , travel expert and co-founder of Fora."
-04 CBS,College Football Today: Week 2,12:00,12:30,"CBS · S30E02 · College gridiron highlights, analysis and previews. Adam Zucker hosts with Rick Neuheisel, Brian Jones and Aaron Taylor."
-05 NBC,Saturday Today,04:00,06:00,NBC · S2026E37
-05 NBC,"B1G College Countdown: From Iowa City, IA",16:00,16:30,"NBC · S04E02 · Host Ahmed Fareed in studio alongside analyst Joshua Perry, and college football insider Nicole Auerbach, with analyst Chris Simms. At the game site host Jordan Cornette alongside "
-05 NBC,Big Ten Saturday Night: Iowa State Cyclones at Iowa Hawkeyes,16:30,20:00,"NBC · S04E02 · Live from Kinnick Stadium in Iowa City, Iowa."
-06 FOX,"Big Noon Kickoff: From Ann Arbor, MI",07:00,09:00,"FOX · S08E02 · Rob Stone anchors the desk which includes college football legends Mark Ingram II, Matt Leinart, Brady Quinn, and three-time national champion coach Urban Meyer. Chris ‘The Bear' F"
-08 CNN,Smerconish,06:00,07:00,CNN · S2026E36 · Michael Smerconish tackles weekly American political and news stories from one perspective...his.
-08 CNN,"Have I Got News for You: Jon Lovett, Julia Ioffe",18:00,19:00,CNN · S05E01
-10 ESPN,"College GameDay: From Austin, TX",06:00,09:00,"ESPN · S42E04 · College GameDay Built by The Home Depot travels to Austin, Texas, for Week 2 of its 40th season, setting up live from the lawn of the LBJ Presidential Library at The University of "
-11 FOOD,Cook Like an Italian With Gabe Bertaccini: Chicken,09:00,09:30,"Food Network · S01E04 · Chef Gabe Bertaccini dives into the most loved food on any table: chicken. To start, Chicken al Mattone is a Tuscan classic where the chicken is pressed under a brick until the ski"
-16 PBS,Austin City Limits: ACL 12th Annual Hall of Fame Honors Brandi Carlile,20:00,21:00,PBS · S52E02
+03 ABC,"Good Morning America: Weekend Edition: Sep 13, 2026",04:00,05:00,ABC · S2026E74
+03 ABC,"This Week: Sep 13, 2026",07:00,08:00,ABC · S2026E37
+04 CBS,CBS News Sunday Morning: Diane von Furstenberg,06:00,07:30,"CBS · S2026E36 · ARE WE READY? – David Martin reports on how the war with Iran is putting a strain on the country's arsenal of high-tech munitions, how the Pentagon and defense contractors are work"
+04 CBS,Face the Nation: 9/13 -,07:30,08:30,CBS · S2026E37
+04 CBS,The NFL Today: Week 1,09:00,10:00,"CBS · S2026E01 · Featuring highlights, predictions and the latest news from across the league."
+04 CBS,NFL on CBS: Buffalo Bills at Houston Texas,10:00,13:00,"CBS · S2026E01 · Live from NRG Stadium in Houston, Texas."
+04 CBS,NFL on CBS: Green Bay Packers at Minnesota Vikings,13:25,16:25,"CBS · S2026E02 · Live from U.S. Bank Stadium in Minneapolis, Minnesota."
+04 CBS,60 Minutes: Shot Down Over Iran | The Pardon Economy | Battering Ram,16:00,17:00,"CBS · S59E01 · Shot Down Over Iran - After a U.S. fighter jet was shot down over Iran 34 days into the war, the Air Force and American special forces rescued the two-man crew in one of the riskie"
+04 CBS,Big Brother,17:30,18:30,CBS · S28E29
+04 CBS,MTV Video Music Awards: Best of VMAs: Iconic Vanguard Performances,18:30,19:30,CBS · The special celebrates trailblazers who redefined the visual landscape of music for over four decades. The Video Vanguard honorees' show-stopping performances stand as some of the 
+05 NBC,Sunday TODAY with Willie Geist: Benny Blanco,05:00,06:00,NBC · S2026E33
+05 NBC,"Meet the Press: Rep. Mike Johnson, Pete Buttigieg, Jacob Coxon",06:00,07:00,NBC · S2026E33
+05 NBC,NBC Nightly News: Sept 13 Sun,15:30,16:00,NBC · S2026E234
+05 NBC,Football Night in America: Week 1B,16:00,17:15,"NBC · S21E02 · Host Maria Taylor, Hall of Fame head coach Tony Dungy, former NFL head coach Jason Garrett, former NFL quarterback Chris Simms and NFL insider Mike Florio recap the day's NFL highl"
+05 NBC,NBC Sunday Night Football: Dallas Cowboys at New York Giants,17:20,20:50,"NBC · S2026E02 · SNF opener features Dak Prescott and the Dallas Cowboys visiting Jaxson Dart and the New York Giants, in John Harbaugh 's head coaching debut with New York. The Sunday night opener"
+06 FOX,FOX NFL Kickoff: Week 1,08:00,09:00,"FOX · S10E01 · A preview of the day's NFL action, including interviews with NFL newsmakers, reports from NFL game venues, breaking news and updates."
+06 FOX,FOX NFL Sunday: Week 1,09:00,10:00,"FOX · S33E01 · Hosts Curt Menefee and Terry Bradshaw; with analysts Howie Long, Jimmy Johnson and Michael Strahan."
+06 FOX,The Floor: 100 Champions Enter the Ring,17:00,18:00,"FOX · S06E01 · In the dramatic two-part premiere of The Floor, hosted by Rob Lowe, the one thing these experts have in common is that they know how to win. The Floor full of champions are ready t"
+06 FOX,American Dad!: 400?!,18:00,18:30,FOX · S21E12
+06 FOX,American Dad!: Tales from the Outer Frontier,18:00,18:30,FOX · S21E13
+08 CNN,"State of the Union with Jake Tapper and Dana Bash: Sep 13, 2026",06:00,07:00,CNN · S2026E37
+10 ESPN,Sunday NFL Countdown: Week 1,07:00,10:00,"ESPN · S42E01 · Host Mike Greenberg, with a team of analysts Rex Ryan, Randy Moss, Tedy Bruschi, Alex Smith, and Adam Schefter introduces the features and directs the storylines associated with th"
+11 FOOD,Halloween Wars: Back from the Dead: Halloween All Stars,18:00,19:00,"Food Network · S16E01 · Supersized two-hour premiere featuring returning all-star pumpkin carvers, cake artists and sugar masters hoping to defend their titles while others will be on the hunt for redempt"
+14 DISC,Destination Dive: Key West Blue Water Adventures,05:00,05:30,Discovery · S03E05
+14 DISC,"RV There Yet?: Seffner, FL",05:30,06:00,Discovery · S05E09
+14 DISC,Naked and Afraid: Shipwrecked: The Lost Coast's Revenge,17:00,19:01,"Discovery · S01E07 · After the stingray attack, Jamie battles searing pain and a deadly infection. Malu and Mandy struggle with Ana Lis' survival priorities. All of the camps finally meet and combine t"
+14 DISC,In the Eye of the Storm: Father's Day Fury,19:00,20:00,Discovery · S04E11
+15 HBO,Lanterns: Lights Out,18:00,19:00,HBO · S01E05
+16 PBS,Marble Hall Murders,18:00,19:00,"PBS · S01E02 · As Atticus Pünd begins his interrogations with the Chalfont family, Susan discovers that Miriam Crace may have been murdered."
