@@ -5,32 +5,44 @@
 # Columns: channel,title,start,end,description. Times are 24h HH:MM and repeat daily.
 channel,title,start,end,description
 02 JMO TV,Game Replays,00:00,24:00,"Full-game replays from the library, in order."
-03 ABC,"Good Morning America: Weekend Edition: Sep 13, 2026",04:00,05:00,ABC · S2026E74
-03 ABC,"This Week: Sep 13, 2026",07:00,08:00,ABC · S2026E37
-04 CBS,CBS News Sunday Morning: Diane von Furstenberg,06:00,07:30,"CBS · S2026E36 · ARE WE READY? – David Martin reports on how the war with Iran is putting a strain on the country's arsenal of high-tech munitions, how the Pentagon and defense contractors are work"
-04 CBS,Face the Nation: 9/13 -,07:30,08:30,CBS · S2026E37
-04 CBS,The NFL Today: Week 1,09:00,10:00,"CBS · S2026E01 · Featuring highlights, predictions and the latest news from across the league."
-04 CBS,NFL on CBS: Buffalo Bills at Houston Texas,10:00,13:00,"CBS · S2026E01 · Live from NRG Stadium in Houston, Texas."
-04 CBS,NFL on CBS: Green Bay Packers at Minnesota Vikings,13:25,16:25,"CBS · S2026E02 · Live from U.S. Bank Stadium in Minneapolis, Minnesota."
-04 CBS,60 Minutes: Shot Down Over Iran | The Pardon Economy | Battering Ram,16:00,17:00,"CBS · S59E01 · Shot Down Over Iran - After a U.S. fighter jet was shot down over Iran 34 days into the war, the Air Force and American special forces rescued the two-man crew in one of the riskie"
-04 CBS,Big Brother,17:30,18:30,CBS · S28E29
-04 CBS,MTV Video Music Awards: Best of VMAs: Iconic Vanguard Performances,18:30,19:30,CBS · The special celebrates trailblazers who redefined the visual landscape of music for over four decades. The Video Vanguard honorees' show-stopping performances stand as some of the 
-05 NBC,Sunday TODAY with Willie Geist: Benny Blanco,05:00,06:00,NBC · S2026E33
-05 NBC,"Meet the Press: Rep. Mike Johnson, Pete Buttigieg, Jacob Coxon",06:00,07:00,NBC · S2026E33
-05 NBC,NBC Nightly News: Sept 13 Sun,15:30,16:00,NBC · S2026E234
-05 NBC,Football Night in America: Week 1B,16:00,17:15,"NBC · S21E02 · Host Maria Taylor, Hall of Fame head coach Tony Dungy, former NFL head coach Jason Garrett, former NFL quarterback Chris Simms and NFL insider Mike Florio recap the day's NFL highl"
-05 NBC,NBC Sunday Night Football: Dallas Cowboys at New York Giants,17:20,20:50,"NBC · S2026E02 · SNF opener features Dak Prescott and the Dallas Cowboys visiting Jaxson Dart and the New York Giants, in John Harbaugh 's head coaching debut with New York. The Sunday night opener"
-06 FOX,FOX NFL Kickoff: Week 1,08:00,09:00,"FOX · S10E01 · A preview of the day's NFL action, including interviews with NFL newsmakers, reports from NFL game venues, breaking news and updates."
-06 FOX,FOX NFL Sunday: Week 1,09:00,10:00,"FOX · S33E01 · Hosts Curt Menefee and Terry Bradshaw; with analysts Howie Long, Jimmy Johnson and Michael Strahan."
-06 FOX,The Floor: 100 Champions Enter the Ring,17:00,18:00,"FOX · S06E01 · In the dramatic two-part premiere of The Floor, hosted by Rob Lowe, the one thing these experts have in common is that they know how to win. The Floor full of champions are ready t"
-06 FOX,American Dad!: 400?!,18:00,18:30,FOX · S21E12
-06 FOX,American Dad!: Tales from the Outer Frontier,18:00,18:30,FOX · S21E13
-08 CNN,"State of the Union with Jake Tapper and Dana Bash: Sep 13, 2026",06:00,07:00,CNN · S2026E37
-10 ESPN,Sunday NFL Countdown: Week 1,07:00,10:00,"ESPN · S42E01 · Host Mike Greenberg, with a team of analysts Rex Ryan, Randy Moss, Tedy Bruschi, Alex Smith, and Adam Schefter introduces the features and directs the storylines associated with th"
-11 FOOD,Halloween Wars: Back from the Dead: Halloween All Stars,18:00,19:00,"Food Network · S16E01 · Supersized two-hour premiere featuring returning all-star pumpkin carvers, cake artists and sugar masters hoping to defend their titles while others will be on the hunt for redempt"
-14 DISC,Destination Dive: Key West Blue Water Adventures,05:00,05:30,Discovery · S03E05
-14 DISC,"RV There Yet?: Seffner, FL",05:30,06:00,Discovery · S05E09
-14 DISC,Naked and Afraid: Shipwrecked: The Lost Coast's Revenge,17:00,19:01,"Discovery · S01E07 · After the stingray attack, Jamie battles searing pain and a deadly infection. Malu and Mandy struggle with Ana Lis' survival priorities. All of the camps finally meet and combine t"
-14 DISC,In the Eye of the Storm: Father's Day Fury,19:00,20:00,Discovery · S04E11
-15 HBO,Lanterns: Lights Out,18:00,19:00,HBO · S01E05
-16 PBS,Marble Hall Murders,18:00,19:00,"PBS · S01E02 · As Atticus Pünd begins his interrogations with the Chalfont family, Susan discovers that Miriam Crace may have been murdered."
+03 ABC,"Good Morning America: Key He Quan, Will Lovelace, Dylan Southern, Steven Knight",04:00,06:00,"ABC · S2026E183 · Actor Key He Quan (""Never Say Die""); directors Will Lovelace and Dylan Southern and writer Steven Knight discuss ""Oasis: Don't Look Back in Anger"" with ABC News' Chris Connelly ; G"
+03 ABC,The View: Colin Kaepernick,08:00,09:00,"ABC · S30E05 · Colin Kaepernick (author, ""The Perilous Fight"")."
+03 ABC,"GMA3: Neil Patrick Harris, Will Lovelace, Dylan Southern, Steven Knight",10:00,11:00,"ABC · S06E254 · Actor Neil Patrick Harris (""Sunny Dancer""); directors Will Lovelace and Dylan Southern and writer Steven Knight discuss ""Oasis: Don't Look Back in Anger"" with ABC News' Chris Conne"
+03 ABC,General Hospital: Ep. #16044,11:00,12:00,ABC · S2026E179
+03 ABC,ABC World News Tonight with David Muir,15:30,16:00,ABC · S2026E251
+03 ABC,ABC World News Now,23:00,24:00,ABC · S2026E181
+04 CBS,"CBS Mornings: Oprah Winfrey, Jim VandeHei, Mike Allen",04:00,06:00,"CBS · S2026E183 · EXCLUSIVE ANNOUNCEMENT from Oprah Winfrey , broadcaster, producer and philanthropist. Jim VandeHei and Mike Allen , co-founders of Axios and authors of Simplify: Do 50% More with 5"
+04 CBS,Beyond the Gates,11:00,12:00,CBS · S2026E168 · Vernon's words surprise Martin; Nicole's support steadies Anita; Bill grills his wife; Smitty tells Chelsea there is no turning back; Naomi and Jacob lean on each other; Tomas trie
+04 CBS,CBS Evening News,15:30,16:00,CBS · S2026E183
+05 NBC,"Today: Mariska Hargitay, Salma Hayek",04:00,06:00,NBC · S2026E183 · Emmy's preview with Sheinelle; Mariska Hargitay on hosting the Emmy's; actress Salma Hayek; Inside the Game: One Giants fan gets a big surprise.
+05 NBC,"Today 3rd Hour: Ella Beatty, Linda Perry, Emily Harrington",06:00,07:00,NBC · S2026E182 · Bottoms Up Invitational Recap; catching up with Ella Beatty; professional rock climber and mountaineer Emily Harrington; the art of small talk with Dr. Samantha Boardman; Linda Per
+05 NBC,"TODAY with Jenna & Sheinelle: Tyler Perry, Cecilia Cassini",07:00,08:00,"NBC · S02E05 · Savannah Guthrie co-hosts; Emmys lookahead from the red carpet; actor Tyler Perry; fashion designer Cecilia Cassini. Emmys Beauty with Milly Almodovar; ""What The Kids Are Saying"" w"
+05 NBC,NBC Nightly News: Sept 14 Mon,15:30,16:00,NBC · S2026E235
+05 NBC,The Emmy Awards: 78th Primetime Emmy Awards,17:00,20:00,"NBC · S2026E01 · Mariska Hargitay hosts the star-studded awards show that celebrates and honors television's best, live from the Peacock Theater in Los Angeles."
+05 NBC,"The Tonight Show Starring Jimmy Fallon: Salma Hayek Pinault, Becky G, Andrew Huberman, Angine de Poitrine",20:35,21:35,"NBC · S2026E106 · Guest include Salma Hayek Pinault, Becky G, Andrew Huberman, and musical guest Angine de Poitrine."
+06 FOX,"Name That Tune: Brains, Brawn & Battles",17:00,18:00,"FOX · S05E15 · Matthew, an events coordinator from Philadelphia, faces off against Paul, a commodities trader from New Jersey, in game one, while Tome, a retail merchandiser from Detroit, Michiga"
+06 FOX,"Name That Tune: Teachers, Tech & Tunes",18:00,19:00,"FOX · S05E16 · Amy, a dean of students from Seattle, Washington and Billy, an industrial salesman from Montgomery, Texas face off in game one, while Eric, a director in business development from "
+07 CW,All American: Find Your Way Back,17:00,18:00,"The CW · S08E11 · Olivia sends Jordan on a quest that forces Jordan and Layla to confront both their past and the future that lies ahead for them. Meanwhile, the search for Spencer continues. Coop a"
+08 CNN,Anderson Cooper 360°,17:00,18:00,CNN · S2026E131
+08 CNN,The Source with Kaitlan Collins,18:00,19:00,CNN · S2026E171
+08 CNN,CNN NewsNight with Abby Phillip,19:00,20:00,CNN · S2026E177
+08 CNN,The Story Is with Elex Michaelson,21:00,23:00,CNN · S2026E179
+09 CNBC,Morning Call,02:00,03:00,CNBC · S2026E126
+09 CNBC,Squawk Box,03:00,06:00,CNBC · S2026E183
+09 CNBC,Squawk on the Street,06:00,08:00,CNBC · S2026E182
+09 CNBC,Fast Money Halftime Report,09:00,10:00,CNBC · S2026E182
+09 CNBC,The Exchange,10:00,11:00,CNBC · S2026E182
+09 CNBC,Power Lunch,11:00,12:00,CNBC · S2026E182
+09 CNBC,Closing Bell,12:00,13:00,CNBC · S2026E182
+09 CNBC,Closing Bell: Overtime,13:00,14:00,CNBC · S2026E182
+09 CNBC,Fast Money,14:00,15:00,CNBC · S2026E182
+09 CNBC,Mad Money,15:00,16:00,CNBC · S2026E182
+10 ESPN,First Take,07:00,09:00,ESPN · S20E246
+10 ESPN,Big Day with Peter Schrager,11:00,12:00,ESPN · S01E02
+10 ESPN,NFL Live,12:00,13:00,"ESPN · S28E95 · Live from Arrowhead Stadium Kansas City, MO. Host Laura Rutledge takes the helm of this weekday show featuring the likes of Marcus Spears, Dan Orlovsky, Mina Kimes, Jason McCourty "
+10 ESPN,Monday Night Countdown: Week 1,15:00,17:15,"ESPN · S34E01 · Live from Arrowhead Stadium Kansas City, MO. With host Scott Van Pelt and analysts Marcus Spears, Jason McCourty, Jason Kelce and NFL Insider Adam Schefter. The crew reviews Sunday"
+10 ESPN,Monday Night Football: Denver Broncos at Kansas City Chiefs,17:00,20:30,"ESPN · S2026E01 · Live from GEHA Field at Arrowhead Stadium in Kansas City, Mo."
+11 FOOD,Halloween Baking Championship: The Museum of Unnatural History,18:00,20:00,Food Network · S12E01
+14 DISC,Contraband: Seized at the Border: Rookies for the Win,17:00,18:00,Discovery
+14 DISC,120 Hours Behind Bars: Indian River County Jail,18:00,19:00,Discovery · S02E09
+16 PBS,Independent Lens: Ghost in the Machine,19:00,20:30,PBS · S27E15
