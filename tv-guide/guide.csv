@@ -5,44 +5,44 @@
 # Columns: channel,title,start,end,description. Times are 24h HH:MM and repeat daily.
 channel,title,start,end,description
 02 JMO TV,Game Replays,00:00,24:00,"Full-game replays from the library, in order."
-03 ABC,"Good Morning America: Key He Quan, Will Lovelace, Dylan Southern, Steven Knight",04:00,06:00,"ABC · S2026E183 · Actor Key He Quan (""Never Say Die""); directors Will Lovelace and Dylan Southern and writer Steven Knight discuss ""Oasis: Don't Look Back in Anger"" with ABC News' Chris Connelly ; G"
-03 ABC,The View: Colin Kaepernick,08:00,09:00,"ABC · S30E05 · Colin Kaepernick (author, ""The Perilous Fight"")."
-03 ABC,"GMA3: Neil Patrick Harris, Will Lovelace, Dylan Southern, Steven Knight",10:00,11:00,"ABC · S06E254 · Actor Neil Patrick Harris (""Sunny Dancer""); directors Will Lovelace and Dylan Southern and writer Steven Knight discuss ""Oasis: Don't Look Back in Anger"" with ABC News' Chris Conne"
-03 ABC,General Hospital: Ep. #16044,11:00,12:00,ABC · S2026E179
-03 ABC,ABC World News Tonight with David Muir,15:30,16:00,ABC · S2026E251
-03 ABC,ABC World News Now,23:00,24:00,ABC · S2026E181
-04 CBS,"CBS Mornings: Oprah Winfrey, Jim VandeHei, Mike Allen",04:00,06:00,"CBS · S2026E183 · EXCLUSIVE ANNOUNCEMENT from Oprah Winfrey , broadcaster, producer and philanthropist. Jim VandeHei and Mike Allen , co-founders of Axios and authors of Simplify: Do 50% More with 5"
-04 CBS,Beyond the Gates,11:00,12:00,CBS · S2026E168 · Vernon's words surprise Martin; Nicole's support steadies Anita; Bill grills his wife; Smitty tells Chelsea there is no turning back; Naomi and Jacob lean on each other; Tomas trie
-04 CBS,CBS Evening News,15:30,16:00,CBS · S2026E183
-05 NBC,"Today: Mariska Hargitay, Salma Hayek",04:00,06:00,NBC · S2026E183 · Emmy's preview with Sheinelle; Mariska Hargitay on hosting the Emmy's; actress Salma Hayek; Inside the Game: One Giants fan gets a big surprise.
-05 NBC,"Today 3rd Hour: Ella Beatty, Linda Perry, Emily Harrington",06:00,07:00,NBC · S2026E182 · Bottoms Up Invitational Recap; catching up with Ella Beatty; professional rock climber and mountaineer Emily Harrington; the art of small talk with Dr. Samantha Boardman; Linda Per
-05 NBC,"TODAY with Jenna & Sheinelle: Tyler Perry, Cecilia Cassini",07:00,08:00,"NBC · S02E05 · Savannah Guthrie co-hosts; Emmys lookahead from the red carpet; actor Tyler Perry; fashion designer Cecilia Cassini. Emmys Beauty with Milly Almodovar; ""What The Kids Are Saying"" w"
-05 NBC,NBC Nightly News: Sept 14 Mon,15:30,16:00,NBC · S2026E235
-05 NBC,The Emmy Awards: 78th Primetime Emmy Awards,17:00,20:00,"NBC · S2026E01 · Mariska Hargitay hosts the star-studded awards show that celebrates and honors television's best, live from the Peacock Theater in Los Angeles."
-05 NBC,"The Tonight Show Starring Jimmy Fallon: Salma Hayek Pinault, Becky G, Andrew Huberman, Angine de Poitrine",20:35,21:35,"NBC · S2026E106 · Guest include Salma Hayek Pinault, Becky G, Andrew Huberman, and musical guest Angine de Poitrine."
-06 FOX,"Name That Tune: Brains, Brawn & Battles",17:00,18:00,"FOX · S05E15 · Matthew, an events coordinator from Philadelphia, faces off against Paul, a commodities trader from New Jersey, in game one, while Tome, a retail merchandiser from Detroit, Michiga"
-06 FOX,"Name That Tune: Teachers, Tech & Tunes",18:00,19:00,"FOX · S05E16 · Amy, a dean of students from Seattle, Washington and Billy, an industrial salesman from Montgomery, Texas face off in game one, while Eric, a director in business development from "
-07 CW,All American: Find Your Way Back,17:00,18:00,"The CW · S08E11 · Olivia sends Jordan on a quest that forces Jordan and Layla to confront both their past and the future that lies ahead for them. Meanwhile, the search for Spencer continues. Coop a"
-08 CNN,Anderson Cooper 360°,17:00,18:00,CNN · S2026E131
-08 CNN,The Source with Kaitlan Collins,18:00,19:00,CNN · S2026E171
-08 CNN,CNN NewsNight with Abby Phillip,19:00,20:00,CNN · S2026E177
-08 CNN,The Story Is with Elex Michaelson,21:00,23:00,CNN · S2026E179
-09 CNBC,Morning Call,02:00,03:00,CNBC · S2026E126
-09 CNBC,Squawk Box,03:00,06:00,CNBC · S2026E183
-09 CNBC,Squawk on the Street,06:00,08:00,CNBC · S2026E182
-09 CNBC,Fast Money Halftime Report,09:00,10:00,CNBC · S2026E182
-09 CNBC,The Exchange,10:00,11:00,CNBC · S2026E182
-09 CNBC,Power Lunch,11:00,12:00,CNBC · S2026E182
-09 CNBC,Closing Bell,12:00,13:00,CNBC · S2026E182
-09 CNBC,Closing Bell: Overtime,13:00,14:00,CNBC · S2026E182
-09 CNBC,Fast Money,14:00,15:00,CNBC · S2026E182
-09 CNBC,Mad Money,15:00,16:00,CNBC · S2026E182
-10 ESPN,First Take,07:00,09:00,ESPN · S20E246
-10 ESPN,Big Day with Peter Schrager,11:00,12:00,ESPN · S01E02
-10 ESPN,NFL Live,12:00,13:00,"ESPN · S28E95 · Live from Arrowhead Stadium Kansas City, MO. Host Laura Rutledge takes the helm of this weekday show featuring the likes of Marcus Spears, Dan Orlovsky, Mina Kimes, Jason McCourty "
-10 ESPN,Monday Night Countdown: Week 1,15:00,17:15,"ESPN · S34E01 · Live from Arrowhead Stadium Kansas City, MO. With host Scott Van Pelt and analysts Marcus Spears, Jason McCourty, Jason Kelce and NFL Insider Adam Schefter. The crew reviews Sunday"
-10 ESPN,Monday Night Football: Denver Broncos at Kansas City Chiefs,17:00,20:30,"ESPN · S2026E01 · Live from GEHA Field at Arrowhead Stadium in Kansas City, Mo."
-11 FOOD,Halloween Baking Championship: The Museum of Unnatural History,18:00,20:00,Food Network · S12E01
-14 DISC,Contraband: Seized at the Border: Rookies for the Win,17:00,18:00,Discovery
-14 DISC,120 Hours Behind Bars: Indian River County Jail,18:00,19:00,Discovery · S02E09
-16 PBS,Independent Lens: Ghost in the Machine,19:00,20:30,PBS · S27E15
+03 ABC,"Good Morning America: Scott Speedman, Lindsey Vonn",04:00,06:00,"ABC · S2026E184 · Actor Scott Speedman (""R.J. Decker""); a performance by the cast of Broadway's ""Buena Vista Social Club""; Olympic Ski Champion Lindsey Vonn sits down with Ginger Zee ."
+03 ABC,The View: Neil deGrasse Tyson,08:00,09:00,"ABC · S30E06 · Neil deGrasse Tyson (author, ""Lost in Space: 5,000 Facts for Navigating the Universe"")."
+03 ABC,GMA3: Scott Speedman,10:00,11:00,"ABC · S06E255 · Actor Scott Speedman (""R.J. Decker""); Dr. Shefali (""Raising Conscious Daughters"" and ""Raising Conscious Sons"")."
+03 ABC,General Hospital: Ep. #16045,11:00,12:00,ABC · S2026E180
+03 ABC,ABC World News Tonight with David Muir,15:30,16:00,ABC · S2026E252
+03 ABC,Dancing with the Stars: Premiere: Night One,17:00,19:00,"ABC · S35E01 · The male celebrities take the ballroom floor, each performing to a No. 1 song from the year they were born, with one eliminated at the end of the night."
+03 ABC,R.J. Decker: The Point of Us Breaking,19:00,20:00,ABC · S02E01 · A reunion with an old prison acquaintance pulls R.J. into a string of daring bank heists as the fallout from Victor Ochoa's death deepens.
+03 ABC,"Jimmy Kimmel Live: Stephen Colbert, Judith Hill",20:35,21:35,ABC · S2026E109 · 1. Stephen Colbert. 2. Judith Hill sits in with The Cletones.
+03 ABC,ABC World News Now,23:00,24:00,ABC · S2026E182
+04 CBS,"CBS Mornings: Jessica Tarlov, Elin Hilderbrand, Shelby Cunningham",04:00,06:00,"CBS · S2026E184 · Jessica Tarlov , Democratic strategist, co-host of ""The Five"" on Fox News and author of I Disagree: Winning Arguments Without Losing Friends. Elin Hilderbrand and Shelby Cunningham"
+04 CBS,Beyond the Gates,11:00,12:00,CBS · S2026E169 · Hayley sounds the alarm; Nicole and Vanessa clash over Heather; Ted and Shanice confront Leslie; Joey and Mona field some urgent questions from an unlikely source.
+04 CBS,CBS Evening News,15:30,16:00,CBS · S2026E184
+05 NBC,"Today: Benny Blanco, Courtney LaCorte",04:00,06:00,"NBC · S2026E184 · Emmy's Fashion Recap with Sheinelle. Benny Blanco on His New Book ""F Failure."" Step Into Style with Chassie Post. Today Food with Courtney LaCorte."
+05 NBC,"Today 3rd Hour: Chelsea Frei, Tanya Sichynsky",06:00,07:00,NBC · S2026E183 · Disaster-proofing one's home; actress Chelsea Frei; entertainment journalist Dave Karger; beauty and fashion hacks with Sarah Eggenberger; Today Food with Tanya Sichynsky.
+05 NBC,"TODAY with Jenna & Sheinelle: Benny Blanco, Alan Cumming, Danna",07:00,08:00,"NBC · S02E06 · Benny Blanco guest co-hosts; Sheinelle on the Emmys Red Carpet; actor Alan Cumming; Emmys fashion panel with June Ambrose, Jenna Lyons and Zanna Roberts Rassi; Danna performs."
+05 NBC,NBC Nightly News: Sept 15 Tue,15:30,16:00,NBC · S2026E236
+05 NBC,America's Got Talent: Semifinals,17:00,19:00,NBC · S21E20 · Twelve acts compete live for a chance to advance to the finale; America begins the vote for their six favorite acts.
+05 NBC,Password: Alan Cumming & Jimmy Fallon,19:00,20:00,"NBC · S03E19 · Jimmy Fallon and celebrity guest Alan Cumming pair up with contestants and face off over two ""traitorous"" games. Hosted by Keke Palmer, players must guess passwords using one-word "
+05 NBC,"The Tonight Show Starring Jimmy Fallon: Helen Mirren, Alan Cumming, Jake Shane, Jay Jurden",20:35,21:35,"NBC · S2026E107 · Guest includes Helen Mirren, Alan Cumming, Jake Shane, and Jay Jurden."
+06 FOX,Kitchen Nightmares: Wick 'n Ore Kitchen & Tap,17:00,18:00,"FOX · S10E11 · In a two-hour season finale, Gordon Ramsay visits two struggling restaurants at a crossroads: a suburban eatery battling an identity crisis and a family-run Italian institution fac"
+06 FOX,Kitchen Nightmares: Firenze Restaurant & Pizzeria,18:00,19:00,"FOX · S10E12 · In a two-hour season finale, Gordon Ramsay visits two struggling restaurants at a crossroads: a suburban eatery battling an identity crisis and a family-run Italian institution fac"
+07 CW,WWE NXT: 37,17:00,19:00,The CW · S20E37
+09 CNBC,Morning Call,02:00,03:00,CNBC · S2026E127
+09 CNBC,Squawk Box,03:00,06:00,CNBC · S2026E184
+09 CNBC,Squawk on the Street,06:00,08:00,CNBC · S2026E183
+09 CNBC,Fast Money Halftime Report,09:00,10:00,CNBC · S2026E183
+09 CNBC,The Exchange,10:00,11:00,CNBC · S2026E183
+09 CNBC,Power Lunch,11:00,12:00,CNBC · S2026E183
+09 CNBC,Closing Bell,12:00,13:00,CNBC · S2026E183
+09 CNBC,Closing Bell: Overtime,13:00,14:00,CNBC · S2026E183
+09 CNBC,Fast Money,14:00,15:00,CNBC · S2026E183
+09 CNBC,Mad Money,15:00,16:00,CNBC · S2026E183
+10 ESPN,First Take,07:00,09:00,ESPN · S20E247
+10 ESPN,Big Day with Peter Schrager,11:00,12:00,ESPN · S01E03
+10 ESPN,NFL Live,13:00,14:00,"ESPN · S28E96 · Host Laura Rutledge takes the helm of this weekday show featuring the likes of Marcus Spears, Dan Orlovsky, Ryan Clark, Mina Kimes, and Adam Schefter, who offer the latest news and"
+10 ESPN,30 for 30: 14 Days in Gainesville,17:00,18:30,"ESPN · S04E49 · 14 Days in Gainesville returns to the fall of 1990, when Gainesville, Fla., found itself caught between tremendous anticipation and unimaginable tragedy. Steve Spurrier, the Heisma"
+11 FOOD,Bobby's Triple Threat: Titans vs Danny Garcia,17:00,18:00,Food Network · S05E04 · Brooklyn hotshot and Top Chef winner Danny Garcia keeps Bobby Flay's Titans on their toes with his elevated Dominican and Puerto Rican flavors. Chef of the first Michelin-starred M
+11 FOOD,Bobby Flay's The Line: Fabio Viviani: Giostra,18:00,19:00,Food Network · S01E02 · There's a lot on the line for home team chef Antonia Lofaso when her friend and fellow Italian Fabio Viviani challenges Bobby Flay's team to a battle Italiano.
+12 HIST,"The Proof Is Out There: Falling UFO, Monster of the North Sea, Interdimensional Portals",18:00,19:03,History · S06E18 · Did a Massachusetts woman capture a UFO falling to Earth? Did a fisherman come face-to-face with a legendary monster lurking off the coast of Northern Europe? Did a Colorado man re
+12 HIST,"The Proof Is Out There: Mystery Orbs, Alien Autopsy, and Secret Underground City",19:03,20:05,History · S06E19 · Are mysterious flying orbs secretly watching us? Is a disturbing alien autopsy video evidence of extraterrestrial life? Did a homeowner's remodeling project uncover a vast undergro
+13 HGTV,A Very Haunted Renovation: TBA,17:00,18:00,HGTV · S01E01
