@@ -1,6 +1,6 @@
 {
   "provider": "finnhub",
-  "generatedAt": 1790110370488,
+  "generatedAt": 1790110766696,
   "quotes": [
     {
       "symbol": "SPY",
@@ -87,10 +87,10 @@
       "providerSymbol": "BINANCE:BTCUSDT",
       "name": "Bitcoin",
       "group": "watch",
-      "price": 86260,
-      "change": -746.81,
-      "changePercent": -0.8583,
-      "providerTime": 1790110360000
+      "price": 86204,
+      "change": -744.54,
+      "changePercent": -0.8563,
+      "providerTime": 1790110754000
     }
   ]
 }
