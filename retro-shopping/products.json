@@ -1,7 +1,7 @@
 {
   "provider": "Fourthwall public collection JSON",
   "sourceUrl": "https://shop.fourthwall.com/collections/all.json",
-  "generatedAt": 1790322383401,
+  "generatedAt": 1790322835940,
   "collection": "All Products",
   "products": [
     {
@@ -169,7 +169,7 @@
       "available": true,
       "image": "https://imgproxy.fourthwall.dev/PnUbu3STnmlEmrU5qgf8Axm9LZmMJ6iP7hyNkxnrF8k/rt:fill/w:422/sm:1/enc/w-Ii5JojkN4rdEcV/WzGsmO_vDHjKO_r1/o6P5D1jg2xrF8bra/cFRGZWcRvjx6f74E/GfXdep6O9ISayQ6X/5ZsPieTO4gJ5Wz1q/OY3gs1kO1d4k0w9Y/T3Omw0swsK6cSfi8/52Io9z0lD_WHserH/f8EbKYcUo5Yy5mKJ/QBaL7Nja-XFjKMiU/8JX1Tfrqx04-vGSB/jAy18R0s_7TxiAAJ/M3ZDPrq8qDNV8cjh/rfscnNo7J2c.jpg",
       "url": "https://shop.fourthwall.com/products/i-love-fourthwall-baby-tee",
-      "updatedAt": "2026-08-17 18:31:18 UTC",
+      "updatedAt": "2026-09-25 07:47:14 UTC",
       "variants": 4
     },
     {
