@@ -1,6 +1,6 @@
 {
   "provider": "finnhub",
-  "generatedAt": 1790355765855,
+  "generatedAt": 1790356757394,
   "quotes": [
     {
       "symbol": "SPY",
@@ -10,87 +10,87 @@
       "price": 771,
       "change": 3.82,
       "changePercent": 0.4979,
-      "providerTime": 1790355745000
+      "providerTime": 1790356737000
     },
     {
       "symbol": "QQQ",
       "providerSymbol": "QQQ",
       "name": "Nasdaq 100 ETF",
       "group": "index",
-      "price": 744.88,
-      "change": 3.78,
-      "changePercent": 0.5101,
-      "providerTime": 1790355742000
+      "price": 745.15,
+      "change": 4.05,
+      "changePercent": 0.5465,
+      "providerTime": 1790356737000
     },
     {
       "symbol": "DIA",
       "providerSymbol": "DIA",
       "name": "Dow 30 ETF",
       "group": "index",
-      "price": 516.85,
-      "change": 4.17,
-      "changePercent": 0.8134,
-      "providerTime": 1790355729000
+      "price": 516.72,
+      "change": 4.04,
+      "changePercent": 0.788,
+      "providerTime": 1790356723000
     },
     {
       "symbol": "IWM",
       "providerSymbol": "IWM",
       "name": "Russell 2000 ETF",
       "group": "index",
-      "price": 282.54,
-      "change": 0.88,
-      "changePercent": 0.3124,
-      "providerTime": 1790355745000
+      "price": 282.25,
+      "change": 0.59,
+      "changePercent": 0.2095,
+      "providerTime": 1790356737000
     },
     {
       "symbol": "AAPL",
       "providerSymbol": "AAPL",
       "name": "Apple",
       "group": "watch",
-      "price": 339.48,
-      "change": 3.56,
-      "changePercent": 1.0598,
-      "providerTime": 1790355745000
+      "price": 339.7,
+      "change": 3.78,
+      "changePercent": 1.1253,
+      "providerTime": 1790356738000
     },
     {
       "symbol": "NVDA",
       "providerSymbol": "NVDA",
       "name": "NVIDIA",
       "group": "watch",
-      "price": 224.9,
-      "change": 0.32,
-      "changePercent": 0.1425,
-      "providerTime": 1790355745000
+      "price": 225.26,
+      "change": 0.68,
+      "changePercent": 0.3028,
+      "providerTime": 1790356737000
     },
     {
       "symbol": "MSFT",
       "providerSymbol": "MSFT",
       "name": "Microsoft",
       "group": "watch",
-      "price": 516.94,
-      "change": 19.01,
-      "changePercent": 3.8178,
-      "providerTime": 1790355745000
+      "price": 517.37,
+      "change": 19.44,
+      "changePercent": 3.9042,
+      "providerTime": 1790356735000
     },
     {
       "symbol": "TSLA",
       "providerSymbol": "TSLA",
       "name": "Tesla",
       "group": "watch",
-      "price": 372.02,
-      "change": -5.92,
-      "changePercent": -1.5664,
-      "providerTime": 1790355744000
+      "price": 372,
+      "change": -5.94,
+      "changePercent": -1.5717,
+      "providerTime": 1790356738000
     },
     {
       "symbol": "BTC",
       "providerSymbol": "BINANCE:BTCUSDT",
       "name": "Bitcoin",
       "group": "watch",
-      "price": 83892.01,
-      "change": -583.99,
-      "changePercent": -0.6913,
-      "providerTime": 1790355751000
+      "price": 83951.99,
+      "change": -484.51,
+      "changePercent": -0.5738,
+      "providerTime": 1790356752000
     }
   ]
 }
