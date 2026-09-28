@@ -1,23 +1,23 @@
 {
   "provider": "FAA NAS Status + NOAA AviationWeather",
-  "generatedAt": 1790584594492,
+  "generatedAt": 1790585753656,
   "airport": {
     "icao": "KSEA",
     "iata": "SEA",
     "name": "Seattle-Tacoma Intl"
   },
   "metar": {
-    "raw": "METAR KSEA 280753Z 02006KT 10SM FEW170 09/07 A3005 RMK AO2 SLP181 T00890072 401830089 $",
-    "wind": "020 deg @ 6 kt",
+    "raw": "METAR KSEA 280853Z 00000KT 10SM BKN250 09/07 A3005 RMK AO2 SLP183 T00940072 53006 $",
+    "wind": "000 deg @ 0 kt",
     "visibility": "10 SM",
     "tempDew": "09 / 07 C",
     "altimeter": "30.05 inHg",
-    "ceiling": "UNL",
+    "ceiling": "25000 FT",
     "category": "VFR"
   },
   "taf": "TAF KSEA 280521Z 2806/2912 02006KT P6SM SCT200 FM281200 16004KT P6SM BKN200 FM281800 22008KT P6SM SCT150 BKN200 FM290300 20011KT P6SM OVC100 FM291100 20013G20KT 6SM -RA BR OVC025",
   "faa": {
-    "updateTime": "Mon Sep 28 08:35:39 2026 GMT",
+    "updateTime": "Mon Sep 28 08:55:20 2026 GMT",
     "events": [],
     "available": true
   }
