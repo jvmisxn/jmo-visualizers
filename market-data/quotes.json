@@ -1,6 +1,6 @@
 {
   "provider": "finnhub",
-  "generatedAt": 1790712582092,
+  "generatedAt": 1790713657247,
   "quotes": [
     {
       "symbol": "SPY",
@@ -37,9 +37,9 @@
       "providerSymbol": "IWM",
       "name": "Russell 2000 ETF",
       "group": "index",
-      "price": 279.07,
-      "change": -0.95,
-      "changePercent": -0.3393,
+      "price": 279.01,
+      "change": -1.01,
+      "changePercent": -0.3607,
       "providerTime": 1790712000000
     },
     {
@@ -87,10 +87,10 @@
       "providerSymbol": "BINANCE:BTCUSDT",
       "name": "Bitcoin",
       "group": "watch",
-      "price": 83570.62,
-      "change": 1.07,
-      "changePercent": 0.0013,
-      "providerTime": 1790712578000
+      "price": 83645.37,
+      "change": 110.62,
+      "changePercent": 0.1324,
+      "providerTime": 1790713649000
     }
   ]
 }
